@@ -1,0 +1,53 @@
+{% extends 'home_page.html' %}
+{% block title %}{% if query %} {{ query }} results{% else %}Buy it, buy it{% endif %}{% endblock %}
+{% block shop %}active{% endblock %}
+{% load feedback %}
+{% load static %}
+{% block conten %}
+<style type="text/css">
+	@media screen and (max-width: 320px){
+		img.llo {
+		    width: 88%;
+		    margin-left: 0px !important;
+		}
+	}
+	img.llo{
+    width: 100%;
+    max-width: 318px;
+    max-height: 106px;
+}
+</style>
+{% if ad %}
+<div class="list-inline list-unstyled text-center">
+    {% for ads in ad %}
+        <a href="{% url 'adengine:ads' ads.id %}" data-id='{{ ads.id }}' class="loppp baby_mama">
+        	<span style="position: absolute; background-color:rgba(255, 255, 255, 0.9); color: black; padding: 3px;">Ads</span><img src="{{ ads.banner.url }}" class="llo"></a>
+    {% endfor %}
+</div>
+{% endif %}
+<p></p>
+<div class="col-sm-6 col-sm-offset-3">
+		<div class="panel panel-default">
+			<a href="{% url 'shop:store_details' 'jumia' %}">
+				<div class="panel-body">
+					<h2 class="text-center">Jumia</h2>
+				</div>
+			</a>
+		</div>
+		<div class="panel panel-default">
+			<a href="{% url 'shop:store_details' 'konga' %}">
+				<div class="panel-body">
+					<h2 class="text-center">Konga</h2>
+				</div>
+			</a>
+		</div>
+	
+		<div class="panel panel-default">
+			<a href="{% url 'shop:store_details' 'yudala' %}">
+				<div class="panel-body">
+					<h2 class="text-center">Yudala</h2>
+				</div>
+			</a>
+		</div>
+</div>
+{% endblock %}
