@@ -82,11 +82,11 @@ img.baby_mama{
                         <i class="fa fa-shopping-bag"></i> Shop
                     </a>
                 </li>
-                <li class="{% block adss %}{% endblock %}">
+                <!-- <li class="{% block adss %}{% endblock %}">
                     <a href="{% url 'adengine:home_page' %}" style="background-color: white;">
                         <i class="fa fa-money"></i> AdEngine
                     </a>
-                </li>
+                </li> -->
               </ul>
       <form id="search" role="search" class="col-sm-3 xs" action="{% if mack %}{% url 'shop:store_details' shop %}{% else %}{% url 'findit:real_index' %}{% endif %}" method="get">
 				<div class="input-group">
@@ -124,7 +124,7 @@ img.baby_mama{
               </a>
           </li>
           {% endif%} -->
-                {% if request.user.is_authenticated %}
+                <!-- {% if request.user.is_authenticated %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle='dropdown'>
                       <i class="fa fa-user-o"></i> 
@@ -149,7 +149,7 @@ img.baby_mama{
                         <li>
               <li class="{% block regster %}{% endblock %}"><a href="{% url 'register' %}"><i class="fa fa-cloud"></i> Sign up</a></li>
                         <li>
-              {% endif %}
+              {% endif %} -->
               <li class="">
                     <a href="#myModal" role="button" data-toggle="modal">
                     <i class="fa fa-envelope"></i>
