@@ -12,7 +12,7 @@ import threading
 from django.utils.crypto import get_random_string
 
 def jumia_crawler():
-	for urls in range(1,52):
+	for urls in range(1,25):
 		hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 		       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 		       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
@@ -65,7 +65,7 @@ def jumia_crawler():
 				product = Products(name=namelst,price=product_price,source_url=product_link,shop='jumia')
 				product.image.save(file_name[:20],lf)
 
-	for urls in range(1,27):
+	for urls in range(1,25):
 		hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 		       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 		       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
@@ -117,7 +117,7 @@ def jumia_crawler():
 				product = Products(name=namelst,price=product_price,source_url=product_link,shop='jumia',genre='laptops')
 				product.image.save(file_name[:20],lf)
 
-	for urls in range(1,26):
+	for urls in range(1,25):
 		hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 		       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 		       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
@@ -170,7 +170,7 @@ def jumia_crawler():
 				product = Products(name=namelst,price=product_price,source_url=product_link,genre='televisions',shop='jumia')
 				product.image.save(file_name[:20],lf)
 				
-	for urls in range(1,26):
+	for urls in range(1,25):
 		hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 		       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 		       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
@@ -224,7 +224,7 @@ def jumia_crawler():
 				product.image.save(file_name[:20],lf)
 				print('helloo')
 
-	for urls in range(1,26):
+	for urls in range(1,25):
 		hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 		       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 		       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
