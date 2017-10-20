@@ -102,10 +102,10 @@ if 'RDS_HOSTNAME' in os.environ:
     AWS_SECRET_ACCESS_KEY = 'J/2HmSaetmtHc2aR7FJzKx7wTb/H26f87KuQm/KZ'
     AWS_STORAGE_BUCKET_NAME = 'rifqoh'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+    # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # SECURE_SSL_REDIRECT = True
+    # SESSION_COOKIE_SECURE = True
+    # CSRF_COOKIE_SECURE = True
     DEBUG = False
 
 else:
