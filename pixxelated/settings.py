@@ -98,8 +98,8 @@ if 'RDS_HOSTNAME' in os.environ:
             'PORT': os.environ['RDS_PORT'],
         }
     }
-    AWS_ACCESS_KEY_ID = 'AKIAJVFD6CRNN3IQEGKA'
-    AWS_SECRET_ACCESS_KEY = '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'
+    AWS_ACCESS_KEY_ID = 'AKIAIMMUJPDI5TKTUS7Q'
+    AWS_SECRET_ACCESS_KEY = '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'
     AWS_STORAGE_BUCKET_NAME = 'rifqoh'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -107,6 +107,7 @@ if 'RDS_HOSTNAME' in os.environ:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     DEBUG = False
+
 else:
     DATABASES = {
         'default': {
