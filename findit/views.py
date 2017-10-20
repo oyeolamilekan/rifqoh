@@ -501,10 +501,10 @@ def all_on_it(request):
 	return HttpResponse('all done bosees')
 
 def engine_starter(request):
-	#konga_crawler()
-	#yudala()
+	konga_crawler()
+	yudala()
 	#payporte_crawler()
-	#jumia_crawler()
+	jumia_crawler()
 	return HttpResponse('All done bose')
 
 
