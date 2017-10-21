@@ -10,15 +10,15 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 def store(request):
-	ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
-	seen_by(request,ad)
-	landlord(request,ad)
-	return render(request,'shop/index.html',{'ad':ad})
+	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+	# seen_by(request,ad)
+	# landlord(request,ad)
+	return render(request,'shop/index.html',{})
 
 def store_details(request,word):
-	ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
-	seen_by(request,ad)
-	landlord(request,ad)
+	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+	# seen_by(request,ad)
+	# landlord(request,ad)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
 	orginal_sentence = []
@@ -84,9 +84,9 @@ def store_details(request,word):
 	return render(request,'shop/results_page.html',context)
 
 def store_shirts(request,word):
-	ad = Ads.objects.order_by('?').filter(expired='False')[:2]
-	seen_by(request,ad)
-	landlord(request,ad)
+	# ad = Ads.objects.order_by('?').filter(expired='False')[:2]
+	# seen_by(request,ad)
+	# landlord(request,ad)
 	t1 = time.time()
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	orginal_sentence = []
@@ -140,7 +140,6 @@ def store_shirts(request,word):
 			'confirmed':confirmed,
 			'all_product':all_products,
 			'share_string':share_string,
-			'ad':ad,
 			'shop':word,
 			'mack':'mack'}
 	#print(all_products.count())
@@ -151,9 +150,9 @@ def store_shirts(request,word):
 	return render(request,'shop/results_page.html',context)
 
 def store_phones(request,word):
-	ad = Ads.objects.order_by('?').filter(expired='False')[:2]
-	seen_by(request,ad)
-	landlord(request,ad)
+	# ad = Ads.objects.order_by('?').filter(expired='False')[:2]
+	# seen_by(request,ad)
+	# landlord(request,ad)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
 	orginal_sentence = []
@@ -208,7 +207,6 @@ def store_phones(request,word):
 			'confirmed':confirmed,
 			'all_product':all_products,
 			'share_string':share_string,
-			'ad':ad,
 			'shop':word,
 			'mack':'mack'}
 	#print(all_products.count())
@@ -219,10 +217,10 @@ def store_phones(request,word):
 	return render(request,'shop/results_page.html',context)
 
 def store_laptops(request,word):
-	ad = Ads.objects.order_by('?').filter(expired='False')[:2]
-	seen_by(request,ad)
-	print('jii')
-	landlord(request,ad)
+	# ad = Ads.objects.order_by('?').filter(expired='False')[:2]
+	# seen_by(request,ad)
+	# print('jii')
+	# landlord(request,ad)
 	t1 = time.time()
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	orginal_sentence = []
@@ -277,7 +275,6 @@ def store_laptops(request,word):
 			'confirmed':confirmed,
 			'all_product':all_products,
 			'share_string':share_string,
-			'ad':ad,
 			'shop':word,
 			'mack':'mack'}
 	#print(all_products.count())
@@ -345,7 +342,6 @@ def store_tv_index(request,word):
 			'confirmed':confirmed,
 			'all_product':all_products,
 			'share_string':share_string,
-			'ad':ad,
 			'shop':word,
 			'mack':'mack'}
 	#print(all_products.count())
@@ -413,7 +409,6 @@ def store_women_index(request,word):
 			'confirmed':confirmed,
 			'all_product':all_products,
 			'share_string':share_string,
-			'ad':ad,
 			'shop':word,
 			'mack':'mack'}
 	#print(all_products.count())

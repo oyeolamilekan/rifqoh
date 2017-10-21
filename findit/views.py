@@ -20,12 +20,12 @@ from accounts.models import *
 from adengine.models import Ads
 from adengine.analytics import seen_by,landlord
 def home_page(request):
-	share_string = quote_plus('compare price from different stores at pricenpick.com #popular')
+	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	url = request.build_absolute_uri()
-	ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:1]
-	seen_by(request,ad)
-	landlord(request,ad)
-	context = {'share_string':share_string,'url':url,'ad':ad}
+	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:1]
+	# seen_by(request,ad)
+	# landlord(request,ad)
+	context = {'share_string':share_string,'url':url}
 	return render(request,'search_page.html',context)
 
 def minus_club(request):
@@ -41,14 +41,14 @@ def minus_club(request):
 		return HttpResponse('*')
 
 def real_index(request):
-	ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
-	prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
+	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+	# prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
 	# print(screen_width)
 	# ad = Ads.objects.order_by('?')[:1]
-	seen_by(request,ad)
-	landlord(request,ad)
-	seen_by(request,prod_ad)
-	landlord(request,prod_ad)
+	# seen_by(request,ad)
+	# landlord(request,ad)
+	# seen_by(request,prod_ad)
+	# landlord(request,prod_ad)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
 	orginal_sentence = []
@@ -100,10 +100,8 @@ def real_index(request):
 			'query':query,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string,
-			'ad':ad,
-			'path':'home',
-			'prod_ad':prod_ad}
+			'share_string':share_string
+			}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -112,14 +110,14 @@ def real_index(request):
 	return render(request,'results_page.html',context)
 
 def shirts(request):
-	ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
-	prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
+	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+	# prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
 	# print(screen_width)
 	# ad = Ads.objects.order_by('?')[:1]
-	seen_by(request,ad)
-	landlord(request,ad)
-	seen_by(request,prod_ad)
-	landlord(request,prod_ad)
+	# seen_by(request,ad)
+	# landlord(request,ad)
+	# seen_by(request,prod_ad)
+	# landlord(request,prod_ad)
 	t1 = time.time()
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	orginal_sentence = []
@@ -172,9 +170,8 @@ def shirts(request):
 			'query':query,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string,
-			'ad':ad,
-			'prod_ad':prod_ad}
+			'share_string':share_string
+			}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -183,14 +180,14 @@ def shirts(request):
 	return render(request,'results_page.html',context)
 
 def index(request):
-	ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
-	prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
+	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+	# prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
 	# print(screen_width)
 	# ad = Ads.objects.order_by('?')[:1]
-	seen_by(request,ad)
-	landlord(request,ad)
-	seen_by(request,prod_ad)
-	landlord(request,prod_ad)
+	# seen_by(request,ad)
+	# landlord(request,ad)
+	# seen_by(request,prod_ad)
+	# landlord(request,prod_ad)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
 	orginal_sentence = []
@@ -244,9 +241,7 @@ def index(request):
 			'query':query,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string,
-			'ad':ad,
-			'prod_ad':prod_ad}
+			'share_string':share_string}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -255,14 +250,14 @@ def index(request):
 	return render(request,'results_page.html',context)
 
 def laptops(request):
-	ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
-	prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
+	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+	# prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
 	# print(screen_width)
 	# ad = Ads.objects.order_by('?')[:1]
-	seen_by(request,ad)
-	landlord(request,ad)
-	seen_by(request,prod_ad)
-	landlord(request,prod_ad)
+	# seen_by(request,ad)
+	# landlord(request,ad)
+	# seen_by(request,prod_ad)
+	# landlord(request,prod_ad)
 	t1 = time.time()
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	orginal_sentence = []
@@ -316,9 +311,8 @@ def laptops(request):
 			'query':query,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string,
-			'ad':ad,
-			'prod_ad':prod_ad}
+			'share_string':share_string
+			}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -327,14 +321,14 @@ def laptops(request):
 	return render(request,'results_page.html',context)
 
 def tv_index(request):
-	ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
-	prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
+	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+	# prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
 	# print(screen_width)
 	# ad = Ads.objects.order_by('?')[:1]
-	seen_by(request,ad)
-	landlord(request,ad)
-	seen_by(request,prod_ad)
-	landlord(request,prod_ad)
+	# seen_by(request,ad)
+	# landlord(request,ad)
+	# seen_by(request,prod_ad)
+	# landlord(request,prod_ad)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
 	orginal_sentence = []
@@ -388,9 +382,7 @@ def tv_index(request):
 			'query':query,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string,
-			'ad':ad,
-			'prod_ad':prod_ad}
+			'share_string':share_string,}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -399,14 +391,14 @@ def tv_index(request):
 	return render(request,'results_page.html',context)
 
 def women_index(request):
-	ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
-	prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
+	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+	# prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
 	# print(screen_width)
 	# ad = Ads.objects.order_by('?')[:1]
-	seen_by(request,ad)
-	landlord(request,ad)
-	seen_by(request,prod_ad)
-	landlord(request,prod_ad)
+	# seen_by(request,ad)
+	# landlord(request,ad)
+	# seen_by(request,prod_ad)
+	# landlord(request,prod_ad)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
 	orginal_sentence = []
@@ -460,9 +452,7 @@ def women_index(request):
 			'query':query,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string,
-			'ad':ad,
-			'prod_ad':prod_ad}
+			'share_string':share_string}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1

@@ -324,6 +324,7 @@ img.baby_mama{
     </a> <a href="https://twitter.com/home?status={{ share_string }}%20{{ request.build_absolute_uri }}" class="button-twitter"><i class="fa fa-twitter"></i> </a> <a href="https://www.linkedin.com/cws/share?url={{ request.build_absolute_uri }}" class="button-twitter" style="background-color: #007bb6;"><i class="fa fa-linkedin-square"></i> </a></p>
     {% if ad %}
     {% for ads in ad %}
+    <div style="display: none;">
     <a href="{% url 'adengine:ads' ads.id %}" target="_blank">
     {% if ads.banner %}
         <span style="position: absolute; background-color:rgba(255, 255, 255, 0.9); color: black; padding: 3px;">Ads</span>
@@ -332,9 +333,9 @@ img.baby_mama{
         <h4>{{ ads.title }}</h4>
     {% endif %}
     </a>
+  </div>
     {% endfor %}
     {% endif %}
-    <br>
     <br>
             <div class="col-lg-6 col-lg-offset-3">
                 <form role="search" action="{% url 'findit:real_index' %}" method="get" id="search">
