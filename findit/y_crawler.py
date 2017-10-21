@@ -56,45 +56,44 @@ def yudala():
 	# 			product = Products(name=namelst,price=product_price,source_url=product_link.attrs['href'],shop='yudala')
 	# 			product.image.save(file_name[:20],files.File(lf))
 
-	urls_tuple = ('https://www.yudala.com/laptops')
-	for urls in urls_tuple:
-		html = Request(urls,headers=hdr)
-		htmll = urlopen(html).read()
-		bsObj = BeautifulSoup(htmll,'html.parser')
-		bsObj = bsObj.find('ol',{'class':'product-items'})
-		namelist = bsObj.findAll('li',{'class':'product-item'})
-		for news in namelist:
-			product_link = news.find('a',{'class':'product-item-link'})
-			image = news.find('img',{'class':'product-image-photo'})
-			images = image.attrs['src']
-			product_named = product_link.text
-			price = news.find('div',{'class':'price-box'})
-			product_price = news.find('span', {'class','price'})
-			product_price = bytes(str(product_price.text),'UTF-8')
-			product_price = product_price.decode('ascii','ignore')
-			namelst = bytes(str(product_named), 'UTF-8')
-			namelst = namelst.decode('ascii','ignore')[:299]
-			request = requests.get(images, stream=True)
-			if Products.objects.filter(name=namelst,shop='yudala').exists():
-					produc = Products.objects.get(name=namelst,shop='yudala')
-					# Checks the price
-					if produc.price != product_price:
-						# Updates the price
-						produc.price = product_price
-						# Saves the price
-						produc.old_price = e_price
-						produc.old_price_digit = int(e_price.replace(',','').replace('\n','').replace('.00',''))
-						produc.save()
-			else:
-				if request.status_code != requests.codes.ok:
-					continue
-				file_name = images.split('/')[-1]
-				lf = tempfile.NamedTemporaryFile()
-				for block in request.iter_content(1024*8):
-					if not block:
-						break
-					lf.write(block)
-				product = Products(name=namelst,price=product_price,source_url=product_link.attrs['href'],shop='yudala',genre='laptops')
-				product.image.save(file_name[:20],files.File(lf))
+	urls_tuple = 'https://www.yudala.com/laptops'
+	html = Request(urls_tuple,headers=hdr)
+	htmll = urlopen(html).read()
+	bsObj = BeautifulSoup(htmll,'html.parser')
+	bsObj = bsObj.find('ol',{'class':'product-items'})
+	namelist = bsObj.findAll('li',{'class':'product-item'})
+	for news in namelist:
+		product_link = news.find('a',{'class':'product-item-link'})
+		image = news.find('img',{'class':'product-image-photo'})
+		images = image.attrs['src']
+		product_named = product_link.text
+		price = news.find('div',{'class':'price-box'})
+		product_price = news.find('span', {'class','price'})
+		product_price = bytes(str(product_price.text),'UTF-8')
+		product_price = product_price.decode('ascii','ignore')
+		namelst = bytes(str(product_named), 'UTF-8')
+		namelst = namelst.decode('ascii','ignore')[:299]
+		request = requests.get(images, stream=True)
+		if Products.objects.filter(name=namelst,shop='yudala').exists():
+				produc = Products.objects.get(name=namelst,shop='yudala')
+				# Checks the price
+				if produc.price != product_price:
+					# Updates the price
+					produc.price = product_price
+					# Saves the price
+					produc.old_price = e_price
+					produc.old_price_digit = int(e_price.replace(',','').replace('\n','').replace('.00',''))
+					produc.save()
+		else:
+			if request.status_code != requests.codes.ok:
+				continue
+			file_name = images.split('/')[-1]
+			lf = tempfile.NamedTemporaryFile()
+			for block in request.iter_content(1024*8):
+				if not block:
+					break
+				lf.write(block)
+			product = Products(name=namelst,price=product_price,source_url=product_link.attrs['href'],shop='yudala',genre='laptops')
+			product.image.save(file_name[:20],files.File(lf))
 	
 	threading.Timer(172800.0,yudala).start()
