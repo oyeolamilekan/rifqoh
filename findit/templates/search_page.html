@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
- 	<link rel="shortcut icon" type="image/png" href="{% static 'PPb-04.png' %}"/>
+ 	<link rel="shortcut icon" type="image/png" href="{% static 'quickfinda.png' %}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -187,7 +187,7 @@ a.belt:hover {
 @media screen and (max-width:320px){
   .ro{
     position: relative;
-    top: 20px;
+    top: -20px;
   }
   img.baby_mama{
     width: 100%;
@@ -211,7 +211,7 @@ a.belt:hover {
 @media screen and (max-width:470px){
   .ro{
     position: relative;
-    top: -55px;
+    top: -2px;
   }
 }
 img.baby_mama{
@@ -223,7 +223,7 @@ img.baby_mama{
 <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
       <div class="navbar-header">
-      <a class="navbar-brand" href="/"><img src="{% static 'PPb-04.png' %}" class="text-center" style="width:50px; position:relative; top:-12px;"></a>
+      <a class="navbar-brand" href="/"><img src="{% static 'quickfinda.png' %}" class="text-center" style="width:50px; position:relative; top:-12px;"></a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
                 <i class="fa fa-bars"></i>
                 <b>Menu</b>
@@ -318,7 +318,7 @@ img.baby_mama{
 	<div class="main-header" style="">
     <div class="container">
         <div class="ro" style="">
-            <img src="{% static 'PPb-04.png' %}" class="text-center" style="width:200px; position:relative; top:40px;">
+            <img src="{% static 'quickfinda.png' %}" class="text-center" style="width:200px; position:relative; top:10px;">
             <p class="text-center"><a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="button" style="    margin-left: 0 !important;">
         <i class="fa fa-facebook-official"></i>
     </a> <a href="https://twitter.com/home?status={{ share_string }}%20{{ request.build_absolute_uri }}" class="button-twitter"><i class="fa fa-twitter"></i> </a> <a href="https://www.linkedin.com/cws/share?url={{ request.build_absolute_uri }}" class="button-twitter" style="background-color: #007bb6;"><i class="fa fa-linkedin-square"></i> </a></p>
