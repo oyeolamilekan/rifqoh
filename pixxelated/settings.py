@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'accounts',
     'actions',
     'shop',
-    'adengine'
+    'adengine',
+    'analytics'
 ]
 
 MIDDLEWARE = [

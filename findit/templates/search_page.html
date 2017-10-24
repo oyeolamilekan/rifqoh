@@ -157,6 +157,16 @@ a.lib{
 a.belt {
   border-color: #fff;
 }
+a.beltt {
+  border-color:rgb(255, 101, 101);
+  background-color: rgb(255, 101, 101);
+  color: #fff;
+}
+a.beltt:hover {
+  border-color:rgb(255, 101, 101);
+  background-color: rgb(255, 101, 101);
+  color: #fff;
+}
 a.lib:hover {
   background-color: #43b733;
   color: white;
@@ -165,7 +175,7 @@ a.lib:hover {
 a.belt:hover {
   background-color: black;
   color: white;
-  border-color: white;
+  border-color: black;
 }
 @media screen and (max-width:320px){
     img.baby_mama {
@@ -347,6 +357,8 @@ img.baby_mama{
                     </div>
                 </form>
                 <a href="{% url 'findit:real_index' %}" class="btn btn-default belt"><i class="fa fa-dices-o"></i> Discover</a>
+
+                <a href="#mySearch" class="btn btn-default beltt" role="button" data-toggle="modal"><i class="fa fa-dices-o"></i> Advance Search</a>
                 <!-- <a href="{% url 'adengine:home_page' %}" class="lib btn btn-default"><i class="fa fa-money" aria-hidden="true"></i> Advertise with us</a> -->
             </div>
         </div>
@@ -358,6 +370,21 @@ img.baby_mama{
 <!-- <div class="about_us">
   <h1 class="text-center">We are kind of search engine</h1> 
 </div> -->
+<div class="modal fade" id="dal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-envelope"></i> Send us Feedback</h4>
+      </div>
+      <div class="modal-body feedback-loop">
+      <h4>Compare and get the best prices from different stores on quickfinda.com, it is simple, fast and light.</h4>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -367,8 +394,35 @@ img.baby_mama{
       </div>
       <div class="modal-body feedback-loop">
       <h4>Please send us your feed back in other to improve the site</h4>
-      <div style="padding: 20px">
+      <div style="padding: 5px">
       {% report_form request.build_absolute_uri %}
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="mySearch">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><img src="{% static 'quickfinda.png' %}" class="text-center" style="width:50px;"> Advanced search</h4>
+      </div>
+      <div class="modal-body feedback-loop">
+      <div style="padding: 5px">
+        <form role="search" action="{% url 'findit:advanced_search' %}" method="get" id="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="search for brand eg. infinix,iPhone,tecno,Samsung s8,wiko, e.t.c" id="search-input" name="brand">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="starting price eg. 15,000, 20,000, 30,000" id="search-input" name="start_price">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="end price eg. 130,000, 30,045, 120,000" id="search-input" name="end_price">
+            </div>
+            <input type="submit" id="Idontfuckingcare" value="Search" class="btn btn-danger btn-block">
+        </form>
       </div>
       </div>
     </div>

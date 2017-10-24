@@ -19,6 +19,7 @@ from django.contrib.auth.models import User
 from accounts.models import *
 from adengine.models import Ads
 from adengine.analytics import seen_by,landlord
+from analytics.utils import add_query
 def home_page(request):
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	url = request.build_absolute_uri()
@@ -39,6 +40,25 @@ def minus_club(request):
 		return HttpResponse('hi')
 	except:
 		return HttpResponse('*')
+
+def advanced_search(request):
+	#share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+	t1 = time.time()
+	try:
+		brand_name = request.GET.get('brand',None)
+		start_price = int(request.GET.get('start_price',None).replace(',','').replace('\n','').replace('.00',''))
+		end_price = int(request.GET.get('end_price',None).replace(',','').replace('\n','').replace('.00',''))
+		if brand_name and start_price and end_price:
+			all_products = Products.objects.filter(Q(name__icontains=brand_name,real_price__gte=int(start_price),real_price__lte=int(end_price))).distinct()
+		context = {'products':all_products}
+	except:
+		context = {'twinkle':'Your query just scatered our database'}
+	t2 = time.time()
+	query_time = t2 - t1
+	query_time = '{:.6f}'.format(query_time)
+	context['query_time']=query_time
+	context['com'] = 'Nothing'
+	return render(request,'results_page.html',context)
 
 def real_index(request):
 	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
@@ -65,12 +85,17 @@ def real_index(request):
 			           Q(name__icontains=q)|
 			           Q(name__iexact=q)
 					).distinct()
+				add_query(query,'search page',all_products[:10])
 			else:	
 				query = query.strip()
 				all_products = all_products.filter(
 				           Q(name__icontains=query)|
 				           Q(name__iexact=query)
 				).distinct()
+				if len(all_products) == 0:
+					add_query(query,'search page',all_products[:10],nbool=False)
+				else:
+					add_query(query,'search page',all_products[:10],nbool=True)
 		else:
 			query = query.split()
 			for q in query:
@@ -78,11 +103,15 @@ def real_index(request):
 				           Q(name__icontains=q)|
 				           Q(name__iexact=q)
 				).distinct()
+			query = ' '.join(query)
+			if len(all_products) == 0:
+				add_query(query,'search page',all_products[:10],nbool=False)
+			else:
+				add_query(query,'search page',all_products[:10],nbool=True)
 		# if corrected_sentence != orginal_sentence:
 		# 	corrected_sentence = ' '.join(corrected_sentence)
 		# 	orginal_sentence = ' '.join(orginal_sentence)
 		# 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
-		query = ' '.join(query)
 	page_request_var = 'page'
 	paginator = Paginator(all_products,40)
 	page = request.GET.get(page_request_var)
@@ -126,6 +155,7 @@ def shirts(request):
 	all_products = Products.objects.order_by('?').filter(genre='shirts')
 	query = request.GET.get('q')
 	if query:
+		add_query(query,'shirts page')
 		all_products = Products.objects.all()
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
 			quey = query.split()
@@ -197,6 +227,7 @@ def index(request):
 	product_counter = all_products.count()
 	query = request.GET.get('q')
 	if query:
+		add_query(query,'phones page')
 		all_products = Products.objects.all()
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
 			quey = query.split()
@@ -266,6 +297,7 @@ def laptops(request):
 	all_products = Products.objects.order_by('?').filter(genre='laptops')
 	query = request.GET.get('q')
 	if query:
+		add_query(query,'laptops page')
 		all_products = Products.objects.all()
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
 			quey = query.split()
@@ -338,6 +370,7 @@ def tv_index(request):
 	product_counter = all_products.count()
 	query = request.GET.get('q')
 	if query:
+		add_query(query,'tv page')
 		all_products = Products.objects.all()
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
 			quey = query.split()
@@ -408,6 +441,7 @@ def women_index(request):
 	product_counter = all_products.count()
 	query = request.GET.get('q')
 	if query:
+		add_query(query,'women page')
 		all_products = Products.objects.all()
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
 			quey = query.split()

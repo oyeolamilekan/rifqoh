@@ -73,7 +73,7 @@ def store_details(request,word):
 			'confirmed':confirmed,
 			'all_product':all_products,
 			'share_string':share_string,
-			'ad':ad,
+			
 			'shop':word,
 			'mack':'mack'}
 	#print(all_products.count())

@@ -1,5 +1,5 @@
 {% extends 'home_page.html' %}
-{% block title %}{% if query %} {{ query }} results{% else %}Buy it, buy it{% endif %}{% endblock %}
+{% block title %}{% if query %} {{ query }} results{% else %}Check it, buy it{% endif %}{% endblock %}
 {% block home %}active{% endblock %}
 {% load feedback %}
 {% load static %}
@@ -195,6 +195,9 @@ img.baby_mama {
 
 {% endblock %}
 {% block domready %}
+{% if com == 'Nothing' %}
+ 
+{% else %}
     var page = 1;
     var empty_page = false;
     var block_request = false;
@@ -219,4 +222,5 @@ img.baby_mama {
             });
       }
     });
+{% endif %}
 {% endblock %}

@@ -15,5 +15,6 @@ urlpatterns = [
  	url(r'^download/$', views.engine_starter, name='engine_starter'),
  	url(r'^delete/$', views.all_on_it, name='engine_starter'),
  	url(r'^twitter_bot/$', views.twitter_bot, name='twitter_bot'),
+ 	url(r'^advanced_search/$', views.advanced_search, name='advanced_search'),
    
 ]
