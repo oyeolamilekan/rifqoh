@@ -10,7 +10,7 @@ import threading
 import time
 
 def konga_crawler():
-	for urls in range(1,25):
+	for urls in range(1,50):
 		hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 		       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 		       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
@@ -59,7 +59,7 @@ def konga_crawler():
 				product = Products(name=namelst,price=e_price,source_url=product_link,genre='shirts',shop='konga')
 				product.image.save(file_name[:20],files.File(lf))
 
-	for urls in range(1,25):
+	for urls in range(1,50):
 		hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 		       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 		       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
@@ -111,7 +111,7 @@ def konga_crawler():
 	
 		# https://www.konga.com/catalogsearch/result/?category_id=5294&aggregated_brand=Apple
 			#print(namelst,e_price,product_link)https://www.konga.com/ict-brookersfor urls in range(1,417):
-	for urls in range(1,25):
+	for urls in range(1,50):
 		hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 		       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 		       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
@@ -161,7 +161,7 @@ def konga_crawler():
 		# https://www.konga.com/catalogsearch/result/?category_id=5294&aggregated_brand=Apple
 			#print(namelst,e_price,product_link)https://www.konga.com/ict-brookers
 
-	for urls in range(1,25):
+	for urls in range(1,50):
 		hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 		       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 		       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
@@ -209,7 +209,7 @@ def konga_crawler():
 				product = Products(name=namelst,price=e_price,source_url=product_link,shop='konga',genre='laptops')
 				product.image.save(file_name[:20],files.File(lf))
 
-	for urls in range(1,25):
+	for urls in range(1,50):
 		hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 		       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 		       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
