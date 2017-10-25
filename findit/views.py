@@ -85,7 +85,7 @@ def real_index(request):
 			           Q(name__icontains=q)|
 			           Q(name__iexact=q)
 					).distinct()
-				add_query(query,'search page',all_products[:10])
+				add_query(query,'search page',all_products[:10],nbool=True)
 			else:	
 				query = query.strip()
 				all_products = all_products.filter(
