@@ -78,6 +78,8 @@ def real_index(request):
 	all_products = Products.objects.order_by('?')
 	if query:
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
+			# query = correction(query)
+			# print(query)
 			quey = query.split()
 			if len(quey) >= 3:
 				for q in quey:
@@ -86,7 +88,8 @@ def real_index(request):
 			           Q(name__iexact=q)
 					).distinct()
 				add_query(query,'search page',all_products[:10],nbool=True)
-			else:	
+			else:
+				query = correction(query)
 				query = query.strip()
 				all_products = all_products.filter(
 				           Q(name__icontains=query)|
@@ -97,6 +100,8 @@ def real_index(request):
 				else:
 					add_query(query,'search page',all_products[:10],nbool=True)
 		else:
+			# query = correction(query)
+			# print(query)
 			query = query.split()
 			for q in query:
 				all_products = all_products.filter(
@@ -525,10 +530,10 @@ def all_on_it(request):
 	return HttpResponse('all done bosees')
 
 def engine_starter(request):
+	jumia_crawler()
 	konga_crawler()
+	yudala()
 	#payporte_crawler()
-	#jumia_crawler()
-	#yudala()
 	return HttpResponse('All done bose')
 
 
