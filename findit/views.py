@@ -8,7 +8,7 @@ import datetime
 from .forms import feedBackForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import random
-from .utils import black_rock 
+from .utils import black_rock,call 
 import time
 from urllib.parse import quote_plus
 from django.contrib.auth.models import User
@@ -74,8 +74,9 @@ def real_index(request):
 	all_products = Products.objects.order_by('?')
 	if query:
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
-			# query = correction(query)
-			# print(query)
+			# query = call(query)
+			# # print(query)
+			# print(list(query))
 			quey = query.split()
 			if len(quey) >= 3:
 				for q in quey:

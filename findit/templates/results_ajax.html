@@ -6,7 +6,7 @@
 			<img src="{{ product.image.url }}" style="width: 200px;">
 			<p style="padding: 1rem;">{{ product.name }}</p>
 						<hr>
-						<span style="padding: 1rem;">&#8358 {{ product.price }}</span>
+						<span style="padding: 1rem;">&#8358 {{ product.price }} {% if product.old_price_digit == 0 %}{% elif product.old_price_digit > product.real_price %} <i class="fa fa-arrow-up"></i>{% else %}<i class="fa fa-arrow-down"></i>{% endif %}</span>
 						<br>
 						<span style="padding: 1rem;">{{ product.shop }} </span>
 						<br>

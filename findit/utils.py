@@ -2,10 +2,15 @@ from .y_crawler import yudala
 from .k_cralwer import konga_crawler
 from .j_crawler import jumia_crawler
 import threading
-
+from fuzzywuzzy import fuzz,process
+from .models import Products
+words = []
+all_products = Products.objects.all()
+for product in all_products:
+    words.append(product.name)
 def black_rock():
-    # yudala()
-    # konga_crawler()
+    yudala()
+    konga_crawler()
     jumia_crawler()
 
 
