@@ -37,7 +37,7 @@ def konga_crawler():
 			namelst = namelst.decode('ascii','ignore')
 			if Products.objects.filter(name=namelst,shop='konga').exists():
 				
-				produc = Products.objects.get(name=namelst,shop='payporte')
+				produc = Products.objects.get(name=namelst,shop='konga')
 				# Checks the price
 				if produc.price != e_price:
 					produc.old_price = produc.price
@@ -88,7 +88,7 @@ def konga_crawler():
 			namelst = namelst.decode('ascii','ignore')
 			if Products.objects.filter(name=namelst,shop='konga').exists():
 				
-				produc = Products.objects.get(name=namelst,shop='payporte')
+				produc = Products.objects.get(name=namelst,shop='konga')
 				# Checks the price
 				if produc.price != e_price:
 					produc.old_price = produc.price
@@ -142,7 +142,7 @@ def konga_crawler():
 			namelst = namelst.decode('ascii','ignore')
 			if Products.objects.filter(name=namelst,shop='konga').exists():
 				
-				produc = Products.objects.get(name=namelst,shop='payporte')
+				produc = Products.objects.get(name=namelst,shop='konga')
 				# Checks the price
 				if produc.price != e_price:
 					produc.old_price = produc.price
@@ -194,7 +194,7 @@ def konga_crawler():
 			namelst = namelst.decode('ascii','ignore')
 			if Products.objects.filter(name=namelst,shop='konga').exists():
 				
-				produc = Products.objects.get(name=namelst,shop='payporte')
+				produc = Products.objects.get(name=namelst,shop='konga')
 				# Checks the price
 				if produc.price != e_price:
 					produc.old_price = produc.price
@@ -244,7 +244,7 @@ def konga_crawler():
 			namelst = namelst.decode('ascii','ignore')
 			if Products.objects.filter(name=namelst,shop='konga').exists():
 				
-				produc = Products.objects.get(name=namelst,shop='payporte')
+				produc = Products.objects.get(name=namelst,shop='konga')
 				# Checks the price
 				if produc.price != e_price:
 					produc.old_price = produc.price
@@ -294,7 +294,7 @@ def konga_crawler():
 		namelst = namelst.decode('ascii','ignore')
 		if Products.objects.filter(name=namelst,shop='konga').exists():
 			
-			produc = Products.objects.get(name=namelst,shop='payporte')
+			produc = Products.objects.get(name=namelst,shop='konga')
 			# Checks the price
 			if produc.price != e_price:
 				produc.old_price = produc.price

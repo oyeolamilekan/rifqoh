@@ -35,7 +35,7 @@ def yudala():
 			request = requests.get(images, stream=True)
 			if Products.objects.filter(name=namelst,shop='yudala').exists():
 				
-				produc = Products.objects.get(name=namelst,shop='payporte')
+				produc = Products.objects.get(name=namelst,shop='yudala')
 				# Checks the price
 				if produc.price != e_price:
 					produc.old_price = produc.price
@@ -77,7 +77,7 @@ def yudala():
 		request = requests.get(images, stream=True)
 		if Products.objects.filter(name=namelst,shop='yudala').exists():
 				
-			produc = Products.objects.get(name=namelst,shop='payporte')
+			produc = Products.objects.get(name=namelst,shop='yudala')
 			# Checks the price
 			if produc.price != e_price:
 				produc.old_price = produc.price
