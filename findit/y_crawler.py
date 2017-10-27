@@ -6,7 +6,6 @@ import requests
 import tempfile
 from .models import Products
 from django.core import files
-import threading
 
 def yudala():
 	hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
@@ -35,15 +34,17 @@ def yudala():
 			namelst = namelst.decode('ascii','ignore')[:299]
 			request = requests.get(images, stream=True)
 			if Products.objects.filter(name=namelst,shop='yudala').exists():
-					produc = Products.objects.get(name=namelst,shop='yudala')
-					# Checks the price
-					if produc.price != product_price:
-						# Updates the price
-						produc.price = product_price
-						# Saves the price
-						produc.old_price = e_price
-						produc.old_price_digit = int(e_price.replace(',','').replace('\n','').replace('.00',''))
-						produc.save()
+				
+				produc = Products.objects.get(name=namelst,shop='payporte')
+				# Checks the price
+				if produc.price != e_price:
+					produc.old_price = produc.price
+					produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
+					# Updates the price
+					produc.price = e_price
+					# Saves the price
+					
+					produc.save()
 			else:
 				if request.status_code != requests.codes.ok:
 					continue
@@ -75,15 +76,17 @@ def yudala():
 		namelst = namelst.decode('ascii','ignore')[:299]
 		request = requests.get(images, stream=True)
 		if Products.objects.filter(name=namelst,shop='yudala').exists():
-				produc = Products.objects.get(name=namelst,shop='yudala')
-				# Checks the price
-				if produc.price != product_price:
-					# Updates the price
-					produc.price = product_price
-					# Saves the price
-					produc.old_price = e_price
-					produc.old_price_digit = int(e_price.replace(',','').replace('\n','').replace('.00',''))
-					produc.save()
+				
+			produc = Products.objects.get(name=namelst,shop='payporte')
+			# Checks the price
+			if produc.price != e_price:
+				produc.old_price = produc.price
+				produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
+				# Updates the price
+				produc.price = e_price
+				# Saves the price
+				
+				produc.save()
 		else:
 			if request.status_code != requests.codes.ok:
 				continue
@@ -96,4 +99,3 @@ def yudala():
 			product = Products(name=namelst,price=product_price,source_url=product_link.attrs['href'],shop='yudala',genre='laptops')
 			product.image.save(file_name[:20],files.File(lf))
 	
-	threading.Timer(172800.0,yudala).start()

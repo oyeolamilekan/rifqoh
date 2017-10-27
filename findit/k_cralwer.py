@@ -1,6 +1,5 @@
 from urllib.request import urlopen,Request
 from bs4 import BeautifulSoup
-import threading
 import re
 import requests
 import tempfile
@@ -37,14 +36,16 @@ def konga_crawler():
 			namelst = bytes(str(product_name.text), 'UTF-8')
 			namelst = namelst.decode('ascii','ignore')
 			if Products.objects.filter(name=namelst,shop='konga').exists():
-				produc = Products.objects.get(name=namelst,shop='konga')
+				
+				produc = Products.objects.get(name=namelst,shop='payporte')
 				# Checks the price
 				if produc.price != e_price:
+					produc.old_price = produc.price
+					produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 					# Updates the price
 					produc.price = e_price
 					# Saves the price
-					produc.old_price = e_price
-					produc.old_price_digit = int(e_price.replace(',','').replace('\n','').replace('.00',''))
+					
 					produc.save()
 			else:
 				if request.status_code != requests.codes.ok:
@@ -86,14 +87,16 @@ def konga_crawler():
 			namelst = bytes(str(product_name.text), 'UTF-8')
 			namelst = namelst.decode('ascii','ignore')
 			if Products.objects.filter(name=namelst,shop='konga').exists():
-				produc = Products.objects.get(name=namelst,shop='konga')
+				
+				produc = Products.objects.get(name=namelst,shop='payporte')
 				# Checks the price
 				if produc.price != e_price:
+					produc.old_price = produc.price
+					produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 					# Updates the price
 					produc.price = e_price
 					# Saves the price
-					produc.old_price = e_price
-					produc.old_price_digit = int(e_price.replace(',','').replace('\n','').replace('.00',''))
+					
 					produc.save()
 			else:
 				if request.status_code != requests.codes.ok:
@@ -138,14 +141,16 @@ def konga_crawler():
 			namelst = bytes(str(product_name.text), 'UTF-8')
 			namelst = namelst.decode('ascii','ignore')
 			if Products.objects.filter(name=namelst,shop='konga').exists():
-				produc = Products.objects.get(name=namelst,shop='konga')
+				
+				produc = Products.objects.get(name=namelst,shop='payporte')
 				# Checks the price
 				if produc.price != e_price:
+					produc.old_price = produc.price
+					produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 					# Updates the price
 					produc.price = e_price
 					# Saves the price
-					produc.old_price = e_price
-					produc.old_price_digit = int(e_price.replace(',','').replace('\n','').replace('.00',''))
+					
 					produc.save()
 			else:
 				if request.status_code != requests.codes.ok:
@@ -188,14 +193,16 @@ def konga_crawler():
 			namelst = bytes(str(product_name.text), 'UTF-8')
 			namelst = namelst.decode('ascii','ignore')
 			if Products.objects.filter(name=namelst,shop='konga').exists():
-				produc = Products.objects.get(name=namelst,shop='konga')
+				
+				produc = Products.objects.get(name=namelst,shop='payporte')
 				# Checks the price
 				if produc.price != e_price:
+					produc.old_price = produc.price
+					produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 					# Updates the price
 					produc.price = e_price
 					# Saves the price
-					produc.old_price = e_price
-					produc.old_price_digit = int(e_price.replace(',','').replace('\n','').replace('.00',''))
+					
 					produc.save()
 			else:
 				if request.status_code != requests.codes.ok:
@@ -236,14 +243,16 @@ def konga_crawler():
 			namelst = bytes(str(product_name.text), 'UTF-8')
 			namelst = namelst.decode('ascii','ignore')
 			if Products.objects.filter(name=namelst,shop='konga').exists():
-				produc = Products.objects.get(name=namelst,shop='konga')
+				
+				produc = Products.objects.get(name=namelst,shop='payporte')
 				# Checks the price
 				if produc.price != e_price:
+					produc.old_price = produc.price
+					produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 					# Updates the price
 					produc.price = e_price
 					# Saves the price
-					produc.old_price = e_price
-					produc.old_price_digit = int(e_price.replace(',','').replace('\n','').replace('.00',''))
+					
 					produc.save()
 			else:
 				if request.status_code != requests.codes.ok:
@@ -284,14 +293,16 @@ def konga_crawler():
 		namelst = bytes(str(product_name.text), 'UTF-8')
 		namelst = namelst.decode('ascii','ignore')
 		if Products.objects.filter(name=namelst,shop='konga').exists():
-			produc = Products.objects.get(name=namelst,shop='konga')
+			
+			produc = Products.objects.get(name=namelst,shop='payporte')
 			# Checks the price
 			if produc.price != e_price:
+				produc.old_price = produc.price
+				produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 				# Updates the price
 				produc.price = e_price
 				# Saves the price
-				produc.old_price = e_price
-				produc.old_price_digit = int(e_price.replace(',','').replace('\n','').replace('.00',''))
+				
 				produc.save()
 		else:
 			if request.status_code != requests.codes.ok:
@@ -305,4 +316,3 @@ def konga_crawler():
 			print(namelst,e_price)
 			product = Products(name=namelst,price=e_price,source_url=product_link,shop='konga')
 			product.image.save(file_name[:20],files.File(lf))
-	threading.Timer(172800.0,konga_crawler).start()

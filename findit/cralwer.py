@@ -1,6 +1,5 @@
 from urllib.request import urlopen,Request
 from bs4 import BeautifulSoup
-import threading
 import re
 import requests
 import tempfile
@@ -240,11 +239,12 @@ def payporte_crawler():
 				produc = Products.objects.get(name=namelst,shop='payporte')
 				# Checks the price
 				if produc.price != e_price:
+					produc.old_price = produc.price
+					produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 					# Updates the price
 					produc.price = e_price
 					# Saves the price
-					produc.old_price = e_price
-					produc.old_price_digit = int(e_price.replace(',','').replace('\n','').replace('.00',''))
+					
 					produc.save()
 			else:
 				request = requests.get(images, stream=True)
@@ -259,4 +259,3 @@ def payporte_crawler():
 				product = Products(name=namelst,price=e_price,source_url=links,shop='payporte',genre='women-dresses')
 				product.image.save(file_name[:20],files.File(lf))
 				print(namelst,e_price)
-	threading.Timer(172800.0,payporte_crawler).start()

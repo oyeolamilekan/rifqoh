@@ -1,6 +1,5 @@
 from urllib.request import urlopen,Request
 from bs4 import BeautifulSoup
-import threading
 import re
 import requests
 import tempfile
@@ -42,11 +41,12 @@ def jumia_crawler():
 				produc = Products.objects.get(name=namelst,shop='jumia')
 				# Checks the price
 				if produc.price != product_price:
+					produc.old_price = produc.price
+					produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 					# Updates the price
 					produc.price = product_price
-					produc.old_price = product_price
-					produc.old_price_digit = int(product_price.replace(',','').replace('\n','').replace('.00',''))
 					# Saves the price
+					
 					produc.save()
 			else:
 				request = requests.get(images, stream=True)
@@ -91,14 +91,16 @@ def jumia_crawler():
 			htl = Request(images,headers=hdr)
 			httl = urlopen(htl).read()
 			if Products.objects.filter(name=namelst,shop='jumia').exists():
+				
 				produc = Products.objects.get(name=namelst,shop='jumia')
 				# Checks the price
 				if produc.price != product_price:
+					produc.old_price = produc.price
+					produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 					# Updates the price
 					produc.price = product_price
-					produc.old_price = product_price
-					produc.old_price_digit = int(product_price.replace(',','').replace('\n','').replace('.00',''))
 					# Saves the price
+					
 					produc.save()
 			else:
 				request = requests.get(images, stream=True)
@@ -144,14 +146,16 @@ def jumia_crawler():
 			httl = urlopen(htl).read()
 			print(namelst,product_price)
 			if Products.objects.filter(name=namelst,shop='jumia').exists():
+				
 				produc = Products.objects.get(name=namelst,shop='jumia')
 				# Checks the price
 				if produc.price != product_price:
+					produc.old_price = produc.price
+					produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 					# Updates the price
 					produc.price = product_price
-					produc.old_price = product_price
-					produc.old_price_digit = int(product_price.replace(',','').replace('\n','').replace('.00',''))
 					# Saves the price
+					
 					produc.save()
 			else:
 				request = requests.get(images, stream=True)
@@ -197,14 +201,16 @@ def jumia_crawler():
 			httl = urlopen(htl).read()
 			print(namelst,product_price)
 			if Products.objects.filter(name=namelst,shop='jumia').exists():
+				
 				produc = Products.objects.get(name=namelst,shop='jumia')
 				# Checks the price
 				if produc.price != product_price:
+					produc.old_price = produc.price
+					produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 					# Updates the price
 					produc.price = product_price
-					produc.old_price = product_price
-					produc.old_price_digit = int(product_price.replace(',','').replace('\n','').replace('.00',''))
 					# Saves the price
+					
 					produc.save()
 			else:
 				request = requests.get(images, stream=True)
@@ -251,14 +257,16 @@ def jumia_crawler():
 			httl = urlopen(htl).read()
 			print(namelst,product_price)
 			if Products.objects.filter(name=namelst,shop='jumia').exists():
+				
 				produc = Products.objects.get(name=namelst,shop='jumia')
 				# Checks the price
 				if produc.price != product_price:
+					produc.old_price = produc.price
+					produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 					# Updates the price
-					produc.price = product_price
-					produc.old_price = product_price
-					produc.old_price_digit = int(product_price.replace(',','').replace('\n','').replace('.00',''))
+					produc.price =product_price
 					# Saves the price
+					
 					produc.save()
 			else:
 				request = requests.get(images, stream=True)
@@ -303,14 +311,16 @@ def jumia_crawler():
 		httl = urlopen(htl).read()
 		print(namelst,product_price)
 		if Products.objects.filter(name=namelst,shop='jumia').exists():
-			produc = Products.objects.get(name=namelst)
+		
+			produc = Products.objects.get(name=namelst,shop='jumia')
 			# Checks the price
-			if produc.price == product_price:
-				pass
-			else:
+			if produc.price != product_price:
+				produc.old_price = produc.price
+				produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 				# Updates the price
 				produc.price = product_price
 				# Saves the price
+				
 				produc.save()
 		else:
 			request = requests.get(images, stream=True)
@@ -328,5 +338,3 @@ def jumia_crawler():
 			lf = ContentFile(httl)
 			product = Products(name=namelst,price=product_price,source_url=product_link,shop='jumia')
 			product.image.save(file_name,lf)
-
-	threading.Timer(172800.0,jumia_crawler).start()

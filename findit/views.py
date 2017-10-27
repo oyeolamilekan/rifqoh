@@ -2,17 +2,13 @@ from django.shortcuts import render,redirect
 from .models import Products,Feedback
 from actions.utils import subscribe
 # Create your views here.
-from .y_crawler import yudala
-from .cralwer import payporte_crawler
-from .k_cralwer import konga_crawler
-from .j_crawler import jumia_crawler
 from django.http import HttpResponseRedirect,JsonResponse,HttpResponse
 from django.db.models import Q
 import datetime
 from .forms import feedBackForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import random
-from .utils import correction 
+from .utils import black_rock 
 import time
 from urllib.parse import quote_plus
 from django.contrib.auth.models import User
@@ -530,9 +526,7 @@ def all_on_it(request):
 	return HttpResponse('all done bosees')
 
 def engine_starter(request):
-	jumia_crawler()
-	konga_crawler()
-	yudala()
+	black_rock()
 	#payporte_crawler()
 	return HttpResponse('All done bose')
 
