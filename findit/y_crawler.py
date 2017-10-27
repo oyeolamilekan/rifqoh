@@ -37,11 +37,11 @@ def yudala():
 				
 				produc = Products.objects.get(name=namelst,shop='yudala')
 				# Checks the price
-				if produc.price != e_price:
+				if produc.price != product_price:
 					produc.old_price = produc.price
 					produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 					# Updates the price
-					produc.price = e_price
+					produc.price = product_price
 					# Saves the price
 					
 					produc.save()
@@ -79,11 +79,11 @@ def yudala():
 				
 			produc = Products.objects.get(name=namelst,shop='yudala')
 			# Checks the price
-			if produc.price != e_price:
+			if produc.price != product_price:
 				produc.old_price = produc.price
 				produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 				# Updates the price
-				produc.price = e_price
+				produc.price = product_price
 				# Saves the price
 				
 				produc.save()
