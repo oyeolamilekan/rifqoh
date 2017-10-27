@@ -8,7 +8,7 @@ import datetime
 from .forms import feedBackForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import random
-from .utils import black_rock,call 
+from .utils import black_rock
 import time
 from urllib.parse import quote_plus
 from django.contrib.auth.models import User
