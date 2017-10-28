@@ -14,7 +14,7 @@ def yudala():
 	 	       'Accept-Encoding': 'none',
 	 	       'Accept-Language': 'en-US,en;q=0.8',
 	 	       'Connection': 'keep-alive'}
-	for urls in range(1,8):
+	for urls in range(2,8):
 		html = Request('https://www.yudala.com/phones-and-tablets?p=%s'%urls,headers=hdr)
 		htmll = urlopen(html).read()
 		bsObj = BeautifulSoup(htmll,'html.parser')
