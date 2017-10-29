@@ -528,7 +528,6 @@ def all_on_it(request):
 
 def engine_starter(request):
 	black_rock()
-	#payporte_crawler()
 	return HttpResponse('All done bose')
 
 
