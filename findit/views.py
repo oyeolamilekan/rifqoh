@@ -16,6 +16,7 @@ from accounts.models import *
 from adengine.models import Ads
 from adengine.analytics import seen_by,landlord
 from analytics.utils import add_query
+#from .an_utils import correction
 def home_page(request):
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	url = request.build_absolute_uri()
@@ -74,7 +75,7 @@ def real_index(request):
 	all_products = Products.objects.order_by('?')
 	if query:
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
-			# query = call(query)
+			# query = correction(query)
 			# # print(query)
 			# print(list(query))
 			quey = query.split()
@@ -97,7 +98,8 @@ def real_index(request):
 				else:
 					add_query(query,'search page',all_products[:10],nbool=True)
 		else:
-			# query = correction(query)
+			#query = correction(query)
+			#print(query)
 			# print(query)
 			query = query.split()
 			for q in query:
