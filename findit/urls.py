@@ -16,5 +16,6 @@ urlpatterns = [
  	url(r'^delete/$', views.all_on_it, name='engine_starter'),
  	url(r'^twitter_bot/$', views.twitter_bot, name='twitter_bot'),
  	url(r'^advanced_search/$', views.advanced_search, name='advanced_search'),
+ 	url(r'^men_watch/$',views.men_watch, name='men_watch')
    
 ]
