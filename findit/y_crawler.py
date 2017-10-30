@@ -14,8 +14,8 @@ def yudala():
 	 	       'Accept-Encoding': 'none',
 	 	       'Accept-Language': 'en-US,en;q=0.8',
 	 	       'Connection': 'keep-alive'}
-	for urls in range(2,8):
-		html = Request('https://www.yudala.com/phones-and-tablets?p=%s'%urls,headers=hdr)
+	for urls in range(1,8):
+		html = Request('http://www.yudala.com/phones-and-tablets?p=%s'%urls,headers=hdr)
 		htmll = urlopen(html).read()
 		bsObj = BeautifulSoup(htmll,'html.parser')
 		bsObj = bsObj.find('ol',{'class':'product-items'})
@@ -33,6 +33,7 @@ def yudala():
 			namelst = bytes(str(product_named), 'UTF-8')
 			namelst = namelst.decode('ascii','ignore')[:299]
 			request = requests.get(images, stream=True)
+			print(product_named)
 			if Products.objects.filter(name=namelst,shop='yudala').exists():
 				
 				produc = Products.objects.get(name=namelst,shop='yudala')
