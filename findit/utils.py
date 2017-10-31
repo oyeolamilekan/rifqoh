@@ -6,7 +6,7 @@ from .models import Products
 
 def black_rock():
     # yudala()
-    #konga_crawler()
+    konga_crawler()
     jumia_crawler()
 
 

@@ -157,36 +157,10 @@ def shirts(request):
 	corrected_sentence = []
 	confirmed = None
 	all_products = Products.objects.order_by('?').filter(genre='shirts')
-	query = request.GET.get('q')
-	if query:
-		add_query(query,'shirts page')
-		all_products = Products.objects.all()
-		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
-			quey = query.split()
-			if len(quey) >= 3:
-				for q in quey:
-					all_products = all_products.filter(
-			           Q(name__icontains=q)|
-			           Q(name__iexact=q)
-					).distinct()
-			else:	
-				query = query.strip()
-				all_products = all_products.filter(
-				           Q(name__icontains=query)|
-				           Q(name__iexact=query)
-				).distinct()
-		else:
-			query = query.split()
-			for q in query:
-				all_products = all_products.filter(
-				           Q(name__icontains=q)|
-				           Q(name__iexact=q)
-				).distinct()
 		# if corrected_sentence != orginal_sentence:
 		# 	corrected_sentence = ' '.join(corrected_sentence)
 		# 	orginal_sentence = ' '.join(orginal_sentence)
 		# 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
-		query = ' '.join(query)
 	page_request_var = 'page'
 	paginator = Paginator(all_products,40)
 	page = request.GET.get(page_request_var)
@@ -201,7 +175,6 @@ def shirts(request):
 	if request.is_ajax():
 		return render(request,'results_ajax.html',{'products':queryset})
 	context = {'products':queryset,
-			'query':query,
 			'confirmed':confirmed,
 			'all_product':all_products,
 			'share_string':share_string
@@ -229,36 +202,10 @@ def index(request):
 	confirmed = None
 	all_products = Products.objects.order_by('?').filter(genre='')
 	product_counter = all_products.count()
-	query = request.GET.get('q')
-	if query:
-		add_query(query,'phones page')
-		all_products = Products.objects.all()
-		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
-			quey = query.split()
-			if len(quey) >= 3:
-				for q in quey:
-					all_products = all_products.filter(
-			           Q(name__icontains=q)|
-			           Q(name__iexact=q)
-					).distinct()
-			else:	
-				query = query.strip()
-				all_products = all_products.filter(
-				           Q(name__icontains=query)|
-				           Q(name__iexact=query)
-				).distinct()
-		else:
-			query = query.split()
-			for q in query:
-				all_products = all_products.filter(
-				           Q(name__icontains=q)|
-				           Q(name__iexact=q)
-				).distinct()
 		# if corrected_sentence != orginal_sentence:
 		# 	corrected_sentence = ' '.join(corrected_sentence)
 		# 	orginal_sentence = ' '.join(orginal_sentence)
 		# 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
-		query = ' '.join(query)
 	page_request_var = 'page'
 	paginator = Paginator(all_products,40)
 	page = request.GET.get(page_request_var)
@@ -273,7 +220,6 @@ def index(request):
 	if request.is_ajax():
 		return render(request,'results_ajax.html',{'products':queryset})
 	context = {'products':queryset,
-			'query':query,
 			'confirmed':confirmed,
 			'all_product':all_products,
 			'share_string':share_string}
@@ -299,37 +245,10 @@ def laptops(request):
 	corrected_sentence = []
 	confirmed = None
 	all_products = Products.objects.order_by('?').filter(genre='laptops')
-	query = request.GET.get('q')
-	if query:
-		add_query(query,'laptops page')
-		all_products = Products.objects.all()
-		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
-			quey = query.split()
-			if len(quey) >= 3:
-				for q in quey:
-					all_products = all_products.filter(
-			           Q(name__icontains=q)|
-			           Q(name__iexact=q)
-					).distinct()
-			else:	
-				query = query.strip()
-				all_products = all_products.filter(
-				           Q(name__icontains=query)|
-				           Q(name__iexact=query)
-				).distinct()
-		else:
-			query = query.split()
-			for q in query:
-				all_products = all_products.filter(
-				           Q(name__icontains=q)|
-				           Q(name__iexact=q)
-				           
-				).distinct()
 		# if corrected_sentence != orginal_sentence:
 		# 	corrected_sentence = ' '.join(corrected_sentence)
 		# 	orginal_sentence = ' '.join(orginal_sentence)
 		# 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
-		query = ' '.join(query)
 	page_request_var = 'page'
 	paginator = Paginator(all_products,40)
 	page = request.GET.get(page_request_var)
@@ -344,7 +263,6 @@ def laptops(request):
 	if request.is_ajax():
 		return render(request,'results_ajax.html',{'products':queryset})
 	context = {'products':queryset,
-			'query':query,
 			'confirmed':confirmed,
 			'all_product':all_products,
 			'share_string':share_string
@@ -372,36 +290,10 @@ def tv_index(request):
 	confirmed = None
 	all_products = Products.objects.order_by('?').filter(genre='televisions')
 	product_counter = all_products.count()
-	query = request.GET.get('q')
-	if query:
-		add_query(query,'tv page')
-		all_products = Products.objects.all()
-		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
-			quey = query.split()
-			if len(quey) >= 3:
-				for q in quey:
-					all_products = all_products.filter(
-			           Q(name__icontains=q)|
-			           Q(name__iexact=q)
-					).distinct()
-			else:	
-				query = query.strip()
-				all_products = all_products.filter(
-				           Q(name__icontains=query)|
-				           Q(name__iexact=query)
-				).distinct()
-		else:
-			query = query.split()
-			for q in query:
-				all_products = all_products.filter(
-				           Q(name__icontains=q)|
-				           Q(name__iexact=q)
-				).distinct()
 		# if corrected_sentence != orginal_sentence:
 		# 	corrected_sentence = ' '.join(corrected_sentence)
 		# 	orginal_sentence = ' '.join(orginal_sentence)
 		# 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
-		query = ' '.join(query)
 	page_request_var = 'page'
 	paginator = Paginator(all_products,40)
 	page = request.GET.get(page_request_var)
@@ -416,7 +308,6 @@ def tv_index(request):
 	if request.is_ajax():
 		return render(request,'results_ajax.html',{'products':queryset})
 	context = {'products':queryset,
-			'query':query,
 			'confirmed':confirmed,
 			'all_product':all_products,
 			'share_string':share_string,}
@@ -442,6 +333,45 @@ def women_index(request):
 	corrected_sentence = []
 	confirmed = None
 	all_products = Products.objects.order_by('?').filter(genre='women-dresses')
+	page_request_var = 'page'
+	paginator = Paginator(all_products,40)
+	page = request.GET.get(page_request_var)
+	try:
+		queryset = paginator.page(page)
+	except PageNotAnInteger:
+		queryset = paginator.page(1)
+	except EmptyPage:
+		if request.is_ajax():
+			# If the request is AJAX and the page is out of range return an empty page
+			return HttpResponse('')
+	if request.is_ajax():
+		return render(request,'results_ajax.html',{'products':queryset})
+	context = {'products':queryset,
+			'confirmed':confirmed,
+			'all_product':all_products,
+			'share_string':share_string}
+	#print(all_products.count())
+	t2 = time.time()
+	query_time = t2 - t1
+	query_time = '{:.6f}'.format(query_time)
+	context['query_time']=query_time
+	return render(request,'results_page.html',context)
+
+def women_watch(request):
+	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+	# prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
+	# print(screen_width)
+	# ad = Ads.objects.order_by('?')[:1]
+	# seen_by(request,ad)
+	# landlord(request,ad)
+	# seen_by(request,prod_ad)
+	# landlord(request,prod_ad)
+	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+	t1 = time.time()
+	orginal_sentence = []
+	corrected_sentence = []
+	confirmed = None
+	all_products = Products.objects.order_by('?').filter(genre='women-watches')
 	page_request_var = 'page'
 	paginator = Paginator(all_products,40)
 	page = request.GET.get(page_request_var)
@@ -504,7 +434,7 @@ def men_watch(request):
 	query_time = '{:.6f}'.format(query_time)
 	context['query_time']=query_time
 	return render(request,'results_page.html',context)
-
+	
 def number_of_clicks(request,id):
 	product = Products.objects.get(id=id)
 	product.analytics.number_of_clicks = product.analytics.number_of_clicks + 1
