@@ -7,6 +7,9 @@ from urllib.parse import quote_plus
 import time
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from accounts.forms import UserRegistrationForm
+from .forms import ShopForm
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 def store(request):
@@ -14,6 +17,36 @@ def store(request):
 	# seen_by(request,ad)
 	# landlord(request,ad)
 	return render(request,'shop/index.html',{})
+
+def register(request):
+	if request.method == 'POST':
+		user_form = UserRegistrationForm(request.POST)
+		shop_form = ShopForm(request.POST)
+
+		if user_form.is_valid() and shop_form.is_valid():
+			# Create a new user object but avoid saving it yet
+			new_user = user_form.save(commit=False)
+			# Set the chosen password
+			new_user.set_password(user_form.cleaned_data['password'])
+			# Save the User object
+			new_user.save()
+			shop_form.save()
+			authenticated_user = authenticate(username=new_user.username,password=request.POST['password'])
+			login(request,authenticated_user)
+		#create_action(request.user,'just signed up')
+		# Create the user profile
+		# profile = Profile.objects.create(user=new_user)
+			return redirect('/shop/dashboard/')
+	else:
+		user_form = UserRegistrationForm()
+		shop_form = ShopForm()
+	return render(request, 'shop/register.html', {'user_form': user_form, 'shop_form':shop_form})
+
+def dashboard(request):
+	return render(request,'shop/dash/deep_dash/index.html',{})
+
+def home_p(request):
+	return render(request,'shop/lindex.html',{})
 
 def store_details(request,word):
 	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]

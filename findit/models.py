@@ -14,6 +14,7 @@ CONDITIONS = (
 )
 
 class Products(models.Model):
+	user = models.ForeignKey(settings.AUTH_USER_MODEL,blank=True,null=True,related_name='who_did_it')
 	name = models.CharField(max_length=300)
 	price = models.CharField(max_length=300)
 	real_price = models.IntegerField(default=0)

@@ -1,0 +1,49 @@
+{% extends 'home_page.html' %}
+{% block title %}{% if query %} {{ query }} results{% else %}Buy it, buy it{% endif %}{% endblock %}
+{% block shop %}active{% endblock %}
+{% load feedback %}
+{% load static %}
+{% block conten %}
+<style type="text/css">
+	.panel {
+		border-radius: 10px !important;
+	}
+	.panel-body {
+		border-radius: 10px !important;
+	}
+</style>
+<!-- <div class="pull-left" style="height: 100%; margin-top:-30px; background-color: green; position: fixed; padding: 14px">
+	<ul style="list-style: none; padding: 0px;">
+		<li style="margin-bottom: 5px;"><i class="fa fa-user"></i></li>
+		<li><i class="fa fa-user"></i></li>
+		<li><i class="fa fa-user"></i></li>
+		<li><i class="fa fa-user"></i></li>
+		<li><i class="fa fa-user"></i></li>
+		<li><i class="fa fa-user"></i></li>
+		<li><i class="fa fa-user"></i></li>
+		<li><i class="fa fa-user"></i></li>
+		<li><i class="fa fa-user"></i></li>
+	</ul>
+</div> -->
+<div class="col-sm-6 col-sm-offset-3">
+	<div class="panel panel-primary">
+	 	<div class="panel-body">
+	 		<div class="images" style="display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 8px;">
+            	<img src="{% static 'ceop.jpg' %}" style="border-radius: 1000px; width: 45px;">
+         </div>
+         <div class="words" style='display: table-cell; vertical-align: top; margin-left: 20px; font-weight: 100; font-size: 21px;'>
+            <h4 style="margin-top: -2px;">oye olalekan</h4>
+            <span style="color: black;"><h5 style="color: black;">FOUNDER & CORE DEVELOPER</h5></span>
+        </div>
+	 		<p>Hi, i am oye the founder and core developer @quickfinda i am happy to annouce our new product 'SHOP'.</p>
+
+	 		<p>So what is shop ? Shop is a simple system that allows you to upload you product direct to quickfinda's database, so when a user searches a product, your product beacomes part of the result shown.</p>
+
+	 		<p>You can share shop url with your physical customers if they want to have a quicklook at your product</p>
+
+	 		<a class="btn btn-primary btn-block" href="{% url 'shop:shop_reg' %}">Create your shop</a>
+	 		<a class="btn btn-danger btn-block" href="#">Login to your Shop</a>
+	 	</div>
+	</div>
+</div>
+{% endblock %}
