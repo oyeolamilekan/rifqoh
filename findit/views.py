@@ -72,21 +72,26 @@ def real_index(request):
 	corrected_sentence = []
 	confirmed = None
 	query = request.GET.get('q')
-	all_products = Products.objects.order_by('?')
+	all_products = Products.objects.all()
 	if query:
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
-			query = correct(query)
-			query = ''.join(query)
-			print(query)
 			# # print(query)
 			# print(list(query))
+			query = query.lower()
 			quey = query.split()
 			if len(quey) >= 3:
-				for q in quey:
+				if 'plus' in quey:
+					q = ' '.join(quey)
 					all_products = all_products.filter(
-			           Q(name__icontains=q)|
-			           Q(name__iexact=q)
-					).distinct()
+				           Q(name__icontains=q)|
+				           Q(name__iexact=q)
+						).distinct()
+				else:
+					for q in quey:
+						all_products = all_products.filter(
+						           Q(name__icontains=q)|
+						           Q(name__iexact=q)
+						).distinct()
 				add_query(query,'search page',all_products[:10],nbool=True)
 			else:
 				#query = correction(query)
@@ -100,11 +105,6 @@ def real_index(request):
 				else:
 					add_query(query,'search page',all_products[:10],nbool=True)
 		else:
-			query = correct(query)
-			print(query)
-			#print(query)
-			# print(query)
-			query = ' '.join(query)
 			query = query.split()
 			for q in query:
 				all_products = all_products.filter(
@@ -491,7 +491,7 @@ def sugget(request):
 	sugget_input = request.GET.get('search',None)
 	sucide = Products.objects.filter(name__icontains=sugget_input)[:10]
 	for su in sucide:
-		pixeld.append(su.name.replace('\n','').replace('.00','').replace('\t',''))
+		pixeld.append(su.name.replace('\n','').replace('\t',''))
 	return JsonResponse({'query':pixeld})
 # def stream(request):
 # 	all_products = Products.objects.order_by('?').filter(genre__in=[subb.lisert for subb in sub_listo])
