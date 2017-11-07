@@ -80,7 +80,7 @@ def real_index(request):
 			query = query.lower()
 			quey = query.split()
 			if len(quey) >= 3:
-				if 'plus' in quey:
+				if 'plus' in quey and len(quey) <= 3:
 					q = ' '.join(quey)
 					all_products = all_products.filter(
 				           Q(name__icontains=q)|
@@ -88,9 +88,10 @@ def real_index(request):
 						).distinct()
 				else:
 					for q in quey:
+						
 						all_products = all_products.filter(
-						           Q(name__icontains=q)|
-						           Q(name__iexact=q)
+						           Q(name__icontains=q)
+						           
 						).distinct()
 				add_query(query,'search page',all_products[:10],nbool=True)
 			else:
@@ -491,7 +492,7 @@ def sugget(request):
 	sugget_input = request.GET.get('search',None)
 	sucide = Products.objects.filter(name__icontains=sugget_input)[:10]
 	for su in sucide:
-		pixeld.append(su.name.replace('\n','').replace('\t',''))
+		pixeld.append(su.name.replace('\n','').replace('\t','')[:25])
 	return JsonResponse({'query':pixeld})
 # def stream(request):
 # 	all_products = Products.objects.order_by('?').filter(genre__in=[subb.lisert for subb in sub_listo])

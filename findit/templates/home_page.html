@@ -28,6 +28,26 @@
   ga('create', 'UA-101606756-1', 'auto');
   ga('send', 'pageview');
 
+$(document).ready(function() {
+    $('#search-inpt').keyup(function(){
+      $.get('/suggest/', {search:$('#search-inpt').val()}, function(data){
+        $('datalist').empty();
+        for (var i = 0; i < data.query.length; i++) {
+            $('datalist').append("<option value='"+data.query[i]+"'>")
+            console.log(data.query[i])
+        };
+      });
+    });
+    $('#search-input').keyup(function(){
+      $.get('/suggest/', {search:$('#search-input').val()}, function(data){
+        $('datalist').empty();
+        for (var i = 0; i < data.query.length; i++) {
+            $('datalist').append("<option value='"+data.query[i]+"'>")
+            console.log(data.query[i])
+        };
+      });
+    });
+  });
 </script>
 <style type="text/css">
   .glyphicon-search {
@@ -103,7 +123,10 @@ img.baby_mama{
 					<span class="glyphicon glyphicon-search" ariahidden="
 					true"></span>
 					<input type="text" class="form-control transition" name="q"
-					placeholder="Search...">
+					placeholder="Search..." id="search-input" list="myQueries">
+          <datalist id="myQueries">
+                          
+                        </datalist>
 				</div>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
@@ -172,7 +195,10 @@ img.baby_mama{
           <form role="search" id="seah">
           <div class="input-group" style="position: absolute; top: 10.5px; left: 18.5%;width: 50%;">
           <input type="text" class="form-control transition" name="q"
-          placeholder="Search...">
+          placeholder="Search..." id="search-inpt" list="myQueries">
+          <datalist id="myQueries">
+            
+          </datalist>
           </div>
           </form>
         </div>
