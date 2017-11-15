@@ -72,7 +72,7 @@ def real_index(request):
 	corrected_sentence = []
 	confirmed = None
 	query = request.GET.get('q')
-	all_products = Products.objects.all()
+	all_products = Products.objects.order_by('?')
 	if query:
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
 			# # print(query)
