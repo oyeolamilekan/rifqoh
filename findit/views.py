@@ -17,6 +17,8 @@ from adengine.models import Ads
 from adengine.analytics import seen_by,landlord
 from analytics.utils import add_query
 from .an_utils import correct
+from analytics.signals import object_viewed
+
 def home_page(request):
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	url = request.build_absolute_uri()
@@ -442,6 +444,7 @@ def men_watch(request):
 	
 def number_of_clicks(request,id):
 	product = Products.objects.get(id=id)
+	object_viewed.send(product.__class__,instance=product,request=request)
 	product.analytics.number_of_clicks = product.analytics.number_of_clicks + 1
 	product.analytics.save()
 	if product.shop == 'jumia':

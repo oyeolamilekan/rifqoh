@@ -3,7 +3,7 @@ from . import views
 from django.contrib.auth.views import login,logout,password_change,password_change_done,password_reset,password_reset_done,password_reset_confirm,password_reset_complete
 
 urlpatterns = [
-	url(r'^$', login, name='login'),
+	url(r'^$', views.user_login, name='login'),
 	url(r'^password-change/$',password_change,{'template_name':'registration/password_change_for.html'},name="password_change"),
     url(r'^passowrd-change/done/$',password_change_done,{'template_name':'registration/password_change_don.html'},name="password_change_done"),
 	url(r'^logout/$', logout,{'template_name':'registration/logged_ou.html'}, name='logout'),

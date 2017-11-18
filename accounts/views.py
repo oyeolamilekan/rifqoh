@@ -7,7 +7,7 @@ from findit.models import Feedback,Products
 from .models import Sub
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
+from .signals import user_logged_in
 # Create your views here.
 
 def user_login(request):
@@ -19,8 +19,8 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponse('Authenticated successfully')
-                    
+                    user_logged_in.send(user.__class__,request=request,instance=user)
+                    return redirect('adengine:index')
                 else:
                     return HttpResponse('Disabled account')
             else:
