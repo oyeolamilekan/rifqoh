@@ -32,6 +32,9 @@ SECRET_KEY = 'gceqdqrhtd3b=%#$&_&4njzqq^!=0dj#0ebpcagqe@=7z2y9vx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+FORCE_SESSION_TO_ONE = False
+FORCE_INACTIVE_USER_ENDSESSION = False
+
 ALLOWED_HOSTS = ['*']
 
 # Application definition

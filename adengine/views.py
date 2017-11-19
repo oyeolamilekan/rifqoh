@@ -18,6 +18,7 @@ def home_page(request):
 	# Well i think it renders it
 	return render(request,'index.html',{'form':form})
 
+@login_required
 def index(request):
 	# Well i think it renders it
 	ad_1 = AdsBuy.objects.filter(ad_owner=request.user,ad_type='Products').exists()

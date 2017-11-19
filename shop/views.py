@@ -10,9 +10,12 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from accounts.forms import UserRegistrationForm
 from .forms import ShopForm
 from django.contrib.auth import authenticate, login
+from analytics.utils import whichPage
 # Create your views here.
 
 def store(request):
+	urll = request.build_absolute_uri()
+	whichPage(request,'shop_index',urll)
 	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
 	# seen_by(request,ad)
 	# landlord(request,ad)
@@ -49,9 +52,15 @@ def home_p(request):
 	return render(request,'shop/lindex.html',{})
 
 def store_details(request,word):
+	urll =request.build_absolute_uri()
 	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
 	# seen_by(request,ad)
 	# landlord(request,ad)
+	pink_lips = request.GET.get('q')
+	if pink_lips:
+		whichPage(request,'%s-%s'%(word,pink_lips),urll)
+	else:
+		whichPage(request,word,urll)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
 	orginal_sentence = []

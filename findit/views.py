@@ -18,10 +18,12 @@ from adengine.analytics import seen_by,landlord
 from analytics.utils import add_query
 from .an_utils import correct
 from analytics.signals import object_viewed
+from analytics.utils import whichPage
 
 def home_page(request):
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	url = request.build_absolute_uri()
+	whichPage(request,'home_page',url)
 	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:1]
 	# seen_by(request,ad)
 	# landlord(request,ad)
@@ -43,6 +45,8 @@ def minus_club(request):
 def advanced_search(request):
 	#share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
+	url = request.build_absolute_uri()
+	whichPage(request,'advanced_search',url)
 	try:
 		brand_name = request.GET.get('brand',None)
 		start_price = int(request.GET.get('start_price',None).replace(',','').replace('\n','').replace('.00',''))
@@ -70,12 +74,15 @@ def real_index(request):
 	# landlord(request,prod_ad)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
+	url = request.build_absolute_uri()
+	whichPage(request,'discoverB',url)
 	orginal_sentence = []
 	corrected_sentence = []
 	confirmed = None
 	query = request.GET.get('q')
 	all_products = Products.objects.order_by('?')
 	if query:
+		whichPage(request,'search')
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
 			# # print(query)
 			# print(list(query))
@@ -158,6 +165,8 @@ def shirts(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	url = request.build_absolute_uri()
+	whichPage(request,'shirtsP',url)
 	t1 = time.time()
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	orginal_sentence = []
@@ -202,6 +211,8 @@ def index(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	url = request.build_absolute_uri()
+	whichPage(request,'phoneP',url)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
 	orginal_sentence = []
@@ -246,6 +257,8 @@ def laptops(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	url = request.build_absolute_uri()
+	whichPage(request,'laptopsP',url)
 	t1 = time.time()
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	orginal_sentence = []
@@ -290,6 +303,8 @@ def tv_index(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	url = request.build_absolute_uri()
+	whichPage(request,'tvP',url)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
 	orginal_sentence = []
@@ -334,6 +349,8 @@ def women_index(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	url = request.build_absolute_uri()
+	whichPage(request,'wemenP',url)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
 	orginal_sentence = []
@@ -373,6 +390,8 @@ def women_watch(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	url = request.build_absolute_uri()
+	whichPage(request,'wemen_watchP',url)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
 	orginal_sentence = []
@@ -412,6 +431,8 @@ def men_watch(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	url = request.build_absolute_uri()
+	whichPage(request,'men_watchP',url)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
 	orginal_sentence = []
