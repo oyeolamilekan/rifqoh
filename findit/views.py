@@ -521,7 +521,7 @@ def sugget(request):
 
 def deleteu(request):
 	p = Products.objects.get(id=14239)
-	p.delete
+	p.delete()
 	return HttpResponse('all done')
 # def stream(request):
 # 	all_products = Products.objects.order_by('?').filter(genre__in=[subb.lisert for subb in sub_listo])
