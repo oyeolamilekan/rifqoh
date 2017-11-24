@@ -54,7 +54,6 @@ class ObjectViewed(models.Model):
 def object_viewed_reciever(sender,instance,request,*args,**kwargs):
 	c_type = ContentType.objects.get_for_model(sender)
 	new_view_obj = ObjectViewed.objects.create(
-			user = request.user,
 			ip_address = get_client_ip(request),
 			object_id = instance.id,
 			content_type = c_type,
