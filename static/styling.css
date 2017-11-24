@@ -238,8 +238,13 @@ a.lap{
   color: #fff; 
 }
 .women{
-  background-color:#ffb6c1;
-  border-color:#ffb6c1;
+  background-color:#ef9159;
+  border-color:#ef9159;
+  color: #fff;
+}
+.watch{
+  background-color:#ef9159;
+  border-color:#ef9159;
   color: #fff;
 }
 a.mklo:hover{
