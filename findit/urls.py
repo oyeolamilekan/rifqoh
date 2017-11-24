@@ -18,6 +18,7 @@ urlpatterns = [
  	url(r'^twitter_bot/$', views.twitter_bot, name='twitter_bot'),
  	url(r'^advanced_search/$', views.advanced_search, name='advanced_search'),
  	url(r'^men_watch/$',views.men_watch, name='men_watch'),
- 	url(r'^women_watch/$',views.women_watch, name='women_watch')
+ 	url(r'^women_watch/$',views.women_watch, name='women_watch'),
+ 	url(r'^deleteu/$',views.deleteu, name='deleteu')
    
 ]

@@ -518,6 +518,11 @@ def sugget(request):
 	for su in sucide:
 		pixeld.append(su.name.replace('\n','').replace('\t','')[:25])
 	return JsonResponse({'query':pixeld})
+
+def deleteu(request):
+	p = Products.objects.get(id=14239)
+	p.delete
+	return HttpResponse('all done')
 # def stream(request):
 # 	all_products = Products.objects.order_by('?').filter(genre__in=[subb.lisert for subb in sub_listo])
 # 	product_counter = all_products.count()
