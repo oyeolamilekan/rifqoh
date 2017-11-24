@@ -520,7 +520,7 @@ def sugget(request):
 	return JsonResponse({'query':pixeld})
 
 def deleteu(request):
-	p = Products.objects.get(id=14239)
+	p = Products.objects.get(id=14253)
 	p.delete()
 	return HttpResponse('all done')
 # def stream(request):
