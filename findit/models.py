@@ -21,6 +21,7 @@ class Products(models.Model):
 	image = models.ImageField(blank=True,null=True)
 	source_url = models.CharField(max_length=300)
 	shop = models.CharField(max_length=300)
+	num_of_clicks = models.IntegerField(default=0)
 	createdate = models.DateTimeField(auto_now_add=True)
 	old_price = models.CharField(max_length=200,default='')
 	old_price_digit = models.IntegerField(default=0)

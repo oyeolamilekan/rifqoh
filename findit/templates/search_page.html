@@ -281,6 +281,11 @@ img.baby_mama{
                         <i class="fa fa-home"></i> Home
                     </a>
                 </li>
+                <li class="{% block trending %}{% endblock %}">
+                    <a href="{% url 'findit:real_trend' 'index' %}">
+                        <i class="fa fa-line-chart"></i> Trending
+                    </a>
+                </li>
                 <li class="{% block shop %}{% endblock %}">
                     <a href="{% url 'shop:index' %}">
                         <i class="fa fa-shopping-bag"></i> Shop

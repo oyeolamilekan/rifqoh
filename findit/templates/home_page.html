@@ -74,6 +74,7 @@ nav form#seah .input-group .form-control {
     box-shadow: none;
 }
 
+
 @media screen and (max-width: 425px){
     a.loppp:first-child{
       display: none;
@@ -86,6 +87,15 @@ img.baby_mama{
     width: 100%;
     max-width: 318px;
     max-height: 106px;
+}
+
+element.style {
+}
+.navbar-default {
+    background-color: white;
+    border-radius: 0px;
+    border-bottom-color: #ddd;
+    border-bottom-width: 2.2px !important;
 }
 </style>
 <body>
@@ -105,6 +115,11 @@ img.baby_mama{
                 <li class="{% block home %}{% endblock %}">
                     <a href="/" style="background-color: white;">
                         <i class="fa fa-home"></i> Home
+                    </a>
+                </li>
+                <li class="{% block trending %}{% endblock %}">
+                    <a href="{% url 'findit:real_trend' 'index' %}" style="background-color: white;">
+                        <i class="fa fa-line-chart"></i> Trending
                     </a>
                 </li>
                 <li class="{% block shop %}{% endblock %}">

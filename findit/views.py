@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Products,Feedback
+from .models import Products,Feedback,Analytics
 from actions.utils import subscribe
 # Create your views here.
 from django.http import HttpResponseRedirect,JsonResponse,HttpResponse
@@ -16,7 +16,6 @@ from accounts.models import *
 from adengine.models import Ads
 from adengine.analytics import seen_by,landlord
 from analytics.utils import add_query
-from .an_utils import correct
 from analytics.signals import object_viewed
 from analytics.utils import whichPage
 
@@ -147,7 +146,8 @@ def real_index(request):
 			'query':query,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string
+			'share_string':share_string,
+			'trendin':'home'
 			}
 	#print(all_products.count())
 	t2 = time.time()
@@ -466,8 +466,8 @@ def men_watch(request):
 def number_of_clicks(request,id):
 	product = Products.objects.get(id=id)
 	object_viewed.send(product.__class__,instance=product,request=request)
-	product.analytics.number_of_clicks = product.analytics.number_of_clicks + 1
-	product.analytics.save()
+	product.num_of_clicks = product.num_of_clicks + 1
+	product.save()
 	if product.shop == 'jumia':
 		return HttpResponseRedirect('http://c.jumia.io/?a=35588&c=11&p=r&E=kkYNyk2M4sk%3d&ckmrdr='+product.source_url+'&utm_source=cake&utm_medium=affiliation&utm_campaign=35588&utm_term=')
 	else:
@@ -523,6 +523,104 @@ def deleteu(request):
 	p = Products.objects.filter(shop='jumia')
 	p.delete()
 	return HttpResponse('all done')
+
+def convert_me(request):
+	products = Products.objects.all()
+	for product in products:
+		analytics = Analytics.objects.get(id=product.id)
+		product.num_of_clicks = analytics.number_of_clicks
+		product.save()
+	return HttpResponse('All done Boss Again')
+############################################################################
+#####################		Trending Layout			########################
+
+def real_trend(request,word):
+	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+	t1 = time.time()
+	url = request.build_absolute_uri()
+	whichPage(request,'Trending',url)
+	orginal_sentence = []
+	corrected_sentence = []
+	confirmed = None
+	query = request.GET.get('q')
+	if word != 'index':
+		all_products = Products.objects.order_by('-num_of_clicks').filter(genre=word)
+	else:
+		all_products = Products.objects.order_by('-num_of_clicks')
+	if query:
+		whichPage(request,'search Trending',request.build_absolute_uri())
+		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
+			# # print(query)
+			# print(list(query))
+			query = query.lower()
+			quey = query.split()
+			if len(quey) >= 3:
+				if 'plus' in quey and len(quey) <= 3:
+					q = ' '.join(quey)
+					all_products = all_products.filter(
+				           Q(name__icontains=q)|
+				           Q(name__iexact=q)
+						).distinct()
+				else:
+					for q in quey:
+						
+						all_products = all_products.filter(
+						           Q(name__icontains=q)
+						           
+						).distinct()
+				add_query(query,'search page',all_products[:10],nbool=True)
+			else:
+				#query = correction(query)
+				query = query.strip()
+				all_products = all_products.filter(
+				           Q(name__icontains=query)|
+				           Q(name__iexact=query)
+				).distinct()
+				if len(all_products) == 0:
+					add_query(query,'search page',all_products[:10],nbool=False)
+				else:
+					add_query(query,'search page',all_products[:10],nbool=True)
+		else:
+			query = query.split()
+			for q in query:
+				all_products = all_products.filter(
+				           Q(name__icontains=q)|
+				           Q(name__iexact=q)
+				).distinct()
+			query = ' '.join(query)
+			if len(all_products) == 0:
+				add_query(query,'search page',all_products[:10],nbool=False)
+			else:
+				add_query(query,'search page',all_products[:10],nbool=True)
+		# if corrected_sentence != orginal_sentence:
+		# 	corrected_sentence = ' '.join(corrected_sentence)
+		# 	orginal_sentence = ' '.join(orginal_sentence)
+		# 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
+	page_request_var = 'page'
+	paginator = Paginator(all_products,40)
+	page = request.GET.get(page_request_var)
+	try:
+		queryset = paginator.page(page)
+	except PageNotAnInteger:
+		queryset = paginator.page(1)
+	except EmptyPage:
+		if request.is_ajax():
+			# If the request is AJAX and the page is out of range return an empty page
+			return HttpResponse('')
+	if request.is_ajax():
+		return render(request,'results_ajax.html',{'products':queryset})
+	context = {'products':queryset,
+			'query':query,
+			'confirmed':confirmed,
+			'all_product':all_products,
+			'share_string':share_string,
+			}
+	#print(all_products.count())
+	t2 = time.time()
+	query_time = t2 - t1
+	query_time = '{:.3f}'.format(query_time)
+	context['query_time']=query_time
+	return render(request,'result_trend_page.html',context)
 # def stream(request):
 # 	all_products = Products.objects.order_by('?').filter(genre__in=[subb.lisert for subb in sub_listo])
 # 	product_counter = all_products.count()
