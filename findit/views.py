@@ -118,10 +118,10 @@ def real_index(request):
 		else:
 			query = query.split()
 			for q in query:
-				q = correction(q)
-				print(q)
-				if q == '(black)':
-					q = 'black'
+				#q = correction(q)
+				#print(q)
+				# if q == '(black)':
+				# 	q = 'black'
 				all_products = all_products.filter(
 				           Q(name__icontains=q)|
 				           Q(name__iexact=q)
