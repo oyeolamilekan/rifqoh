@@ -120,6 +120,9 @@ def real_index(request):
 			for q in query:
 				if q != 'ps4':
 					q = correction(q)
+
+				if q == 'pad':
+					q = 'controller'
 				all_products = all_products.filter(
 				           Q(name__icontains=q)|
 				           Q(name__iexact=q)
