@@ -80,7 +80,7 @@ def real_index(request):
 	corrected_sentence = []
 	confirmed = None
 	query = request.GET.get('q')
-	print(query,'hgf')
+	#print(query,'hgf')
 	all_products = Products.objects.order_by('?')
 	if query:
 		whichPage(request,'search',request.build_absolute_uri())
@@ -118,10 +118,8 @@ def real_index(request):
 		else:
 			query = query.split()
 			for q in query:
-				#q = correction(q)
-				#print(q)
-				# if q == '(black)':
-				# 	q = 'black'
+				q = correction(q)
+				print(q)
 				all_products = all_products.filter(
 				           Q(name__icontains=q)|
 				           Q(name__iexact=q)

@@ -7,7 +7,7 @@ def words(text): return re.findall(r'\w+', text.lower())
 wordings = []
 
 for product in Products.objects.order_by('?'):
-	wordings += product.name.replace('\n','').replace('.00','').replace('\t','').split()
+	wordings += product.name.replace('\n','').replace('.00','').replace('\t','').replace('(','').replace(')','').split()
 
 print(wordings)
 
