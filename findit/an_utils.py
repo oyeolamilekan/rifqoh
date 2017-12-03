@@ -9,7 +9,7 @@ wordings = []
 for product in Products.objects.order_by('?'):
 	wordings += product.name.replace('\n','').replace('.00','').replace('\t','').replace('(','').replace(')','').split()
 
-print(wordings)
+#print(wordings)
 
 def correction(word):
     #print(wordings[:10])

@@ -2,8 +2,8 @@ from .models import QueryList,PageViews
 from .an_utils import get_client_ip
 
 
-def add_query(query,sect,listedd,nbool):
-	query_up = QueryList.objects.create(title=query,section=sect,res_list=listedd,qury_bool=nbool)
+def add_query(query,sect,listedd,nbool,correct):
+	query_up = QueryList.objects.create(title=query,section=sect,res_list=listedd,qury_bool=nbool,corrected=correct)
 	query_up.save()
 
 def whichPage(request,curr_p,urll):

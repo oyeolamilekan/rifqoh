@@ -117,21 +117,32 @@ def real_index(request):
 					add_query(query,'search page',all_products[:10],nbool=True)
 		else:
 			query = query.split()
+			new = []
 			for q in query:
-				if q != 'ps4':
-					q = correction(q)
-
+				l = q
+				# Auto Corect program a little buggy
 				if q == 'pad':
 					q = 'controller'
+
+				if q != 'ps4' or q != 'gt':
+					# Make correction to each of the split
+					q = correction(q)
+					new.append(q)
+					# Put them all together
+				if l.lower() == 'gt':
+					q = 'Gt'
+				
 				all_products = all_products.filter(
 				           Q(name__icontains=q)|
 				           Q(name__iexact=q)
 				).distinct()
+			
 			query = ' '.join(query)
+			made = ' '.join(new)
 			if len(all_products) == 0:
-				add_query(query,'search page',all_products[:10],nbool=False)
+				add_query(query,'search page',all_products[:10],nbool=False,correct=made)
 			else:
-				add_query(query,'search page',all_products[:10],nbool=True)
+				add_query(query,'search page',all_products[:10],nbool=True,correct=made)
 		# if corrected_sentence != orginal_sentence:
 		# 	corrected_sentence = ' '.join(corrected_sentence)
 		# 	orginal_sentence = ' '.join(orginal_sentence)
