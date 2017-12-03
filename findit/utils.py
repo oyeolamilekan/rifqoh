@@ -5,8 +5,8 @@ import threading
 from .models import Products
 
 def black_rock():
-    jumia_crawler()
-    yudala()
+    # jumia_crawler()
+    # yudala()
     konga_crawler()
 
     threading.Timer(172800.0,black_rock).start()
