@@ -20,7 +20,9 @@ urlpatterns = [
  	url(r'^men_watch/$',views.men_watch, name='men_watch'),
  	url(r'^women_watch/$',views.women_watch, name='women_watch'),
  	url(r'^deleteu/$',views.deleteu, name='deleteu'),
- 	url(r'^revers/$',views.convert_me, name='convert_me'),
+ 	url(r'^revers/$',views.convert_me, name='convert_me'), #delunn
  	url(r'^trending/(?P<word>[\w-]+)/$',views.real_trend, name='real_trend'),
+ 	url(r'^delunn/$',views.delunn, name='delunn'),
+ 	url(r'^convertion/$',views.user_convertion, name='user_convertion'),
    
 ]

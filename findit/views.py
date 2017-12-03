@@ -15,15 +15,17 @@ from django.contrib.auth.models import User
 from accounts.models import *
 from adengine.models import Ads
 from adengine.analytics import seen_by,landlord
+from analytics.models import PageViews
 from analytics.utils import add_query
 from analytics.signals import object_viewed
-from analytics.utils import whichPage
+from analytics.utils import whichPage,user_count,user_converter
 from .an_utils import correction
 
 def home_page(request):
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	url = request.build_absolute_uri()
 	whichPage(request,'home_page',url)
+	user_count(request)
 	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:1]
 	# seen_by(request,ad)
 	# landlord(request,ad)
@@ -47,6 +49,7 @@ def advanced_search(request):
 	t1 = time.time()
 	url = request.build_absolute_uri()
 	whichPage(request,'advanced_search',url)
+	user_count(request)
 	try:
 		brand_name = request.GET.get('brand',None)
 		start_price = int(request.GET.get('start_price',None).replace(',','').replace('\n','').replace('.00',''))
@@ -72,6 +75,7 @@ def real_index(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	user_count(request)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
 	url = request.build_absolute_uri()
@@ -103,7 +107,7 @@ def real_index(request):
 						           Q(name__icontains=q)
 						           
 						).distinct()
-				add_query(query,'search page',all_products[:10],nbool=True)
+				add_query(query,'search page',all_products[:10],nbool=True,correct=query)
 			else:
 				#query = correction(query)
 				query = query.strip()
@@ -112,9 +116,9 @@ def real_index(request):
 				           Q(name__iexact=query)
 				).distinct()
 				if len(all_products) == 0:
-					add_query(query,'search page',all_products[:10],nbool=False)
+					add_query(query,'search page',all_products[:10],nbool=False,correct=query)
 				else:
-					add_query(query,'search page',all_products[:10],nbool=True)
+					add_query(query,'search page',all_products[:10],nbool=True,correct=query)
 		else:
 			query = query.split()
 			new = []
@@ -183,6 +187,7 @@ def shirts(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	user_count(request)
 	url = request.build_absolute_uri()
 	whichPage(request,'shirtsP',url)
 	t1 = time.time()
@@ -229,6 +234,7 @@ def index(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	user_count(request)
 	url = request.build_absolute_uri()
 	whichPage(request,'phoneP',url)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
@@ -275,6 +281,7 @@ def laptops(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	user_count(request)
 	url = request.build_absolute_uri()
 	whichPage(request,'laptopsP',url)
 	t1 = time.time()
@@ -322,6 +329,7 @@ def tv_index(request):
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
 	url = request.build_absolute_uri()
+	user_count(request)
 	whichPage(request,'tvP',url)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	t1 = time.time()
@@ -367,6 +375,7 @@ def women_index(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	user_count(request)
 	url = request.build_absolute_uri()
 	whichPage(request,'wemenP',url)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
@@ -408,6 +417,7 @@ def women_watch(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	user_count(request)
 	url = request.build_absolute_uri()
 	whichPage(request,'wemen_watchP',url)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
@@ -449,6 +459,7 @@ def men_watch(request):
 	# landlord(request,ad)
 	# seen_by(request,prod_ad)
 	# landlord(request,prod_ad)
+	user_count(request)
 	url = request.build_absolute_uri()
 	whichPage(request,'men_watchP',url)
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
@@ -508,8 +519,6 @@ def despiration(request):
 	return HttpResponse('All done boss')
 
 def all_on_it(request):
-	loo = Products.objects.all()
-	loo.delete()
 	return HttpResponse('all done bosees')
 
 def engine_starter(request):
@@ -534,21 +543,27 @@ def sugget(request):
 	sugget_input = request.GET.get('search',None)
 	sucide = Products.objects.filter(name__icontains=sugget_input)[:10]
 	for su in sucide:
-		pixeld.append(su.name.replace('\n','').replace('\t','')[:25])
+		pixeld.append(su.name.replace('\n','').replace('\t','').replace('(','').replace(')','')[:25])
 	return JsonResponse({'query':pixeld})
 
 def deleteu(request):
-	p = Products.objects.filter(shop='jumia')
-	p.delete()
 	return HttpResponse('all done')
 
 def convert_me(request):
 	products = Products.objects.all()
 	for product in products:
 		analytics = Analytics.objects.get(id=product.id)
-		product.num_of_clicks = analytics.number_of_clicks
+		product.num_of_clicks = product.num_of_clicks + analytics.number_of_clicks
 		product.save()
 	return HttpResponse('All done Boss Again')
+
+def user_convertion(request):
+	users = PageViews.objects.all()
+	for user in users:
+		user_converter(user.ip_address)
+
+	return HttpResponse('hello world')
+
 ############################################################################
 #####################		Trending Layout			########################
 
@@ -639,6 +654,12 @@ def real_trend(request,word):
 	query_time = '{:.3f}'.format(query_time)
 	context['query_time']=query_time
 	return render(request,'result_trend_page.html',context)
+
+def delunn(request):
+	prod = Products.objects.filter(name__icontains='Apple',genre='women-dresses')
+	prod.delete()
+	return HttpResponse('Sacrifices')
+
 # def stream(request):
 # 	all_products = Products.objects.order_by('?').filter(genre__in=[subb.lisert for subb in sub_listo])
 # 	product_counter = all_products.count()

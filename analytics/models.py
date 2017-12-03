@@ -25,6 +25,23 @@ class PageViews(models.Model):
 	def __str__(self):
 		return '%s viewed on %s' %(self.title,self.timestamp)
 
+	class Meta:
+		ordering = ['-timestamp']
+		verbose_name = 'Page Views'
+		verbose_name_plural = 'Page Views'
+
+class UserNumber(models.Model):
+	user_ip = models.CharField(max_length=200,blank=True,null=True)
+	date_added = models.DateTimeField(auto_now_add=True,blank=True,null=True)
+
+	def __str__(self):
+		return '{} added on {}'.format(self.user_ip,self.date_added)
+
+	class Meta:
+		ordering = ['-date_added']
+		verbose_name = 'User Number'
+		verbose_name_plural = 'User Number'
+
 class QueryList(models.Model):
 	title = models.CharField(max_length=200)
 	res_list = models.TextField(blank=True,null=True)
@@ -35,6 +52,11 @@ class QueryList(models.Model):
 
 	def __str__(self):
 		return self.title
+
+	class Meta:
+		ordering = ['-date_added']
+		verbose_name = 'Query List'
+		verbose_name_plural = 'Query List'
 
 class ObjectViewed(models.Model):
 	user = models.ForeignKey(User, blank=True, null=True)
@@ -50,7 +72,7 @@ class ObjectViewed(models.Model):
 	class Meta:
 		ordering = ['-timestamp']
 		verbose_name = 'Object viewed'
-		verbose_name_plural = 'Object viewed plural'
+		verbose_name_plural = 'Object viewed'
 
 def object_viewed_reciever(sender,instance,request,*args,**kwargs):
 	c_type = ContentType.objects.get_for_model(sender)
