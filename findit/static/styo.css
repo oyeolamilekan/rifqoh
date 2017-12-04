@@ -30,10 +30,6 @@ body{
     border-radius: 2px;
     border: 1px solid #ffb6c1;
 }
-body {
-    background-color: #f1f1f1;
-    padding-top: 6em;
-}
 .navbar-default {
     background-color: white;
     border-radius: 0px;

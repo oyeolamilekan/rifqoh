@@ -15,11 +15,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="{% static 'styling.css' %}">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <!-- <script async src="https://www.google-analytics.com/analytics.js"></script> -->
   <meta name="description" content="quickfinda is simple search engine, that helps you compare prices from different stores, so you shop from one place all at once. stores on quickfinda include jumia.com, konga.com, yudala.com. and many more are coming soon.">
-  <link rel="stylesheet" type="text/css" href="{% static 'styling.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'styo.css' %}">
   
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -48,12 +47,12 @@
     $('.dark-theme').on('click', function(event){
       event.preventDefault();
       $('.search').toggleClass('search-darkk');
-      if ($('.btn').hasClass('btn-darkk')){
-        $('.btn').removeClass('btn-darkk');
-        $('.btn').addClass('btn-white');
+      if ($('.btn').hasClass('btn-white')){
+        $('.btn').removeClass('btn-white');
+        $('.btn').addClass('btn-darkk');
       }
       else{
-        $('.btn').addClass('btn-darkk')
+        $('.btn').addClass('btn-white')
       }
     });
 
@@ -223,7 +222,6 @@ body {
   background-size: cover;
   background-position: center;
   height: 100vh;
-  margin-top: -30px;
 }
 .ro {
   position: relative;
@@ -256,7 +254,7 @@ body {
 @media screen and (max-width:470px){
   .ro{
     position: relative;
-    top: -2px;
+    top: 60px;
   }
 }
 img.baby_mama{
@@ -300,7 +298,7 @@ img.baby_mama{
 .btn-darkk {
     color: #fff;
     background-color: #333;
-    border-color: #333;
+    border-color: #333 !important;
 }
 
 form.search-darkk .input-group .form-control {
@@ -315,8 +313,16 @@ form.search-darkk .input-group .form-control {
     background-color: #fff;
     border-color: #fff;
 }
+.navbar-default {
+  top: 0;
+}
+
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent;
+}
 </style>
-<nav class="navbar navbar-default  navbar-custom">
+<nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
       <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
@@ -332,12 +338,12 @@ form.search-darkk .input-group .form-control {
                         <i class="fa fa-home"></i> Home
                     </a>
                 </li>
-                <li class="{% block trending %}{% endblock %}">
+                <li>
                     <a href="{% url 'findit:real_trend' 'index' %}">
                         <i class="fa fa-line-chart"></i> Trending
                     </a>
                 </li>
-                <li class="{% block shop %}{% endblock %}">
+                <li>
                     <a href="{% url 'shop:index' %}">
                         <i class="fa fa-shopping-bag"></i> Shop
                     </a>
@@ -434,7 +440,8 @@ form.search-darkk .input-group .form-control {
                 </li>
                     </a>
               </li>
-      </ul>
+            </ul>
+          </div>
           </div>
         </div>
 
