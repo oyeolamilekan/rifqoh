@@ -130,7 +130,7 @@ def real_index(request):
 
 				if q != 'ps4' or q != 'gt':
 					# Make correction to each of the split
-					q = correction(q)
+					#q = correction(q)
 					new.append(q)
 					# Put them all together
 				if l.lower() == 'gt':

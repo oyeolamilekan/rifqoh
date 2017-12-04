@@ -44,6 +44,25 @@
         };
       });
     });
+
+    $('.dark-theme').on('click', function(event){
+      event.preventDefault();
+      $('.search').toggleClass('search-darkk');
+      if ($('.btn').hasClass('btn-darkk')){
+        $('.btn').removeClass('btn-darkk');
+        $('.btn').addClass('btn-white');
+      }
+      else{
+        $('.btn').addClass('btn-darkk')
+      }
+    });
+
+    // $('.dark-theme').on('click', function(event){
+    //   event.preventDefault();
+    //   $('.search').toggleClass('search-darkk');
+    //   $('.btn-primary').toggleClass('btn-darkk');
+    // });
+
   });
 </script>
 <style type="text/css">
@@ -111,13 +130,13 @@
     top: -30px;
 }
 
-form#search .input-group .form-control:focus {
+form.search .input-group .form-control:focus {
   box-shadow: none;
 }
-form#search .input-group .form-control {
+form.search .input-group .form-control {
   border: none;
   padding-left: 1.9em;
-  background-color: #F3F3F3;
+  background-color: #fff;
   box-shadow: none;
 }
 .main-header{
@@ -263,11 +282,43 @@ img.baby_mama{
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
      background-color: transparent; 
 }
+
+.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 7px 10px;
+    margin-top: 11px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: #555;
+    background-image: none;
+    border: 0px solid transparent;
+    border-radius: 4px;
+    color: white;
+}
+
+.btn-darkk {
+    color: #fff;
+    background-color: #333;
+    border-color: #333;
+}
+
+form.search-darkk .input-group .form-control {
+    border: none;
+    padding-left: 1.9em;
+    background-color: #333;
+    box-shadow: none;
+    color: #fff;
+}
+.btn-white {
+    color: black;
+    background-color: #fff;
+    border-color: #fff;
+}
 </style>
 <nav class="navbar navbar-default  navbar-custom">
       <div class="container">
       <div class="navbar-header">
-      <a class="navbar-brand" href="/"><img src="{% static 'quickfinda.png' %}" class="text-center" style="width:50px; position:relative; top:-12px;"></a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
                 <i class="fa fa-bars"></i>
                 <b>Menu</b>
@@ -358,7 +409,31 @@ img.baby_mama{
                       Send Feedback
                     <i class="fa fa-envelope"></i>
                     </a>
+              </li>
+              <li class="">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle='dropdown'>
+                      <i class="fa fa-circle"></i>
+                      Theme
+                      <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" class="dark-theme"><i class="fa fa-circle"></i> Dark </a></li>
+                        <li>
+                          <a href="#">
+                          <i class="fa fa-lock"></i> Light</a>
+                      </li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                        <a href="{% url 'logout' %}">
+                          <i class="fa fa-sign-out"></i>
+                            logout
+                        </a>
+                       </li>
+                    </ul>
                 </li>
+                    </a>
+              </li>
       </ul>
           </div>
         </div>
@@ -388,14 +463,14 @@ img.baby_mama{
     {% endif %}
     <br>
             <div class="col-lg-6 col-lg-offset-3">
-                <form role="search" action="{% url 'findit:real_index' %}" method="get" id="search">
+                <form role="search" action="{% url 'findit:real_index' %}" method="get" class="search">
                     <div class="input-group form-group form-group-lg">
                         <input type="text" class="form-control col-lg-6" placeholder="search for eg. infinix,iPhone,tecno,Samsung s8,wiko, e.t.c" id="search-input" name="q" list="myQueries">
                         <datalist id="myQueries">
                           
                         </datalist>
                         <span class="input-group-btn">
-                            <button class="btn btn-primary btn-lg" type="submit" id="search-button"><i class="fa fa-search"></i></button>
+                            <button class="btn btn-white btn-lg" type="submit" id="search-button"><i class="fa fa-search"></i></button>
                         </span>
                     </div>
                 </form>

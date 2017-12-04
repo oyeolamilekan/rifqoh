@@ -13,6 +13,14 @@ CONDITIONS = (
 	(1, 'Exteremely dissatisfied'),
 )
 
+class UserTheme(models.Model):
+	user = models.CharField(max_length=200,blank=True,null=True)
+	theme = models.CharField(max_length=200,blank=True,null=True)
+
+	def __str__(self):
+		return '{} theme is {}'.format(user,theme)
+		
+
 class Products(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL,blank=True,null=True,related_name='who_did_it')
 	name = models.CharField(max_length=300)
