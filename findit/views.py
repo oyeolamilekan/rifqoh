@@ -28,6 +28,7 @@ def home_page(request):
 	url = request.build_absolute_uri()
 	whichPage(request,'home_page',url)
 	user = get_client_ip(request)
+	user_theme = ''
 	if UserTheme.objects.filter(user=user).exists():
 		user_theme = UserTheme.objects.get(user=user)
 	user_count(request)
