@@ -13,14 +13,21 @@ CONDITIONS = (
 	(1, 'Exteremely dissatisfied'),
 )
 
+# Theme by the user
 class UserTheme(models.Model):
 	user = models.CharField(max_length=200,blank=True,null=True)
-	theme = models.CharField(max_length=200,blank=True,null=True)
+	theme = models.BooleanField(max_length=200,blank=False,default=True)
+	timestamp = models.DateTimeField(auto_now_add=True,blank=True,null=True)
 
 	def __str__(self):
 		return '{} theme is {}'.format(user,theme)
-		
+	
+	class Meta:
+		ordering = ['-timestamp']
+		verbose_name = 'User Theme'
+		verbose_name_plural = 'User Theme'
 
+# Products downloaded by the crawler
 class Products(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL,blank=True,null=True,related_name='who_did_it')
 	name = models.CharField(max_length=300)
@@ -40,6 +47,12 @@ class Products(models.Model):
 	def __str__(self):
 		return self.name
 
+	class Meta:
+		ordering = ['-id']
+		verbose_name = 'Products'
+		verbose_name_plural = 'Products'
+
+# Calculates how many clicks for Trending page
 class Analytics(models.Model):
 	product = models.OneToOneField(Products) 
 	number_of_clicks = models.IntegerField(default=0)
@@ -48,6 +61,7 @@ class Analytics(models.Model):
 	def __str__(self):
 		return self.number_of_clicks
 
+# Feedbacks from the user
 class Feedback(models.Model):
 	feelings = models.IntegerField(choices=CONDITIONS,blank=True,null=True)
 	url_locator = models.CharField(blank=True,null=True,max_length=200)

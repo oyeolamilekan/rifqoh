@@ -44,17 +44,7 @@
       });
     });
 
-    $('.dark-theme').on('click', function(event){
-      event.preventDefault();
-      $('.search').toggleClass('search-darkk');
-      if ($('.btn').hasClass('btn-white')){
-        $('.btn').removeClass('btn-white');
-        $('.btn').addClass('btn-darkk');
-      }
-      else{
-        $('.btn').addClass('btn-white')
-      }
-    });
+   
 
     // $('.dark-theme').on('click', function(event){
     //   event.preventDefault();
@@ -296,11 +286,16 @@ img.baby_mama{
 }
 
 .btn-darkk {
-    color: #fff;
-    background-color: #333;
+    color: #fff !important;
+    background-color: #333 !important;
     border-color: #333 !important;
 }
 
+.btn-darkk:hover {
+    color: #fff !important;
+    background-color: #333 !important;
+    border-color: #333 !important;
+}
 form.search-darkk .input-group .form-control {
     border: none;
     padding-left: 1.9em;
@@ -416,29 +411,7 @@ form.search-darkk .input-group .form-control {
                     <i class="fa fa-envelope"></i>
                     </a>
               </li>
-              <li class="">
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle='dropdown'>
-                      <i class="fa fa-circle"></i>
-                      Theme
-                      <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" class="dark-theme"><i class="fa fa-circle"></i> Dark </a></li>
-                        <li>
-                          <a href="#">
-                          <i class="fa fa-lock"></i> Light</a>
-                      </li>
-                        <li role="separator" class="divider"></li>
-                        <li>
-                        <a href="{% url 'logout' %}">
-                          <i class="fa fa-sign-out"></i>
-                            logout
-                        </a>
-                       </li>
-                    </ul>
-                </li>
-                    </a>
+              <li><a href="#" class="dark-theme"><i class="fa fa-circle"></i> <span class="swsee" data-action='{% if user_theme.theme %}Off{% else %}On{% endif %}'> {% if user_theme.theme %}Off{% else %}On {% endif %}</span> Dark mode</a></li>
               </li>
             </ul>
           </div>
@@ -446,55 +419,74 @@ form.search-darkk .input-group .form-control {
         </div>
 
     </nav>
-  <div class="bad-boy">
+
+<!-- The Search Handler -->
+<div class="bad-boy">
 	<div class="main-header" style="">
-    <div class="container">
+      <div class="container">
         <div class="ro" style="">
             <img src="{% static 'quickfinda.png' %}" class="text-center" style="width:200px; position:relative; top:10px;">
-            <p class="text-center"><a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="button" style="    margin-left: 0 !important;">
-        <i class="fa fa-facebook-official"></i>
-    </a> <a href="https://twitter.com/home?status={{ share_string }}%20{{ request.build_absolute_uri }}" class="button-twitter"><i class="fa fa-twitter"></i> </a> <a href="https://www.linkedin.com/cws/share?url={{ request.build_absolute_uri }}" class="button-twitter" style="background-color: #007bb6;"><i class="fa fa-linkedin-square"></i> </a></p>
-    {% if ad %}
-    {% for ads in ad %}
-    <div style="display: none;">
-    <a href="{% url 'adengine:ads' ads.id %}" target="_blank">
-    {% if ads.banner %}
-        <span style="position: absolute; background-color:rgba(255, 255, 255, 0.9); color: black; padding: 3px;">Ads</span>
-        <img src="{{ ads.banner.url }}" class="baby_mama">
-    {% else %}
-        <h4>{{ ads.title }}</h4>
-    {% endif %}
-    </a>
-  </div>
-    {% endfor %}
-    {% endif %}
-    <br>
+            <p class="text-center">
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="button" style="    margin-left: 0 !important;">
+                <i class="fa fa-facebook-official"></i>
+              </a> 
+              <a href="https://twitter.com/home?status={{ share_string }}%20{{ request.build_absolute_uri }}" class="button-twitter">
+                <i class="fa fa-twitter"></i> 
+              </a> 
+              <a href="https://www.linkedin.com/cws/share?url={{ request.build_absolute_uri }}" class="button-twitter" style="background-color: #007bb6;">
+                <i class="fa fa-linkedin-square"></i> 
+              </a>
+            </p>
+            {% if ad %}
+              {% for ads in ad %}
+                <div style="display: none;">
+                  <a href="{% url 'adengine:ads' ads.id %}" target="_blank">
+                  {% if ads.banner %}
+                      <span style="position: absolute; background-color:rgba(255, 255, 255, 0.9); color: black; padding: 3px;">Ads</span>
+                      <img src="{{ ads.banner.url }}" class="baby_mama">
+                  {% else %}
+                      <h4>{{ ads.title }}</h4>
+                  {% endif %}
+                  </a>
+                </div>
+              {% endfor %}
+            {% endif %}
+              <br>
             <div class="col-lg-6 col-lg-offset-3">
-                <form role="search" action="{% url 'findit:real_index' %}" method="get" class="search">
-                    <div class="input-group form-group form-group-lg">
-                        <input type="text" class="form-control col-lg-6" placeholder="search for eg. infinix,iPhone,tecno,Samsung s8,wiko, e.t.c" id="search-input" name="q" list="myQueries">
-                        <datalist id="myQueries">
-                          
-                        </datalist>
-                        <span class="input-group-btn">
-                            <button class="btn btn-white btn-lg" type="submit" id="search-button"><i class="fa fa-search"></i></button>
-                        </span>
-                    </div>
-                </form>
-                <a href="{% url 'findit:real_index' %}" class="btn btn-default belt"><i class="fa fa-dices-o"></i> Discover</a>
+              <!-- The search area -->
+              <form role="search" action="{% url 'findit:real_index' %}" method="get" class="search {% if user_theme.theme %}search-darkk{% endif %}">
+                <div class="input-group form-group form-group-lg">
+                    <input type="text" class="form-control col-lg-6" placeholder="search for eg. infinix,iPhone,tecno,Samsung s8,wiko, e.t.c" id="search-input" name="q" list="myQueries">
+                    <datalist id="myQueries">
+                      
+                    </datalist>
+                    <span class="input-group-btn">
+                        <button class="btn btn-lg bt-p {% if user_theme.theme %}btn-darkk{% else %} btn-white {% endif %}" type="submit" id="search-button"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+              </form>
+              <!-- End Search Area -->
 
-                <a href="#mySearch" class="btn btn-default beltt" role="button" data-toggle="modal"><i class="fa fa-dices-o"></i> Advance Search</a>
+              <!-- The Help Buttons -->
+                <a href="{% url 'findit:real_index' %}" class="btn bt-p btn-default {% if user_theme.theme %}btn-darkk{% endif %}">
+                  <i class="fa fa-dices-o"></i> Discover
+                </a>
+
+                <a href="#mySearch" class="btn btn-default beltt" role="button" data-toggle="modal">
+                  <i class="fa fa-dices-o"></i> 
+                Advance Search</a>
                 <br>
                 <br>
                   <!-- <a href="{% url 'shop:shop_index' %}" class="btn btn-primary olo" role="button" data-toggle="modal" style="padding: 6px 70px;"><i class="fa fa-dices-o"></i> Upload your product to quickfinda</a> -->
-                <a href="{% url 'adengine:home_page' %}" class="lib btn btn-default"><i class="fa fa-user" aria-hidden="true"></i> Hire Me!</a>
+                <a href="{% url 'adengine:home_page' %}" class="btn bt-p btn-default {% if user_theme.theme %}btn-darkk{% endif %}"><i class="fa fa-user" aria-hidden="true"></i> Hire Me!</a>
             </div>
-        </div>
-        <div>
-        </div>
-    </div>
+          </div>
+      </div>
+  </div>
 </div>
-</div>
+<!-- End Search Handler -->
+
+
 <!-- <div class="about_us">
   <h1 class="text-center">We are kind of search engine</h1> 
 </div> -->
@@ -557,4 +549,34 @@ form.search-darkk .input-group .form-control {
   </div>
 </div>
 </body>
+<script type="text/javascript">
+  $(document).ready(function() {
+   $('.dark-theme').on('click', function(event){
+      var previous_action = $('span.swsee').data('action');
+
+      $('span.swsee').data('action', previous_action == 'On' ? 'Off' : 'On');
+
+      $('span.swsee').text(previous_action == 'On' ? 'Off' : 'On');
+      $.ajax({
+        url: '/user_choice/',
+        type: 'GET',
+      })
+      event.preventDefault();
+      $('.search').toggleClass('search-darkk');
+
+      if ($('.bt-p').hasClass('btn-white')){
+          $('.bt-p').removeClass('btn-white');
+          $('.bt-p').addClass('btn-darkk');
+        }
+        
+      else {
+        $('.bt-p').removeClass('btn-darkk');
+        $('.bt-p').addClass('btn-white');
+      }
+
+      console.log()
+
+    });
+ });
+</script>
 </html>

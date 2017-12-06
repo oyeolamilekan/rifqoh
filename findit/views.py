@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Products,Feedback,Analytics
+from .models import Products,Feedback,Analytics,UserTheme
 from actions.utils import subscribe
 # Create your views here.
 from django.http import HttpResponseRedirect,JsonResponse,HttpResponse
@@ -20,17 +20,42 @@ from analytics.utils import add_query
 from analytics.signals import object_viewed
 from analytics.utils import whichPage,user_count,user_converter
 from .an_utils import correction
+from analytics.an_utils import get_client_ip
+
 
 def home_page(request):
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
 	url = request.build_absolute_uri()
 	whichPage(request,'home_page',url)
+	user = get_client_ip(request)
+	if UserTheme.objects.filter(user=user).exists():
+		user_theme = UserTheme.objects.get(user=user)
 	user_count(request)
+	# ipo = get_client_ip(request)
+	# if UserTheme.objects.filter(user=ipo).exists():
+	# 	bool_boy = True
+
 	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:1]
 	# seen_by(request,ad)
 	# landlord(request,ad)
-	context = {'share_string':share_string,'url':url}
+	context = {'share_string':share_string,'url':url,'user_theme':user_theme}
 	return render(request,'search_page.html',context)
+
+
+def user_choice(request):
+	user = get_client_ip(request)
+	if UserTheme.objects.filter(user=user).exists():
+		user_theme = UserTheme.objects.get(user=user)
+		if user_theme.theme:
+			user_theme.theme = False
+			user_theme.save()
+		else:
+			user_theme.theme = True
+			user_theme.save()
+	else:
+		user_theme = UserTheme.objects.create(user=user,theme=True)
+		user_theme.save()
+	return HttpResponse('mi')
 
 def minus_club(request):
 	try:
@@ -123,18 +148,8 @@ def real_index(request):
 			query = query.split()
 			new = []
 			for q in query:
-				l = q
-				# Auto Corect program a little buggy
-				if q == 'pad':
-					q = 'controller'
-
-				if q != 'ps4' or q != 'gt':
-					# Make correction to each of the split
-					#q = correction(q)
-					new.append(q)
-					# Put them all together
-				if l.lower() == 'gt':
-					q = 'Gt'
+				new.append(q)
+				# Put them all together
 				
 				all_products = all_products.filter(
 				           Q(name__icontains=q)|
