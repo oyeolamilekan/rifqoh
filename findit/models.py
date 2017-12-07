@@ -58,8 +58,14 @@ class Analytics(models.Model):
 	number_of_clicks = models.IntegerField(default=0)
 	createdate = models.DateTimeField(auto_now_add=True)
 
+	# Returns the string attribute back to the admin
 	def __str__(self):
-		return self.number_of_clicks
+		return '{} has {} clicks'.format(self.product, self.number_of_clicks)
+
+	class Meta:
+		ordering = ['-number_of_clicks']
+		verbose_name = 'Analytics'
+		verbose_name_plural = 'Analytics'
 
 # Feedbacks from the user
 class Feedback(models.Model):
