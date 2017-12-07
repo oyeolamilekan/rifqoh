@@ -559,7 +559,9 @@ def sugget(request):
 	sugget_input = request.GET.get('search',None)
 	sucide = Products.objects.filter(name__icontains=sugget_input)[:10]
 	for su in sucide:
-		pixeld.append(su.name.replace('\n','').replace('\t','').replace('(','').replace(')','')[:25])
+		new_product = su.name.split()
+		new_product = ' '.join(new_product)
+		pixeld.append(new_product[:25])
 	return JsonResponse({'query':pixeld})
 
 def deleteu(request):

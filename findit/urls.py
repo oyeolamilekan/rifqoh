@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, handler404, handler500
 from . import views
 urlpatterns = [
 	url(r'^$', views.home_page, name='home_page'),
