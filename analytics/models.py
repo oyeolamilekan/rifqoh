@@ -42,6 +42,15 @@ class UserNumber(models.Model):
 		verbose_name = 'User Number'
 		verbose_name_plural = 'User Number'
 
+# class UserDirection(models.Model):
+# 	user = models.ForeignKey(UserNumber,blank=True,null=True)
+# 	direction = models.CharField(max_length=200,blank=True,null=True)
+# 	time_spent = models.CharField(max_length=200,blank=True,null=True)
+# 	date_added = models.DateTimeField(auto_now_add=True,blank=True,null=True)
+
+# 	def __str__(self):
+# 		return user
+
 class QueryList(models.Model):
 	title = models.CharField(max_length=200)
 	res_list = models.TextField(blank=True,null=True)
