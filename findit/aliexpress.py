@@ -38,7 +38,7 @@ def alii():
 				namelst = bytes(str(product_named.text), 'UTF-8')
 				namelst = namelst.decode('ascii','ignore')
 				htl = Request(image,headers=hdr)
-				httl = urlopen(htl).read()
+				httl = urlopen(htl)
 
 			if Products.objects.filter(name=namelst,shop='aliexpress').exists():
 				produc = Products.objects.get(name=namelst,shop='aliexpress')
@@ -63,9 +63,9 @@ def alii():
 					if not block:
 						break
 					lf.write(block)
-				lf = ContentFile(httl)
+				lf = ContentFile(httl.read())
 				product = Products(name=namelst,price=product_price,source_url=product_link,shop='aliexpress',genre='women-bags')
-				product.image.save(file_name[:10],lf[:10])
+				product.image.save(file_name[:10],lf)
 
 	for i in range(5):
 		time.sleep(0.5)
@@ -88,7 +88,7 @@ def alii():
 				namelst = bytes(str(product_named.text), 'UTF-8')
 				namelst = namelst.decode('ascii','ignore')
 				htl = Request(image,headers=hdr)
-				httl = urlopen(htl).read()
+				httl = urlopen(htl)
 
 			if Products.objects.filter(name=namelst,shop='aliexpress').exists():
 				produc = Products.objects.get(name=namelst,shop='aliexpress')
@@ -114,9 +114,9 @@ def alii():
 					if not block:
 						break
 					lf.write(block)
-				lf = ContentFile(httl)
+				lf = ContentFile(httl.read())
 				product = Products(name=namelst,price=product_price,source_url=product_link,shop='aliexpress',genre='makeup')
-				product.image.save(file_name[:10],lf[:10])
+				product.image.save(file_name[:10],lf)
 
 	for i in range(5):
 		time.sleep(0.2)
