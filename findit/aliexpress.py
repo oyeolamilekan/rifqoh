@@ -65,7 +65,7 @@ def alii():
 					lf.write(block)
 				lf = ContentFile(httl)
 				product = Products(name=namelst,price=product_price,source_url=product_link,shop='aliexpress',genre='women-bags')
-				product.image.save(file_name[:10],lf)
+				product.image.save(file_name[:10],lf[:10])
 
 	for i in range(5):
 		time.sleep(0.5)
@@ -116,7 +116,7 @@ def alii():
 					lf.write(block)
 				lf = ContentFile(httl)
 				product = Products(name=namelst,price=product_price,source_url=product_link,shop='aliexpress',genre='makeup')
-				product.image.save(file_name[:10],lf)
+				product.image.save(file_name[:10],lf[:10])
 
 	for i in range(5):
 		time.sleep(0.2)
@@ -168,6 +168,6 @@ def alii():
 				lf.write(block)
 			lf = ContentFile(httl)
 			product = Products(name=namelst,price=product_price,source_url=product_link,shop='aliexpress',genre='headphones')
-			product.image.save(file_name[:10],lf)
+			product.image.save(file_name[:10],lf[:10])
 			print('done')
 
