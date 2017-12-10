@@ -111,7 +111,7 @@ def real_index(request):
 	confirmed = None
 	query = request.GET.get('q')
 	#print(query,'hgf')
-	all_products = Products.objects.order_by('?')
+	all_products = Products.objects.order_by('?').filter(shop='aliexpress').filter(genre='headphones')
 	if query:
 		whichPage(request,'search',request.build_absolute_uri())
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
@@ -381,6 +381,149 @@ def tv_index(request):
 	query_time = '{:.6f}'.format(query_time)
 	context['query_time']=query_time
 	return render(request,'results_page.html',context)
+
+def makeup(request):
+	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+	# prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
+	# print(screen_width)
+	# ad = Ads.objects.order_by('?')[:1]
+	# seen_by(request,ad)
+	# landlord(request,ad)
+	# seen_by(request,prod_ad)
+	# landlord(request,prod_ad)
+	url = request.build_absolute_uri()
+	user_count(request)
+	whichPage(request,'tvP',url)
+	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+	t1 = time.time()
+	orginal_sentence = []
+	corrected_sentence = []
+	confirmed = None
+	all_products = Products.objects.order_by('?').filter(genre='makeup')
+	product_counter = all_products.count()
+		# if corrected_sentence != orginal_sentence:
+		# 	corrected_sentence = ' '.join(corrected_sentence)
+		# 	orginal_sentence = ' '.join(orginal_sentence)
+		# 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
+	page_request_var = 'page'
+	paginator = Paginator(all_products,40)
+	page = request.GET.get(page_request_var)
+	try:
+		queryset = paginator.page(page)
+	except PageNotAnInteger:
+		queryset = paginator.page(1)
+	except EmptyPage:
+		if request.is_ajax():
+			# If the request is AJAX and the page is out of range return an empty page
+			return HttpResponse('')
+	if request.is_ajax():
+		return render(request,'results_ajax.html',{'products':queryset})
+	context = {'products':queryset,
+			'confirmed':confirmed,
+			'all_product':all_products,
+			'share_string':share_string,}
+	#print(all_products.count())
+	t2 = time.time()
+	query_time = t2 - t1
+	query_time = '{:.6f}'.format(query_time)
+	context['query_time']=query_time
+	return render(request,'results_page.html',context)
+
+def headphones(request):
+	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+	# prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
+	# print(screen_width)
+	# ad = Ads.objects.order_by('?')[:1]
+	# seen_by(request,ad)
+	# landlord(request,ad)
+	# seen_by(request,prod_ad)
+	# landlord(request,prod_ad)
+	url = request.build_absolute_uri()
+	user_count(request)
+	whichPage(request,'tvP',url)
+	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+	t1 = time.time()
+	orginal_sentence = []
+	corrected_sentence = []
+	confirmed = None
+	all_products = Products.objects.order_by('?').filter(genre='headphones')
+	product_counter = all_products.count()
+		# if corrected_sentence != orginal_sentence:
+		# 	corrected_sentence = ' '.join(corrected_sentence)
+		# 	orginal_sentence = ' '.join(orginal_sentence)
+		# 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
+	page_request_var = 'page'
+	paginator = Paginator(all_products,40)
+	page = request.GET.get(page_request_var)
+	try:
+		queryset = paginator.page(page)
+	except PageNotAnInteger:
+		queryset = paginator.page(1)
+	except EmptyPage:
+		if request.is_ajax():
+			# If the request is AJAX and the page is out of range return an empty page
+			return HttpResponse('')
+	if request.is_ajax():
+		return render(request,'results_ajax.html',{'products':queryset})
+	context = {'products':queryset,
+			'confirmed':confirmed,
+			'all_product':all_products,
+			'share_string':share_string,}
+	#print(all_products.count())
+	t2 = time.time()
+	query_time = t2 - t1
+	query_time = '{:.6f}'.format(query_time)
+	context['query_time']=query_time
+	return render(request,'results_page.html',context)
+
+def wemenbags(request):
+	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+	# prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
+	# print(screen_width)
+	# ad = Ads.objects.order_by('?')[:1]
+	# seen_by(request,ad)
+	# landlord(request,ad)
+	# seen_by(request,prod_ad)
+	# landlord(request,prod_ad)
+	url = request.build_absolute_uri()
+	user_count(request)
+	whichPage(request,'tvP',url)
+	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+	t1 = time.time()
+	orginal_sentence = []
+	corrected_sentence = []
+	confirmed = None
+	all_products = Products.objects.order_by('?').filter(genre='women-bags')
+	product_counter = all_products.count()
+		# if corrected_sentence != orginal_sentence:
+		# 	corrected_sentence = ' '.join(corrected_sentence)
+		# 	orginal_sentence = ' '.join(orginal_sentence)
+		# 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
+	page_request_var = 'page'
+	paginator = Paginator(all_products,40)
+	page = request.GET.get(page_request_var)
+	try:
+		queryset = paginator.page(page)
+	except PageNotAnInteger:
+		queryset = paginator.page(1)
+	except EmptyPage:
+		if request.is_ajax():
+			# If the request is AJAX and the page is out of range return an empty page
+			return HttpResponse('')
+	if request.is_ajax():
+		return render(request,'results_ajax.html',{'products':queryset})
+	context = {'products':queryset,
+			'confirmed':confirmed,
+			'all_product':all_products,
+			'share_string':share_string,}
+	#print(all_products.count())
+	t2 = time.time()
+	query_time = t2 - t1
+	query_time = '{:.6f}'.format(query_time)
+	context['query_time']=query_time
+	return render(request,'results_page.html',context)
+
+
 
 def women_index(request):
 	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]

@@ -25,8 +25,7 @@
     {% endfor %}
 </div>
 {% endif %}
-<p></p>
-<div class="col-sm-6 col-sm-offset-3">
+<div class="col-sm-6 col-sm-offset-3" style="margin-top: 80px;">
 		<div class="panel panel-default">
 			<a href="{% url 'shop:store_details' 'jumia' %}">
 				<div class="panel-body">
@@ -46,6 +45,22 @@
 			<a href="{% url 'shop:store_details' 'yudala' %}">
 				<div class="panel-body">
 					<h2 class="text-center">Yudala</h2>
+				</div>
+			</a>
+		</div>
+
+		<div class="panel panel-default">
+			<a href="#">
+				<div class="panel-body">
+					<h2 class="text-center">Amazon <small><b><i>"Coming soon"</i></b></small></h2>
+				</div>
+			</a>
+		</div>
+	
+		<div class="panel panel-default">
+			<a href="{% url 'shop:store_details' 'aliexpress' %}">
+				<div class="panel-body">
+					<h2 class="text-center">Aliexpress <sup><small><b><i>"alpha"</i></b></small></sup></h2>
 				</div>
 			</a>
 		</div>
