@@ -36,7 +36,7 @@ class Products(models.Model):
 	price = models.CharField(max_length=300)
 	real_price = models.IntegerField(default=0)
 	image = models.ImageField(blank=True,null=True,max_length=355)
-	source_url = models.CharField(max_length=300)
+	source_url = models.CharField(max_length=700)
 	shop = models.CharField(max_length=300)
 	num_of_clicks = models.IntegerField(default=0)
 	createdate = models.DateTimeField(auto_now_add=True)
