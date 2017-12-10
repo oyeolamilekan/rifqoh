@@ -111,7 +111,7 @@ def real_index(request):
 	confirmed = None
 	query = request.GET.get('q')
 	#print(query,'hgf')
-	all_products = Products.objects.order_by('?').filter(shop='aliexpress').filter(genre='headphones')
+	all_products = Products.objects.order_by('?')
 	if query:
 		whichPage(request,'search',request.build_absolute_uri())
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
