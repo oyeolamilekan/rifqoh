@@ -28,7 +28,7 @@ def alii():
 		for news in namelist:
 			product_link = news.find('a',{'class':'product'})
 			if product_link:
-				product_link = product_link.attrs['href']
+				product_link = 'http:'+product_link.attrs['href']
 				product_named = news.find('a',{'class':'product'})
 				product_price = news.find('span', {'class','value'})
 				image = news.find('img',{'class':'picCore'})
@@ -65,7 +65,7 @@ def alii():
 					lf.write(block)
 				lf = ContentFile(httl)
 				product = Products(name=namelst,price=product_price,source_url=product_link,shop='aliexpress',genre='women-bags')
-				product.image.save(file_name[:20],lf)
+				product.image.save(file_name[:10],lf)
 
 	for i in range(5):
 		time.sleep(0.5)
@@ -78,7 +78,7 @@ def alii():
 		for news in namelist:
 			product_link = news.find('a',{'class':'product'})
 			if product_link:
-				product_link = product_link.attrs['href']
+				product_link = 'http:'+product_link.attrs['href']
 				product_named = news.find('a',{'class':'product'})
 				product_price = news.find('span', {'class','value'})
 				image = news.find('img',{'class':'picCore'})
@@ -116,7 +116,7 @@ def alii():
 					lf.write(block)
 				lf = ContentFile(httl)
 				product = Products(name=namelst,price=product_price,source_url=product_link,shop='aliexpress',genre='makeup')
-				product.image.save(file_name[:20],lf)
+				product.image.save(file_name[:10],lf)
 
 	for i in range(5):
 		time.sleep(0.2)
@@ -168,6 +168,6 @@ def alii():
 				lf.write(block)
 			lf = ContentFile(httl)
 			product = Products(name=namelst,price=product_price,source_url=product_link,shop='aliexpress',genre='headphones')
-			product.image.save(file_name[:20],lf)
+			product.image.save(file_name[:10],lf)
 			print('done')
 
