@@ -127,12 +127,18 @@ img.baby_mama {
   <div class="panel unique panel-default">
     <div class="panel-body">
       <ul class="tags">
+        {% if shop != 'aliexpress' %}
        <li><a href="{% url 'shop:store_details' shop %}" class="mklo la"><i class="fa fa-globe"></i> Discover </a></li>
        <li><a href="{% url 'shop:store_phones' shop %}" class="mklo lap"><i class="fa fa-mobile"></i> Phone </a></li>
        <li><a href="{% url 'shop:store_laptops' shop %}" class="mklo phon"><i class="fa fa-laptop"></i> Laptops </a></li>
        <li><a href="{% url 'shop:store_tv_index' shop %}" class="mklo tv"><i class="fa fa-television"></i> Tvs </a></li>
        <li><a href="{% url 'shop:store_shirts' shop %}" class="mklo shirts"><i class="fa fa-mars"></i> Men shirts </a></li>
        <li><a href="{% url 'shop:store_women_index' shop %}" class="mklo women"><i class="fa fa-female"></i> Women's Dresses </a></li>
+       {% else %}
+        <li><a href="{% url 'shop:store_makeup' shop %}" class="mklo tv"> Makeup </a></li>
+       <li><a href="{% url 'shop:store_women_bags' shop %}" class="mklo shirts"> Wemen bags </a></li>
+       <li><a href="{% url 'shop:store_heaphones' shop %}" class="mklo women"> Headphone </a></li>
+       {% endif %}
        <!-- <li><a href="#" class="mklo"> Naij</a></li>
        <li><a href="#" class="mklo"> Techcrunch</a></li>
        <li><a href="#" class="mklo"> Sport.naij</a></li> -->

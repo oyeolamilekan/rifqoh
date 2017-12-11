@@ -11,4 +11,7 @@ urlpatterns = [
     url(r'^(?P<word>[\w-]+)/laptops/$', views.store_laptops, name='store_laptops'),#store_tv_index
     url(r'^(?P<word>[\w-]+)/tvs/$', views.store_tv_index, name='store_tv_index'),#store_women_index
     url(r'^(?P<word>[\w-]+)/womens-cloth/$', views.store_women_index, name='store_women_index'),
+    url(r'^(?P<word>[\w-]+)/headphones/$', views.store_heaphones, name='store_heaphones'),#store_tv_index
+    url(r'^(?P<word>[\w-]+)/women_bags/$', views.store_women_bags, name='store_women_bags'),#store_women_index
+    url(r'^(?P<word>[\w-]+)/store_makeup/$', views.store_makeup, name='store_makeup'),
 ]
