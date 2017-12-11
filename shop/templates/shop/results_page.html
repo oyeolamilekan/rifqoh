@@ -116,7 +116,7 @@ img.baby_mama {
     }
 }
 </style>
-<div class="panel uniquee panel-primary">
+<div class="panel uniquee panel-primary" style="margin-top: -30px;">
   <div class="panel-body">
     <a href="#" style="border:1px solid #eee; padding: 9px 10px; color: black; border-radius: 4px;">
       <b><i class="fa fa-globe"></i> Categories</b>
@@ -135,9 +135,9 @@ img.baby_mama {
        <li><a href="{% url 'shop:store_shirts' shop %}" class="mklo shirts"><i class="fa fa-mars"></i> Men shirts </a></li>
        <li><a href="{% url 'shop:store_women_index' shop %}" class="mklo women"><i class="fa fa-female"></i> Women's Dresses </a></li>
        {% else %}
-        <li><a href="{% url 'shop:store_makeup' shop %}" class="mklo tv"> Makeup </a></li>
-       <li><a href="{% url 'shop:store_women_bags' shop %}" class="mklo shirts"> Wemen bags </a></li>
-       <li><a href="{% url 'shop:store_heaphones' shop %}" class="mklo women"> Headphone </a></li>
+           <li><a href="{% url 'shop:store_makeup' shop %}" class="mklo tv"> Makeup </a></li>
+           <li><a href="{% url 'shop:store_women_bags' shop %}" class="mklo shirts"> Wemen bags </a></li>
+           <li><a href="{% url 'shop:store_heaphones' shop %}" class="mklo women"> Headphone </a></li>
        {% endif %}
        <!-- <li><a href="#" class="mklo"> Naij</a></li>
        <li><a href="#" class="mklo"> Techcrunch</a></li>

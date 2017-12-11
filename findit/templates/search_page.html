@@ -485,16 +485,16 @@ form.search-darkk .input-group .form-control {
                   <div class="panel-body" style="border-radius: 5px !important;">
                   <div class="text-center">
                     <h5>We have products from</h5>
-                    <a href="http://www.quickfinda.com/shop/aliexpress">
+                    <a href="{% url 'shop:store_details' 'aliexpress' %}">
                       <img src="{% static 'Alixpress.png' %}" style="width: 30%; margin-right: 5px;">
                     </a>
-                    <a href="http://www.quickfinda.com/shop/jumia" style="margin-right: 5px;">
+                    <a href="{% url 'shop:store_details' 'jumia' %}" style="margin-right: 5px;">
                       <img src="{% static 'jumia.png' %}" style="width: 30%;">
                     </a>
                     <!-- <a href="http://www.quickfinda.com/shop/aliexpress">
                       <img src="{% static 'konga-logo.png' %}" style="width: 30%;">
                     </a> -->
-                    <a href="http://www.quickfinda.com/shop/yudala">
+                    <a href="{% url 'shop:store_details' 'yudala' %}">
                       <img src="{% static 'yudala.png' %}" style="width: 30%;">
                     </a>
                   </div>
