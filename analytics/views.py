@@ -16,7 +16,7 @@ def pageView(request):
 	page_v = PageViews.objects.extra({'timestamp':"date(timestamp)"}).values('timestamp').annotate(date_added_count=Count('id'))
 	for page in page_v:
 		data_set.append(page['date_added_count'])
-		days.append(str(datetime.datetime.strptime(page['timestamp'], '%Y-%m-%d').strftime('%a')))
+		days.append(datetime.datetime.strptime(str(page['timestamp']), '%Y-%m-%d').strftime('%a'))
 	return JsonResponse({'data_set':data_set,'days':days})
 
 def usergrowth(request):
