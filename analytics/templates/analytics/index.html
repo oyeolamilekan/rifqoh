@@ -1,0 +1,38 @@
+{% extends 'home_page.html' %}
+{% block conten %}
+<br>
+<br>
+<br>
+<div class="col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<canvas id="line-chart" width="800" height="450"></canvas>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.ajax({
+		method:'GET',
+		url: '/analytics/pageview/',
+		success: function(data){
+			console.log(data.data_set)
+			new Chart(document.getElementById("line-chart"), {
+		  type: 'line',
+		  data: {
+		    labels: data.days,
+		    datasets: [{ 
+		        data: data.data_set,
+		        label: "Page Views",
+		        borderColor: "#3e95cd",
+		        backgroundColor: '#3e95cd',
+		        fill: false
+		      }
+		    ]
+		  },
+		});
+		}
+	})
+});
+</script>
+{% endblock %}
