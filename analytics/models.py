@@ -38,7 +38,7 @@ class UserNumber(models.Model):
 		return '{} added on {}'.format(self.user_ip,self.date_added)
 
 	class Meta:
-		ordering = ['-date_added']
+		ordering = ['date_added']
 		verbose_name = 'User Number'
 		verbose_name_plural = 'User Number'
 
