@@ -9,6 +9,11 @@
 			<canvas id="line-chart" width="800" height="450"></canvas>
 		</div>
 	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<canvas id="line-chrt" width="800" height="450"></canvas>
+		</div>
+	</div>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -26,6 +31,27 @@ $(document).ready(function(){
 		        label: "Page Views",
 		        borderColor: "#3e95cd",
 		        backgroundColor: '#3e95cd',
+		        fill: false
+		      }
+		    ]
+		  },
+		});
+		}
+	})
+	$.ajax({
+		method:'GET',
+		url: '/analytics/usergrowth/',
+		success: function(data){
+			console.log(data.data_set)
+			new Chart(document.getElementById("line-chrt"), {
+		  type: 'line',
+		  data: {
+		    labels: data.dayses,
+		    datasets: [{ 
+		        data: data.data_s,
+		        label: "New Users",
+		        borderColor: "#20de1f",
+		        backgroundColor: '#20de1f',
 		        fill: false
 		      }
 		    ]

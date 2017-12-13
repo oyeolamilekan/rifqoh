@@ -117,7 +117,7 @@ if 'RDS_HOSTNAME' in os.environ:
     # SECURE_SSL_REDIRECT = True
     # SESSION_COOKIE_SECURE = True
     # CSRF_COOKIE_SECURE = True
-    DEBUG = True
+    DEBUG = False
 
 else:
     DATABASES = {
