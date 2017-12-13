@@ -26,7 +26,7 @@ class PageViews(models.Model):
 		return '%s viewed on %s' %(self.title,self.timestamp)
 
 	class Meta:
-		ordering = ['-timestamp']
+		ordering = ['timestamp']
 		verbose_name = 'Page Views'
 		verbose_name_plural = 'Page Views'
 
