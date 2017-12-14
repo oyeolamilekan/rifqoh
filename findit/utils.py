@@ -7,8 +7,8 @@ from .models import Products
 
 def black_rock():
 	alii()
-	# jumia_crawler()
-	# konga_crawler()
-	# yudala()
+	jumia_crawler()
+	konga_crawler()
+	yudala()
 
 	threading.Timer(172800.0,black_rock).start()
