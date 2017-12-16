@@ -739,7 +739,7 @@ def priceconvert(request):
 	products = Products.objects.filter(shop='aliexpress')
 	for product in products:
 		price = nairaconv(product.price)
-		product.converted_price = ''.join(price)
+		product.converted_price = price.replace("'",'')
 		product.save()
 	return HttpResponse('hello world')
 
@@ -747,7 +747,7 @@ def polp(request):
 	products = Products.objects.filter(shop='aliexpress')
 	for product in products:
 		price = nairaconv(product.price)
-		product.price = '$ US $19.60 - 23.45'
+		product.price = '$ US $19.60'
 		product.save()
 	return HttpResponse('bfgg')
 ############################################################################
