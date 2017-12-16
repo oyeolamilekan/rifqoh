@@ -6,7 +6,7 @@
 			<img src="{{ product.image.url }}" style="width: 200px;">
 			<p style="padding: 1rem;">{{ product.name }}</p>
 						<hr>
-						<span style="padding: 1rem;">&#8358 {{ product.price }}</span>
+						<span style="padding: 1rem;">{% if product.shop == 'aliexpress' %}{% else %}&#8358{% endif %} {{ product.price }}</span>
 						<br>
 						<span style="padding: 1rem;">{{ product.shop }}</span>
 						<br>

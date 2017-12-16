@@ -8,7 +8,7 @@ import datetime
 from .forms import feedBackForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import random
-from .utils import black_rock
+from .utils import black_rock,nairaconv
 import time
 from urllib.parse import quote_plus
 from django.contrib.auth.models import User
@@ -21,6 +21,7 @@ from analytics.signals import object_viewed
 from analytics.utils import whichPage,user_count,user_converter
 from .an_utils import correction
 from analytics.an_utils import get_client_ip
+import random
 
 
 def home_page(request):
@@ -167,7 +168,10 @@ def real_index(request):
 		# 	corrected_sentence = ' '.join(corrected_sentence)
 		# 	orginal_sentence = ' '.join(orginal_sentence)
 		# 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
+	com = ''
 	page_request_var = 'page'
+	if page_request_var:
+		com = 'Nothing'
 	paginator = Paginator(all_products,40)
 	page = request.GET.get(page_request_var)
 	try:
@@ -185,7 +189,8 @@ def real_index(request):
 			'confirmed':confirmed,
 			'all_product':all_products,
 			'share_string':share_string,
-			'trendin':'home'
+			'trendin':'home',
+			'com':com
 			}
 	#print(all_products.count())
 	t2 = time.time()
@@ -722,6 +727,15 @@ def user_convertion(request):
 	users = PageViews.objects.all()
 	for user in users:
 		user_converter(user.ip_address)
+
+	return HttpResponse('hello world')
+
+def priceconvert(request):
+	products = Products.objects.filter(shop='aliexpress')
+	for product in products:
+		price = nairaconv(product.price)
+		product.price = price
+		product.save()
 
 	return HttpResponse('hello world')
 

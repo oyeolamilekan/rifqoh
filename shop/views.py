@@ -109,7 +109,7 @@ def store_details(request,word):
 			# If the request is AJAX and the page is out of range return an empty page
 			return HttpResponse('')
 	if request.is_ajax():
-		return render(request,'results_ajax.html',{'products':queryset})
+		return render(request,'shop/results_ajax.html',{'products':queryset})
 	context = {'products':queryset,
 			'query':query,
 			'confirmed':confirmed,
@@ -176,7 +176,7 @@ def store_shirts(request,word):
 			# If the request is AJAX and the page is out of range return an empty page
 			return HttpResponse('')
 	if request.is_ajax():
-		return render(request,'results_ajax.html',{'products':queryset})
+		return render(request,'shop/results_ajax.html',{'products':queryset})
 	context = {'products':queryset,
 			'query':query,
 			'confirmed':confirmed,
@@ -243,7 +243,7 @@ def store_phones(request,word):
 			# If the request is AJAX and the page is out of range return an empty page
 			return HttpResponse('')
 	if request.is_ajax():
-		return render(request,'results_ajax.html',{'products':queryset})
+		return render(request,'shop/results_ajax.html',{'products':queryset})
 	context = {'products':queryset,
 			'query':query,
 			'confirmed':confirmed,
@@ -311,7 +311,7 @@ def store_laptops(request,word):
 			# If the request is AJAX and the page is out of range return an empty page
 			return HttpResponse('')
 	if request.is_ajax():
-		return render(request,'results_ajax.html',{'products':queryset})
+		return render(request,'shop/results_ajax.html',{'products':queryset})
 	context = {'products':queryset,
 			'query':query,
 			'confirmed':confirmed,
@@ -378,7 +378,7 @@ def store_tv_index(request,word):
 			# If the request is AJAX and the page is out of range return an empty page
 			return HttpResponse('')
 	if request.is_ajax():
-		return render(request,'results_ajax.html',{'products':queryset})
+		return render(request,'shop/results_ajax.html',{'products':queryset})
 	context = {'products':queryset,
 			'query':query,
 			'confirmed':confirmed,
@@ -445,7 +445,7 @@ def store_women_index(request,word):
 			# If the request is AJAX and the page is out of range return an empty page
 			return HttpResponse('')
 	if request.is_ajax():
-		return render(request,'results_ajax.html',{'products':queryset})
+		return render(request,'shop/results_ajax.html',{'products':queryset})
 	context = {'products':queryset,
 			'query':query,
 			'confirmed':confirmed,
@@ -515,7 +515,7 @@ def store_makeup(request,word):
 			# If the request is AJAX and the page is out of range return an empty page
 			return HttpResponse('')
 	if request.is_ajax():
-		return render(request,'results_ajax.html',{'products':queryset})
+		return render(request,'shop/results_ajax.html',{'products':queryset})
 	context = {'products':queryset,
 			'query':query,
 			'confirmed':confirmed,
@@ -582,7 +582,7 @@ def store_heaphones(request,word):
 			# If the request is AJAX and the page is out of range return an empty page
 			return HttpResponse('')
 	if request.is_ajax():
-		return render(request,'results_ajax.html',{'products':queryset})
+		return render(request,'shop/results_ajax.html',{'products':queryset})
 	context = {'products':queryset,
 			'query':query,
 			'confirmed':confirmed,
@@ -649,7 +649,7 @@ def store_women_bags(request,word):
 			# If the request is AJAX and the page is out of range return an empty page
 			return HttpResponse('')
 	if request.is_ajax():
-		return render(request,'results_ajax.html',{'products':queryset})
+		return render(request,'shop/results_ajax.html',{'products':queryset})
 	context = {'products':queryset,
 			'query':query,
 			'confirmed':confirmed,
