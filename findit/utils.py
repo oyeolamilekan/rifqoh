@@ -32,10 +32,11 @@ def nairaconv(string):
 		new_price = tuple(new_price)
 		price_field = '%s - %s'%(new_price)
 		price_field = ''.join(price_field)
+		price_field = price_field.replace('[','').replace(']','')
 	else:
 		price_field = '%s'%(new_price)
 		price_field = ''.join(price_field)
-
+		price_field = price_field.replace('[','').replace(']','')
 	return price_field
 
 

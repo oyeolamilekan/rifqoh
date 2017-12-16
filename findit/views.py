@@ -696,10 +696,6 @@ def stupid_me(request):
 	return HttpResponse('allo ')
 
 def twitter_bot(request):
-	loo = Products.objects.filter(name__icontains='ipad')
-	for lo in loo:
-		lo.genre = ''
-		lo.save()
 	return HttpResponse('you are in trouble')
 
 def sugget(request):
@@ -734,11 +730,26 @@ def priceconvert(request):
 	products = Products.objects.filter(shop='aliexpress')
 	for product in products:
 		price = nairaconv(product.price)
-		product.price = price
+		product.converted_price = price
 		product.save()
 
 	return HttpResponse('hello world')
 
+def priceconvert(request):
+	products = Products.objects.filter(shop='aliexpress')
+	for product in products:
+		price = nairaconv(product.price)
+		product.converted_price = ''.join(price)
+		product.save()
+	return HttpResponse('hello world')
+
+def polp(request):
+	products = Products.objects.filter(shop='aliexpress')
+	for product in products:
+		price = nairaconv(product.price)
+		product.price = '$ 39.00 - 23.45'
+		product.save()
+	return HttpResponse('bfgg')
 ############################################################################
 #####################		Trending Layout			########################
 

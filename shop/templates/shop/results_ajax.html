@@ -8,6 +8,10 @@
 						<hr>
 						<span style="padding: 1rem;">{% if product.shop == 'aliexpress' %}{% else %}&#8358{% endif %} {{ product.price }}</span>
 						<br>
+						{% if product.converted_price %}
+							<br>&#8358 {{ product.converted_price }}
+						{% endif %}
+						<br>
 						<span style="padding: 1rem;">{{ product.shop }}</span>
 						<br>
 						<!-- {{ product.old_price_digit }} -->
