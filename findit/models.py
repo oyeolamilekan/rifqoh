@@ -34,6 +34,7 @@ class Products(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL,blank=True,null=True,related_name='who_did_it')
 	name = models.CharField(max_length=300)
 	price = models.CharField(max_length=300)
+	converted_price = models.CharField(max_length=300,blank=True,null=True)
 	real_price = models.IntegerField(default=0)
 	real_price_2 = models.IntegerField(default=0)
 	image = models.ImageField(blank=True,null=True,max_length=355)
@@ -79,6 +80,7 @@ class Analytics(models.Model):
 class Feedback(models.Model):
 	feelings = models.IntegerField(choices=CONDITIONS,blank=True,null=True)
 	url_locator = models.CharField(blank=True,null=True,max_length=200)
+	email = models.EmailField(max_length=200,default='')
 	content = models.TextField(blank=True,null=True)
 	createdate = models.DateTimeField(auto_now_add=True,blank=True,null=True)
 

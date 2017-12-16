@@ -97,7 +97,11 @@ def store_details(request,word):
 		# 	orginal_sentence = ' '.join(orginal_sentence)
 		# 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
 		query = ' '.join(query)
+	#page_request_var = 'page'
+	com = ''
 	page_request_var = 'page'
+	if page_request_var and query:
+		com = 'Nothing'
 	paginator = Paginator(all_products,40)
 	page = request.GET.get(page_request_var)
 	try:
@@ -117,7 +121,8 @@ def store_details(request,word):
 			'share_string':share_string,
 			
 			'shop':word,
-			'mack':'mack'}
+			'mack':'mack',
+			'com':com}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -164,7 +169,10 @@ def store_shirts(request,word):
 		# 	orginal_sentence = ' '.join(orginal_sentence)
 		# 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
 		query = ' '.join(query)
+	com = ''
 	page_request_var = 'page'
+	if page_request_var:
+		com = 'Nothing'
 	paginator = Paginator(all_products,40)
 	page = request.GET.get(page_request_var)
 	try:
@@ -183,7 +191,8 @@ def store_shirts(request,word):
 			'all_product':all_products,
 			'share_string':share_string,
 			'shop':word,
-			'mack':'mack'}
+			'mack':'mack',
+			'com':com}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1

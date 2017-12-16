@@ -119,7 +119,7 @@ img.baby_mama {
 <div class="panel uniquee panel-primary" style="margin-top: -30px;">
   <div class="panel-body">
     <a href="#" style="border:1px solid #eee; padding: 9px 10px; color: black; border-radius: 4px;">
-      <b><i class="fa fa-globe"></i> Categories</b>
+      <b><i class="fa fa-globe"></i> Categories {{ com }}</b>
     </a>
   </div>
 </div>
@@ -172,6 +172,9 @@ img.baby_mama {
 
 {% endblock %}
 {% block domready %}
+{% if com == 'Nothing' %}
+ 
+{% else %}
     var page = 1;
     var empty_page = false;
     var block_request = false;
@@ -196,4 +199,5 @@ img.baby_mama {
             });
       }
     });
+{% endif %}
 {% endblock %}

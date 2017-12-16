@@ -170,7 +170,7 @@ def real_index(request):
 		# 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
 	com = ''
 	page_request_var = 'page'
-	if page_request_var:
+	if page_request_var and query:
 		com = 'Nothing'
 	paginator = Paginator(all_products,40)
 	page = request.GET.get(page_request_var)
