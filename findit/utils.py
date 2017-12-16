@@ -27,6 +27,7 @@ def nairaconv(string):
 	for price in price_list:
 		price = float(price)
 		price = price * 360
+		price = '{:.2f}'.format(price)
 		new_price.append(price)
 	if len(new_price) >= 2:
 		new_price = tuple(new_price)
