@@ -16,6 +16,7 @@ FORCE_SESSION_TO_ONE = getattr(settings, 'FORCE_SESSION_TO_ONE', False)
 FORCE_INACTIVE_USER_ENDSESSION = getattr(settings, 'FORCE_INACTIVE_USER_ENDSESSION', False)
 # Query list get 
 
+# Handles the number of page views
 class PageViews(models.Model):
 	title = models.CharField(max_length=200,blank=True,null=True)
 	ip_address = models.CharField(max_length=200,blank=True,null=True)
@@ -30,6 +31,8 @@ class PageViews(models.Model):
 		verbose_name = 'Page Views'
 		verbose_name_plural = 'Page Views'
 
+
+# Handles the number of user acquired
 class UserNumber(models.Model):
 	user_ip = models.CharField(max_length=200,blank=True,null=True)
 	date_added = models.DateTimeField(auto_now_add=True,blank=True,null=True)
@@ -51,6 +54,7 @@ class UserNumber(models.Model):
 # 	def __str__(self):
 # 		return user
 
+# handles the queries being send by the user
 class QueryList(models.Model):
 	title = models.CharField(max_length=200)
 	res_list = models.TextField(blank=True,null=True)
@@ -60,13 +64,14 @@ class QueryList(models.Model):
 	date_added = models.DateTimeField(auto_now_add=True,blank=True,null=True)
 
 	def __str__(self):
-		return self.title
+		return '{} searched on {}'.format(self.title,self.date_added)
 
 	class Meta:
 		ordering = ['-date_added']
 		verbose_name = 'Query List'
 		verbose_name_plural = 'Query List'
 
+# Handles the objects seen by the user
 class ObjectViewed(models.Model):
 	user = models.ForeignKey(User, blank=True, null=True)
 	ip_address = models.CharField(max_length=300,blank=True,null=True)
@@ -94,6 +99,22 @@ def object_viewed_reciever(sender,instance,request,*args,**kwargs):
 object_viewed.connect(object_viewed_reciever)
 
 
+# Handles the time period the user spends on the site
+class UserTime(models.Model):
+	user_o = models.CharField(max_length=200,blank=True,null=True)
+	time_spent = models.CharField(max_length=200,blank=True,null=True)
+	page = models.CharField(max_length=200,blank=True,null=True)
+	timestamp = models.DateTimeField(auto_now_add=True,blank=True,null=True)
+
+	def __str__(self):
+		return '{} spent {} seconds on {}'.format(self.user_o,self.time_spent,self.page)
+
+	class Meta:
+		ordering = ['-id']
+		verbose_name = 'User Time'
+		verbose_name_plural = 'User Time'
+
+# Handles each user session on the site
 class UserSession(models.Model):
 	user = models.ForeignKey(User, blank=True, null=True)
 	ip_address = models.CharField(max_length=200,blank=True,null=True)

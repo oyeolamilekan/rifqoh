@@ -15,11 +15,11 @@ from django.contrib.auth.models import User
 from accounts.models import *
 from adengine.models import Ads
 from adengine.analytics import seen_by,landlord
-from analytics.models import PageViews
+from analytics.models import PageViews,UserTime
 from analytics.utils import add_query
 from analytics.signals import object_viewed
 from analytics.utils import whichPage,user_count,user_converter
-from .an_utils import correction
+#from .an_utils import correction
 from analytics.an_utils import get_client_ip
 import random
 
@@ -40,7 +40,7 @@ def home_page(request):
 	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:1]
 	# seen_by(request,ad)
 	# landlord(request,ad)
-	context = {'share_string':share_string,'url':url,'user_theme':user_theme}
+	context = {'share_string':share_string,'url':url,'user_theme':user_theme,'page':'front_page'}
 	return render(request,'search_page.html',context)
 
 
@@ -136,7 +136,9 @@ def real_index(request):
 						).distinct()
 				add_query(query,'search page',all_products[:10],nbool=True,correct=query)
 			else:
-				#query = correction(query)
+				query = correction(query)
+
+				print(query)
 				query = query.strip()
 				all_products = all_products.filter(
 				           Q(name__icontains=query)|
@@ -150,6 +152,9 @@ def real_index(request):
 			query = query.split()
 			new = []
 			for q in query:
+				q = correction(q)
+
+				print(q)
 				new.append(q)
 				# Put them all together
 				
@@ -190,7 +195,8 @@ def real_index(request):
 			'all_product':all_products,
 			'share_string':share_string,
 			'trendin':'home',
-			'com':com
+			'com':com,
+			'page':'index_page'
 			}
 	#print(all_products.count())
 	t2 = time.time()
@@ -237,7 +243,8 @@ def shirts(request):
 	context = {'products':queryset,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string
+			'share_string':share_string,
+			'page':'shirt_page'
 			}
 	#print(all_products.count())
 	t2 = time.time()
@@ -285,7 +292,8 @@ def index(request):
 	context = {'products':queryset,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string}
+			'share_string':share_string,
+			'page':'phone_page'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -331,7 +339,8 @@ def laptops(request):
 	context = {'products':queryset,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string
+			'share_string':share_string,
+			'page':'laptop_page'
 			}
 	#print(all_products.count())
 	t2 = time.time()
@@ -379,7 +388,8 @@ def tv_index(request):
 	context = {'products':queryset,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string,}
+			'share_string':share_string,
+			'page':'tv_page'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -426,7 +436,8 @@ def makeup(request):
 	context = {'products':queryset,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string,}
+			'share_string':share_string,
+			'page':'makeup_page'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -473,7 +484,8 @@ def headphones(request):
 	context = {'products':queryset,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string,}
+			'share_string':share_string,
+			'page':'headphone_page'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -520,7 +532,8 @@ def wemenbags(request):
 	context = {'products':queryset,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string,}
+			'share_string':share_string,
+			'page':'wemen_bags_page'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -564,7 +577,8 @@ def women_index(request):
 	context = {'products':queryset,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string}
+			'share_string':share_string,
+			'page':'women_dress_page'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -606,7 +620,8 @@ def women_watch(request):
 	context = {'products':queryset,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string}
+			'share_string':share_string,
+			'page':'women_page'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -648,7 +663,8 @@ def men_watch(request):
 	context = {'products':queryset,
 			'confirmed':confirmed,
 			'all_product':all_products,
-			'share_string':share_string}
+			'share_string':share_string,
+			'page':'men_watch_page'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -750,6 +766,16 @@ def polp(request):
 		product.price = '$ US $19.60'
 		product.save()
 	return HttpResponse('bfgg')
+
+def timeLogs(request):
+	user = get_client_ip(request)
+	time = request.GET.get('timespent',None)
+	page = request.GET.get('page',None)
+	#print(abs(int(time)),user,page)
+	time = str(abs(int(time)))
+	user_time = UserTime.objects.create(user_o=user,time_spent=time,page=page)
+	user_time.save()
+	return HttpResponse('hii')
 ############################################################################
 #####################		Trending Layout			########################
 

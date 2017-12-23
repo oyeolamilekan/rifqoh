@@ -28,7 +28,8 @@ urlpatterns = [
  	url(r'^delunn/$',views.delunn, name='delunn'),
  	url(r'^convertion/$',views.user_convertion, name='user_convertion'),
  	url(r'^user_choice/$',views.user_choice, name='user_choice'), # priceconvert
- 	url(r'^jumia/$',views.priceconvert, name='priceconvert')
+ 	url(r'^jumia/$',views.priceconvert, name='priceconvert'),
+ 	url(r'^add_log/$',views.timeLogs,name='timeLogs')
  	
 
    

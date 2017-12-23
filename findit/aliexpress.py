@@ -75,7 +75,6 @@ def alii():
 		bsObj = BeautifulSoup(htmll,'html.parser')
 		# namelist = bsObj.find('div',{'id':'list-items'})
 		namelist = bsObj.findAll('div',{'class':'item'})
-		print()
 		for news in namelist:
 			product_link = news.find('a',{'class':'product'})
 			if product_link:
