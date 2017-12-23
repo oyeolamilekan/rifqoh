@@ -19,7 +19,7 @@ def store(request):
 	# ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
 	# seen_by(request,ad)
 	# landlord(request,ad)
-	return render(request,'shop/index.html',{})
+	return render(request,'shop/index.html',{'page':'shop'})
 
 def register(request):
 	if request.method == 'POST':
@@ -122,7 +122,8 @@ def store_details(request,word):
 			
 			'shop':word,
 			'mack':'mack',
-			'com':com}
+			'com':com,
+			'page':word+'_shop'+'_index'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -192,7 +193,8 @@ def store_shirts(request,word):
 			'share_string':share_string,
 			'shop':word,
 			'mack':'mack',
-			'com':com}
+			'com':com,
+			'page':word+'_shop'+'_shirts'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -259,7 +261,8 @@ def store_phones(request,word):
 			'all_product':all_products,
 			'share_string':share_string,
 			'shop':word,
-			'mack':'mack'}
+			'mack':'mack',
+			'page':word+'_shop'+'_phones'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -327,7 +330,8 @@ def store_laptops(request,word):
 			'all_product':all_products,
 			'share_string':share_string,
 			'shop':word,
-			'mack':'mack'}
+			'mack':'mack',
+			'page':word+'_shop'+'_laptops'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -394,7 +398,8 @@ def store_tv_index(request,word):
 			'all_product':all_products,
 			'share_string':share_string,
 			'shop':word,
-			'mack':'mack'}
+			'mack':'mack',
+			'page':word+'_shop'+'_tv'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -461,7 +466,8 @@ def store_women_index(request,word):
 			'all_product':all_products,
 			'share_string':share_string,
 			'shop':word,
-			'mack':'mack'}
+			'mack':'mack',
+			'page':word+'_shop'+'_women_dresses'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -531,7 +537,8 @@ def store_makeup(request,word):
 			'all_product':all_products,
 			'share_string':share_string,
 			'shop':word,
-			'mack':'mack'}
+			'mack':'mack',
+			'page':word+'_shop'+'_store_makeup'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -598,7 +605,8 @@ def store_heaphones(request,word):
 			'all_product':all_products,
 			'share_string':share_string,
 			'shop':word,
-			'mack':'mack'}
+			'mack':'mack',
+			'page':word+'_shop'+'_headphones'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1
@@ -665,7 +673,8 @@ def store_women_bags(request,word):
 			'all_product':all_products,
 			'share_string':share_string,
 			'shop':word,
-			'mack':'mack'}
+			'mack':'mack',
+			'page':word+'_shop'+'_ladies_bags'}
 	#print(all_products.count())
 	t2 = time.time()
 	query_time = t2 - t1

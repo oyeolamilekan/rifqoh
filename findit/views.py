@@ -859,6 +859,8 @@ def real_trend(request,word):
 			'confirmed':confirmed,
 			'all_product':all_products,
 			'share_string':share_string,
+			'page':'trending_'+word
+
 			}
 	#print(all_products.count())
 	t2 = time.time()
