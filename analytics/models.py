@@ -27,7 +27,7 @@ class PageViews(models.Model):
 		return '%s viewed on %s' %(self.title,self.timestamp)
 
 	class Meta:
-		ordering = ['timestamp']
+		ordering = ['-timestamp']
 		verbose_name = 'Page Views'
 		verbose_name_plural = 'Page Views'
 
@@ -41,7 +41,7 @@ class UserNumber(models.Model):
 		return '{} added on {}'.format(self.user_ip,self.date_added)
 
 	class Meta:
-		ordering = ['date_added']
+		ordering = ['-date_added']
 		verbose_name = 'User Number'
 		verbose_name_plural = 'User Number'
 
