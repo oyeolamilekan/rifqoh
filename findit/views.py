@@ -152,9 +152,9 @@ def real_index(request):
 			query = query.split()
 			new = []
 			for q in query:
-				q = correction(q)
+				#q = correction(q)
 
-				print(q)
+				#print(q)
 				new.append(q)
 				# Put them all together
 				
