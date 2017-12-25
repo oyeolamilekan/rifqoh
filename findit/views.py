@@ -136,9 +136,9 @@ def real_index(request):
 						).distinct()
 				add_query(query,'search page',all_products[:10],nbool=True,correct=query)
 			else:
-				query = correction(query)
+				# query = correction(query)
 
-				print(query)
+				# print(query)
 				query = query.strip()
 				all_products = all_products.filter(
 				           Q(name__icontains=query)|
