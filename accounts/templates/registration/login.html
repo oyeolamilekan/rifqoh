@@ -3,53 +3,15 @@
 {% block logn %}active{% endblock %}
 {% load staticfiles %}
 {% block conten %}
-<style type="text/css">
-.button {
-    min-width: 0;
-    color: #fff;
-    background-color: #2182d6;
-}
-.button-danger {
-    min-width: 0;
-    color: #fff;
-    background-color: #d43f3a;
-    padding: 0.5em 2em;
-    margin-top: 1.5em;
-    margin-right: 0.6em;
-    font-weight: bold;
-    border-radius: 4px;
-}
-a.button-danger:hover{
-    text-decoration: none;
-    color: white;
-}
-a.button:hover{
-    text-decoration: none;
-    color: white;
-}
-.panel-body{
-	background-color: #fff;
-}
-body{
-	background-color: #eee;
-}
-.navbar-default {
-	background-color: white;
-}
-.panel-body {
-	background-color: rgba(0,0,0,0.5);
-}
-body{
-	background-image: url('{% static 'moon.jpg' %}');;
-}
-</style>
 <br>
-<div class="col-sm-6 col-sm-offset-3">
-	<div class="panel panel-danger" style="border-color: #d43f3a;">
-	  <div class="panel-heading" style="background-color: #d9534f;">
-		<h1 style="text-align: center; color: white;"><i class="fa fa-sign-in"></i> Log-in</h1>
-		</div>
-		<div class="panel-body">
+<br>
+<br>
+<div class="col-sm-4 col-sm-offset-4">
+	<div class="panel panel-default" style="border-color: #d43f3a;border-radius: 5px !important;">
+		<div class="panel-body" style="border-color: #d43f3a;border-radius: 5px !important;">
+			<h1 class="text-center"><img src="{% static 'strip.png' %}" width='70px' style="margin: -10px;"> Log-in</h1>
+
+			<hr>
 		{% if form.error %}
 			<p>
 				Your username didn't match,Please try again
@@ -65,7 +27,7 @@ body{
 			<p><input type="submit" value="Log-in" class="btn btn-block btn-danger"></p>
 		</form>
 </div>
-		<div class="text-center" style="background-color: #77c4ea; padding: 10px;">Don't have an account?<a href="{% url 'register'%}" style="color: #fff"> Sign up</a></div>
+		<div class="panel-footer text-center" style="border-bottom-left-radius: : 5px !important;border-bottom-right-radius: : 5px !important;">Don't have an account?<a href="{% url 'register'%}"> Sign up</a></div>
 </div>
 	</div>
 {% endblock %}

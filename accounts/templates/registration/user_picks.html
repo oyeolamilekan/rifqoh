@@ -1,0 +1,128 @@
+{% extends 'home_page.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% block regster %}active{% endblock %}
+{% load staticfiles %}
+{% block conten %}
+<br>
+<br>
+<br>
+<br>
+<style type="text/css">
+	.wakerr{
+		border-style: solid;
+		border-color: black !important;
+	}
+</style>
+<div class="col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default" style="border-radius: 5px !important;">
+		 <div class="panel-body" style="border-radius: 5px !important;">
+		 	<h3 class="text-center">
+		 		Pick your interest: <span class="ownerPicks">{{ num_of_picks }}</span>
+		 	</h3>
+		 	<hr>
+	      <ul class="tags">
+
+	       <li>
+
+	       	<a href="#" class="mklo lap {% if 'phone' in anony %}wakerr{% endif %}" data-action="{% if 'phone' in anony %}un{% endif %}sub" data-id='phone' id='sub'>Phone </a>
+
+	       </li>
+
+	       <li>
+
+	       	<a href="#" class="mklo phon {% if 'laptops' in anony %}wakerr{% endif %}" data-action="{% if 'laptops' in anony %}un{% endif %}sub"  data-id='laptops' id='sub'>Laptops </a>
+
+	       </li>
+
+	       <li>
+	       	
+	       	<a href="#" class="mklo tv {% if 'televisions' in anony %}wakerr{% endif %}" data-action="{% if 'televisions' in anony %}un{% endif %}sub" data-id='televisions' id='sub'> Tvs </a>
+
+	       </li>
+
+	       <li>
+	       	
+	       	<a href="#" class="mklo shirts {% if 'shirts' in anony %}wakerr{% endif %}" data-action="{% if 'shirts' in anony %}un{% endif %}sub" data-id='shirts' id='sub'>Men shirts </a>
+
+	       </li>
+
+	       <li>
+	       	
+	       	<a href="#" class="mklo women {% if 'women-dresses' in anony %}wakerr{% endif %}" data-action="{% if 'women-dresses' in anony %}un{% endif %}sub" data-id='women-dresses' id='sub'>Women's Dresses </a>
+
+	       </li>
+
+	       <li>
+	       
+	       	<a href="#" class="mklo watch {% if 'men-watches' in anony %}wakerr{% endif %}" data-action="{% if 'men-watches' in anony %}un{% endif %}sub" data-id='men-watches' id='sub'> Men Watches </a>
+
+	       </li>
+
+	       <li>
+
+	       	<a href="#" class="mklo watchw {% if 'women-watches' in anony %}wakerr{% endif %}" data-action="{% if 'women-watches' in anony %}un{% endif %}sub" data-id='women-watches' id='sub'> Women Watches </a>
+
+	       </li>
+
+	       <li>
+
+	       	<a href="#" class="mklo women {% if 'women-bags' in anony %}wakerr{% endif %}" data-action="{% if 'women-bags' in anony %}un{% endif %}sub" style="background-color: #f20122; border-color: #f20122;" data-id='women-bags' id='sub'>Women's Bags </a>
+
+	       </li>
+
+	       <li>
+
+	       	<a href="#" class="mklo watch {% if 'headphones' in anony %}wakerr{% endif %}" style="background-color: #e60195; border-color: #e60195;" data-id='headphones' data-action="{% if 'headphones' in anony %}un{% endif %}sub" id='sub' >
+
+	        Headphones</a>
+
+	       </li>
+
+	       <li>
+	       	<a href="#" class="mklo watchw {% if 'makeup' in anony %}wakerr{% endif %}" data-action="{% if 'makeup' in anony %}un{% endif %}sub" style="background-color: #e1f201; border-color: #e1f201;" data-id='makeup' id='sub'> Makeup </a>
+	       </li>
+
+	      </ul>
+	      <p></p>
+	      <a href="/" class="btn btn-danger btn-block">Continue >> </a>
+
+	    </div>
+	</div>
+
+<script type="text/javascript">
+	$('.tags').on('click','.mklo' , function(event){
+	    event.preventDefault();
+	    var li = $(this).closest("li");
+	    var element = $(this);
+	    var previous_action = $('a#sub',li).data('action');
+
+	        // toggle data-action
+	       $('a#sub',li).data('action', previous_action == 'sub' ? 'unsub' : 'sub');
+
+	        // update total likes
+	        // var previous_likes = parseInt($('.jumia',li).text());
+	        // $('.jumia',li).text(previous_action == 'sub' ? previous_likes + 1 : previous_likes - 1);
+	        console.log(previous_action);
+	    var num_of_likes = parseInt($('.ownerPicks').text());
+	    if ($('.mklo',li).hasClass('wakerr')){
+	      $('.mklo',li).removeClass('wakerr');
+	      $('.mklo',li).addClass('btn-deault');
+	      
+	      num_of_likes = num_of_likes - 1;
+	      $('.ownerPicks').text(num_of_likes);
+
+	    }
+	    else{
+	      num_of_likes = num_of_likes + 1;
+	      $('.mklo',li).addClass('wakerr');
+	      $('.ownerPicks').text(num_of_likes);
+	    }
+	    $.ajax({
+	      url: '/accounts/sub/',
+	      type: 'GET',
+	      data: { sub : element.attr("data-id")},
+	  })
+	})
+</script>
+{% endblock %}

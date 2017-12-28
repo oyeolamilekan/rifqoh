@@ -56,11 +56,11 @@ def stream(request):
 
 def subscribe(request):
     sub = request.GET.get('sub')
-    if Sub.objects.filter(lisert=sub).exists():
-        Sub.objects.filter(lisert=sub).delete()
+    if Sub.objects.filter(user=request.user,picks=sub).exists():
+        Sub.objects.filter(user=request.user,picks=sub).delete()
         print('hi')
     else:
-        sub = Sub.objects.create(user=request.user,lisert=sub)
+        sub = Sub.objects.create(user=request.user,picks=sub)
         sub.save()
     return HttpResponse('ok')
 
@@ -80,7 +80,18 @@ def register(request):
             #create_action(request.user,'just signed up')
             # Create the user profile
             # profile = Profile.objects.create(user=new_user)
-            return redirect('/adengine/index/')
+            return redirect('/accounts/userChoice/')
     else:
         user_form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'user_form': user_form})
+
+
+def userChoice(request):
+    sub_list = Sub.objects.filter(user=request.user)
+    anony = []
+    num_of_picks = 0
+    for sub in sub_list:
+        anony.append(sub.picks)
+        num_of_picks = num_of_picks + 1
+    return render(request, 'registration/user_picks.html',{'anony':anony,'num_of_picks':num_of_picks})
+

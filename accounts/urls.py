@@ -10,6 +10,7 @@ urlpatterns = [
 	url(r'^stream/$', views.stream, name='stream'),
 	url(r'^sub/$', views.subscribe, name='subscribe'),
 	url(r'^register/$', views.register, name='register'),
+	url(r'^userChoice/$',views.userChoice,name='userChoice'),
 	url(r'^password-reset/$',password_reset,name='password_reset'),
     url(r'^password-reset/done/$',password_reset_done,name="password_reset_done"),
     url(r'^password-reset/confirm/confirm/(?P<uidb64>[-\w]+)/(?P<token>[-\w]+)/$',password_reset_confirm,name="password_reset_confirm"),

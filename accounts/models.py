@@ -41,10 +41,10 @@ class Profile(models.Model):
 
 class Sub(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL)
-	lisert = models.CharField(max_length=600)
+	picks = models.CharField(max_length=600)
 
 	def __str__(self):
-		return self.lisert
+		return self.picks
 
 
 def create_profile(sender,**kwargs):

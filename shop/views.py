@@ -211,7 +211,7 @@ def store_phones(request,word):
 	orginal_sentence = []
 	corrected_sentence = []
 	confirmed = None
-	all_products = Products.objects.order_by('?').filter(genre='',shop=word)
+	all_products = Products.objects.order_by('?').filter(genre='phone',shop=word)
 	product_counter = all_products.count()
 	query = request.GET.get('q')
 	if query:

@@ -1,5 +1,6 @@
 {% extends 'home_page.html' %}
 {% load bootstrap3 %}
+{% load static %}
 {% block regster %}active{% endblock %}
 {% load staticfiles %}
 {% block conten %}
@@ -38,12 +39,13 @@ body{
 }
 </style>
 <br>
-<div class="col-sm-6 col-sm-offset-3">
-	<div class="panel panel-primary">
-	  <div class="panel-heading">
-		<h1 style="text-align: center;"><i class="fa fa-user-circle"></i> Create an account</h1>
-		</div>
-		<div class="panel-body">
+<br>
+<br>
+<div class="col-sm-4 col-sm-offset-4">
+	<div class="panel panel-primary" style="border-radius: 5px !important;">
+		<div class="panel-body" style="border-radius: 5px !important;">
+			<h1 class="text-center"><img src="{% static 'strip.png' %}" width='70px' style="margin: -10px;"> Create an account</h1>
+			<hr>
 		{% if form.error %}
 			<p>
 				Your username didn't match,Please try again

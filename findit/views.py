@@ -113,6 +113,14 @@ def real_index(request):
 	query = request.GET.get('q')
 	#print(query,'hgf')
 	all_products = Products.objects.order_by('?')
+	if request.user.is_authenticated():
+		user_picks = Sub.objects.filter(user=request.user)
+		user_pick_list = []
+		for user_p in user_picks:
+			user_pick_list.append(user_p.picks)
+		#print(user_pick_list)
+		all_products = Products.objects.filter(genre__in=user_pick_list)
+		all_products = all_products.order_by('?')
 	if query:
 		whichPage(request,'search',request.build_absolute_uri())
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
@@ -270,7 +278,7 @@ def index(request):
 	orginal_sentence = []
 	corrected_sentence = []
 	confirmed = None
-	all_products = Products.objects.order_by('?').filter(genre='')
+	all_products = Products.objects.order_by('?').filter(genre='phone')
 	product_counter = all_products.count()
 		# if corrected_sentence != orginal_sentence:
 		# 	corrected_sentence = ' '.join(corrected_sentence)
@@ -725,6 +733,10 @@ def sugget(request):
 	return JsonResponse({'query':pixeld})
 
 def deleteu(request):
+	products = Products.objects.filter(genre='')
+	for product in products:
+		product.genre = 'phone'
+		product.save()
 	return HttpResponse('all done')
 
 def convert_me(request):
@@ -771,9 +783,10 @@ def timeLogs(request):
 	user = get_client_ip(request)
 	time = request.GET.get('timespent',None)
 	page = request.GET.get('page',None)
-	#print(abs(int(time)),user,page)
+	url = request.GET.get('url',None)
 	time = str(abs(int(time)))
-	user_time = UserTime.objects.create(user_o=user,time_spent=time,page=page)
+	print(time)
+	user_time = UserTime.objects.create(user_o=user,time_spent=time,page=page,current_page=url)
 	user_time.save()
 	return HttpResponse('hii')
 ############################################################################

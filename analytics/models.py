@@ -103,11 +103,12 @@ object_viewed.connect(object_viewed_reciever)
 class UserTime(models.Model):
 	user_o = models.CharField(max_length=200,blank=True,null=True)
 	time_spent = models.CharField(max_length=200,blank=True,null=True)
+	current_page = models.CharField(max_length=200,blank=True,null=True)
 	page = models.CharField(max_length=200,blank=True,null=True)
 	timestamp = models.DateTimeField(auto_now_add=True,blank=True,null=True)
 
 	def __str__(self):
-		return '{} spent {} seconds on {}'.format(self.user_o,self.time_spent,self.page)
+		return '{} spent {} seconds on {} timecreated {}'.format(self.user_o,self.time_spent,self.page,self.timestamp)
 
 	class Meta:
 		ordering = ['-id']
