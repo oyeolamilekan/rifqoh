@@ -16,7 +16,7 @@ from django.core.urlresolvers import reverse_lazy
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-LOGIN_REDIRECT_URL = reverse_lazy('adengine:index')
+LOGIN_REDIRECT_URL = reverse_lazy('findit:real_index')
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
 

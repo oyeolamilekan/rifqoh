@@ -85,7 +85,7 @@ def register(request):
         user_form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'user_form': user_form})
 
-
+@login_required
 def userChoice(request):
     sub_list = Sub.objects.filter(user=request.user)
     anony = []
