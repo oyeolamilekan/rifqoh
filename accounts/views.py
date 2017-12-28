@@ -20,7 +20,7 @@ def user_login(request):
                 if user.is_active:
                     login(request, user)
                     user_logged_in.send(user.__class__,request=request,instance=user)
-                    return redirect('adengine:index')
+                    return redirect('findit:real_index')
                 else:
                     return HttpResponse('Disabled account')
             else:
