@@ -59,6 +59,7 @@ class QueryList(models.Model):
 	title = models.CharField(max_length=200)
 	res_list = models.TextField(blank=True,null=True)
 	section = models.CharField(max_length=200)
+	baser_url = models.CharField(max_length=200,blank=True,null=True)
 	qury_bool = models.BooleanField(default=True)
 	corrected = models.CharField(max_length=200, blank=True, null=True)
 	date_added = models.DateTimeField(auto_now_add=True,blank=True,null=True)

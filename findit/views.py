@@ -142,7 +142,7 @@ def real_index(request):
 						           Q(name__icontains=q)
 						           
 						).distinct()
-				add_query(query,'search page',all_products[:10],nbool=True,correct=query)
+				add_query(query,'search page',all_products[:10],nbool=True,correct=query,request=request)
 			else:
 				# query = correction(query)
 
@@ -153,9 +153,9 @@ def real_index(request):
 				           Q(name__iexact=query)
 				).distinct()
 				if len(all_products) == 0:
-					add_query(query,'search page',all_products[:10],nbool=False,correct=query)
+					add_query(query,'search page',all_products[:10],nbool=False,correct=query,request=request)
 				else:
-					add_query(query,'search page',all_products[:10],nbool=True,correct=query)
+					add_query(query,'search page',all_products[:10],nbool=True,correct=query,request=request)
 		else:
 			query = query.split()
 			new = []
@@ -174,9 +174,9 @@ def real_index(request):
 			query = ' '.join(query)
 			made = ' '.join(new)
 			if len(all_products) == 0:
-				add_query(query,'search page',all_products[:10],nbool=False,correct=made)
+				add_query(query,'search page',all_products[:10],nbool=False,correct=made,request=request)
 			else:
-				add_query(query,'search page',all_products[:10],nbool=True,correct=made)
+				add_query(query,'search page',all_products[:10],nbool=True,correct=made,request=request)
 		# if corrected_sentence != orginal_sentence:
 		# 	corrected_sentence = ' '.join(corrected_sentence)
 		# 	orginal_sentence = ' '.join(orginal_sentence)
