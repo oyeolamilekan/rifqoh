@@ -6,7 +6,7 @@ active
 {% endblock %}
 {% block conten %}
 <style type="text/css">
-	.info {
+	.info,.success {
 		background-color: #d9edf7;
 		border: 1px solid #bce8f1;
 		color: #31708f;
@@ -14,30 +14,81 @@ active
 		font-size: 14px;
 		margin-bottom: 2.5rem;
 	}
+	.cheat {
+		margin-bottom: 10px;
+	}
+	.happier {
+		color: #31708f;
+	}
+	.twice {
+		color: forestgreen !important;
+	}
 </style>
 <br>
 <br>
 <br>
-<div class="col-sm-6 col-sm-offset-3">
-	<div class="panel panel-default">
+<div class="col-sm-offset-2">
+<div class="col-sm-5">
+	<div class="panel panel-default" style="border-top-width: 5px !important; border-top-style: solid !important;border-top-color:#5cb85c !important;">
 		<div class="panel-body">
 			<h4 class="text-center">Banner Ads {% if request.user.ads_set.exists %} <span class="badge" style="padding: 0.27rem 0.55rem 0.2rem 0.4rem; color: #71ea73; background-color: #71ea73;">5</span>{% endif %}</h4>
-			<div class="info">
+			<h4 class="text-center">N1,000 / week</h4>
+			<h4 class="text-center" style="margin-top: 40px; color: forestgreen !important;"><i class="fa fa-image"></i></h4>
+			<div class="success" style="margin-top: 40px; background-color: #d9f7df !important; border-color: #d9f7df; color: forestgreen !important;">
 			<p class="text-center"><b><i class="fa fa-info-circle"></i> Sidenote</b> Banner Ads advertises you website in form of a banner on the website</p>
 		</div>
-		<a href="{% url 'adengine:dash' %}?type=Banner" class="btn btn-success btn-block">Go to dashboard</a>
+		<ul class="text-center" style="list-style: none;">
+			<li class="cheat">
+				Shows Ads in every section of the site
+				<i class="fa fa-check-circle twice"></i>
+			</li>
+			<li class="cheat">
+				Simple Payments steps
+				<i class="fa fa-check-circle twice"></i>
+			</li>
+			<li class="cheat">
+				Real time Analytics
+				<i class="fa fa-check-circle twice"></i>
+			</li>
+		</ul>
+		<a href="{% url 'adengine:dash' %}?type=Banner" class="btn btn-success btn-block" style="margin-top: 30px;">Go to dashboard</a>
 		</div>
 	</div>
-	<div class="panel panel-default">
+</div>
+<div class="col-sm-5">
+	<div class="panel panel-default" style="border-top-width: 5px !important; border-top-style: solid !important;border-top-color:#337ab7 !important; !important;">
 		<div class="panel-body">
-			<h4 class="text-center">Product Ads {% if ad_1 %} <span class="badge" style="padding: 0.27rem 0.55rem 0.2rem 0.4rem; color: #71ea73; background-color: #71ea73;">5</span>{% endif %}</h4>
-			<div class="info">
-			<p class="text-center"><b><i class="fa fa-info-circle"></i> Sidenote</b> Brings out product as part of the major result when users search for product</p>
-
-		</div>
-		<a href="{% url 'adengine:dash' %}?type=Products" class="btn btn-success btn-block">Go to dashboard</a>
+			<h4 class="text-center">Product Ads 
+				{% if ad_1 %} 
+				<span class="badge" style="padding: 0.27rem 0.55rem 0.2rem 0.4rem; color: #71ea73; background-color: #71ea73;">5</span>
+				{% endif %}
+			</h4>
+			<h4 class="text-center">N1,000 / week</h4>
+			<h4 class="text-center" style="margin-top: 40px; color: #31708f;">
+				<i class="fa fa-shopping-bag"></i>
+			</h4>
+			<div class="info" style="margin-top: 40px;">
+				<p class="text-center"><b><i class="fa fa-info-circle"></i> Sidenote</b> Brings out product as part of the major result when users search for product
+				</p>
+			</div>
+			<ul class="text-center" style="list-style: none;">
+				<li class="cheat">
+					Shows Ads based on the user query
+					<i class="fa fa-check-circle happier"></i>
+				</li>
+				<li class="cheat">
+					Call to action button
+					<i class="fa fa-check-circle happier"></i>
+				</li>
+				<li class="cheat">
+					Real time Analytics
+					<i class="fa fa-check-circle happier"></i>
+				</li>
+			</ul>
+			<a href="{% url 'adengine:dash' %}?type=Products" class="btn btn-primary btn-block" style="margin-top: 30px;">Go to dashboard</a>
 		</div>
 		
 	</div>
+</div>
 </div>
 {% endblock %}
