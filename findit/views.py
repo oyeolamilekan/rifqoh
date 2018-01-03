@@ -23,6 +23,8 @@ from analytics.utils import whichPage,user_count,user_converter
 from analytics.an_utils import get_client_ip
 import random
 
+# Intial Stops words for the users
+STOP_WORDS = ['price','prices','laptops','laptop','phones','phone','dresses']
 
 def home_page(request):
 	share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
@@ -129,6 +131,11 @@ def real_index(request):
 			# print(list(query))
 			query = query.lower()
 			quey = query.split()
+
+			for stop_w in STOP_WORDS:
+				if stop_w in quey:
+					quey.remove(stop_w)
+
 			if len(quey) >= 3:
 				if 'plus' in quey and len(quey) <= 3:
 					q = ' '.join(quey)
@@ -149,6 +156,13 @@ def real_index(request):
 
 				# print(query)
 				query = query.strip()
+				query = query.split()
+				for stop_w in STOP_WORDS:
+					if stop_w in query:
+						query.remove(stop_w)
+
+				query = ' '.join(query)
+				print(query)
 				all_products = all_products.filter(
 				           Q(name__icontains=query)|
 				           Q(name__iexact=query)
@@ -160,6 +174,9 @@ def real_index(request):
 		else:
 			query = query.split()
 			new = []
+			for stop_w in STOP_WORDS:
+				if stop_w in query:
+					query.remove(stop_w)
 			for q in query:
 				#q = correction(q)
 
