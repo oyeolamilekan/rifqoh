@@ -299,7 +299,7 @@ a.float:hover {
 			</ul>
           </div>
         <div class="specialBar">
-          <form role="search" id="seah">
+          <form role="search" id="seah" action="{% if mack %}{% url 'shop:store_details' shop %}{% else %}{% url 'findit:real_index' %}{% endif %}">
           <div class="input-group" style="position: absolute; top: 10.5px; left: 18.5%;width: 50%;">
           <input type="text" class="form-control transition" name="q"
           placeholder="Search..." id="search-inpt" list="myQueries">
