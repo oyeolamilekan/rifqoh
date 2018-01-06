@@ -733,7 +733,7 @@ def engine_starter(request):
 
 
 def stupid_me(request):
-	loo = Products.objects.filter(id='22502',shop='jumia')
+	loo = Products.objects.filter(shop='jumia')
 	loo.delete()
 	return HttpResponse('allo ')
 
