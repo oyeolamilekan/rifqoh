@@ -91,8 +91,8 @@ def jumia_crawler():
 			htl = Request(images,headers=hdr)
 			httl = urlopen(htl).read()
 			print(namelst,product_price)
-			if Products.objects.filter(name=namelst,shop='jumia').exists():
-				produc = Products.objects.get(name=namelst,shop='jumia')
+			if Products.objects.filter(name__iexact=namelst,shop='jumia').exists():
+				produc = Products.objects.get(name__iexact=namelst,shop='jumia')
 				# Checks the price
 				if produc.price != product_price:
 					produc.old_price = produc.price
