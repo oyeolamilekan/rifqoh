@@ -114,7 +114,7 @@ def real_index(request):
 	confirmed = None
 	query = request.GET.get('q')
 	#print(query,'hgf')
-	all_products = Products.objects.order_by('?')
+	all_products = Products.objects.order_by('?').exclude(shop='jumia')
 	if request.user.is_authenticated():
 		user_picks = Sub.objects.filter(user=request.user)
 		user_pick_list = []
@@ -124,7 +124,7 @@ def real_index(request):
 		all_products = Products.objects.filter(genre__in=user_pick_list)
 		all_products = all_products.order_by('?')
 	if query:
-		all_products = Products.objects.order_by('?')
+		all_products = Products.objects.order_by('?').exclude(shop='jumia')
 		whichPage(request,'search',request.build_absolute_uri())
 		if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
 			# # print(query)
