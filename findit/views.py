@@ -733,7 +733,7 @@ def engine_starter(request):
 
 
 def stupid_me(request):
-	loo = Products.objects.filter(shop='payporte').filter(genre='shirts')
+	loo = Products.objects.filter(name='Infinix Infinix Zero 4 Plus 5.98 Inch (32GB ROM + 4GB RAM), Android 6.0.1',shop='jumia')[0]
 	loo.delete()
 	return HttpResponse('allo ')
 
