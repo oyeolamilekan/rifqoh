@@ -50,7 +50,7 @@ def konga_crawler():
 			else:
 				if request.status_code != requests.codes.ok:
 					continue
-				file_name = images.split('/')[-1]
+				file_name = 'konga/' + images.split('/')[-1]
 				lf = tempfile.NamedTemporaryFile()
 				for block in request.iter_content(1024*8):
 					if not block:
@@ -101,7 +101,7 @@ def konga_crawler():
 			else:
 				if request.status_code != requests.codes.ok:
 					continue
-				file_name = images.split('/')[-1]
+				file_name = 'konga/' + images.split('/')[-1]
 				lf = tempfile.NamedTemporaryFile()
 				for block in request.iter_content(1024*8):
 					if not block:
@@ -152,7 +152,7 @@ def konga_crawler():
 			else:
 				if request.status_code != requests.codes.ok:
 					continue
-				file_name = images.split('/')[-1]
+				file_name = 'konga/' + images.split('/')[-1]
 				lf = tempfile.NamedTemporaryFile()
 				for block in request.iter_content(1024*8):
 					if not block:
@@ -258,7 +258,7 @@ def konga_crawler():
 			else:
 				if request.status_code != requests.codes.ok:
 					continue
-				file_name = images.split('/')[-1]
+				file_name = 'konga/' + images.split('/')[-1]
 				lf = tempfile.NamedTemporaryFile()
 				for block in request.iter_content(1024*8):
 					if not block:
@@ -307,7 +307,7 @@ def konga_crawler():
 		else:
 			if request.status_code != requests.codes.ok:
 				continue
-			file_name = images.split('/')[-1]
+			file_name = 'konga/' + images.split('/')[-1]
 			lf = tempfile.NamedTemporaryFile()
 			for block in request.iter_content(1024*8):
 				if not block:
@@ -360,7 +360,7 @@ def konga_crawler():
 			else:
 				if request.status_code != requests.codes.ok:
 					continue
-				file_name = images.split('/')[-1]
+				file_name = 'konga/' + images.split('/')[-1]
 				lf = tempfile.NamedTemporaryFile()
 				for block in request.iter_content(1024*8):
 					if not block:
@@ -412,7 +412,7 @@ def konga_crawler():
 			else:
 				if request.status_code != requests.codes.ok:
 					continue
-				file_name = images.split('/')[-1]
+				file_name = 'konga/' + images.split('/')[-1]
 				lf = tempfile.NamedTemporaryFile()
 				for block in request.iter_content(1024*8):
 					if not block:

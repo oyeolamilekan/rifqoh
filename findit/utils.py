@@ -11,7 +11,7 @@ def black_rock():
 	#alii()
 
 	# Jumia jumia crawler
-	# jumia_crawler()
+	jumia_crawler()
 
 	# Activates konga crawler
 	konga_crawler()
