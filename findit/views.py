@@ -733,7 +733,7 @@ def engine_starter(request):
 
 
 def stupid_me(request):
-	loo = Products.objects.filter(name__iexact='Bontel A10-4" Screen Android 6.0 Smart 3G Phone & Quad Core & 512M ROM &4G 2200mah Last Battery -gold',shop='jumia')[0]
+	loo = Products.objects.filter(id='22502',shop='jumia')
 	loo.delete()
 	return HttpResponse('allo ')
 
