@@ -35,9 +35,9 @@ def konga_crawler():
 			e_price = e_price.decode('ascii','ignore')
 			namelst = bytes(str(product_name.text), 'UTF-8')
 			namelst = namelst.decode('ascii','ignore')
-			if Products.objects.filter(name=namelst,shop='konga').exists():
+			if Products.objects.filter(name__iexact=namelst,shop='konga').exists():
 				
-				produc = Products.objects.get(name=namelst,shop='konga')
+				produc = Products.objects.get(name__iexact=namelst,shop='konga')
 				# Checks the price
 				if produc.price != e_price:
 					produc.old_price = produc.price

@@ -34,9 +34,9 @@ def yudala():
 			namelst = namelst.decode('ascii','ignore')[:299]
 			request = requests.get(images, stream=True)
 			print(product_named)
-			if Products.objects.filter(name=namelst,shop='yudala').exists():
+			if Products.objects.filter(name__iexact=namelst,shop='yudala').exists():
 				
-				produc = Products.objects.get(name=namelst,shop='yudala')
+				produc = Products.objects.get(name__iexact=namelst,shop='yudala')
 				# Checks the price
 				if produc.price != product_price:
 					produc.old_price = produc.price
@@ -76,9 +76,9 @@ def yudala():
 		namelst = bytes(str(product_named), 'UTF-8')
 		namelst = namelst.decode('ascii','ignore')[:299]
 		request = requests.get(images, stream=True)
-		if Products.objects.filter(name=namelst,shop='yudala').exists():
+		if Products.objects.filter(name__iexact=namelst,shop='yudala').exists():
 				
-			produc = Products.objects.get(name=namelst,shop='yudala')
+			produc = Products.objects.get(name__iexact=namelst,shop='yudala')
 			# Checks the price
 			if produc.price != product_price:
 				produc.old_price = produc.price
