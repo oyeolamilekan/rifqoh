@@ -114,7 +114,7 @@ def real_index(request):
 	confirmed = None
 	query = request.GET.get('q')
 	#print(query,'hgf')
-	all_products = Products.objects.order_by('?').exclude(shop='jumia')
+	all_products = Products.objects.order_by('?')
 	if request.user.is_authenticated():
 		user_picks = Sub.objects.filter(user=request.user)
 		user_pick_list = []
