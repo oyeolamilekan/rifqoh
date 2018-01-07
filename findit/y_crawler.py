@@ -55,7 +55,7 @@ def yudala():
 					if not block:
 						break
 					lf.write(block)
-				product = Products(name=namelst,price=product_price,source_url=product_link.attrs['href'],shop='yudala')
+				product = Products(name=namelst,price=product_price,source_url=product_link.attrs['href'],shop='yudala',genre='phone')
 				product.image.save(file_name[:20],files.File(lf))
 
 	urls_tuple = 'https://www.yudala.com/laptops'
