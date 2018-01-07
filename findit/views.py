@@ -733,8 +733,7 @@ def engine_starter(request):
 
 
 def stupid_me(request):
-	loo = Products.objects.all()
-	loo.delete()
+	Products.objects.all().delete()
 	return HttpResponse('allo ')
 
 def twitter_bot(request):
