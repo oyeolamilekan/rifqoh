@@ -733,10 +733,8 @@ def engine_starter(request):
 
 
 def stupid_me(request):
-	loo = Products.objects.all().filter(genre='')
-	for looo in loo:
-		looo.genre = 'phone'
-		looo.save()
+	loo = Products.objects.all()
+	loo.delete()
 	return HttpResponse('allo ')
 
 def twitter_bot(request):
