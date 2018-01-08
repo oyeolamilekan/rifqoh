@@ -47,8 +47,8 @@ def konga_crawler():
                 produc = Products.objects.get(name__iexact=namelst.replace("\n", ''), shop='konga')
                 # Checks the price
                 if produc.price != e_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = e_price
                     # Saves the price
@@ -105,8 +105,8 @@ def konga_crawler():
                 produc = Products.objects.get(name__iexact=namelst.replace("\n", ''), shop='konga')
                 # Checks the price
                 if produc.price != e_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = e_price
                     # Saves the price
@@ -163,8 +163,8 @@ def konga_crawler():
                 produc = Products.objects.get(name__iexact=namelst.replace("\n", ''), shop='konga')
                 # Checks the price
                 if produc.price != e_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = e_price
                     # Saves the price
@@ -223,8 +223,8 @@ def konga_crawler():
                 produc = Products.objects.get(name__iexact=namelst.replace("\n", ''), shop='konga')
                 # Checks the price
                 if produc.price != e_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = e_price
                     # Saves the price
@@ -280,8 +280,8 @@ def konga_crawler():
                 produc = Products.objects.get(name__iexact=namelst.replace("\n", ''), shop='konga')
                 # Checks the price
                 if produc.price != e_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = e_price
                     # Saves the price
@@ -335,8 +335,8 @@ def konga_crawler():
             produc = Products.objects.get(name__iexact=namelst.replace("\n", ''), shop='konga')
             # Checks the price
             if produc.price != e_price:
-                produc.old_price = produc.price
-                produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                # produc.old_price = produc.price
+                # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                 # Updates the price
                 produc.price = e_price
                 # Saves the price
@@ -394,8 +394,8 @@ def konga_crawler():
                 produc = Products.objects.get(name__iexact=namelst.replace("\n", ''), shop='konga', genre='men-watches')
                 # Checks the price
                 if produc.price != e_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = e_price
                     # Saves the price
@@ -454,8 +454,8 @@ def konga_crawler():
                                               genre='women-watches')
                 # Checks the price
                 if produc.price != e_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = e_price
                     # Saves the price

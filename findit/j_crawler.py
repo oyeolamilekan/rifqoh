@@ -49,8 +49,8 @@ def jumia_crawler():
                 produc = Products.objects.get(name__iexact=namelst, shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = product_price
                     # Saves the price
@@ -109,8 +109,8 @@ def jumia_crawler():
                 produc = Products.objects.get(name__iexact=namelst.replace("\n", ''), shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = product_price
                     # Saves the price
@@ -168,8 +168,8 @@ def jumia_crawler():
                 produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = product_price
                     # Saves the price
@@ -228,8 +228,8 @@ def jumia_crawler():
                 produc = Products.objects.get(name__iexact=namelst.replace('\n',' ').replace('\t',' '), shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = product_price
                     # Saves the price
@@ -288,8 +288,8 @@ def jumia_crawler():
                 produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = product_price
                     # Saves the price
@@ -349,8 +349,8 @@ def jumia_crawler():
                 produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = product_price
                     # Saves the price
@@ -408,8 +408,8 @@ def jumia_crawler():
             produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='jumia')
             # Checks the price
             if produc.price != product_price:
-                produc.old_price = produc.price
-                produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                # produc.old_price = produc.price
+                # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                 # Updates the price
                 produc.price = product_price
                 # Saves the price
@@ -469,8 +469,8 @@ def jumia_crawler():
                 produc = Products.objects.get(name__iexact=namelst.replace("\n", ''), shop='jumia', genre='men-watches')
                 # Checks the price
                 if produc.price != product_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = product_price
                     # Saves the price
@@ -532,8 +532,8 @@ def jumia_crawler():
                     product_count.delete()
                 # Checks the price
                 if produc.price != product_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+                    # produc.old_price = produc.price
+                    # produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = product_price
                     # Saves the price
