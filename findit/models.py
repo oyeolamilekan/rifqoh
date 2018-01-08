@@ -23,7 +23,7 @@ class UserTheme(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     def __str__(self):
-        return '{} theme is {}'.format(user, theme)
+        return '{} theme is {}'.format(self.user, self.theme)
 
     # For the admin magic that's it
     class Meta:

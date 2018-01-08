@@ -1,6 +1,6 @@
 import re
 import threading
-
+from .j_crawler import jumia_crawler
 from .k_cralwer import konga_crawler
 from .y_crawler import yudala
 
@@ -10,7 +10,7 @@ def black_rock():
     # alii()
 
     # Jumia jumia crawler
-    # jumia_crawler()
+    jumia_crawler()
 
     # Activates konga crawler
     konga_crawler()
