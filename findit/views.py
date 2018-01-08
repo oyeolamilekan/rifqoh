@@ -110,8 +110,6 @@ def real_index(request):
     t1 = time.time()
     url = request.build_absolute_uri()
     whichPage(request, 'discoverB', url)
-    orginal_sentence = []
-    corrected_sentence = []
     confirmed = None
     query = request.GET.get('q')
     # print(query,'hgf')
@@ -246,8 +244,6 @@ def shirts(request):
     whichPage(request, 'shirtsP', url)
     t1 = time.time()
     share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
-    orginal_sentence = []
-    corrected_sentence = []
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='shirts')
     # if corrected_sentence != orginal_sentence:
@@ -295,8 +291,6 @@ def index(request):
     whichPage(request, 'phoneP', url)
     share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
     t1 = time.time()
-    orginal_sentence = []
-    corrected_sentence = []
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='phone')
     product_counter = all_products.count()
@@ -393,8 +387,6 @@ def tv_index(request):
     whichPage(request, 'tvP', url)
     share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
     t1 = time.time()
-    orginal_sentence = []
-    corrected_sentence = []
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='televisions')
     product_counter = all_products.count()
@@ -442,8 +434,6 @@ def makeup(request):
     whichPage(request, 'tvP', url)
     share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
     t1 = time.time()
-    orginal_sentence = []
-    corrected_sentence = []
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='makeup')
     product_counter = all_products.count()
@@ -491,8 +481,6 @@ def headphones(request):
     whichPage(request, 'tvP', url)
     share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
     t1 = time.time()
-    orginal_sentence = []
-    corrected_sentence = []
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='headphones')
     product_counter = all_products.count()
@@ -540,8 +528,6 @@ def wemenbags(request):
     whichPage(request, 'tvP', url)
     share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
     t1 = time.time()
-    orginal_sentence = []
-    corrected_sentence = []
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='women-bags')
     product_counter = all_products.count()
@@ -589,8 +575,6 @@ def women_index(request):
     whichPage(request, 'wemenP', url)
     share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
     t1 = time.time()
-    orginal_sentence = []
-    corrected_sentence = []
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='women-dresses')
     page_request_var = 'page'
@@ -633,8 +617,6 @@ def women_watch(request):
     whichPage(request, 'wemen_watchP', url)
     share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
     t1 = time.time()
-    orginal_sentence = []
-    corrected_sentence = []
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='women-watches')
     page_request_var = 'page'
@@ -677,8 +659,6 @@ def men_watch(request):
     whichPage(request, 'men_watchP', url)
     share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
     t1 = time.time()
-    orginal_sentence = []
-    corrected_sentence = []
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='men-watches')
     page_request_var = 'page'
@@ -699,7 +679,6 @@ def men_watch(request):
                'all_product': all_products,
                'share_string': share_string,
                'page': 'men_watch_page'}
-    # print(all_products.count())
     t2 = time.time()
     query_time = t2 - t1
     query_time = '{:.6f}'.format(query_time)
