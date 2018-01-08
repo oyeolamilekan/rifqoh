@@ -7,7 +7,7 @@
 			<img src="{{ product.image.url }}" style="width: 200px;">
 			<p style="padding: 1rem;">{{ product.name|truncatechars:120 }}</p>
 						<hr>
-						<span style="padding: 1rem;">{% if product.shop == 'aliexpress' %}{% else %}&#8358{% endif %} {{ product.price }} {% if product.old_price_digit == 0 %}{% elif product.real_price >  product.old_price_digit %}nn<i class="fa fa-arrow-up red"></i>{% else %}<i class="fa fa-arrow-down green"></i>{% endif %}</span>
+						<span style="padding: 1rem;">{% if product.shop == 'aliexpress' %}{% else %}&#8358{% endif %} {{ product.price }} {% if product.old_price_digit == 0 %}{% elif product.real_price >  product.old_price_digit %}{{product.old_price_digit}}<i class="fa fa-arrow-up red"></i>{% else %}<i class="fa fa-arrow-down green"></i>{% endif %}</span>
 						<br>
 						{% if product.converted_price %}
 							<br>&#8358 {{ product.converted_price }}
