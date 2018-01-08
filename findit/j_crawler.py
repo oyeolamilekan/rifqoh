@@ -38,8 +38,8 @@ def jumia_crawler():
             htl = Request(images, headers=hdr)
             httl = urlopen(htl).read()
             print(namelst, product_price)
-            if Products.objects.filter(name__iexact=str(namelst), shop='jumia').exists():
-                produc = Products.objects.get(name__iexact=str(namelst), shop='jumia')
+            if Products.objects.filter(name__iexact=namelst.replace("\n", ''), shop='jumia').exists():
+                produc = Products.objects.get(name__iexact=namelst.replace("\n", ''), shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
                     produc.old_price = produc.price
@@ -63,7 +63,7 @@ def jumia_crawler():
                         break
                     lf.write(block)
                 lf = ContentFile(httl)
-                product = Products(name=namelst, price=product_price, source_url=product_link, shop='jumia',
+                product = Products(name=namelst.replace("\n", ''), price=product_price, source_url=product_link, shop='jumia',
                                    genre='televisions')
                 product.image.save(file_name[:20], lf)
 
@@ -94,8 +94,8 @@ def jumia_crawler():
             htl = Request(images, headers=hdr)
             httl = urlopen(htl).read()
             print(namelst, product_price)
-            if Products.objects.filter(name__iexact=namelst, shop='jumia').exists():
-                produc = Products.objects.get(name__iexact=namelst, shop='jumia')
+            if Products.objects.filter(name__iexact=namelst.replace("\n", ''), shop='jumia').exists():
+                produc = Products.objects.get(name__iexact=namelst.replace("\n", ''), shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
                     produc.old_price = produc.price
@@ -119,7 +119,7 @@ def jumia_crawler():
                         break
                     lf.write(block)
                 lf = ContentFile(httl)
-                product = Products(name=namelst, price=product_price, source_url=product_link, shop='jumia',
+                product = Products(name=namelst.replace("\n", ''), price=product_price, source_url=product_link, shop='jumia',
                                    genre='phone')
                 product.image.save(file_name[:20], lf)
 
