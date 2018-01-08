@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/findit/j_crawler.py" afterPath="$PROJECT_DIR$/findit/j_crawler.py" />
       <change beforePath="$PROJECT_DIR$/findit/k_cralwer.py" afterPath="$PROJECT_DIR$/findit/k_cralwer.py" />
       <change beforePath="$PROJECT_DIR$/findit/models.py" afterPath="$PROJECT_DIR$/findit/models.py" />
-      <change beforePath="$PROJECT_DIR$/findit/templates/results_ajax.html" afterPath="$PROJECT_DIR$/findit/templates/results_ajax.html" />
       <change beforePath="$PROJECT_DIR$/findit/y_crawler.py" afterPath="$PROJECT_DIR$/findit/y_crawler.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +19,8 @@
       <file leaf-file-name="j_crawler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/findit/j_crawler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="936">
-              <caret line="52" column="25" lean-forward="false" selection-start-line="51" selection-start-column="22" selection-end-line="52" selection-end-column="25" />
+            <state relative-caret-position="258">
+              <caret line="314" column="8" lean-forward="true" selection-start-line="314" selection-start-column="7" selection-end-line="314" selection-end-column="8" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -64,24 +63,14 @@
       <file leaf-file-name="k_cralwer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/findit/k_cralwer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="774">
-              <caret line="50" column="25" lean-forward="false" selection-start-line="49" selection-start-column="22" selection-end-line="50" selection-end-column="25" />
+            <state relative-caret-position="-1037">
+              <caret line="397" column="22" lean-forward="true" selection-start-line="396" selection-start-column="20" selection-end-line="397" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="results_page.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/findit/templates/results_page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="results_ajax.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="results_ajax.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/findit/templates/results_ajax.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="162">
@@ -106,8 +95,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/findit/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="50" column="56" lean-forward="false" selection-start-line="47" selection-start-column="6" selection-end-line="50" selection-end-column="56" />
+            <state relative-caret-position="-457">
+              <caret line="50" column="54" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="50" selection-end-column="54" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -115,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="y_crawler.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="y_crawler.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/findit/y_crawler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="49" column="24" lean-forward="false" selection-start-line="48" selection-start-column="22" selection-end-line="49" selection-end-column="24" />
+            <state relative-caret-position="413">
+              <caret line="97" column="21" lean-forward="true" selection-start-line="96" selection-start-column="16" selection-end-line="97" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -146,11 +135,11 @@
         <option value="$PROJECT_DIR$/analytics/an_utils.py" />
         <option value="$PROJECT_DIR$/findit/utils.py" />
         <option value="$PROJECT_DIR$/findit/views.py" />
+        <option value="$PROJECT_DIR$/findit/templates/results_ajax.html" />
         <option value="$PROJECT_DIR$/findit/models.py" />
         <option value="$PROJECT_DIR$/findit/j_crawler.py" />
         <option value="$PROJECT_DIR$/findit/k_cralwer.py" />
         <option value="$PROJECT_DIR$/findit/y_crawler.py" />
-        <option value="$PROJECT_DIR$/findit/templates/results_ajax.html" />
       </list>
     </option>
   </component>
@@ -262,14 +251,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2017.3/python_stubs/299618675/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88128">
-          <caret line="4896" column="8" lean-forward="false" selection-start-line="4896" selection-start-column="8" selection-end-line="4896" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/findit/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -609,6 +590,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/findit/templates/results_ajax.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="133" lean-forward="false" selection-start-line="9" selection-start-column="133" selection-end-line="9" selection-end-column="133" />
+          <folding>
+            <element signature="n#style#0;n#span#1;n#div#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/findit/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-11146">
@@ -619,18 +610,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/findit/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="50" column="56" lean-forward="false" selection-start-line="47" selection-start-column="6" selection-end-line="50" selection-end-column="56" />
+        <state relative-caret-position="-457">
+          <caret line="50" column="54" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="50" selection-end-column="54" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ll_env/lib/python3.5/site-packages/django/db/models/query.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="365" column="8" lean-forward="false" selection-start-line="365" selection-start-column="8" selection-end-line="365" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/findit/j_crawler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="936">
-          <caret line="52" column="25" lean-forward="false" selection-start-line="51" selection-start-column="22" selection-end-line="52" selection-end-column="25" />
+        <state relative-caret-position="258">
+          <caret line="314" column="8" lean-forward="true" selection-start-line="314" selection-start-column="7" selection-end-line="314" selection-end-column="8" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -639,27 +638,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/findit/k_cralwer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="50" column="25" lean-forward="false" selection-start-line="49" selection-start-column="22" selection-end-line="50" selection-end-column="25" />
+        <state relative-caret-position="-1037">
+          <caret line="397" column="22" lean-forward="true" selection-start-line="396" selection-start-column="20" selection-end-line="397" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/findit/y_crawler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="49" column="24" lean-forward="false" selection-start-line="48" selection-start-column="22" selection-end-line="49" selection-end-column="24" />
+        <state relative-caret-position="413">
+          <caret line="97" column="21" lean-forward="true" selection-start-line="96" selection-start-column="16" selection-end-line="97" selection-end-column="21" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/findit/templates/results_ajax.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="133" lean-forward="false" selection-start-line="9" selection-start-column="133" selection-end-line="9" selection-end-column="133" />
-          <folding>
-            <element signature="n#style#0;n#span#1;n#div#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
