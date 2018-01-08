@@ -269,7 +269,6 @@ def shirts(request):
                'share_string': share_string,
                'page': 'shirt_page'
                }
-    # print(all_products.count())
     t2 = time.time()
     query_time = t2 - t1
     query_time = '{:.6f}'.format(query_time)
