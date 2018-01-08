@@ -90,8 +90,8 @@
       <file leaf-file-name="results_ajax.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/findit/templates/results_ajax.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="9" column="231" lean-forward="false" selection-start-line="9" selection-start-column="231" selection-end-line="9" selection-end-column="231" />
+            <state relative-caret-position="52">
+              <caret line="9" column="275" lean-forward="false" selection-start-line="9" selection-start-column="275" selection-end-line="9" selection-end-column="275" />
               <folding>
                 <element signature="n#style#0;n#span#1;n#div#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -568,8 +568,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/findit/templates/results_ajax.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="9" column="231" lean-forward="false" selection-start-line="9" selection-start-column="231" selection-end-line="9" selection-end-column="231" />
+        <state relative-caret-position="52">
+          <caret line="9" column="275" lean-forward="false" selection-start-line="9" selection-start-column="275" selection-end-line="9" selection-end-column="275" />
           <folding>
             <element signature="n#style#0;n#span#1;n#div#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
