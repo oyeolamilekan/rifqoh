@@ -717,6 +717,7 @@ def engine_starter(request):
 
 
 def stupid_me(request):
+    whichPage(request,'that_idoit','delete_page')
     # Products.objects.all().delete()
     return HttpResponse('You have successfully deleted all the db')
 
