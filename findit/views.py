@@ -686,7 +686,18 @@ def men_watch(request):
 
 
 def number_of_clicks(request, id):
-    return HttpResponse('hi')
+    if Products.objects.filter(id=id).exists():
+        product = Products.objects.get(id=id)
+        object_viewed.send(product.__class__, instance=product, request=request)
+        product.num_of_clicks = product.num_of_clicks + 1
+        product.save()
+        if product.shop == 'jumia':
+            return HttpResponseRedirect(
+                'http://c.jumia.io/?a=35588&c=11&p=r&E=kkYNyk2M4sk%3d&ckmrdr=' + product.source_url + '&utm_source=cake&utm_medium=affiliation&utm_campaign=35588&utm_term=')
+        else:
+            return HttpResponseRedirect(product.source_url)
+    else:
+        return HttpResponse('Not Found on this beautiful server')
 
 
 def feedback(request):
@@ -717,7 +728,6 @@ def engine_starter(request):
 
 
 def stupid_me(request):
-    whichPage(request,'that_idoit','delete_page')
     # Products.objects.all().delete()
     return HttpResponse('You have successfully deleted all the db')
 
