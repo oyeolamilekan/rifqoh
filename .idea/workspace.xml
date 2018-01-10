@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51e17f89-69f2-468e-b7b1-3132c299a8b5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/findit/views.py" afterPath="$PROJECT_DIR$/findit/views.py" />
-      <change beforePath="$PROJECT_DIR$/pixxelated/settings.py" afterPath="$PROJECT_DIR$/pixxelated/settings.py" />
+      <change beforePath="$PROJECT_DIR$/findit/utils.py" afterPath="$PROJECT_DIR$/findit/utils.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,11 +13,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pixxelated/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
               <caret line="119" column="4" lean-forward="false" selection-start-line="119" selection-start-column="4" selection-end-line="119" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utils.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/findit/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -30,16 +38,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-649">
               <caret line="397" column="22" lean-forward="false" selection-start-line="396" selection-start-column="20" selection-end-line="397" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="regen" pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/plat-darwin/regen">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -143,7 +141,6 @@
         <option value="$PROJECT_DIR$/analytics/utils.py" />
         <option value="$PROJECT_DIR$/analytics/views.py" />
         <option value="$PROJECT_DIR$/analytics/an_utils.py" />
-        <option value="$PROJECT_DIR$/findit/utils.py" />
         <option value="$PROJECT_DIR$/findit/models.py" />
         <option value="$PROJECT_DIR$/findit/j_crawler.py" />
         <option value="$PROJECT_DIR$/findit/k_cralwer.py" />
@@ -152,6 +149,7 @@
         <option value="$PROJECT_DIR$/findit/templates/home_page.html" />
         <option value="$PROJECT_DIR$/findit/views.py" />
         <option value="$PROJECT_DIR$/pixxelated/settings.py" />
+        <option value="$PROJECT_DIR$/findit/utils.py" />
       </list>
     </option>
   </component>
@@ -475,13 +473,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/findit/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="10" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2017.3/python_stubs/299618675/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88128">
@@ -633,6 +624,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="119" column="4" lean-forward="false" selection-start-line="119" selection-start-column="4" selection-end-line="119" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/findit/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="10" />
           <folding />
         </state>
       </provider>
