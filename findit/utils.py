@@ -7,7 +7,7 @@ from .y_crawler import yudala
 
 def black_rock():
     # Activates aliexpress crawler
-    alii()
+    # alii()
 
     # Jumia jumia crawler
     jumia_crawler()
