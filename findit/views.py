@@ -685,16 +685,16 @@ def men_watch(request):
     return render(request, 'results_page.html', context)
 
 
-def number_of_clicks(request, id):
-    product = Products.objects.get(id=id)
-    object_viewed.send(product.__class__, instance=product, request=request)
-    product.num_of_clicks = product.num_of_clicks + 1
-    product.save()
-    if product.shop == 'jumia':
-        return HttpResponseRedirect(
-            'http://c.jumia.io/?a=35588&c=11&p=r&E=kkYNyk2M4sk%3d&ckmrdr=' + product.source_url + '&utm_source=cake&utm_medium=affiliation&utm_campaign=35588&utm_term=')
-    else:
-        return HttpResponseRedirect(product.source_url)
+# def number_of_clicks(request, id):
+#     product = Products.objects.get(id=id)
+#     object_viewed.send(product.__class__, instance=product, request=request)
+#     product.num_of_clicks = product.num_of_clicks + 1
+#     product.save()
+#     if product.shop == 'jumia':
+#         return HttpResponseRedirect(
+#             'http://c.jumia.io/?a=35588&c=11&p=r&E=kkYNyk2M4sk%3d&ckmrdr=' + product.source_url + '&utm_source=cake&utm_medium=affiliation&utm_campaign=35588&utm_term=')
+#     else:
+#         return HttpResponseRedirect(product.source_url)
 
 
 def feedback(request):
