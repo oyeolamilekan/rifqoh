@@ -10,63 +10,63 @@ from .models import Products
 
 # https://www.konga.com/playstation-4
 def konga_crawler():
-    for urls in range(1, 30):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
-        html = Request('https://www.konga.com/playstation-4?page=%s' % urls, headers=hdr)
-        htmll = urlopen(html).read()
-        bsObj = BeautifulSoup(htmll, 'html.parser')
-        product_list = bsObj.findAll('div', {'class': 'product-block'})
-        for product in product_list:
-            product_name = product.find('div', {'class': 'product-name'})
-            product_link = 'https://www.konga.com' + product.a.attrs['href']
-            images = product.img.attrs['src']
-            request = requests.get(images, stream=True)
-            if product.find('div', {'class': 'special-price'}) != None:
-                # If it does exist it find the price
-                price = product.find('div', {'class': 'special-price'})
-            else:
-                # If does not exist it finds the original price
-                price = product.find('div', {'class': 'original-price'})
-            e_price = bytes(str(price.text), 'UTF-8')
-            e_price = e_price.decode('ascii', 'ignore')
-            namelst = bytes(str(product_name.text), 'UTF-8')
-            namelst = namelst.decode('ascii', 'ignore')
-            if Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga').exists():
-                product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga").count()
-
-                if product_count >= 2:
-                    product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga")[1]
-                    product_count.delete()
-
-                produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga')
-                # Checks the price
-                if produc.price != e_price:
-                    produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
-                    # Updates the price
-                    produc.price = e_price
-                    # Saves the price
-
-                    produc.save()
-            else:
-                if request.status_code != requests.codes.ok:
-                    continue
-                file_name = 'konga/' + images.split('/')[-1]
-                lf = tempfile.NamedTemporaryFile()
-                for block in request.iter_content(1024 * 8):
-                    if not block:
-                        break
-                    lf.write(block)
-                print(namelst, e_price)
-                product = Products(name=namelst.replace("\n", ' ').replace('\t',' '), price=e_price, source_url=product_link,
-                                   genre='televisions', shop='konga')
-                product.image.save(file_name[:20], files.File(lf))
+    # for urls in range(1, 30):
+    #     hdr = {
+    #         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+    #         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    #         'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+    #         'Accept-Encoding': 'none',
+    #         'Accept-Language': 'en-US,en;q=0.8',
+    #         'Connection': 'keep-alive'}
+    #     html = Request('https://www.konga.com/playstation-4?page=%s' % urls, headers=hdr)
+    #     htmll = urlopen(html).read()
+    #     bsObj = BeautifulSoup(htmll, 'html.parser')
+    #     product_list = bsObj.findAll('div', {'class': 'product-block'})
+    #     for product in product_list:
+    #         product_name = product.find('div', {'class': 'product-name'})
+    #         product_link = 'https://www.konga.com' + product.a.attrs['href']
+    #         images = product.img.attrs['src']
+    #         request = requests.get(images, stream=True)
+    #         if product.find('div', {'class': 'special-price'}) != None:
+    #             # If it does exist it find the price
+    #             price = product.find('div', {'class': 'special-price'})
+    #         else:
+    #             # If does not exist it finds the original price
+    #             price = product.find('div', {'class': 'original-price'})
+    #         e_price = bytes(str(price.text), 'UTF-8')
+    #         e_price = e_price.decode('ascii', 'ignore')
+    #         namelst = bytes(str(product_name.text), 'UTF-8')
+    #         namelst = namelst.decode('ascii', 'ignore')
+    #         if Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga').exists():
+    #             product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga").count()
+    #
+    #             if product_count >= 2:
+    #                 product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga")[1]
+    #                 product_count.delete()
+    #
+    #             produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga')
+    #             # Checks the price
+    #             if produc.price != e_price:
+    #                 produc.old_price = produc.price
+    #                 produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
+    #                 # Updates the price
+    #                 produc.price = e_price
+    #                 # Saves the price
+    #
+    #                 produc.save()
+    #         else:
+    #             if request.status_code != requests.codes.ok:
+    #                 continue
+    #             file_name = 'konga/' + images.split('/')[-1]
+    #             lf = tempfile.NamedTemporaryFile()
+    #             for block in request.iter_content(1024 * 8):
+    #                 if not block:
+    #                     break
+    #                 lf.write(block)
+    #             print(namelst, e_price)
+    #             product = Products(name=namelst.replace("\n", ' ').replace('\t',' '), price=e_price, source_url=product_link,
+    #                                genre='televisions', shop='konga')
+    #             product.image.save(file_name[:20], files.File(lf))
 
     for urls in range(1, 60):
         hdr = {
