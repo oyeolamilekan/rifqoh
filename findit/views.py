@@ -725,8 +725,8 @@ def engine_starter(request):
 
 
 def stupid_me(request):
-    Products.objects.all().delete()
-    return HttpResponse('allo ')
+    # Products.objects.all().delete()
+    return HttpResponse('You have successfully deleted all the db')
 
 
 def twitter_bot(request):
