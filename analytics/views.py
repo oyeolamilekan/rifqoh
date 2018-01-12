@@ -1,8 +1,10 @@
-from django.db.models.aggregates import Count
-from django.shortcuts import render
 import datetime
+
+from django.db.models.aggregates import Count
 from django.http import JsonResponse
-from .models import PageViews, UserNumber
+from django.shortcuts import render
+
+from .models import PageViews, UserNumber, ObjectViewed
 
 
 # Create your views here.
@@ -30,4 +32,16 @@ def usergrowth(request):
     for user in user_g:
         data_sett.append(user['date_added_count'])
         dayses.append(datetime.datetime.strptime(str(user['date_added']), '%Y-%m-%d').strftime('%a'))
+    return JsonResponse({'data_s': data_sett, 'dayses': dayses})
+
+
+def userClicks(request):
+    data_sett = []
+    dayses = []
+    user_g = ObjectViewed.objects.extra({'timestamp': "date(timestamp)"}).values('timestamp').annotate(
+        date_added_count=Count('id')).order_by('timestamp')
+    for user in user_g:
+        data_sett.append(user['timestamp'])
+        dayses.append(datetime.datetime.strptime(str(user['timestamp']), '%Y-%m-%d').strftime('%a'))
+    print(data_sett)
     return JsonResponse({'data_s': data_sett, 'dayses': dayses})

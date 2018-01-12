@@ -14,6 +14,11 @@
 			<canvas id="line-chrt" width="800" height="450"></canvas>
 		</div>
 	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<canvas id="line-cht" width="800" height="450"></canvas>
+		</div>
+	</div>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -50,6 +55,27 @@ $(document).ready(function(){
 		    datasets: [{ 
 		        data: data.data_s,
 		        label: "New Users",
+		        borderColor: "#20de1f",
+		        backgroundColor: '#20de1f',
+		        fill: false
+		      }
+		    ]
+		  },
+		});
+		}
+	})
+	$.ajax({
+		method:'GET',
+		url: '/analytics/userclicks/',
+		success: function(data){
+			console.log(data.data_set)
+			new Chart(document.getElementById("line-cht"), {
+		  type: 'line',
+		  data: {
+		    labels: data.dayses,
+		    datasets: [{
+		        data: data.data_s,
+		        label: "User Clicks",
 		        borderColor: "#20de1f",
 		        backgroundColor: '#20de1f',
 		        fill: false
