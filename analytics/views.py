@@ -28,7 +28,7 @@ def usergrowth(request):
     data_sett = []
     dayses = []
     user_g = UserNumber.objects.extra({'date_added': "date(date_added)"}).values('date_added').annotate(
-        date_added_count=Count('id')).order_by('date_added')[10:]
+        date_added_count=Count('id')).order_by('date_added')
     for user in user_g:
         data_sett.append(user['date_added_count'])
         dayses.append(datetime.datetime.strptime(str(user['date_added']), '%Y-%m-%d').strftime('%a'))
@@ -41,7 +41,7 @@ def userClicks(request):
     user_g = ObjectViewed.objects.extra({'timestamp': "date(timestamp)"}).values('timestamp').annotate(
         date_added_count=Count('id')).order_by('timestamp')
     for user in user_g:
-        data_sett.append(user['timestamp'])
+        data_sett.append(user['date_added_count'])
         dayses.append(datetime.datetime.strptime(str(user['timestamp']), '%Y-%m-%d').strftime('%a'))
     print(data_sett)
     return JsonResponse({'data_s': data_sett, 'dayses': dayses})
