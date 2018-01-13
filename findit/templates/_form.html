@@ -3,7 +3,7 @@
 <form method="POST" action="/feedback/" id="wo">
         {% csrf_token %}
         {% bootstrap_form form %}
-     <input type="submit" id='uploadSubmit' value="submit" class="btn btn-default"> {{ path}}
+     <input type="submit" id='uploadSubmit' value="submit" class="btn btn-default btn-block"> {{ path}}
    <div class="loa text-center" style="display: none;">
         <img src="{% static 'loading.gif' %}">
     </div>

@@ -805,7 +805,7 @@ def timeLogs(request):
     time = request.GET.get('timespent', None)
     page = request.GET.get('page', None)
     url = request.GET.get('url', None)
-    time = str(abs(int(time)))
+    time = str(time)
     print(time)
     user_time = UserTime.objects.create(user_o=user, time_spent=time, page=page, current_page=url)
     user_time.save()
