@@ -711,7 +711,7 @@ def feedback(request):
 
 
 def despiration(request):
-    stuffs = Products.objects.all().exclude(genre='aliexpress')
+    stuffs = Products.objects.all().exclude(shop='aliexpress')
     for i in stuffs:
         i.real_price = int(i.price.replace(',', '').replace('\n', '').replace('.00', ''))
         i.save()
