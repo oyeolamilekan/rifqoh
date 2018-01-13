@@ -756,7 +756,7 @@ def deleteu(request):
 
 
 def convert_me(request):
-    products = Products.objects.all()
+    products = Products.objects.all().exclude(shop='aliexpress')
     for product in products:
         analytics = Analytics.objects.get(id=product.id)
         product.num_of_clicks = product.num_of_clicks + analytics.number_of_clicks
