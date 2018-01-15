@@ -107,7 +107,7 @@ nav form#seah .input-group .form-control {
       right: 15px !important;
     }
     .floatt {
-      top: 374px !important;
+      bottom: 78px !important;
       right: 15px !important;
     }
 }
@@ -118,9 +118,6 @@ img.baby_mama{
     width: 100%;
     max-width: 318px;
     max-height: 106px;
-}
-
-element.style {
 }
 .navbar-default {
     background-color: white;
@@ -236,15 +233,13 @@ a.float:hover, a.floatt:hover {
                     </a>
                 </li> -->
               </ul>
-      <form id="search" role="search" class="col-sm-3 xs" action="{% if mack %}{% url 'shop:store_details' shop %}{% else %}{% url 'findit:real_index' %}{% endif %}" method="get">
+      <form id="search" role="search" class="col-sm-3 xs" action="." method="get">
 				<div class="input-group">
 					<span class="glyphicon glyphicon-search" ariahidden="
 					true"></span>
 					<input type="text" class="form-control transition" name="q"
 					placeholder="Search..." id="search-input" list="myQueries">
-          <datalist id="myQueries">
-                          
-                        </datalist>
+
 				</div>
 			</form>
 			<ul class="nav navbar-nav navbar-right">

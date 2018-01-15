@@ -43,5 +43,4 @@ def userClicks(request):
     for user in user_g:
         data_sett.append(user['date_added_count'])
         dayses.append(datetime.datetime.strptime(str(user['timestamp']), '%Y-%m-%d').strftime('%a'))
-    print(data_sett)
     return JsonResponse({'data_s': data_sett, 'dayses': dayses})

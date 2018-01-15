@@ -43,6 +43,7 @@ def home_page(request):
     return render(request, 'search_page.html', context)
 
 
+# Dark and light design
 def user_choice(request):
     user = get_client_ip(request)
     if UserTheme.objects.filter(user=user).exists():
@@ -909,6 +910,7 @@ def delunn(request):
     prod = Products.objects.filter(name__icontains='Apple', genre='women-dresses')
     prod.delete()
     return HttpResponse('Sacrifices')
+
 
 # def stream(request):
 # 	all_products = Products.objects.order_by('?').filter(genre__in=[subb.lisert for subb in sub_listo])
