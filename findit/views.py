@@ -1,3 +1,4 @@
+import time
 from urllib.parse import quote_plus
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
