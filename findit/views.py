@@ -1,4 +1,3 @@
-import time
 from urllib.parse import quote_plus
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -16,7 +15,7 @@ from analytics.signals import object_viewed
 from analytics.utils import add_query
 from analytics.utils import whichPage, user_count, user_converter
 from .forms import feedBackForm
-from .models import Products, Analytics, UserTheme
+from .models import Products, Analytics, UserTheme, Tips
 from .utils import black_rock, nairaconv
 
 # Intial Stops words for the users
@@ -90,6 +89,10 @@ def advanced_search(request):
     except:
         context = {'twinkle': 'Your query just scatered our database'}
     t2 = time.time()
+    add_query('product name: %s, price: %s, end_price: %s' % (request.GET.get('brand', None),
+                                                              request.GET.get('start_price', None),
+                                                              request.GET.get('end_price', None)),
+              'advance_search', all_products[:10], nbool=True, correct=request.GET.get('brand', None), request=request)
     query_time = t2 - t1
     query_time = '{:.6f}'.format(query_time)
     context['query_time'] = query_time
@@ -911,6 +914,16 @@ def delunn(request):
     prod.delete()
     return HttpResponse('Sacrifices')
 
+
+def tips_loud(request):
+    tips = Tips.objects.order_by('?')[0]
+    print(tips.id)
+    if tips.image_1:
+        return JsonResponse({'text':tips.body, 'img': tips.image.url, 'img_1': tips.image_1.url})
+    elif tips.image:
+        return JsonResponse({'text': tips.body, 'img': tips.image.url})
+    else:
+        return JsonResponse({'text': tips.body})
 
 # def stream(request):
 # 	all_products = Products.objects.order_by('?').filter(genre__in=[subb.lisert for subb in sub_listo])

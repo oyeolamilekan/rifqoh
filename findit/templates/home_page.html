@@ -110,6 +110,10 @@ nav form#seah .input-group .form-control {
       bottom: 78px !important;
       right: 15px !important;
     }
+    .floattt {
+      bottom: 148px !important;
+      right: 15px !important;
+    }
 }
 body{
   background: url("{% static 'bg123.jpg'%}") cover;
@@ -174,6 +178,7 @@ img.baby_mama{
   text-align:center;
   box-shadow: 2px 2px 3px #999;
 }
+/**  **/
 .floatt{
   position:fixed;
   width:60px;
@@ -187,12 +192,25 @@ img.baby_mama{
   box-shadow: 2px 2px 3px #999;
 }
 
+.floattt{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:200px;
+  right:40px;
+  background-color:#39dabe;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  box-shadow: 2px 2px 3px #999;
+}
+
 .my-float{
   font-size:24px;
   margin-top:18px;
 }
 
-a.float:hover, a.floatt:hover {
+a.float:hover, a.floatt:hover,a.floattt:hover {
   color: #fff;
 
 }
@@ -323,11 +341,18 @@ a.float:hover, a.floatt:hover {
   <i class="fa fa-envelope my-float"></i>
 </a> -->
 
+<!-- Handle the send feedback button -->
 <a class="float" href="#myModal" role="button" data-toggle="modal">
   <i class="fa fa-envelope my-float"></i>
 </a>
+
+<!-- Handles the advance search button -->
 <a class="floatt" href="#mySearch" role="button" data-toggle="modal">
   <i class="fa fa-search my-float"></i>
+</a>
+
+<a class="floattt flo" href="#myodal" role="button" data-toggle="modal">
+  <i class="fa fa-lightbulb-o my-float"></i>
 </a>
 
 <div class="modal fade" id="mySearch">
@@ -381,6 +406,7 @@ a.float:hover, a.floatt:hover {
 		</div>
 	</div>
 </div>
+
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -393,6 +419,29 @@ a.float:hover, a.floatt:hover {
       <div style="padding: 20px">
       {% report_form request.build_absolute_uri %}
       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myodal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div style="padding: 10px">
+        <button class="close" data-dismiss="modal">&times;</button>
+        </div>
+      <div class="modal-body feedback-loop">
+      <h4 class="text-center">
+          <img src="{% static 'loading.gif' %}" id="loader" class="text-center">
+      </h4>
+      <div style="padding: 10px" class="bundle">
+          <div class="image-loader">
+
+          </div>
+      </div>
+          <div class="">
+              <a class="btn btn-primary btn-block flo" href="#">Show another tip</a>
+          </div>
       </div>
     </div>
   </div>
@@ -421,6 +470,34 @@ a.float:hover, a.floatt:hover {
         });
 
     })
+
+    $('.flo').click(function(event){
+        event.preventDefault();
+        $.ajax({
+            url: '/tips_loud/',
+            type: 'GET',
+        beforeSend: function () {
+            $('#loader').show()
+            $('.bundle').html("<div class='image-loader'></div>");
+        },
+        success : function(data){
+          $('#loader').hide()
+          $('.bundle').prepend('<b>Did you know ?:</b> '+data['text']);
+          if (data['img_1']){
+            $('.image-loader').html("<img src='" +data['img'] +"'style='border-radius: 5px; width:100%;'/><p></p><p><img src='" +data['img_1'] +"'style='border-radius: 5px; width:100%;'/><p></p><p>");
+
+            }
+
+          else if (data['img']){
+            $('.image-loader').html("<p></p><img src='" +data['img'] +"'style='border-radius: 5px; width:100%;'/><p></p><p>");
+
+            }
+
+          }
+
+    });
+    });
+
     
 </script>
 </html>

@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^convertion/$', views.stupid_me, name='stupid_me'),
     url(r'^user_choice/$', views.user_choice, name='user_choice'),  # priceconvert
     url(r'^jumia/$', views.priceconvert, name='priceconvert'),
-    url(r'^add_log/$', views.timeLogs, name='timeLogs')
+    url(r'^add_log/$', views.timeLogs, name='timeLogs'),
+    url(r'^tips_loud/$', views.tips_loud, name='tips_loud')
 
 ]

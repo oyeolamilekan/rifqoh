@@ -80,6 +80,20 @@ class Analytics(models.Model):
         verbose_name = 'Analytics'
         verbose_name_plural = 'Analytics'
 
+# Handles the Tips database
+class Tips(models.Model):
+    body = models.TextField()
+    image = models.ImageField(blank=True, null=True)
+    image_1 = models.ImageField(blank=True, null=True)
+
+    def __str__(self):
+        return self.body
+
+    class Meta:
+        ordering = ['-id']
+        verbose_name = 'Tip'
+        verbose_name_plural = 'Tips'
+
 
 # Feedbacks from the user
 class Feedback(models.Model):

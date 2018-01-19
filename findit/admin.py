@@ -4,3 +4,4 @@ from .models import *
 admin.site.register(Products)
 admin.site.register(Feedback)
 admin.site.register(Analytics)
+admin.site.register(Tips)
