@@ -918,7 +918,6 @@ def delunn(request):
 
 def tips_loud(request):
     tips = Tips.objects.order_by('?')[0]
-    print(tips.id)
     if tips.image_1:
         return JsonResponse({'text':tips.body, 'img': tips.image.url, 'img_1': tips.image_1.url})
     elif tips.image:
