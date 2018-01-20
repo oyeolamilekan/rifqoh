@@ -222,7 +222,7 @@ def konga_crawler():
                 # Checks the price
                 if produc.price != e_price:
                     produc.old_price = produc.price
-                    produc.old_price_digit = int(produc.price.replace(',', ' ').replace('\n', '').replace('.00', ''))
+                    produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = e_price
                     # Saves the price
