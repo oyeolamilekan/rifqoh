@@ -23,6 +23,10 @@ from .utils import black_rock, nairaconv
 STOP_WORDS = ['price', 'prices', 'laptops', 'laptop', 'phones', 'phone', 'dresses']
 
 
+def about_home(request):
+    return render(request, 'about.html', {})
+
+
 def home_page(request):
     share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
     url = request.build_absolute_uri()
@@ -919,7 +923,7 @@ def delunn(request):
 def tips_loud(request):
     tips = Tips.objects.order_by('?')[0]
     if tips.image_1:
-        return JsonResponse({'text':tips.body, 'img': tips.image.url, 'img_1': tips.image_1.url})
+        return JsonResponse({'text': tips.body, 'img': tips.image.url, 'img_1': tips.image_1.url})
     elif tips.image:
         return JsonResponse({'text': tips.body, 'img': tips.image.url})
     else:

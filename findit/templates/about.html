@@ -1,0 +1,90 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+
+    <title>Hello, world!</title>
+      <style>
+          .card{
+            margin-left:1rem !important;
+          }
+          @media(max-width: 414px){
+            .card {
+               margin-left:0rem;
+            }
+          }
+      </style>
+  </head>
+  <body>
+    <section class="frontpage" style="height: 100%;background: -webkit-linear-gradient(90deg, rgb(27, 162, 167), rgb(88, 227, 239));
+margin: 0px;">
+        <div class="dmon">
+            <div class="header-logo mx-auto text-center">
+                <a href="/">
+                <img src="{% static 'strip.png' %}" class="text-center" style="margin-top: 15px;width:50px; position:relative; top:-12px;">
+                </a>
+            </div>
+            <div class="container center-description text-center" style="padding-top: 10rem;display: flex; align-items: center; padding-left:30px; padding-right:30px;">
+                <h4 style="font-weight:200;">Quickfinda is a very small technology company that builds simple, powerful products for people and businesses.</h4>
+            </div>
+        </div>
+<!-- 08030479332 -->
+        <br>
+        <h3 class="text-center" style="font-weight:200;">The Technologies we use.</h3>
+        <br>
+        <div class="technology justify-content-center" style="align-items: center; justify-content: space-around; display: flex; flex-wrap: wrap;
+    float: none; margin-bottom: 20px;">
+            <div class="card-group">
+            <div class="card text-white bg-primary mb-3 text-center" style="max-width: 18rem;">
+                <div class="card-header">Django</div>
+                <div class="card-body">
+                        <img src="{% static "django.png"%}" style="width:100%;">
+                    <p class="card-text">
+                        Django is a high-level Python Web framework
+                        that encourages rapid development and clean,
+                        pragmatic design.
+                    </p>
+                </div>
+            </div>
+            <div class="card text-white bg-success mb-3 text-center" style="max-width: 18rem;">
+                <div class="card-header">Python</div>
+                <div class="card-body">
+                        <img src="{% static "python-p.png"%}" style="width:100%;">
+                        <p>Python's simple, easy to learn syntax emphasizes readability and therefore
+                            reduces the cost of program maintenance. Python supports modules and packages,
+                        which encourages program modularity and code reuse.
+                    </p>
+                </div>
+            </div>
+            <div class="card mb-3 text-center" style="max-width: 18rem;">
+                <div class="card-header">Bootstrap</div>
+                    <div class="card-body">
+                        <img src="{% static "bootstrap-stack.png"%}" style="width:100%;">
+                    <p class="card-text">
+                        Bootstrap is a free and open-source front-end web framework for designing websites and web applications.
+                    </p>
+                </div>
+            </div>
+            <div class="card mb-3 text-center bg-danger text-white" style="max-width: 18rem;">
+                <div class="card-header">Jquery</div>
+                    <div class="card-body">
+                        <img src="{% static "jquery-200.png"%}" style="width:100%;">
+                    <p class="card-text">
+                        jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML.[3] It is free, open-source software using the permissive MIT License
+                    </p>
+                </div>
+            </div>
+
+        </div>
+            </div>
+    </section>
+  </body>
+</html>
