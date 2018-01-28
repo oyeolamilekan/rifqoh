@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51e17f89-69f2-468e-b7b1-3132c299a8b5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/analytics/templates/analytics/index.html" afterPath="$PROJECT_DIR$/analytics/templates/analytics/index.html" />
-      <change beforePath="$PROJECT_DIR$/analytics/urls.py" afterPath="$PROJECT_DIR$/analytics/urls.py" />
-      <change beforePath="$PROJECT_DIR$/analytics/views.py" afterPath="$PROJECT_DIR$/analytics/views.py" />
-      <change beforePath="$PROJECT_DIR$/findit/templates/about.html" afterPath="$PROJECT_DIR$/findit/templates/about.html" />
-      <change beforePath="$PROJECT_DIR$/findit/templates/home_page.html" afterPath="$PROJECT_DIR$/findit/templates/home_page.html" />
-    </list>
+    <list default="true" id="51e17f89-69f2-468e-b7b1-3132c299a8b5" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -35,7 +35,7 @@ def prod_clicks(request):
 def user_acq(request):
     number_q = UserNumber.objects.order_by('-id')
     page_request_var = 'page'
-    paginator = Paginator(number_q, 10)
+    paginator = Paginator(number_q, 20)
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
