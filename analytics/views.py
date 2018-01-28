@@ -3,15 +3,52 @@ import datetime
 from django.db.models.aggregates import Count
 from django.http import JsonResponse
 from django.shortcuts import render
-
+from .models import ObjectViewed,UserNumber
 from .models import PageViews, UserNumber, ObjectViewed
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 
 def HomeView(request):
     return render(request, 'analytics/index.html', {})
 
+
+
+def prod_clicks(request):
+    number_q = ObjectViewed.objects.order_by('-id')
+    page_request_var = 'page'
+    paginator = Paginator(number_q, 10)
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        if request.is_ajax():
+            # If the request is AJAX and the page is out of range return an empty page
+            return HttpResponse('')
+    if request.is_ajax():
+        return render(request, 'analytics/number_q_ajax.html', {'queries': queryset})
+    context = {'queries': queryset}
+    return render(request, 'analytics/number_q.html', context)
+
+def user_acq(request):
+    number_q = UserNumber.objects.order_by('-id')
+    page_request_var = 'page'
+    paginator = Paginator(number_q, 10)
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        if request.is_ajax():
+            # If the request is AJAX and the page is out of range return an empty page
+            return HttpResponse('')
+    if request.is_ajax():
+        return render(request, 'analytics/number_c_ajax.html', {'queries': queryset})
+    context = {'queries': queryset}
+    return render(request, 'analytics/number_c.html', context)
 
 def pageView(request):
     data_set = []

@@ -1,0 +1,8 @@
+{% for query in queries %}
+	<tr>
+      <td>{{ query.id }}</td>
+      <td>{{ query.content_object }}</td>
+      <td>{{ query.content_object.shop }}</td>
+      <td>{{ query.timestamp }}</td>
+    </tr>
+{% endfor %}

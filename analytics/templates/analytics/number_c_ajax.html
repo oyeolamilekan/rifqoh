@@ -1,0 +1,8 @@
+
+	{% for query in queries %}
+		<tr>
+	      <td>{{ query.id }}</td>
+	      <td>{{ query.user_ip }}</td>
+	      <td>{{ query.date_added }}</td>
+	    </tr>
+	{% endfor %}

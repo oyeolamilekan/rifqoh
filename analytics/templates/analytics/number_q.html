@@ -1,0 +1,53 @@
+{% extends 'analytics/b_based.html' %}
+{% block header %}Product Clicked{% endblock %}
+{% block clicks %}active{% endblock %}
+{% block content %}
+<div class="table-responsive">
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+    {% if usernum %}
+        <th>#</th>
+        <th>User</th>
+        <th>Time</th>
+    {% else %}
+        <th>#</th>
+        <th>Product</th>
+        <th>Shop</th>
+        <th>Time</th>
+    {% endif %}
+    </tr>
+  </thead>
+  <tbody class="hello">
+	{% include 'analytics/number_q_ajax.html' %}
+</div>
+</tbody>
+</table>
+</div>
+{% endblock %}
+{% block heo %}
+	var page = 1;
+    var empty_page = false;
+    var block_request = false;
+    $(window).scroll(function() {
+        var margin = $(document).height() - $(window).height() - 200;
+        if  ($(window).scrollTop() > margin && empty_page == false && block_request == false) {
+        block_request = true;
+        page += 1;
+        $('.load').show();
+        $.get('?page=' + page, function(data) {
+            if(data == '')
+            {
+                empty_page = true;
+                $('.load').hide();
+                $('.lastThingboy').html('<h4>Nothing to see</h4>')
+            }
+            else {
+                    block_request = false;
+                    $('.load').hide();
+                    $('.hello').append(data);
+              }
+            });
+      }
+    });
+{% endblock %}
