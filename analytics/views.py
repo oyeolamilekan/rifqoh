@@ -11,10 +11,12 @@ from .models import PageViews, UserNumber, ObjectViewed
 
 # Create your views here.
 
+# Handles the home view to show the graphs
 def HomeView(request):
     return render(request, 'analytics/index.html', {})
 
 
+# Shows the number of products clicked by the on the graph
 def prod_clicks(request):
     number_q = ObjectViewed.objects.order_by('-id')
     page_request_var = 'page'
@@ -34,6 +36,7 @@ def prod_clicks(request):
     return render(request, 'analytics/number_q.html', context)
 
 
+# Show the numbers of users acquired on each day and displays on the graph
 def user_acq(request):
     number_q = UserNumber.objects.order_by('-id')
     page_request_var = 'page'

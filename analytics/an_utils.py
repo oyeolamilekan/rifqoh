@@ -1,3 +1,5 @@
+
+# Get the Ip address of the user
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
@@ -7,6 +9,7 @@ def get_client_ip(request):
     return ip
 
 
+# Checks if the request is robot and it is, it doesn't add it to the database.
 def is_bot(request):
     botnames = ['Googlebot', 'Slurp', 'Twiceler', 'msnbot', 'KaloogaBot', 'YodaoBot', '"Baiduspider', 'googlebot',
                 'Speedy Spider', 'DotBot']
