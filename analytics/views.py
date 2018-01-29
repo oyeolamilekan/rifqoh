@@ -1,17 +1,18 @@
 import datetime
 
-from django.db.models.aggregates import Count
-from django.http import JsonResponse
-from django.shortcuts import render
-from .models import ObjectViewed,UserNumber
-from .models import PageViews, UserNumber, ObjectViewed
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models.aggregates import Count
+from django.http import JsonResponse, HttpResponse
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
+from .models import PageViews, UserNumber, ObjectViewed
+
 
 # Create your views here.
 
 def HomeView(request):
     return render(request, 'analytics/index.html', {})
-
 
 
 def prod_clicks(request):
@@ -32,6 +33,7 @@ def prod_clicks(request):
     context = {'queries': queryset}
     return render(request, 'analytics/number_q.html', context)
 
+
 def user_acq(request):
     number_q = UserNumber.objects.order_by('-id')
     page_request_var = 'page'
@@ -49,6 +51,7 @@ def user_acq(request):
         return render(request, 'analytics/number_c_ajax.html', {'queries': queryset})
     context = {'queries': queryset}
     return render(request, 'analytics/number_c.html', context)
+
 
 def pageView(request):
     data_set = []

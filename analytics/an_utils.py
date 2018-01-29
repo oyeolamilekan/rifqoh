@@ -5,3 +5,15 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR', None)
     return ip
+
+
+def is_bot(request):
+    botnames = ['Googlebot', 'Slurp', 'Twiceler', 'msnbot', 'KaloogaBot', 'YodaoBot', '"Baiduspider', 'googlebot',
+                'Speedy Spider', 'DotBot']
+    user_agent = request.META.get('HTTP_USER_AGENT', None)
+
+    for botname in botnames:
+        if botname in user_agent:
+            return True
+        else:
+            return False
