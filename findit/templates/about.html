@@ -13,65 +13,110 @@
 
     <title>Hello, world!</title>
       <style>
-          .card{
+          /*.card{
             margin-left:1rem !important;
           }
           @media(max-width: 414px){
             .card {
                margin-left:0rem !important;
             }
+          }*/
+          .small-img {
+            width: 40px;
+          }
+          .header-logo {
+            padding: 5px;
+          }
+          .header-place{
+            height: 100vh;
+          }
+          .the-team, .our-tech {
+            height: 100%;
+          }
+          .header-text{
+            margin-top: 15%;
+            font-weight: 100;
+          }
+          .header-text > h1 {
+            font-weight: 100;
+          }
+          .p-tags {
+            margin-top: 30px;
+            margin-bottom: 30px;
+          }
+          .blue-board {
+            align-items: center; 
+            justify-content: space-around; 
+            display: flex; 
+            flex-wrap: wrap;
+          }
+          .card-binder {
+            
           }
       </style>
   </head>
   <body>
-    <section class="frontpage" style="height: 100%;background: -webkit-linear-gradient(90deg, rgb(27, 162, 167), rgb(88, 227, 239));
-margin: 0px;">
-        <div class="dmon">
-            <div class="header-logo mx-auto text-center">
-                <a href="/">
-                <img src="{% static 'strip.png' %}" class="text-center" style="margin-top: 15px;width:50px; position:relative; top:-12px;">
-                </a>
-            </div>
-            <div class="container center-description text-center" style="padding-top: 5rem; align-items: center; padding-left:30px; padding-right:30px;">
-                <h2 style="font-weight:200;">We Are.</h2>
-                <h4 style="font-weight:200;">Quickfinda is a very small technology company that builds simple, powerful products for people and businesses.</h4>
-            </div>
+
+    <section class="header-place border-bottom">
+        <div class="header-logo mx-auto text-center">
+            <img src="{% static 'strip.png' %}" class="small-img">
         </div>
-<!-- 08030479332 -->
-        <br>
-        <h3 class="text-center">Our Team</h3>
-        <p class="text-center container" style="display: flex; align-items: center; padding-left:2rem; padding-right:2rem;">
-            We believe technology should get out of the way, so there’s no limit to what people can do. We’re a thoughtful, tightly-knit team that’s committed to realizing ambitious ideas. We’re making technology work for you, and the best is still to come.
-        </p>
-        <br>
-        <div style="align-items: center; justify-content: space-around; display: flex; flex-wrap: wrap;"">
-            <div class="card-group">
+        <div class="header-text">
+            <h2 class="text-center">WE ARE QUICKFINDA</h2>
+            <p class="container text-center p-tags">
+                Quickfinda is a small technology company that builds simple, powerful products for people and businesses.
+            </p>
+        </div>
+    </section>
+
+    <section class="the-team border-bottom">
+        <!-- our header -->
+        <h2 class="text-center p-tags">Our Team</h2>
+
+        <div class="container blue-board">
+
+            <div class="card-deck">
 
                 <div class="card text-white bg-primary mb-3 text-center" style="max-width: 18rem;">
+
                     <div class="card-header">Abdulkareem Hakeem Dayo</div>
+
                     <div class="card-body">
-                            <img src="{% static "django.png"%}" style="width:100%;">
+                        <img src="{% static 'IMG-20.jpg' %}" class="img-fluid" style="border-radius: 200px;">
+                            
                         <p class="card-text">
                             Head of Marketing & Strategy Manager
                         </p>
+
                     </div>
+
                 </div>
 
                 <div class="card text-white bg-success mb-3 text-center" style="max-width: 18rem;">
+
                     <div class="card-header">Oye Olalekan Johnson</div>
+
                     <div class="card-body">
-                            <img src="{% static "python-p.png"%}" style="width:100%;">
+                            <img src="{% static 'Screenshot_2018.png' %}" class="img-fluid" style="border-radius: 200px;">
+
                             <p>Head of Technology & Core developer.</p>
                     </div>
+
                 </div>
+
             </div>
+
         </div>
-        <br>
-        <h3 class="text-center" style="font-weight:200;">The Technologies we use.</h3>
-        <br>
-        <div class="technology justify-content-center" style="align-items: center; justify-content: space-around; display: flex; flex-wrap: wrap;
-    float: none; margin-bottom: 20px;">
-            <div class="card-group">
+
+    </section>
+
+    <section class="our-tech border-bottom">
+
+        <h2 class="text-center p-tags">Our Tech Stack</h2>
+
+        <div class="container blue-board">
+
+            <div class="card-deck">
 
                 <div class="card text-white bg-primary mb-3 text-center" style="max-width: 18rem;">
                     <div class="card-header">Django</div>
@@ -86,8 +131,11 @@ margin: 0px;">
                 </div>
 
                 <div class="card text-white bg-success mb-3 text-center" style="max-width: 18rem;">
+
                     <div class="card-header">Python</div>
+
                     <div class="card-body">
+
                             <img src="{% static "python-p.png"%}" style="width:100%;">
                             <p>Python's simple, easy to learn syntax emphasizes readability and therefore
                                 reduces the cost of program maintenance. Python supports modules and packages,
@@ -116,8 +164,10 @@ margin: 0px;">
                     </div>
                 </div>
 
-        </div>
             </div>
+
+        </div>
+        
     </section>
   </body>
 </html>
