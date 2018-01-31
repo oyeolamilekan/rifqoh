@@ -1,3 +1,20 @@
+import requests
+
+# Get user current location
+def get_location(request=None,number=None):
+    if request:
+        user_ip = get_client_ip(request)
+        get_user_info = requests.get('http://freegeoip.net/json/{}'.format(user_ip))
+        get_user_info = get_user_info.json()
+        user_country_code = get_user_info['country_code']
+        user_country_name = get_user_info['country_name']
+    else:
+        get_user_info = requests.get('http://freegeoip.net/json/{}'.format(number))
+        get_user_info = get_user_info.json()
+        user_country_code = get_user_info['country_code']
+        user_country_name = get_user_info['country_name']
+        print(user_country_name,user_country_code)
+    return user_country_name, user_country_code
 
 # Get the Ip address of the user
 def get_client_ip(request):
@@ -20,3 +37,4 @@ def is_bot(request):
             return True
         else:
             return False
+

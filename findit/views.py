@@ -10,11 +10,11 @@ from django.shortcuts import render
 from accounts.models import *
 from adengine.models import Ads
 # from .an_utils import correction
-from analytics.an_utils import get_client_ip
-from analytics.models import PageViews, UserTime
+from analytics.an_utils import get_client_ip, get_location
+from analytics.models import PageViews, UserTime, UserNumber
 from analytics.signals import object_viewed
 from analytics.utils import add_query
-from analytics.utils import whichPage, user_count, user_converter
+from analytics.utils import whichPage, user_count, user_converter, get_location
 from .forms import feedBackForm
 from .models import Products, Analytics, UserTheme, Tips
 from .utils import black_rock, nairaconv
@@ -26,6 +26,15 @@ STOP_WORDS = ['price', 'prices', 'laptops', 'laptop', 'phones', 'phone', 'dresse
 def about_home(request):
     return render(request, 'about.html', {})
 
+def batch_convertor(request):
+    users = UserNumber.objects.all()
+    for user in users:
+        user_c_name, user_c_code = get_location(number=user.user_ip)
+
+        user.user_country_name = user_c_name
+        user.user_country_code = user_c_code
+        user.save()
+    return HttpResponse('Part Ways')
 
 def home_page(request):
     share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
