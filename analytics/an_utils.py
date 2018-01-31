@@ -4,15 +4,13 @@ import requests
 def get_location(request=None,number=None):
     if request:
         user_ip = get_client_ip(request)
-        get_user_info = requests.get('http://freegeoip.net/json/{}'.format(user_ip))
-        get_user_in = get_user_info.json()
-        user_country_code = get_user_in['country_code']
-        user_country_name = get_user_in['country_name']
+        get_user_info = requests.get('http://freegeoip.net/json/{}'.format(user_ip)).json()
+        user_country_code = get_user_info['country_code']
+        user_country_name = get_user_info['country_name']
     else:
-        get_user_info = requests.get('http://freegeoip.net/json/{}'.format(number))
-        get_user_in = get_user_info.json()
-        user_country_code = get_user_in['country_code']
-        user_country_name = get_user_in['country_name']
+        get_user_info = requests.get('http://freegeoip.net/json/{}'.format(number)).json()
+        user_country_code = get_user_info['country_code']
+        user_country_name = get_user_info['country_name']
     return user_country_name, user_country_code
 
 # Get the Ip address of the user
