@@ -13,7 +13,6 @@ def get_location(request=None,number=None):
         get_user_info = get_user_info.json()
         user_country_code = get_user_info['country_code']
         user_country_name = get_user_info['country_name']
-        print(user_country_name,user_country_code)
     return user_country_name, user_country_code
 
 # Get the Ip address of the user
