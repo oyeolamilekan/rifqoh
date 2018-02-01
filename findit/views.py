@@ -124,7 +124,7 @@ def real_index(request):
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
     user_count(request)
-    share_string = 'Discover new products from different stores on Quickfinda'
+    share_string = 'Quickfinda - Online Shop & Price Comparison in Nigeria'
     t1 = time.time()
     url = request.build_absolute_uri()
     whichPage(request, 'discoverB', url)
