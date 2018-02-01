@@ -590,7 +590,7 @@ def women_index(request):
     user_count(request)
     url = request.build_absolute_uri()
     whichPage(request, 'wemenP', url)
-    share_string = share_string = 'Be fashionable and get the best prices on beautiful Dresses across the web'
+    share_string = share_string = 'Be fashionable and compare prices of beautiful Dresses across the web'
     t1 = time.time()
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='women-dresses')
@@ -633,7 +633,7 @@ def women_watch(request):
     url = request.build_absolute_uri()
     t1 = time.time()
     whichPage(request, 'wemen_watchP', url)
-    share_string = share_string = 'Be fashionable and get the best prices on beautiful time piece across the web'
+    share_string = share_string = 'Be fashionable and compare prices of beautiful time piece across the web'
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='women-watches')
     page_request_var = 'page'
@@ -674,7 +674,7 @@ def men_watch(request):
     user_count(request)
     url = request.build_absolute_uri()
     whichPage(request, 'men_watchP', url)
-    share_string = 'Be fashionable and get the best prices on beautiful men watches across the web'
+    share_string = 'Be fashionable and get the compare prices of beautiful men watches across the web'
     t1 = time.time()
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='men-watches')

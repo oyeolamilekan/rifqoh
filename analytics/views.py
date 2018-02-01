@@ -40,6 +40,9 @@ def prod_clicks(request):
 def user_acq(request):
     number_q = UserNumber.objects.order_by('-id')
     page_request_var = 'page'
+    query = request.GET.get('q')
+    if query:
+        number_q = UserNumber.objects.filter(user_ip=query)
     paginator = Paginator(number_q, 20)
     page = request.GET.get(page_request_var)
     try:
