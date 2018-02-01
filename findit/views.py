@@ -924,8 +924,8 @@ def real_trend(request, word):
 
 
 def delunn(request):
-    prod = Products.objects.filter(name__icontains='Apple', genre='women-dresses')
-    prod.delete()
+    # prod = Products.objects.filter(name__icontains='Apple', genre='women-dresses')
+    # prod.delete()
     return HttpResponse('Sacrifices')
 
 
