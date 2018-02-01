@@ -19,11 +19,12 @@ from .forms import ShopForm
 
 def store(request):
     urll = request.build_absolute_uri()
+    share_string = 'Shop from all shops using our Price Comparison engine'
     whichPage(request, 'shop_index', urll)
     # ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
     # seen_by(request,ad)
     # landlord(request,ad)
-    return render(request, 'shop/index.html', {'page': 'shop'})
+    return render(request, 'shop/index.html', {'page': 'shop','share_string':share_string})
 
 
 def register(request):
@@ -64,12 +65,12 @@ def store_details(request, word):
     # ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
     # seen_by(request,ad)
     # landlord(request,ad)
+    share_string = 'Shop from {} with us'.format(word)
     pink_lips = request.GET.get('q')
     if pink_lips:
         whichPage(request, '%s-%s' % (word, pink_lips), urll)
     else:
         whichPage(request, word, urll)
-    share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
     t1 = time.time()
     orginal_sentence = []
     corrected_sentence = []
@@ -145,7 +146,7 @@ def store_shirts(request, word):
     # seen_by(request,ad)
     # landlord(request,ad)
     t1 = time.time()
-    share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+    share_string = 'Shop shirts from {} with us'.format(word)
     orginal_sentence = []
     corrected_sentence = []
     confirmed = None
@@ -216,7 +217,7 @@ def store_phones(request, word):
     # ad = Ads.objects.order_by('?').filter(expired='False')[:2]
     # seen_by(request,ad)
     # landlord(request,ad)
-    share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+    share_string = 'Shop phone from {} with us'.format(word)
     t1 = time.time()
     orginal_sentence = []
     corrected_sentence = []
@@ -287,7 +288,7 @@ def store_laptops(request, word):
     # print('jii')
     # landlord(request,ad)
     t1 = time.time()
-    share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+    share_string = 'Shop laptops from {} with us'.format(word)
     orginal_sentence = []
     corrected_sentence = []
     confirmed = None
@@ -352,10 +353,10 @@ def store_laptops(request, word):
 
 
 def store_tv_index(request, word):
-    ad = Ads.objects.order_by('?').filter(expired='False')[:2]
-    seen_by(request, ad)
-    landlord(request, ad)
-    share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+    # ad = Ads.objects.order_by('?').filter(expired='False')[:2]
+    # seen_by(request, ad)
+    # landlord(request, ad)
+    share_string = 'Shop television from {} with us'.format(word)
     t1 = time.time()
     orginal_sentence = []
     corrected_sentence = []
@@ -421,10 +422,10 @@ def store_tv_index(request, word):
 
 
 def store_women_index(request, word):
-    ad = Ads.objects.order_by('?').filter(expired='False')[:2]
-    seen_by(request, ad)
-    landlord(request, ad)
-    share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+    # ad = Ads.objects.order_by('?').filter(expired='False')[:2]
+    # seen_by(request, ad)
+    # landlord(request, ad)
+    share_string = 'Shop women dresses from {} with us'.format(word)
     t1 = time.time()
     orginal_sentence = []
     corrected_sentence = []
@@ -497,7 +498,7 @@ def store_makeup(request, word):
     # print('jii')
     # landlord(request,ad)
     t1 = time.time()
-    share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+    share_string = 'Shop wemen make up from {} with us'.format(word)
     orginal_sentence = []
     corrected_sentence = []
     confirmed = None
@@ -562,10 +563,10 @@ def store_makeup(request, word):
 
 
 def store_heaphones(request, word):
-    ad = Ads.objects.order_by('?').filter(expired='False')[:2]
-    seen_by(request, ad)
-    landlord(request, ad)
-    share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+    # ad = Ads.objects.order_by('?').filter(expired='False')[:2]
+    # seen_by(request, ad)
+    # landlord(request, ad)
+    share_string = 'Shop from {} with us'.format(word)
     t1 = time.time()
     orginal_sentence = []
     corrected_sentence = []
@@ -631,10 +632,10 @@ def store_heaphones(request, word):
 
 
 def store_women_bags(request, word):
-    ad = Ads.objects.order_by('?').filter(expired='False')[:2]
-    seen_by(request, ad)
-    landlord(request, ad)
-    share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
+    # ad = Ads.objects.order_by('?').filter(expired='False')[:2]
+    # seen_by(request, ad)
+    # landlord(request, ad)
+    share_string = 'Shop from {} with us'.format(word)
     t1 = time.time()
     orginal_sentence = []
     corrected_sentence = []

@@ -3,7 +3,7 @@
 	<a href="{% url 'findit:analytics' product.id %}" target='_blank'>
 		<div class="snpt {% if product.genre == 'shirts' %}happy{% elif product.genre == '' %}hapy{% elif product.genre == 'laptops' %}hay{% elif product.genre == 'televisions' %}ha{% elif product.genre == 'women-dresses' %}h{% endif %}">
 
-			<img src="{{ product.image.url }}" style="width: 200px;">
+			<img src="{{ product.image.url }}" style="width: 200px;" title="{{ product.name }}" alt="{{ product.name }}">
 			<p style="padding: 1rem;">{{ product.name }}</p>
 						<hr>
 						<span style="padding: 1rem;">{% if product.shop == 'aliexpress' %}{% else %}&#8358{% endif %} {{ product.price }}</span>

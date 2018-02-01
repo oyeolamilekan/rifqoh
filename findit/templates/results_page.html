@@ -1,5 +1,5 @@
 {% extends 'home_page.html' %}
-{% block title %}{% if query %} {{ query }} results{% else %}Check it, buy it{% endif %}{% endblock %}
+{% block title %}{% if query %} {{ query }} results{% else %}{{share_string}}{% endif %}{% endblock %}
 {% block home %}active{% endblock %}
 {% load feedback %}
 {% load static %}
