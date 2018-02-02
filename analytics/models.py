@@ -38,6 +38,7 @@ class PageViews(models.Model):
 # Handles the number of user acquired
 class UserNumber(models.Model):
     user_ip = models.CharField(max_length=200, blank=True, null=True)
+    #user_header = models.TextField(max_length=200,blank=True,null=True)
     user_country_name = models.CharField(max_length=200, blank=True, null=True)
     user_country_code = models.CharField(max_length=200, blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True, blank=True, null=True)

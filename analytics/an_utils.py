@@ -1,5 +1,5 @@
 import requests
-from django.utils.crypto import get_random_string
+
 # Get user current location
 def get_location(request=None,number=None):
     if request:
@@ -35,7 +35,3 @@ def is_bot(request):
         else:
             return False
 
-
-def hash_info():
-    hash_info = get_random_string(length=7)
-    return hash_info
