@@ -65,7 +65,7 @@ def store_details(request, word):
     # ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
     # seen_by(request,ad)
     # landlord(request,ad)
-    share_string = 'Shop from {} with us'.format(word)
+    share_string = '{} - Quickfinda Shopping Nigeria'.format(word.capitalize())
     pink_lips = request.GET.get('q')
     if pink_lips:
         whichPage(request, '%s-%s' % (word, pink_lips), urll)

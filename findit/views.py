@@ -261,7 +261,7 @@ def shirts(request):
     url = request.build_absolute_uri()
     whichPage(request, 'shirtsP', url)
     t1 = time.time()
-    share_string = 'Check prices of shirts from different stores on Quickfinda'
+    share_string = 'Shirts - Online Shop & Price Comparison in Nigeria'
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='shirts')
     # if corrected_sentence != orginal_sentence:
@@ -306,7 +306,7 @@ def index(request):
     user_count(request)
     url = request.build_absolute_uri()
     whichPage(request, 'phoneP', url)
-    share_string = 'Latest Prices of phones from different stores on Quickfinda'
+    share_string = 'Compare Mobile Phones - Latest Mobile Comparison by Price'
     t1 = time.time()
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='phone')
@@ -354,7 +354,7 @@ def laptops(request):
     url = request.build_absolute_uri()
     whichPage(request, 'laptopsP', url)
     t1 = time.time()
-    share_string = 'Get the best prices of laptops from different stores on quickfinda '
+    share_string = 'Compare Laptops - Latest Laptops by Price'
     orginal_sentence = []
     corrected_sentence = []
     confirmed = None
@@ -402,7 +402,7 @@ def tv_index(request):
     url = request.build_absolute_uri()
     user_count(request)
     whichPage(request, 'tvP', url)
-    share_string = 'Get the best prices of televisions from different stores on quickfinda'
+    share_string = 'Compare TV - Latest TV by Price '
     t1 = time.time()
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='televisions')
@@ -449,7 +449,7 @@ def makeup(request):
     url = request.build_absolute_uri()
     user_count(request)
     whichPage(request, 'tvP', url)
-    share_string = share_string = 'Get the best prices of beauty products from different stores on quickfinda '
+    share_string = share_string = 'Compare Makeups - Latest Makeups by Price & Shop'
     t1 = time.time()
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='makeup')
@@ -496,7 +496,7 @@ def headphones(request):
     url = request.build_absolute_uri()
     user_count(request)
     whichPage(request, 'tvP', url)
-    share_string = 'Get the best sounds with the best prices on quickfinda'
+    share_string = 'Compare Headphones - Latest Headphones by Price & Shop'
     t1 = time.time()
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='headphones')
@@ -543,7 +543,7 @@ def wemenbags(request):
     url = request.build_absolute_uri()
     user_count(request)
     whichPage(request, 'tvP', url)
-    share_string = 'Be fashionable and get the best prices on beautiful bags across the web'
+    share_string = 'Compare Bags - Latest Bags by Price & Shop'
     t1 = time.time()
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='women-bags')
@@ -590,7 +590,7 @@ def women_index(request):
     user_count(request)
     url = request.build_absolute_uri()
     whichPage(request, 'wemenP', url)
-    share_string = share_string = 'Be fashionable and compare prices of beautiful Dresses across the web'
+    share_string = 'Compare Beautiful Dresses - Latest Beautiful Dresses by Price & Shop'
     t1 = time.time()
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='women-dresses')
@@ -633,7 +633,7 @@ def women_watch(request):
     url = request.build_absolute_uri()
     t1 = time.time()
     whichPage(request, 'wemen_watchP', url)
-    share_string = share_string = 'Be fashionable and compare prices of beautiful time piece across the web'
+    share_string = 'Compare Beautiful Women Watches - Latest Beautiful Women Watches by Price & Shop'
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='women-watches')
     page_request_var = 'page'
@@ -674,7 +674,7 @@ def men_watch(request):
     user_count(request)
     url = request.build_absolute_uri()
     whichPage(request, 'men_watchP', url)
-    share_string = 'Be fashionable and get the compare prices of beautiful men watches across the web'
+    share_string = 'Compare Beautiful Men Watches - Latest Beautiful Men Watches by Price & Shop'
     t1 = time.time()
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='men-watches')
@@ -834,7 +834,7 @@ def timeLogs(request):
 #####################		Trending Layout			########################
 
 def real_trend(request, word):
-    share_string = 'Get the best prices on what is trending across the web'
+    share_string = 'Compare Trending Products - Latest Trending Products by Price & Shop'
     t1 = time.time()
     url = request.build_absolute_uri()
     whichPage(request, 'Trending', url)
