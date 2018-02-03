@@ -302,17 +302,18 @@ a.float:hover, a.floatt:hover,a.floattt:hover {
 </a> -->
 
 <!-- Handle the send feedback button -->
-<a class="float" href="#myModal" role="button" data-toggle="modal">
-  <i class="fa fa-envelope my-float"></i>
+<a class="float" href="https://twitter.com/home?status={{ share_stringe }}%20{{ request.build_absolute_uri }}">
+  <i class="fa fa-twitter my-float"></i>
 </a>
 
 <!-- Handles the advance search button -->
-<a class="floatt" href="#mySearch" role="button" data-toggle="modal">
-  <i class="fa fa-search my-float"></i>
+<a class="floatt" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+  <i class="fa fa-facebook-official my-float"></i>
 </a>
 
-<a class="floattt flo" href="#myodal" role="button" data-toggle="modal">
-  <i class="fa fa-lightbulb-o my-float"></i>
+<a class="floattt flo" href="https://www.linkedin.com/cws/share?url={{ request.build_absolute_uri }}">
+  <i class="fa fa-linkedin-square my-float"></i>
+
 </a>
 
 <div class="modal fade" id="mySearch">

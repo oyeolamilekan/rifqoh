@@ -21,8 +21,8 @@ from .utils import black_rock, nairaconv
 
 # Intial Stops words for the users
 STOP_WORDS = ['price', 'prices', 'laptops', 'laptop', 'phones', 'phone', 'dresses']
-
-
+global  share_stringe
+share_stringe = quote_plus('Get the best prices from different stores o quickfinda.com.')
 def about_home(request):
     return render(request, 'about.html', {})
 
@@ -236,6 +236,7 @@ def real_index(request):
                'confirmed': confirmed,
                'all_product': all_products,
                'share_string': share_string,
+               'share_stringe':share_stringe,
                'trendin': 'home',
                'com': com,
                'page': 'index_page'
@@ -285,6 +286,7 @@ def shirts(request):
                'confirmed': confirmed,
                'all_product': all_products,
                'share_string': share_string,
+               'share_stringe':share_stringe,
                'page': 'shirt_page'
                }
     t2 = time.time()
@@ -332,6 +334,7 @@ def index(request):
                'confirmed': confirmed,
                'all_product': all_products,
                'share_string': share_string,
+               'share_stringe':share_stringe,
                'page': 'phone_page'}
     # print(all_products.count())
     t2 = time.time()
@@ -380,6 +383,7 @@ def laptops(request):
                'confirmed': confirmed,
                'all_product': all_products,
                'share_string': share_string,
+               'share_stringe':share_stringe,
                'page': 'laptop_page'
                }
     # print(all_products.count())
@@ -428,6 +432,7 @@ def tv_index(request):
                'confirmed': confirmed,
                'all_product': all_products,
                'share_string': share_string,
+               'share_stringe':share_stringe,
                'page': 'tv_page'}
     # print(all_products.count())
     t2 = time.time()
@@ -475,6 +480,7 @@ def makeup(request):
                'confirmed': confirmed,
                'all_product': all_products,
                'share_string': share_string,
+               'share_stringe':share_stringe,
                'page': 'makeup_page'}
     # print(all_products.count())
     t2 = time.time()
@@ -522,6 +528,7 @@ def headphones(request):
                'confirmed': confirmed,
                'all_product': all_products,
                'share_string': share_string,
+               'share_stringe':share_stringe,
                'page': 'headphone_page'}
     # print(all_products.count())
     t2 = time.time()
@@ -569,6 +576,7 @@ def wemenbags(request):
                'confirmed': confirmed,
                'all_product': all_products,
                'share_string': share_string,
+               'share_stringe':share_stringe,
                'page': 'wemen_bags_page'}
     # print(all_products.count())
     t2 = time.time()
@@ -611,6 +619,7 @@ def women_index(request):
                'confirmed': confirmed,
                'all_product': all_products,
                'share_string': share_string,
+               'share_stringe':share_stringe,
                'page': 'women_dress_page'}
     # print(all_products.count())
     t2 = time.time()
@@ -653,6 +662,7 @@ def women_watch(request):
                'confirmed': confirmed,
                'all_product': all_products,
                'share_string': share_string,
+               'share_stringe':share_stringe,
                'page': 'women_page'}
     # print(all_products.count())
     t2 = time.time()
@@ -695,6 +705,7 @@ def men_watch(request):
                'confirmed': confirmed,
                'all_product': all_products,
                'share_string': share_string,
+               'share_stringe':share_stringe,
                'page': 'men_watch_page'}
     t2 = time.time()
     query_time = t2 - t1
