@@ -1,4 +1,4 @@
-from .an_utils import get_client_ip, is_bot, get_location
+from .an_utils import get_client_ip, is_bot, get_location,get_header_info
 from .models import QueryList, PageViews, UserNumber
 
 
