@@ -10,7 +10,7 @@ from django.shortcuts import render
 from accounts.models import *
 from adengine.models import Ads
 # from .an_utils import correction
-from analytics.an_utils import get_client_ip, get_location
+from analytics.an_utils import get_client_ip, get_location, get_header_info
 from analytics.models import PageViews, UserTime, UserNumber
 from analytics.signals import object_viewed
 from analytics.utils import add_query
@@ -124,6 +124,7 @@ def real_index(request):
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
     user_count(request)
+    get_header_info(request)
     share_string = 'Quickfinda - Online Shop & Price Comparison in Nigeria'
     t1 = time.time()
     url = request.build_absolute_uri()

@@ -22,6 +22,11 @@ def get_client_ip(request):
         ip = request.META.get('REMOTE_ADDR', None)
     return ip
 
+# Get header info
+def get_header_info(request):
+    user_header = request.META.get('HTTP_USER_AGENT',None)
+    return user_host
+
 
 # Checks if the request is robot and it is, it doesn't add it to the database.
 def is_bot(request):

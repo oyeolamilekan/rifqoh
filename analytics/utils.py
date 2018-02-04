@@ -27,6 +27,7 @@ def user_count(request):
             user_c_name, user_c_code = get_location(request=request)
             user_count = UserNumber.objects.create(
                             user_ip=get_client_ip(request),
+                            user_header=get_header_info(request),
                             user_country_name=user_c_name,
                             user_country_code=user_c_code)
             user_count.save()
