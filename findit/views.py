@@ -143,8 +143,7 @@ def real_index(request):
     all_products = Products.objects.order_by('?')
 
     if True:
-        all_products = all_products.filter(country_code='US')
-        print(all_products)
+        all_products = all_products.filter(country_code='US').order_by('?')
 
     if request.user.is_authenticated():
         user_picks = Sub.objects.filter(user=request.user)
