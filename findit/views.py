@@ -142,9 +142,6 @@ def real_index(request):
     # print(query,'hgf')
     all_products = Products.objects.order_by('?')
 
-    if True:
-        all_products = all_products.filter(country_code='US').order_by('?')
-
     if request.user.is_authenticated():
         user_picks = Sub.objects.filter(user=request.user)
         user_pick_list = []
@@ -232,6 +229,8 @@ def real_index(request):
     page_request_var = 'page'
     if page_request_var and query:
         com = 'Nothing'
+     if True:
+        all_products = all_products.filter(country_code='US').order_by('?')
     paginator = Paginator(all_products, 40)
     page = request.GET.get(page_request_var)
     try:
