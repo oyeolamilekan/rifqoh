@@ -43,6 +43,7 @@ class Products(models.Model):
     image = models.ImageField(blank=True, null=True, max_length=355)
     source_url = models.CharField(max_length=700)
     shop = models.CharField(max_length=300)
+    country_code = models.CharField(max_length=200,blank=True,null=True)
     num_of_clicks = models.IntegerField(default=0)
     createdate = models.DateTimeField(auto_now_add=True)
     old_price = models.CharField(max_length=200, blank=True, null=True)

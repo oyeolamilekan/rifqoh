@@ -55,6 +55,14 @@ def home_page(request):
     context = {'share_string': share_string, 'url': url, 'user_theme': user_theme, 'page': 'front_page'}
     return render(request, 'search_page.html', context)
 
+# Internalise Products
+def going_global(request):
+    products = Products.objects.filter(shop='aliexpress')
+    for product in products:
+        product.country_code = 'US'
+        product.save()
+    return HttpResponse("Bigest Fan")
+
 
 # Dark and light design
 def user_choice(request):
@@ -123,8 +131,8 @@ def real_index(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
+    user_c_name, user_c_code = get_location(request=request)
     user_count(request)
-    get_header_info(request)
     share_string = 'Quickfinda - Online Shop & Price Comparison in Nigeria'
     t1 = time.time()
     url = request.build_absolute_uri()
@@ -133,6 +141,11 @@ def real_index(request):
     query = request.GET.get('q')
     # print(query,'hgf')
     all_products = Products.objects.order_by('?')
+
+    if True:
+        all_products = all_products.filter(country_code='US')
+        print(all_products)
+
     if request.user.is_authenticated():
         user_picks = Sub.objects.filter(user=request.user)
         user_pick_list = []
