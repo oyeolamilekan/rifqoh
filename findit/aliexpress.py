@@ -22,7 +22,7 @@ def alii():
     # for i in range(5):
     #     time.sleep(0.5)
     #     html = Request(
-    #         'https://www.aliexpress.com/category/200000764/shoulder-bags/{}.html?spm=2114.search0103.3.1.zvxe5W&site=glo&g=y'.format(
+    #         'https://www.aliexpress.com/category/200000764/shoulder-bags/{}.html'.format(
     #             i), headers=hdr)
     #     htmll = urlopen(html).read()
     #     bsObj = BeautifulSoup(htmll, 'html.parser')
@@ -75,7 +75,7 @@ def alii():
     # for i in range(5):
     #     # time.sleep(0.5)
     #     html = Request(
-    #         'https://www.aliexpress.com/category/660103/makeup/{}.html?spm=2114.11010108.111.17.52e8feb4E7KbwG'.format(
+    #         'https://www.aliexpress.com/category/660103/makeup/{}.html'.format(
     #             i), headers=hdr)
     #     htmll = urlopen(html).read()
     #     bsObj = BeautifulSoup(htmll, 'html.parser')
@@ -129,7 +129,7 @@ def alii():
     # for i in range(5):
     #     # time.sleep(0.2)
     #     html = Request(
-    #         'https://www.aliexpress.com/category/63705/earphones-headphones/{}.html?spm=2114.search0103.7.36.wPabvb'.format(
+    #         'https://www.aliexpress.com/category/63705/earphones-headphones/{}.html'.format(
     #             i), headers=hdr)
     #     htmll = urlopen(html).read()
     #     bsObj = BeautifulSoup(htmll, 'html.parser')
@@ -184,8 +184,7 @@ def alii():
 
     for i in range(10):
         # time.sleep(0.2)
-        html = Request(
-            'https://www.aliexpress.com/category/100003084/hoodies-sweatshirts/{}.html?site=glo&g=y&needQuery=n&tag='.format(
+        html = Request('https://www.aliexpress.com/category/100003084/hoodies-sweatshirts/{}.html'.format(
                 i), headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
