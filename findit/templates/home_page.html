@@ -18,7 +18,7 @@
   <meta name="description" content="Online shopping & price comparison directory to buy, compare and shop for products at quickfinda, a pricing and comparison guide that assists you to compare the best prices online before you buy">
   
   <meta name='keywords' content="price comparison nigeria online shopping search engine quickfinda pricecheck" charset="utf-8">
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="{% static 'styo.css' %}">
 </head>
 <script>
@@ -390,7 +390,6 @@ a.float:hover, a.floatt:hover,a.floattt:hover {
 </div>
 
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script type="text/javascript">
@@ -401,31 +400,7 @@ a.float:hover, a.floatt:hover,a.floattt:hover {
     mf.src = "//cdn.mouseflow.com/projects/332ef003-5db7-4368-85a9-3c2ab83d12a6.js";
     document.getElementsByTagName("head")[0].appendChild(mf);
   })();
-</script>
-<script>
-  $(document).ready(function() {
-    var start = new Date();
-    var start = start.getTime()
-    $('#search-inpt').keyup(function(){
-      $.get('/suggest/', {search:$('#search-inpt').val()}, function(data){
-        $('datalist').empty();
-        for (var i = 0; i < data.query.length; i++) {
-            $('datalist').append("<option value='"+data.query[i]+"'>")
-            console.log(data.query[i])
-        };
-      });
-    });
-    $('#search-input').keyup(function(){
-      $.get('/suggest/', {search:$('#search-input').val()}, function(data){
-        $('datalist').empty();
-        for (var i = 0; i < data.query.length; i++) {
-            $('datalist').append("<option value='"+data.query[i]+"'>")
-            console.log(data.query[i])
-        };
-      });
-    });
-    
-	$(document).ready(function(){
+  $(document).ready(function(){
       // var screen_width = screen.width
       // if (screen_width <= 425){
       //     // $('.baby_mama:first').hide();
@@ -439,41 +414,40 @@ a.float:hover, a.floatt:hover,a.floattt:hover {
       {% block domready %}
       {% endblock %}
     });
-	$('.uniquee').click(function(event){
-        event.preventDefault();
-        $('.unique').slideToggle(400, function(){
-            $(this).toggleClass('planet-expan').css('display','');
-        });
 
-    })
+  // $('.uniquee').click(function(event){
+ //        event.preventDefault();
+ //        $('.unique').slideToggle(400, function(){
+ //            $(this).toggleClass('planet-expan').css('display','');
+ //        });
 
-    $('.flo').click(function(event){
-        event.preventDefault();
-        $.ajax({
-            url: '/tips_loud/',
-            type: 'GET',
-        beforeSend: function () {
-            $('#loader').show()
-            $('.bundle').html("<div class='image-loader'></div>");
-        },
-        success : function(data){
-          $('#loader').hide()
-          $('.bundle').prepend('<b>Did you know ?:</b> '+data['text']);
-          if (data['img_1']){
-            $('.image-loader').html("<img src='" +data['img'] +"'style='border-radius: 5px;' class='img-responsive'/><p></p><p><img src='" +data['img_1'] +"'style='border-radius: 5px;' class='img-responsive'/><p></p><p>");
+ //    })
 
-            }
+ //    $('.flo').click(function(event){
+ //        event.preventDefault();
+ //        $.ajax({
+ //            url: '/tips_loud/',
+ //            type: 'GET',
+ //        beforeSend: function () {
+ //            $('#loader').show()
+ //            $('.bundle').html("<div class='image-loader'></div>");
+ //        },
+ //        success : function(data){
+ //          $('#loader').hide()
+ //          $('.bundle').prepend('<b>Did you know ?:</b> '+data['text']);
+ //          if (data['img_1']){
+ //            $('.image-loader').html("<img src='" +data['img'] +"'style='border-radius: 5px;' class='img-responsive'/><p></p><p><img src='" +data['img_1'] +"'style='border-radius: 5px;' class='img-responsive'/><p></p><p>");
 
-          else if (data['img']){
-            $('.image-loader').html("<p></p><img src='" +data['img'] +"'style='border-radius: 5px;' class='img-responsive'/><p></p><p>");
+ //            }
 
-            }
+ //          else if (data['img']){
+ //            $('.image-loader').html("<p></p><img src='" +data['img'] +"'style='border-radius: 5px;' class='img-responsive'/><p></p><p>");
 
-          }
+ //            }
 
-    });
-    });
+ //          }
 
-    
+ //    });
+ //    });
 </script>
 </html>
