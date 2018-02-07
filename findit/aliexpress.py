@@ -182,7 +182,7 @@ def alii():
     #             product.image.save(file_name[:10], lf)
 
 
-    for i in range(10):
+    for i in range(9):
         # time.sleep(0.2)
         html = Request('https://www.aliexpress.com/category/100003084/hoodies-sweatshirts/{}.html'.format(
                 i), headers=hdr)
