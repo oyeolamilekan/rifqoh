@@ -1,7 +1,7 @@
 import tempfile
 import time
 from urllib.request import urlopen, Request
-
+from django.core import files
 import requests
 from bs4 import BeautifulSoup
 from django.core.files.base import ContentFile
@@ -41,7 +41,7 @@ def alii():
                 product_price = product_price.decode('ascii', 'ignore')
                 namelst = bytes(str(product_named.text), 'UTF-8')
                 namelst = namelst.decode('ascii', 'ignore')
-                lf = request.urlopen(image)
+                lf = files.File(image)
 
             if Products.objects.filter(name=namelst, shop='aliexpress').exists():
                 produc = Products.objects.get(name=namelst, shop='aliexpress')
@@ -92,7 +92,7 @@ def alii():
                 product_price = product_price.decode('ascii', 'ignore')
                 namelst = bytes(str(product_named.text), 'UTF-8')
                 namelst = namelst.decode('ascii', 'ignore')
-                lf = request.urlopen(image)
+                lf = files.File(image)
                 
 
             if Products.objects.filter(name=namelst, shop='aliexpress').exists():
@@ -148,7 +148,7 @@ def alii():
                 namelst = namelst.decode('ascii', 'ignore')
                 product_link = 'http:' + product_link
                 image = 'http:' + image.get('src', image.get('image-src'))
-                lf = request.urlopen(image)
+                lf = files.File(image)
 
             if Products.objects.filter(name=namelst, shop='aliexpress').exists():
                 produc = Products.objects.get(name=namelst, shop='aliexpress')
@@ -202,7 +202,7 @@ def alii():
                 namelst = namelst.decode('ascii', 'ignore')
                 product_link = 'http:' + product_link
                 image = 'http:' + image.get('src', image.get('image-src'))
-                lf = request.urlopen(image)
+                lf = files.File(image)
 
             if Products.objects.filter(name=namelst, shop='aliexpress').exists():
                 produc = Products.objects.get(name=namelst, shop='aliexpress')
