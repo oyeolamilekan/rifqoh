@@ -42,7 +42,7 @@ def alii():
                 namelst = bytes(str(product_named.text), 'UTF-8')
                 namelst = namelst.decode('ascii', 'ignore')
                 htl = Request(image, headers=hdr)
-                httl = urlopen(htl)
+                httl = urlopen(htl).read()
 
             if Products.objects.filter(name=namelst, shop='aliexpress').exists():
                 produc = Products.objects.get(name=namelst, shop='aliexpress')
@@ -94,7 +94,7 @@ def alii():
                 namelst = bytes(str(product_named.text), 'UTF-8')
                 namelst = namelst.decode('ascii', 'ignore')
                 htl = Request(image, headers=hdr)
-                httl = urlopen(htl)
+                httl = urlopen(htl).read()
 
             if Products.objects.filter(name=namelst, shop='aliexpress').exists():
                 produc = Products.objects.get(name=namelst, shop='aliexpress')
