@@ -7,7 +7,6 @@ from django.core import files
 
 from .models import Products
 
-
 # https://www.konga.com/playstation-4
 def konga_crawler():
     for urls in range(1, 30):

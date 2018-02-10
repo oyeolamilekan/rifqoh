@@ -772,10 +772,8 @@ def feedback(request):
 
 
 def despiration(request):
-    stuffs = Products.objects.all().exclude(shop='aliexpress')
-    for i in stuffs:
-        i.real_price = int(i.price.replace(',', '').replace('\n', '').replace('.00', ''))
-        i.save()
+    stuffs = Products.objects.filter(genre='headphones')
+    stuffs.delete()
     return HttpResponse('All done boss')
 
 

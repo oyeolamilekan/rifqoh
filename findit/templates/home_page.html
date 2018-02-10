@@ -175,6 +175,57 @@ a.float:hover, a.floatt:hover,a.floattt:hover {
 .text-white {
   background-color: white;
 }
+.love{
+  margin-top: -35px;
+  margin-bottom: 30px;
+}
+.indicator {
+  background-color: #eee !important;
+}
+.Discover{
+  background-color: #3677da;
+  color: #fff;
+}
+.Phones{
+  background-color: #da367a;
+  color: #fff;
+}
+.Laptops{
+  background-color: #8d5ee8;
+  color: #fff;
+}
+.Tv{
+  background-color: #daa036;
+  color: #fff;
+}
+.Shirts{
+  background-color: #da36a0;
+  color: #fff;
+}
+.WDresses{
+  background-color: #36daa5;
+  color: #fff;
+}
+.WWatches{
+  background-color: #de6865;
+  color: #fff;
+}
+.MWatches{
+  background-color: #8865de;
+  color: #fff;
+}
+.WBags{
+  background-color: #15c765;
+  color: #fff;
+}
+.HeadPhone{
+  background-color: #1596c7;
+  color: #fff;
+}
+.Cosmetics{
+  background-color: #1815c7;
+  color: #fff;
+}
 </style>
 <body>
 <div class="loading"></div>
@@ -300,6 +351,65 @@ a.float:hover, a.floatt:hover,a.floattt:hover {
         </div>
         </div>
     </nav>
+    <div class="love">
+      <div class="panel panel-default">
+        <div class="panel-body
+              {% if page == 'index_page '%} 
+                {{ page }} 
+              {% elif page == 'phone_page' %} 
+                Phones 
+              {% elif page == 'laptop_page' %}
+                Laptops
+              {% elif page == 'tv_page' %} 
+                Tv
+              {% elif page == 'makeup_page' %}
+                Cosmetics
+              {% elif page == 'headphone_page' %}
+                HeadPhone
+              {% elif page == 'wemen_bags_page' %} 
+                WBags 
+              {% elif page == 'men_watch_page' %}
+                MWatches
+              {% elif page == 'women_dress_page' %}
+                WDresses
+              {% elif page == 'women_page' %}
+                WWatches
+              {% elif page == 'shirt_page'%}
+                Shirts
+              {% else %}
+                Discover
+              {% endif %}
+        ">
+          <h1 class="text-center">
+              {% if page == 'index_page '%} 
+                {{ page }} 
+              {% elif page == 'phone_page' %} 
+                Phones 
+              {% elif page == 'laptop_page' %}
+                Laptops
+              {% elif page == 'tv_page' %} 
+                Tv's
+              {% elif page == 'makeup_page' %}
+                Cosmetics
+              {% elif page == 'headphone_page' %}
+                HeadPhone's
+              {% elif page == 'wemen_bags_page' %} 
+                Wemen Bags 
+              {% elif page == 'men_watch_page' %}
+                Men Watches
+              {% elif page == 'women_dress_page' %}
+                Wemen Dresses
+              {% elif page == 'women_page' %}
+                Wemen Watches
+              {% elif page == 'shirt_page'%}
+                Shirts
+              {% else %}
+                Discover
+              {% endif %}
+          </h1>
+        </div>
+      </div>
+    </div>
 
 {% block conten %}
 {% endblock %}
