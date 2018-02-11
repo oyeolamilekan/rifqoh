@@ -249,8 +249,8 @@ def real_index(request):
     page_request_var = 'page'
     # if page_request_var and query:
     #     com = 'Nothing'
-    # if user_c_code == 'US':
-    #     all_products = all_products.filter(country_code='US').order_by('?')
+    if user_c_code == 'US':
+        all_products = all_products.filter(country_code='US').order_by('?')
     paginator = Paginator(all_products, 40)
     page = request.GET.get(page_request_var)
     try:
