@@ -220,7 +220,7 @@ def real_index(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    # user_c_name, user_c_code = get_location(request=request)
+    user_c_name, user_c_code = get_location(request=request)
     # user_count(request)
     share_string = 'Quickfinda - Online Shop & Price Comparison in Nigeria'
     t1 = time.time()
