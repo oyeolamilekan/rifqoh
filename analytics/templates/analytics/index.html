@@ -15,7 +15,7 @@
 $(document).ready(function(){
 	$.ajax({
 		method:'GET',
-		url: '/analytics/pageview/',
+		url: '/double/pageview/',
 		success: function(data){
 			console.log(data.data_set)
 			new Chart(document.getElementById("line-chart"), {
@@ -36,7 +36,7 @@ $(document).ready(function(){
 	})
 	$.ajax({
 		method:'GET',
-		url: '/analytics/usergrowth/',
+		url: '/double/usergrowth/',
 		success: function(data){
 			console.log(data.data_set)
 			new Chart(document.getElementById("line-chrt"), {
@@ -57,7 +57,7 @@ $(document).ready(function(){
 	})
 	$.ajax({
 		method:'GET',
-		url: '/analytics/userclicks/',
+		url: '/double/userclicks/',
 		success: function(data){
 			console.log(data.data_set)
 			new Chart(document.getElementById("line-cht"), {
