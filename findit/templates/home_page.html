@@ -29,6 +29,7 @@
 
   ga('create', 'UA-101606756-1', 'auto');
   ga('send', 'pageview');
+
 </script>
 <style type="text/css">
   .glyphicon-search {
@@ -530,6 +531,28 @@ a.float:hover, a.floatt:hover,a.floattt:hover {
         });
 
     });
+
+    // Auto suggest search input
+    $('#search-input').keyup(function(){
+      $.get('/suggest/', {search:$('#search-input').val()}, function(data){
+        $('datalist').empty();
+        for (var i = 0; i < data.query.length; i++) {
+            $('datalist').append("<option value='"+data.query[i]+"'>")
+            console.log(data.query[i])
+        };
+      });
+    });
+
+    $('#search-inpt').keyup(function(){
+      $.get('/suggest/', {search:$('#search-inpt').val()}, function(data){
+        $('datalist').empty();
+        for (var i = 0; i < data.query.length; i++) {
+            $('datalist').append("<option value='"+data.query[i]+"'>")
+            console.log(data.query[i])
+        };
+      });
+    });
+
     });
 
 
