@@ -5,7 +5,7 @@
 		<div class="snpt {% if product.genre == 'shirts' %}happy{% elif product.genre == 'phone' %}hapy{% elif product.genre == 'laptops' %}hay{% elif product.genre == 'televisions' %}ha{% elif product.genre == 'women-dresses' %}h{% endif %}">
 
 			<img src="{{ product.image.url }}" style="width: 200px;" title="{{ product.name }}" alt="{{ product.name }}">
-			<p style="padding: 1rem;">{{ product.name|truncatechars:120 }}</p>
+			<p style="padding: 1rem;">{{ product.name|truncatechars:100 }}</p>
 						<hr>
 						<span style="padding: 1rem;">{% if product.shop == 'aliexpress' %}{% else %}&#8358{% endif %} {{ product.price }} {% if product.old_price_digit == 0 %}{% elif product.real_price >  product.old_price_digit %}<i class="fa fa-arrow-up red"></i>{% else %}<i class="fa fa-arrow-down green"></i>{% endif %}</span>
 						<br>
@@ -13,7 +13,6 @@
 							<br>&#8358 {{ product.price  }}
 						{% endif %}
 						<br>
-						{{ product.genre}}
 						<span style="padding: 1rem;">{{ product.shop }} </span>
 						<br>
 						
