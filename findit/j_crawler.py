@@ -1,6 +1,6 @@
 import tempfile
 from urllib.request import urlopen, Request
-
+import re
 import requests
 from bs4 import BeautifulSoup
 from django.core.files.base import ContentFile
