@@ -9,14 +9,8 @@ from .models import Products
 
 # https://www.konga.com/playstation-4
 def konga_crawler():
+    hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0'}
     for urls in range(1, 30):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
         html = Request('https://www.konga.com/playstation-4?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
@@ -68,13 +62,7 @@ def konga_crawler():
                 product.image.save(file_name[:20], files.File(lf))
 
     for urls in range(1, 60):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
+        
         html = Request('https://www.konga.com/mens-shirts?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
@@ -126,13 +114,6 @@ def konga_crawler():
                 product.image.save(file_name[:20], files.File(lf))
 
     for urls in range(1, 60):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
         html = Request('https://www.konga.com/televisions?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
@@ -184,13 +165,7 @@ def konga_crawler():
                 product.image.save(file_name[:20], files.File(lf))
 
     for urls in range(1, 60):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
+        
         html = Request('https://www.konga.com/mobile-phones?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
@@ -240,13 +215,6 @@ def konga_crawler():
                 product.image.save(file_name[:20], files.File(lf))
 
     for urls in range(1, 60):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
         html = Request('https://www.konga.com/laptops-5230?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
@@ -295,13 +263,6 @@ def konga_crawler():
                                    source_url=product_link, shop='konga', genre='laptops')
                 product.image.save(file_name[:20], files.File(lf))
 
-    hdr = {
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-        'Accept-Encoding': 'none',
-        'Accept-Language': 'en-US,en;q=0.8',
-        'Connection': 'keep-alive'}
     html = Request('https://www.konga.com/catalogsearch/result/?category_id=5294&aggregated_brand=Apple', headers=hdr)
     htmll = urlopen(html).read()
     bsObj = BeautifulSoup(htmll, 'html.parser')
@@ -351,13 +312,6 @@ def konga_crawler():
             product.image.save(file_name[:20], files.File(lf))
 
     for urls in range(1, 60):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
         html = Request('https://www.konga.com/mens-watches?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
@@ -410,13 +364,6 @@ def konga_crawler():
                 product.image.save(file_name[:20], files.File(lf))
 
     for urls in range(1, 60):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
         html = Request('https://www.konga.com/womens-watches?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')

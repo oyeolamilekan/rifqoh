@@ -11,18 +11,12 @@ from .models import Products
 
 # https://www.jumia.com.ng/playstation4-consoles/?page=2
 def jumia_crawler():
+    hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0'}
     for urls in range(1, 25):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
         html = Request('https://www.jumia.com.ng/playstation4-consoles/?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
-        namelist = bsObj.findAll('div', {'class': '-gallery'})
+        namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
         for news in namelist:
             product_link = news.find('a', {'class': 'link'})
             product_link = product_link.attrs['href']
@@ -75,17 +69,10 @@ def jumia_crawler():
                 product.image.save(file_name[:20], lf)
 
     for urls in range(1, 25):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
         html = Request('https://www.jumia.com.ng/smartphones/?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
-        namelist = bsObj.findAll('div', {'class': '-gallery'})
+        namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
         for news in namelist:
             product_link = news.find('a', {'class': 'link'})
             product_link = product_link.attrs['href']
@@ -135,17 +122,10 @@ def jumia_crawler():
                 product.image.save(file_name[:20], lf)
 
     for urls in range(1, 25):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
         html = Request('https://www.jumia.com.ng/laptops/?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
-        namelist = bsObj.findAll('div', {'class': '-gallery'})
+        namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
         for news in namelist:
             product_link = news.find('a', {'class': 'link'})
             product_link = product_link.attrs['href']
@@ -194,17 +174,10 @@ def jumia_crawler():
                 product.image.save(file_name[:20], lf)
 
     for urls in range(1, 25):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
         html = Request('https://www.jumia.com.ng/televisions/?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
-        namelist = bsObj.findAll('div', {'class': '-gallery'})
+        namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
         for news in namelist:
             product_link = news.find('a', {'class': 'link'})
             product_link = product_link.attrs['href']
@@ -254,17 +227,10 @@ def jumia_crawler():
                 product.image.save(file_name[:20], lf)
 
     for urls in range(1, 25):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
         html = Request('https://www.jumia.com.ng/mens-shirts/page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
-        namelist = bsObj.findAll('div', {'class': '-gallery'})
+        namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
         for news in namelist:
             product_link = news.find('a', {'class': 'link'})
             product_link = product_link.attrs['href']
@@ -315,17 +281,10 @@ def jumia_crawler():
                 print('helloo')
 
     for urls in range(1, 25):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
         html = Request('https://www.jumia.com.ng/womens-dresses/page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
-        namelist = bsObj.findAll('div', {'class': '-gallery'})
+        namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
         for news in namelist:
             product_link = news.find('a', {'class': 'link'})
             product_link = product_link.attrs['href']
@@ -374,17 +333,10 @@ def jumia_crawler():
                                    genre='women-dresses', shop='jumia')
                 product.image.save(file_name[:20], lf)
 
-    hdr = {
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-        'Accept-Encoding': 'none',
-        'Accept-Language': 'en-US,en;q=0.8',
-        'Connection': 'keep-alive'}
     html = Request('https://istore.jumia.com.ng/', headers=hdr)
     htmll = urlopen(html).read()
     bsObj = BeautifulSoup(htmll, 'html.parser')
-    namelist = bsObj.findAll('div', {'class': '-gallery'})
+    namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
     for news in namelist:
         product_link = news.find('a', {'class': 'link'})
         product_link = product_link.attrs['href']
@@ -434,13 +386,7 @@ def jumia_crawler():
             product.image.save(file_name, lf)
         # https://www.jumia.com.ng/womens-watches/
         # for urls in range(1,25):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
+
         html = Request('https://www.jumia.com.ng/mens-watches/?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
@@ -495,17 +441,10 @@ def jumia_crawler():
                 product.image.save(file_name[:20], lf)
 
     for urls in range(1, 25):
-        hdr = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-            'Accept-Encoding': 'none',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Connection': 'keep-alive'}
         html = Request('https://www.jumia.com.ng/womens-watches/?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
-        namelist = bsObj.findAll('div', {'class': '-gallery'})
+        namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
         for news in namelist:
             product_link = news.find('a', {'class': 'link'})
             product_link = product_link.attrs['href']
