@@ -414,24 +414,24 @@ a.float:hover, a.floatt:hover,a.floattt:hover {
 
 {% block conten %}
 {% endblock %}
-<!-- <a class="float" href="#myModal" role="button" data-toggle="modal">
+<a class="float" href="#myModal" role="button" data-toggle="modal">
   <i class="fa fa-envelope my-float"></i>
-</a> -->
+</a>
 
 <!-- Handle the send feedback button -->
-<a class="float" href="https://twitter.com/home?status={{ share_stringe }}%20{{ request.build_absolute_uri }}">
+<!-- <a class="float" href="https://twitter.com/home?status={{ share_stringe }}%20{{ request.build_absolute_uri }}">
   <i class="fa fa-twitter my-float"></i>
 </a>
-
+ -->
 <!-- Handles the advance search button -->
-<a class="floatt" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+<!-- <a class="floatt" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
   <i class="fa fa-facebook-official my-float"></i>
-</a>
+</a> -->
 
-<a class="floattt flo" href="https://www.linkedin.com/cws/share?url={{ request.build_absolute_uri }}">
+<!-- <a class="floattt flo" href="https://www.linkedin.com/cws/share?url={{ request.build_absolute_uri }}">
   <i class="fa fa-linkedin-square my-float"></i>
 
-</a>
+</a> -->
 
 <div class="modal fade" id="mySearch">
   <div class="modal-dialog">
@@ -469,9 +469,8 @@ a.float:hover, a.floatt:hover,a.floattt:hover {
       </div>
       <div class="modal-body feedback-loop">
       <h4>Please send us your feed back in other to improve the site</h4>
-      <div class="container">
+
       {% report_form request.build_absolute_uri %}
-      </div>
       </div>
     </div>
   </div>

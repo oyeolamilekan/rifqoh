@@ -13,11 +13,11 @@ from adengine.models import Ads
 from analytics.an_utils import get_client_ip, get_location, get_header_info
 from analytics.models import PageViews, UserTime, UserNumber
 from analytics.signals import object_viewed
-from analytics.utils import add_query
 from analytics.utils import whichPage, user_count, user_converter, get_location
 from .forms import feedBackForm
 from .models import Products, Analytics, UserTheme, Tips
 from .utils import black_rock, nairaconv
+from .search_instance import experimental_search,search_bite
 
 # Intial Stops words for the users
 STOP_WORDS = ['price', 'prices', 'laptops', 'laptop', 'phones', 'phone', 'dresses']
@@ -62,96 +62,6 @@ def going_global(request):
         product.country_code = 'US'
         product.save()
     return HttpResponse("Bigest Fan")
-
-
-# Search Plugin
-def search_bite(request,query):
-    all_products = Products.objects.order_by('?')
-    whichPage(request, 'search', request.build_absolute_uri())
-    if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
-        # # print(query)
-        # print(list(query))
-        query = query.lower()
-        quey = query.split()
-
-        for stop_w in STOP_WORDS:
-            if stop_w in quey:
-                quey.remove(stop_w)
-
-        if len(quey) >= 3:
-            if 'plus' in quey and len(quey) <= 3:
-                q = ' '.join(quey)
-                all_products = all_products.filter(
-                    Q(name__icontains=q) |
-                    Q(name__iexact=q)
-                ).distinct()
-            else:
-                for q in quey:
-                    all_products = all_products.filter(
-                        Q(name__icontains=q)
-
-                    ).distinct()
-
-            add_query(query, 
-                'search page', 
-                 all_products[:10], 
-                 nbool=True, 
-                 correct=query, 
-                 request=request)
-        else:
-            # query = correction(query)
-
-            # print(query)
-            query = query.strip()
-            query = query.split()
-            for stop_w in STOP_WORDS:
-                if stop_w in query:
-                    query.remove(stop_w)
-
-            query = ' '.join(query)
-            print(query)
-            all_products = all_products.filter(
-                Q(name__icontains=query) |
-                Q(name__iexact=query)
-            ).distinct()
-            if len(all_products) == 0:
-                add_query(query, 
-                    'search page', 
-                    all_products[:10], 
-                    nbool=False, 
-                    correct=query, 
-                    request=request)
-            else:
-                add_query(query, 
-                    'search page', 
-                    all_products[:10], 
-                    nbool=True, correct=query, request=request)
-    else:
-        query = query.split()
-        new = []
-        for stop_w in STOP_WORDS:
-            if stop_w in query:
-                query.remove(stop_w)
-        for q in query:
-            # q = correction(q)
-
-            # print(q)
-            new.append(q)
-            # Put them all together
-
-            all_products = all_products.filter(
-                Q(name__icontains=q) |
-                Q(name__iexact=q)
-            ).distinct()
-
-        query = ' '.join(query)
-        made = ' '.join(new)
-        if len(all_products) == 0:
-            add_query(query, 'search page', all_products[:10], nbool=False, correct=made, request=request)
-        else:
-            add_query(query, 'search page', all_products[:10], nbool=True, correct=made, request=request)
-
-    return all_products
 
 # Dark and light design
 def user_choice(request):
@@ -220,7 +130,7 @@ def real_index(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    user_c_name, user_c_code = get_location(request=request)
+    #user_c_name, user_c_code = get_location(request=request)
     user_count(request)
     share_string = 'Quickfinda - Online Shop & Price Comparison in Nigeria'
     t1 = time.time()
@@ -241,6 +151,7 @@ def real_index(request):
         all_products = all_products.order_by('?')
     if query:
         all_products = search_bite(request,query)
+
     # if corrected_sentence != orginal_sentence:
     # 	corrected_sentence = ' '.join(corrected_sentence)
     # 	orginal_sentence = ' '.join(orginal_sentence)
@@ -249,8 +160,8 @@ def real_index(request):
     page_request_var = 'pages'
     # if page_request_var and query:
     #     com = 'Nothing'
-    if user_c_code == 'US':
-        all_products = all_products.filter(country_code='US').order_by('?')
+    # if user_c_code == 'US':
+    #     all_products = all_products.filter(country_code='US').order_by('?')
     paginator = Paginator(all_products, 40)
     page = request.GET.get(page_request_var)
     try:
