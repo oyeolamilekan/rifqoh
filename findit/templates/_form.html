@@ -1,14 +1,5 @@
 {% load bootstrap3 %}
 {% load static %}
-<style type="text/css">
-    #id_url_locator, #id_email,#id_feelings,#id_content  {
-        box-shadow: inset 0 0px 0px rgba(0,0,0,0);
-        border-style: none;
-        border: 0px;
-        background-color: #F3F3F3;
-        border-color: transparent;
-    }
-</style>
 <form method="POST" action="/feedback/" id="wo">
         {% csrf_token %}
         {% bootstrap_form form %}
@@ -20,6 +11,7 @@
 <!--  -->
 <script type="text/javascript">
 $('#id_url_locator').val('' + '{{ url }}')
+
 $('#wo').on('submit', function(e){
     e.preventDefault();
     var fd = new FormData(document.querySelector("form#wo"));
