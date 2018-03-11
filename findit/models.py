@@ -99,6 +99,7 @@ class Tips(models.Model):
 # Feedbacks from the user
 class Feedback(models.Model):
     feelings = models.IntegerField(choices=CONDITIONS, blank=True, null=True)
+    current_location = models.CharField(max_length=200, null=True, blank=True)
     url_locator = models.CharField(blank=True, null=True, max_length=200)
     email = models.EmailField(max_length=200, default='')
     content = models.TextField(blank=True, null=True)
