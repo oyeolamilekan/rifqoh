@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'shop',
     'adengine',
     'analytics',
+    'api'
 ]
 
 MIDDLEWARE = [

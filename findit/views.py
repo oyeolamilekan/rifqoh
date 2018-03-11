@@ -1,23 +1,21 @@
-import time
-from urllib.parse import quote_plus
-
+from .forms import feedBackForm
+from .models import Products, Analytics, UserTheme, Tips
+from .utils import black_rock, nairaconv
+from .search_instance import experimental_search,search_bite
+from accounts.models import *
+from adengine.models import Ads
+from analytics.an_utils import get_client_ip, get_location, get_header_info
+from analytics.models import PageViews, UserTime, UserNumber
+from analytics.signals import object_viewed
+from analytics.utils import whichPage, user_count, user_converter, get_location
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 # Create your views here.
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.shortcuts import render
-
-from accounts.models import *
-from adengine.models import Ads
+import time
+from urllib.parse import quote_plus
 # from .an_utils import correction
-from analytics.an_utils import get_client_ip, get_location, get_header_info
-from analytics.models import PageViews, UserTime, UserNumber
-from analytics.signals import object_viewed
-from analytics.utils import whichPage, user_count, user_converter, get_location
-from .forms import feedBackForm
-from .models import Products, Analytics, UserTheme, Tips
-from .utils import black_rock, nairaconv
-from .search_instance import experimental_search,search_bite
 
 # Intial Stops words for the users
 STOP_WORDS = ['price', 'prices', 'laptops', 'laptop', 'phones', 'phone', 'dresses']
@@ -130,7 +128,7 @@ def real_index(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    #user_c_name, user_c_code = get_location(request=request)
+    user_c_name, user_c_code = get_location(request=request)
     user_count(request)
     share_string = 'Quickfinda - Online Shop & Price Comparison in Nigeria'
     t1 = time.time()
@@ -879,7 +877,6 @@ def delunn(request):
     # prod = Products.objects.filter(name__icontains='Apple', genre='women-dresses')
     # prod.delete()
     return HttpResponse('Sacrifices')
-
 
 def tips_loud(request):
     tips = Tips.objects.order_by('?')[0]
