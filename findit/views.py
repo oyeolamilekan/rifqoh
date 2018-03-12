@@ -18,7 +18,6 @@ from urllib.parse import quote_plus
 # from .an_utils import correction
 
 # Intial Stops words for the users
-STOP_WORDS = ['price', 'prices', 'laptops', 'laptop', 'phones', 'phone', 'dresses']
 global  share_stringe
 share_stringe = quote_plus('Get the best prices from different stores o quickfinda.com.')
 def about_home(request):
