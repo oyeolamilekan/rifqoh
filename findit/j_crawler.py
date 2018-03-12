@@ -12,7 +12,7 @@ from .models import Products
 # https://www.jumia.com.ng/playstation4-consoles/?page=2
 def jumia_crawler():
     hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0'}
-    for urls in range(1, 5):
+    for urls in range(1, 3):
         html = Request('https://www.jumia.com.ng/playstation4-consoles/?page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
@@ -29,6 +29,7 @@ def jumia_crawler():
             product_price = product_price.decode('ascii', 'ignore')
             namelst = bytes(str(product_named.text), 'UTF-8')
             namelst = namelst.decode('ascii', 'ignore')
+            page = urls
             htl = Request(images, headers=hdr)
             httl = urlopen(htl).read()
             namelst =  namelst.replace("\n", ' ').replace('\t',' ')
