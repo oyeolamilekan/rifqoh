@@ -182,56 +182,56 @@ def alii():
                 product.image.save(file_name[:10], lf)
 
 
-    for i in range(9):
-        # time.sleep(0.2)
-        html = Request('https://www.aliexpress.com/category/100003084/hoodies-sweatshirts/{}.html'.format(
-                i), headers=hdr)
-        htmll = urlopen(html).read()
-        bsObj = BeautifulSoup(htmll, 'html.parser')
-        # namelist = bsObj.find('div',{'id':'list-items'})
-        namelist = bsObj.findAll('li', {'class': 'list-item'})
-        for news in namelist:
-            product_link = news.find('a', {'class': 'picRind'})
-            if product_link:
-                product_link = news.find('a', {'class': 'picRind'})
-                product_link = product_link.attrs['href']
-                product_named = news.find('a', {'class': 'product'})
-                product_price = news.find('span', {'class', 'value'})
-                image = news.find('img', {'class': 'picCore'})
-                product_price = bytes(str(product_price.text), 'UTF-8')
-                product_price = product_price.decode('ascii', 'ignore')
-                namelst = bytes(str(product_named.text), 'UTF-8')
-                namelst = namelst.decode('ascii', 'ignore')
-                product_link = 'http:' + product_link
-                image = 'http:' + image.get('src', image.get('image-src'))
-                htl = Request(image, headers=hdr)
-                httl = urlopen(htl).read()
+    # for i in range():
+    #     # time.sleep(0.2)
+    #     html = Request('https://www.aliexpress.com/category/100003084/hoodies-sweatshirts/{}.html'.format(
+    #             i), headers=hdr)
+    #     htmll = urlopen(html).read()
+    #     bsObj = BeautifulSoup(htmll, 'html.parser')
+    #     # namelist = bsObj.find('div',{'id':'list-items'})
+    #     namelist = bsObj.findAll('li', {'class': 'list-item'})
+    #     for news in namelist:
+    #         product_link = news.find('a', {'class': 'picRind'})
+    #         if product_link:
+    #             product_link = news.find('a', {'class': 'picRind'})
+    #             product_link = product_link.attrs['href']
+    #             product_named = news.find('a', {'class': 'product'})
+    #             product_price = news.find('span', {'class', 'value'})
+    #             image = news.find('img', {'class': 'picCore'})
+    #             product_price = bytes(str(product_price.text), 'UTF-8')
+    #             product_price = product_price.decode('ascii', 'ignore')
+    #             namelst = bytes(str(product_named.text), 'UTF-8')
+    #             namelst = namelst.decode('ascii', 'ignore')
+    #             product_link = 'http:' + product_link
+    #             image = 'http:' + image.get('src', image.get('image-src'))
+    #             htl = Request(image, headers=hdr)
+    #             httl = urlopen(htl).read()
 
-            if Products.objects.filter(name=namelst, shop='aliexpress').exists():
-                produc = Products.objects.get(name=namelst, shop='aliexpress')
-                # Checks the price
-                if produc.price != product_price:
-                    # produc.old_price = produc.price
-                    # produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
-                    # Updates the price
-                    produc.price = product_price
-                    # Saves the price
+    #         if Products.objects.filter(name=namelst, shop='aliexpress').exists():
+    #             produc = Products.objects.get(name=namelst, shop='aliexpress')
+    #             # Checks the price
+    #             if produc.price != product_price:
+    #                 # produc.old_price = produc.price
+    #                 # produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
+    #                 # Updates the price
+    #                 produc.price = product_price
+    #                 # Saves the price
 
-                    produc.save()
-            else:
-                request = requests.get(image, stream=True)
-                if request.status_code != requests.codes.ok:
-                    continue
-                randd_ne = get_random_string(length=10)
-                file_name = image.split('/')[-1]
-                point_finder = file_name.find('.')
-                file_name = file_name[:point_finder] + randd_ne
-                lf = tempfile.NamedTemporaryFile()
-                for block in request.iter_content(1024 * 8):
-                    if not block:
-                        break
-                    lf.write(block)
-                lf = ContentFile(httl)
-                product = Products(name=namelst, price=product_price, source_url=product_link, shop='aliexpress',
-                                   genre='hoodies')
-                product.image.save(file_name[:10], lf)
+    #                 produc.save()
+    #         else:
+    #             request = requests.get(image, stream=True)
+    #             if request.status_code != requests.codes.ok:
+    #                 continue
+    #             randd_ne = get_random_string(length=10)
+    #             file_name = image.split('/')[-1]
+    #             point_finder = file_name.find('.')
+    #             file_name = file_name[:point_finder] + randd_ne
+    #             lf = tempfile.NamedTemporaryFile()
+    #             for block in request.iter_content(1024 * 8):
+    #                 if not block:
+    #                     break
+    #                 lf.write(block)
+    #             lf = ContentFile(httl)
+    #             product = Products(name=namelst, price=product_price, source_url=product_link, shop='aliexpress',
+    #                                genre='hoodies')
+    #             product.image.save(file_name[:10], lf)
