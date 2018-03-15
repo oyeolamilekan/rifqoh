@@ -1,0 +1,14 @@
+from django.conf.urls import url
+
+from . import views
+
+urlpatterns = [
+    url(r'^$',views.home_page, name='home'),
+    url(r'^product_list/$', views.rest_product_list, name='product_list'),
+    url(r'^store_product_list/(?P<slug>[\w-]+)/$',
+        views.rest_store_detail, name='rest_store_detail'),
+    url(r'^product_catergory/(?P<slug>[\w-]+)/$',
+        views.rest_product_catergory, name='rest_product_catergory'),
+    url(r'^store_product_catergory/(?P<slug>[\w-]+)/(?P<plug>[\w-]+)/$',
+        views.rest_store_product_catergory, name='rest_store_product_catergory'),
+]

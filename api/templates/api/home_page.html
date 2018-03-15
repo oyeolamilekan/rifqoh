@@ -1,0 +1,456 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .sidebar-sticky {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 48px;
+      height: calc(100vh - 48px);
+      padding-top: .5rem;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .sidebar .nav-link {
+      font-weight: 500;
+      color: #333;
+    }
+    .descr-text {
+      height: calc(100vh - 208px);
+    }
+    .blue-board {
+      align-items: center; 
+      justify-content: space-around; 
+      display: flex; 
+      flex-wrap: wrap;
+    }
+</style>
+
+<div>
+  
+    <!-- <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link {% block active %}{% endblock %}" href="{% url 'analytics:HomeView' %}">
+              <span data-feather="home"></span>
+              Demo 
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% block clicks %}{% endblock %}" href="{% url 'analytics:prod_clicks' %}">
+              <span data-feather="file"></span>
+              Get products
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% block customers %}{% endblock %}" href="{% url 'analytics:user_acq' %}">
+              <span data-feather="users"></span>
+              <span class="text-small">Get products by category</span>
+            </a>
+          </li>
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Saved reports</span>
+          <a class="d-flex align-items-center text-muted" href="#">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Current month
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Last quarter
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Social engagement
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Year-end sale
+            </a>
+          </li>
+        </ul>
+      </div>
+      col-md-9 ml-sm-auto col-lg-10 pt-3 px-4
+    </nav> -->
+
+    <main role="main">
+      <div style="margin-top: 4%;" align="center">
+      <div class="my-5 p-3">
+        <h2>Access products from different E-commerce stores.</h2>
+      </div>
+      <div class="descr-text my-5">
+        <h3 style="font-weight: 200;">Get products info from 5 E-commerce sites with our products API</h3>
+        <div class="my-5">
+          <a href="#" class="btn btn-lg btn-outline-danger">Let's have fun</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="descr-text code-sample bg-danger" style="height: 100%;">
+
+        <div class="my-3">
+          <h3 style="font-weight: 200; padding: 20px;" class="text-white text-center">Live example</h3>
+        </div>
+        <div class="justify-content-center">
+        
+          <div class="container">
+            <div class="blue-board">
+
+            <div class="card-deck">
+
+                <div class="card mb-3" style="max-width: 18rem;">
+
+                    <div class="card-header text-center">Get all products</div>
+
+                    <div class="card-body">
+                        <div style="max-width: 18rem; width: 90%; max-height: 12rem; height: 90%;
+                overflow-y: scroll;">
+
+                      <pre id="json">
+        
+                      </pre>
+
+                    </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card mb-3" style="max-width: 18rem;">
+
+                    <div class="card-header text-center">Get products by category</div>
+
+                    <div class="card-body">
+                          <div style="max-width: 18rem; width: 90%; max-height: 12rem; height: 90%;
+                overflow-y: scroll;">
+
+                            <pre id="json-1">
+                  
+                            </pre>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card mb-3" style="max-width: 18rem;">
+
+                    <div class="card-header text-center">Get products by category</div>
+
+                    <div class="card-body">
+                          <div style="max-width: 18rem; width: 90%; max-height: 12rem; height: 90%;
+                overflow-y: scroll;">
+
+                            <pre id="json-3">
+                  
+                            </pre>
+
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+            
+            
+            <br>
+          </div>
+
+            </div>
+          </div>
+
+      <div class="simple-footer bg-dark text-secondary p-5" align="center">
+        <div class="container-fluid">
+          <div class="blue-board">
+
+            <div class="col-sm-2 col-md-4 my-3">
+              <h6 class="text-white" style="font-weight: 200;">PRODUCT API</h6>
+              
+                <span>Get started</span>
+                <br>
+            </div>
+            <div class="col-sm-2 col-md-4 my-3">
+
+              <h6 class="text-white" style="font-weight: 200;">COMPANY</h6>
+              
+                <span>Our team</span>
+                
+              
+            </div>
+            <div class="col-sm-2 col-md-4 my-3">
+              <h6 class="text-white" style="font-weight: 200;">SUPPORT</h6>
+              
+                <span>Twitter</span>
+                <br>
+  
+            </div>
+          </div>
+          <br>
+          <br>
+          <p class="text-center" style="border-top: 1px solid black;width: 100%; "><br><br>&copy 2018, a c68 company.</p>
+        </div>
+      </div>
+
+        </div>
+
+      </div>
+
+
+    </main>
+  </div>
+  <script type="text/javascript">
+    var data = [
+            {
+                "a_name": "USPS XINIU Women Shoulder Bag Candy colored Crossbody",
+                "b_price": "US $3.58 - 3.98",
+                "c_shop": "aliexpress",
+                "d_catergory": "women-bags",
+                "e_img": "/media/USPS-XINIU"
+            },
+            {
+                "a_name": "Yogodlns 2018 New Cute Cartoon Apple Shape Shoulder Bag for",
+                "b_price": "US $11.75",
+                "c_shop": "aliexpress",
+                "d_catergory": "women-bags",
+                "e_img": "/media/2017-New-H"
+            },
+            {
+                "a_name": "XIU LUO American Footballer Customize Men Thicken Zipper",
+                "b_price": "US $30.00",
+                "c_shop": "aliexpress",
+                "d_catergory": "headphones",
+                "e_img": "/media/High-Quali_bgwkk2Y"
+            },
+            {
+                "a_name": "2018 Autumn Fashion brand hooded men streetwear pullover Men Cotton hoodies hipster Hip Hop Men tracksuits fashion Sweatshirt",
+                "b_price": "US $10.89 - 12.08",
+                "c_shop": "aliexpress",
+                "d_catergory": "headphones",
+                "e_img": "/media/2018-Autum"
+            },
+            {
+                "a_name": "EINAUDI Men/Women Marilyn Monroe Autumn 3d Print Skull Man",
+                "b_price": "US $16.13 - 16.86",
+                "c_shop": "aliexpress",
+                "d_catergory": "headphones",
+                "e_img": "/media/2017-New-F_KjiJEjP"
+            },
+            {
+                "a_name": "HENGSHENG Women Messenger Bag Leather Plush Ball Solid",
+                "b_price": "US $9.90 - 19.56",
+                "c_shop": "aliexpress",
+                "d_catergory": "women-bags",
+                "e_img": "/media/Fashion-Wo_wlZEdWY"
+            },
+            {
+                "a_name": "Yogodlns 2018 Messenger Bags Mini Bag With Deer Shell Shape",
+                "b_price": "US $5.94",
+                "c_shop": "aliexpress",
+                "d_catergory": "women-bags",
+                "e_img": "/media/HOT-SALE-2_B1hsplp"
+            },
+            {
+                "a_name": "Leagoo KIICAA POWER 3G Smartphone MTK6580A Quad Core 1.3GHz 2GB RAM 16GB ROM-GOLDEN",
+                "b_price": "21,699",
+                "c_shop": "jumia",
+                "d_catergory": "phone",
+                "e_img": "/media/jumia/1GZoEcDCvdv"
+            },
+            {
+                "a_name": "Aelfric Eden Male Sweatshirt Men Skateboard Tracksuit",
+                "b_price": "US $18.58",
+                "c_shop": "aliexpress",
+                "d_catergory": "hoodies",
+                "e_img": "/media/Aelfric-Ed_Th8rOAR"
+            },
+            {
+                "a_name": "Samsung Galaxy Note 8 6.3-Inch QHD (6GB,64GB ROM) Android 7.1 Nougat, 12MP + 8MP SIM 4G Smartphone ",
+                "b_price": "272,000",
+                "c_shop": "jumia",
+                "d_catergory": "phone",
+                "e_img": "/media/jumia/1uwoLVq6f7m"
+            },
+            
+            
+        ] 
+
+
+document.getElementById("json").innerHTML = JSON.stringify(data, undefined, 2);
+
+var data = [
+            {
+                "a_name": "USPS XINIU Women Shoulder Bag Candy colored Crossbody",
+                "b_price": "US $3.58 - 3.98",
+                "c_shop": "aliexpress",
+                "d_catergory": "women-bags",
+                "e_img": "/media/USPS-XINIU"
+            },
+            {
+                "a_name": "Yogodlns 2018 New Cute Cartoon Apple Shape Shoulder Bag for",
+                "b_price": "US $11.75",
+                "c_shop": "aliexpress",
+                "d_catergory": "women-bags",
+                "e_img": "/media/2017-New-H"
+            },
+            {
+                "a_name": "XIU LUO American Footballer Customize Men Thicken Zipper",
+                "b_price": "US $30.00",
+                "c_shop": "aliexpress",
+                "d_catergory": "headphones",
+                "e_img": "/media/High-Quali_bgwkk2Y"
+            },
+            {
+                "a_name": "2018 Autumn Fashion brand hooded men streetwear pullover Men Cotton hoodies hipster Hip Hop Men tracksuits fashion Sweatshirt",
+                "b_price": "US $10.89 - 12.08",
+                "c_shop": "aliexpress",
+                "d_catergory": "headphones",
+                "e_img": "/media/2018-Autum"
+            },
+            {
+                "a_name": "EINAUDI Men/Women Marilyn Monroe Autumn 3d Print Skull Man",
+                "b_price": "US $16.13 - 16.86",
+                "c_shop": "aliexpress",
+                "d_catergory": "headphones",
+                "e_img": "/media/2017-New-F_KjiJEjP"
+            },
+            {
+                "a_name": "HENGSHENG Women Messenger Bag Leather Plush Ball Solid",
+                "b_price": "US $9.90 - 19.56",
+                "c_shop": "aliexpress",
+                "d_catergory": "women-bags",
+                "e_img": "/media/Fashion-Wo_wlZEdWY"
+            },
+            {
+                "a_name": "Yogodlns 2018 Messenger Bags Mini Bag With Deer Shell Shape",
+                "b_price": "US $5.94",
+                "c_shop": "aliexpress",
+                "d_catergory": "women-bags",
+                "e_img": "/media/HOT-SALE-2_B1hsplp"
+            },
+            {
+                "a_name": "Leagoo KIICAA POWER 3G Smartphone MTK6580A Quad Core 1.3GHz 2GB RAM 16GB ROM-GOLDEN",
+                "b_price": "21,699",
+                "c_shop": "jumia",
+                "d_catergory": "phone",
+                "e_img": "/media/jumia/1GZoEcDCvdv"
+            },
+            {
+                "a_name": "Aelfric Eden Male Sweatshirt Men Skateboard Tracksuit",
+                "b_price": "US $18.58",
+                "c_shop": "aliexpress",
+                "d_catergory": "hoodies",
+                "e_img": "/media/Aelfric-Ed_Th8rOAR"
+            },
+            {
+                "a_name": "Samsung Galaxy Note 8 6.3-Inch QHD (6GB,64GB ROM) Android 7.1 Nougat, 12MP + 8MP SIM 4G Smartphone ",
+                "b_price": "272,000",
+                "c_shop": "jumia",
+                "d_catergory": "phone",
+                "e_img": "/media/jumia/1uwoLVq6f7m"
+            },
+            
+            
+        ]
+
+
+document.getElementById("json-1").innerHTML = JSON.stringify(data, undefined, 2);
+
+var data = [
+            {
+                "a_name": "USPS XINIU Women Shoulder Bag Candy colored Crossbody",
+                "b_price": "US $3.58 - 3.98",
+                "c_shop": "aliexpress",
+                "d_catergory": "women-bags",
+                "e_img": "/media/USPS-XINIU"
+            },
+            {
+                "a_name": "Yogodlns 2018 New Cute Cartoon Apple Shape Shoulder Bag for",
+                "b_price": "US $11.75",
+                "c_shop": "aliexpress",
+                "d_catergory": "women-bags",
+                "e_img": "/media/2017-New-H"
+            },
+            {
+                "a_name": "XIU LUO American Footballer Customize Men Thicken Zipper",
+                "b_price": "US $30.00",
+                "c_shop": "aliexpress",
+                "d_catergory": "headphones",
+                "e_img": "/media/High-Quali_bgwkk2Y"
+            },
+            {
+                "a_name": "2018 Autumn Fashion brand hooded men streetwear pullover Men Cotton hoodies hipster Hip Hop Men tracksuits fashion Sweatshirt",
+                "b_price": "US $10.89 - 12.08",
+                "c_shop": "aliexpress",
+                "d_catergory": "headphones",
+                "e_img": "/media/2018-Autum"
+            },
+            {
+                "a_name": "EINAUDI Men/Women Marilyn Monroe Autumn 3d Print Skull Man",
+                "b_price": "US $16.13 - 16.86",
+                "c_shop": "aliexpress",
+                "d_catergory": "headphones",
+                "e_img": "/media/2017-New-F_KjiJEjP"
+            },
+            {
+                "a_name": "HENGSHENG Women Messenger Bag Leather Plush Ball Solid",
+                "b_price": "US $9.90 - 19.56",
+                "c_shop": "aliexpress",
+                "d_catergory": "women-bags",
+                "e_img": "/media/Fashion-Wo_wlZEdWY"
+            },
+            {
+                "a_name": "Yogodlns 2018 Messenger Bags Mini Bag With Deer Shell Shape",
+                "b_price": "US $5.94",
+                "c_shop": "aliexpress",
+                "d_catergory": "women-bags",
+                "e_img": "/media/HOT-SALE-2_B1hsplp"
+            },
+            {
+                "a_name": "Leagoo KIICAA POWER 3G Smartphone MTK6580A Quad Core 1.3GHz 2GB RAM 16GB ROM-GOLDEN",
+                "b_price": "21,699",
+                "c_shop": "jumia",
+                "d_catergory": "phone",
+                "e_img": "/media/jumia/1GZoEcDCvdv"
+            },
+            {
+                "a_name": "Aelfric Eden Male Sweatshirt Men Skateboard Tracksuit",
+                "b_price": "US $18.58",
+                "c_shop": "aliexpress",
+                "d_catergory": "hoodies",
+                "e_img": "/media/Aelfric-Ed_Th8rOAR"
+            },
+            {
+                "a_name": "Samsung Galaxy Note 8 6.3-Inch QHD (6GB,64GB ROM) Android 7.1 Nougat, 12MP + 8MP SIM 4G Smartphone ",
+                "b_price": "272,000",
+                "c_shop": "jumia",
+                "d_catergory": "phone",
+                "e_img": "/media/jumia/1uwoLVq6f7m"
+            },
+            
+            
+        ]
+
+
+document.getElementById("json-3").innerHTML = JSON.stringify(data, undefined, 2);
+  </script>
+{% endblock %}
