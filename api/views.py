@@ -34,21 +34,21 @@ def rest_product_list(request):
 
 
 def rest_store_detail(request, slug):
-    products_list = Products.objects.filter(shop=slug)[:100]
+    products_list = Products.objects.filter(shop=slug).order_by('?')[:100]
     product_names = [{'e_img': product_list.image.url, 'c_shop': product_list.shop, 'd_catergory': product_list.genre,
                       'b_price': product_list.price, 'a_name': product_list.name, } for product_list in products_list]
     return HttpResponse(json.dumps(product_names, sort_keys=True, indent=4), content_type='application/json')
 
 
 def rest_product_catergory(request, slug):
-    products_list = Products.objects.filter(genre=slug)[:100]
+    products_list = Products.objects.filter(genre=slug).order_by('?')[:100]
     product_names = [{'e_img': product_list.image.url, 'c_shop': product_list.shop, 'd_catergory': product_list.genre,
                       'b_price': product_list.price, 'a_name': product_list.name, } for product_list in products_list]
     return HttpResponse(json.dumps(product_names, sort_keys=True, indent=4), content_type='application/json')
 
 
 def rest_store_product_catergory(request, slug, plug):
-    products_list = Products.objects.filter(genre=slug, shop=plug)[:100]
+    products_list = Products.objects.filter(genre=slug, shop=plug).order_by('?')[:100]
     product_names = [{'e_img': product_list.image.url, 'c_shop': product_list.shop, 'd_catergory': product_list.genre,
                       'b_price': product_list.price, 'a_name': product_list.name, } for product_list in products_list]
     return HttpResponse(json.dumps(product_names, sort_keys=True, indent=4), content_type='application/json')
