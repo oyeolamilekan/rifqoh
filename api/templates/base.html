@@ -37,6 +37,24 @@
       display: flex; 
       flex-wrap: wrap;
     }
+    .nav-link {
+        font-size: small;
+    }
+    a.active-n{
+        border-radius: 2px;
+        background-color: #e9ecef;
+        color: #666;
+    }
+    .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+    .small-img{
+        width: 30px;
+    }
+    .top-4 {
+        margin-top: 19px;
+    }
+    a.hover-board:hover{
+      background-color: #eee;
+    }
 </style>
     <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -79,8 +97,10 @@
         </nav>
         <br>
         <br>
+    
     {% block content %}
     {% endblock %}
+
     </body>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

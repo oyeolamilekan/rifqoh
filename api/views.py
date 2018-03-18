@@ -19,6 +19,10 @@ def home_page(request):
 def getting_started(request):
     return render(request,'api/getting_started.html',{})
 
+# Get products by catergory tutorial
+def catergory_tuts(request):
+  return render(request,'api/get_product_cat.html',{})
+
 
 
 ########### API Query views ###########

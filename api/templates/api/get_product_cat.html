@@ -1,6 +1,6 @@
 {% extends 'api/special_nav.html' %}
 {% load static %}
-{% block api_cat %}active-n{% endblock %}
+{% block p_api_cat %}active-n{% endblock %}
 {% block get_start %}active{% endblock %}
 {% block specd %}
 
@@ -13,8 +13,8 @@
             <div class="p-3 my-3 rounded box-shadow">
                 <!-- Start content -->
                 <div class="content">
-                    <h3 id="verse1">Get started</h3>
-                    <p>We're assuming you know how to make web requests in your chosen programming language. We've included some crude ways to do this in our examples below if you need a place to start.</p>
+                    <h3 id="verse1">Get Product</h3>
+                    <p>You can get products by different categories from the quickfinda database.</p>
                 </div>
                 <!-- End content -->
 
@@ -54,8 +54,8 @@
 
 <span class="text-info">import</span> <span class="text-danger">requests</span>
 
-<span class="text-secondary"># Goes to the url to get the json data</span>
-url = (<span class="text-success">'http://quickfinda.com/api/product_list'</span>)
+<span class="text-secondary"># Goes to the url to get the json data, you can change the parameter to catergory which are phone, laptops , televison e.t.c</span>
+url = (<span class="text-success">'http://quickfinda.com/api/product_catergory/phone/'</span>)
 
 <span class="text-secondary"># Process the json data</span>
 response = requests.<span class="text-danger">get(<span class="text-success">url</span>)</span>
@@ -77,8 +77,8 @@ response = requests.<span class="text-danger">get(<span class="text-success">url
 
 <span class="text-info">require</span> <span class="text-danger">'open-uri'</span>
 
-<span class="text-secondary"># Goes to the url to get the json data</span>
-url = <span class="text-success">'http://quickfinda.com/api/product_list'</span>
+<span class="text-secondary"># Goes to the url to get the json data, you can change the parameter to catergory which are phone, laptops , televison e.t.c</span>
+url = <span class="text-success">'http://quickfinda.com/api/product_catergory/phone/'</span>
 
 <span class="text-secondary"># Process the json data</span>
 response_body = <span class="text-danger">open(<span class="text-success">url</span>)</span>
@@ -125,27 +125,55 @@ response_body = <span class="text-danger">open(<span class="text-success">url</s
                     <pre>
                         <code>
 [
-  {
-      "a_name": "  Polystar - 43\" LED FHD Smart TV - PV-GLHD4315DVT  ",
-      "b_price": "115,000",
-      "c_shop": "konga",
-      "d_catergory": "televisions",
-      "e_img": "https://washinga.s3.amazonaws.com:443/konga/43-LED-FHD-Sma?Signature=XzPfoujqD9ZnIXypG3DcF7qe8Ys%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
-  },
-  {
-      "a_name": "  Sharp - LC-32LE265M 32\" HD Multi-System LED TV  ",
-      "b_price": "57,700",
-      "c_shop": "konga",
-      "d_catergory": "televisions",
-      "e_img": "https://washinga.s3.amazonaws.com:443/konga/LC-32LE265M-32?Signature=FYNVFwW2K4eDBht4%2B9jeOGOsuXs%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
-  },
-  {
-      "a_name": "  Men's Formal Classic Shirt - Off White + Free Cufflinks  ",
-      "b_price": "16,000",
-      "c_shop": "konga",
-      "d_catergory": "shirts",
-      "e_img": "https://washinga.s3.amazonaws.com:443/konga/Men-s-Formal-C?Signature=w1yY9%2BbJJDM3zj3Lq95om%2F02eQM%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
-  }
+    {
+        "a_name": "Nokia 8 5.3-Inch (4GB,64GB ROM) Dual 13MP + 13MP, Android 7.1 Nougat Dual SIM 4G Smartphone - Polished Blue",
+        "b_price": "144,000",
+        "c_shop": "jumia",
+        "d_catergory": "phone",
+        "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1e7LE9AxEtj?Signature=xvkrnsWgEHCkcRKg%2FhMmuXwiZFY%3D&Expires=1521416230&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+    },
+    {
+        "a_name": "Infinix Hot 5 X559c (2GB, 16GB) With Fingerprint + Smart Cover- Gold",
+        "b_price": "39,450",
+        "c_shop": "jumia",
+        "d_catergory": "phone",
+        "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1Yj9kX8Hx3v?Signature=FtveWOB%2Fx3AlouOinDEoxnrhkyE%3D&Expires=1521416230&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+    },
+    {
+        "a_name": "itel S32 5.5-Inch (1GB, 16GB ROM) Android 7.0 Nougat, 8MP + 8MP + 2MP Fingerprint Dual SIM 3G Smartphone - Black",
+        "b_price": "32,490",
+        "c_shop": "jumia",
+        "d_catergory": "phone",
+        "e_img": "https://washinga.s3.amazonaws.com:443/jumia/14XicK6vdL7?Signature=RBDLSVfv8v90VvixY2j4f9r3WuE%3D&Expires=1521416230&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+    },
+    {
+        "a_name": "Apple IPhone 7 32GB Smartphone - Gold",
+        "b_price": "209,000",
+        "c_shop": "jumia",
+        "d_catergory": "phone",
+        "e_img": "https://washinga.s3.amazonaws.com:443/jumia/19OyfhjGOef?Signature=nBX8WktlVLLHqbvOLAmRsND4ASQ%3D&Expires=1521416230&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+    },
+    {
+        "a_name": "Ulefone Mix 2 MT6737H Quad Core 18:9 HD Screen 5.7 Inch Android 7.0 Smartphone 2GB RAM 16GB ROM Dual Back Camera 4G Mobile Phone(Black)",
+        "b_price": "39,699",
+        "c_shop": "jumia",
+        "d_catergory": "phone",
+        "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1PZy4yeNnoN?Signature=P8HaUxA6kX1UD0hZAblPD7l35oQ%3D&Expires=1521416230&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+    },
+    {
+        "a_name": "Infinix Note 4 Pro (X571) 5.7-Inch FHD (3GB,32GB ROM) Android 7 Nougat, 13MP + 8MP Dual SIM 4G LTE Smartphone, Sandstone Black",
+        "b_price": "74,500",
+        "c_shop": "jumia",
+        "d_catergory": "phone",
+        "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1uSRlFRQEiu?Signature=LKFDqMMM9O%2Fqwby0UVKQwk9LDKY%3D&Expires=1521416230&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+    },
+    {
+        "a_name": "Samsung Galaxy J7 Pro J730GM Dual Sim 5.5-Inch (3GB, 16GB ROM) Android, 13MP + 13MP - Black",
+        "b_price": "97,000",
+        "c_shop": "jumia",
+        "d_catergory": "phone",
+        "e_img": "https://washinga.s3.amazonaws.com:443/jumia/170xaZEs9vJ?Signature=U2CfUU96WRxWmV8RMHDxM1ARGq4%3D&Expires=1521416230&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+    },
 ]
                         </code>
                     </pre>
