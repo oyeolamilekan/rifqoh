@@ -11,7 +11,7 @@ from .models import Products
 
 # https://www.jumia.com.ng/playstation4-consoles/?page=2
 def jumia_crawler():
-    # hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0'}
+    hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0'}
     # for urls in range(1, 3):
     #     html = Request('https://www.jumia.com.ng/playstation4-consoles/?page=%s' % urls, headers=hdr)
     #     htmll = urlopen(html).read()
@@ -67,7 +67,7 @@ def jumia_crawler():
     #             lf = ContentFile(httl)
     #             product = Products(name=namelst.replace("\n", ' ').replace('\t',' '), price=product_price, source_url=product_link, shop='jumia',
     #                                genre='televisions')
-    #             product.image.save(file_name[:20], lf)
+    #             product.image.save(file_name[:20], lf) 'https://www.jumia.com.ng/catalog/?q=cubot'
 
     for urls in range(1, 25):
         html = Request('https://www.jumia.com.ng/smartphones/?page=%s' % urls, headers=hdr)
