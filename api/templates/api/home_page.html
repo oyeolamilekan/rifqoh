@@ -1,92 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<style>
-    .sidebar-sticky {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 48px;
-      height: calc(100vh - 48px);
-      padding-top: .5rem;
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
-    .sidebar .nav-link {
-      font-weight: 500;
-      color: #333;
-    }
-    .descr-text {
-      height: calc(100vh - 208px);
-    }
-    .blue-board {
-      align-items: center; 
-      justify-content: space-around; 
-      display: flex; 
-      flex-wrap: wrap;
-    }
-</style>
 
 <div>
   
-    <!-- <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link {% block active %}{% endblock %}" href="{% url 'analytics:HomeView' %}">
-              <span data-feather="home"></span>
-              Demo 
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% block clicks %}{% endblock %}" href="{% url 'analytics:prod_clicks' %}">
-              <span data-feather="file"></span>
-              Get products
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% block customers %}{% endblock %}" href="{% url 'analytics:user_acq' %}">
-              <span data-feather="users"></span>
-              <span class="text-small">Get products by category</span>
-            </a>
-          </li>
-        </ul>
-
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Saved reports</span>
-          <a class="d-flex align-items-center text-muted" href="#">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Current month
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Last quarter
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Social engagement
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Year-end sale
-            </a>
-          </li>
-        </ul>
-      </div>
-      col-md-9 ml-sm-auto col-lg-10 pt-3 px-4
-    </nav> -->
+    <!--  -->
 
     <main role="main">
       <div style="margin-top: 4%;" align="center">
@@ -100,7 +18,6 @@
         </div>
       </div>
     </div>
-
       <div class="descr-text code-sample bg-danger" style="height: 100%;">
 
         <div class="my-3">
@@ -207,7 +124,7 @@
           </div>
           <br>
           <br>
-          <p class="text-center" style="border-top: 1px solid black;width: 100%; "><br><br>&copy 2018, a c68 company.</p>
+          <p class="text-center" style="border-top: 1px solid black;width: 100%; "><br><br>&copy 2018, a C68 company.</p>
         </div>
       </div>
 
@@ -220,237 +137,310 @@
   </div>
   <script type="text/javascript">
     var data = [
-            {
-                "a_name": "USPS XINIU Women Shoulder Bag Candy colored Crossbody",
-                "b_price": "US $3.58 - 3.98",
-                "c_shop": "aliexpress",
-                "d_catergory": "women-bags",
-                "e_img": "/media/USPS-XINIU"
-            },
-            {
-                "a_name": "Yogodlns 2018 New Cute Cartoon Apple Shape Shoulder Bag for",
-                "b_price": "US $11.75",
-                "c_shop": "aliexpress",
-                "d_catergory": "women-bags",
-                "e_img": "/media/2017-New-H"
-            },
-            {
-                "a_name": "XIU LUO American Footballer Customize Men Thicken Zipper",
-                "b_price": "US $30.00",
-                "c_shop": "aliexpress",
-                "d_catergory": "headphones",
-                "e_img": "/media/High-Quali_bgwkk2Y"
-            },
-            {
-                "a_name": "2018 Autumn Fashion brand hooded men streetwear pullover Men Cotton hoodies hipster Hip Hop Men tracksuits fashion Sweatshirt",
-                "b_price": "US $10.89 - 12.08",
-                "c_shop": "aliexpress",
-                "d_catergory": "headphones",
-                "e_img": "/media/2018-Autum"
-            },
-            {
-                "a_name": "EINAUDI Men/Women Marilyn Monroe Autumn 3d Print Skull Man",
-                "b_price": "US $16.13 - 16.86",
-                "c_shop": "aliexpress",
-                "d_catergory": "headphones",
-                "e_img": "/media/2017-New-F_KjiJEjP"
-            },
-            {
-                "a_name": "HENGSHENG Women Messenger Bag Leather Plush Ball Solid",
-                "b_price": "US $9.90 - 19.56",
-                "c_shop": "aliexpress",
-                "d_catergory": "women-bags",
-                "e_img": "/media/Fashion-Wo_wlZEdWY"
-            },
-            {
-                "a_name": "Yogodlns 2018 Messenger Bags Mini Bag With Deer Shell Shape",
-                "b_price": "US $5.94",
-                "c_shop": "aliexpress",
-                "d_catergory": "women-bags",
-                "e_img": "/media/HOT-SALE-2_B1hsplp"
-            },
-            {
-                "a_name": "Leagoo KIICAA POWER 3G Smartphone MTK6580A Quad Core 1.3GHz 2GB RAM 16GB ROM-GOLDEN",
-                "b_price": "21,699",
-                "c_shop": "jumia",
-                "d_catergory": "phone",
-                "e_img": "/media/jumia/1GZoEcDCvdv"
-            },
-            {
-                "a_name": "Aelfric Eden Male Sweatshirt Men Skateboard Tracksuit",
-                "b_price": "US $18.58",
-                "c_shop": "aliexpress",
-                "d_catergory": "hoodies",
-                "e_img": "/media/Aelfric-Ed_Th8rOAR"
-            },
-            {
-                "a_name": "Samsung Galaxy Note 8 6.3-Inch QHD (6GB,64GB ROM) Android 7.1 Nougat, 12MP + 8MP SIM 4G Smartphone ",
-                "b_price": "272,000",
-                "c_shop": "jumia",
-                "d_catergory": "phone",
-                "e_img": "/media/jumia/1uwoLVq6f7m"
-            },
+        {
+          "a_name": "Temperature-changed Lipstick Lip Balm 7 Colors Lipbalm Nutritious 3.5g HengFang",
+          "b_price": "US $0.91 - 1.98",
+          "c_shop": "aliexpress",
+          "d_catergory": "makeup",
+          "e_img": "https://washinga.s3.amazonaws.com:443/2016-New-H?Signature=dPK5ni91ujkzRTbjcmU%2BO9CjKbU%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "Oukitel C8 - 5.5\" 3G Android 7.0 2GB/16GB Fingerprint L-Sensor EU - Black",
+          "b_price": "26,500",
+          "c_shop": "jumia",
+          "d_catergory": "phone",
+          "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1X56RxhDtVK?Signature=GsalGDYhdhMVbhOtciqZle7fOxo%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "Sony PlayStation 4 Pro 1TB Console + Extra PS4 Dualshock 4 Wireless Controller - Jet Black",
+          "b_price": "175,999",
+          "c_shop": "jumia",
+          "d_catergory": "televisions",
+          "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1iocBJSd41K?Signature=d9lI0V1by%2BrgT7weKTVNVJVXheo%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "  Contact seller   Tecno - L8 Lite  ",
+          "b_price": "29,800",
+          "c_shop": "konga",
+          "d_catergory": "phone",
+          "e_img": "https://washinga.s3.amazonaws.com:443/konga/L8-Lite-804739?Signature=oVACAeEnK%2B58sObi5zKK%2F1rd9r0%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "ROMANTIC BEAR 2016 Lip Tint 6 Colors Waterproof Tattoo Lipstick Peel off Moisturizing",
+          "b_price": "US $0.88",
+          "c_shop": "aliexpress",
+          "d_catergory": "makeup",
+          "e_img": "https://washinga.s3.amazonaws.com:443/-2016-New-?Signature=pItKN2NwGoqceDTaLzbqjIdzMjM%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "Generic Foldable Wireless Mouse Wireless Computer Mouse Folding 2.4Ghz Purple Flexional Mice For PC Laptop(Black)",
+          "b_price": "7,236",
+          "c_shop": "jumia",
+          "d_catergory": "laptops",
+          "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1GOXTrGS95k?Signature=ZtER0MhNdPR2krLOcFBDu0z2heg%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "  Contact seller   Dej - Curved Collar Shirt - Slim-Fit - Purple  ",
+          "b_price": "8,500",
+          "c_shop": "konga",
+          "d_catergory": "shirts",
+          "e_img": "https://washinga.s3.amazonaws.com:443/konga/Curved-Collar-?Signature=AwFmEDN4E7YDlbljxjocBOu8jPs%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "  Contact seller   Orlando - Men's Wristwatch - Silver & Gold  ",
+          "b_price": "4,500",
+          "c_shop": "konga",
+          "d_catergory": "men-watches",
+          "e_img": "https://washinga.s3.amazonaws.com:443/konga/Men-s-Wristwat?Signature=K0bJAGR0g9P7BIckgLv35VqBYPM%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "  Contact seller   Men's Long Sleeve Shirt - Light Blue  ",
+          "b_price": "4,500",
+          "c_shop": "konga",
+          "d_catergory": "shirts",
+          "e_img": "https://washinga.s3.amazonaws.com:443/konga/Men-s-Long-Sle?Signature=h8Tudw9tYw%2F31QdmyfpEPOoyOXg%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "SEVEN SKIN Messenger Bags Genuine Leather Female",
+          "b_price": "US $16.27",
+          "c_shop": "aliexpress",
+          "d_catergory": "women-bags",
+          "e_img": "https://washinga.s3.amazonaws.com:443/SEVEN-SKIN?Signature=XbFUUAyV5F6i65ENBFWALk0qZW8%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "  Fineryman Classic Fit Short Sleeved Formal Shirt  ",
+          "b_price": "5,550",
+          "c_shop": "konga",
+          "d_catergory": "shirts",
+          "e_img": "https://washinga.s3.amazonaws.com:443/konga/Fineryman-Clas?Signature=mIBbTi1wJs9kvbWJgGQ5xPjjVlQ%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "Polystar 40\" PV-HD40D15DVBT HD LED TV  - Black",
+          "b_price": "87,990",
+          "c_shop": "jumia",
+          "d_catergory": "televisions",
+          "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1Ba8ITYW6sh?Signature=CwDbLW%2FmHpaXSbR1ncCp3qJ8SEA%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "Samsung SAMSUNG 43 FULL HD LED TV UA43FH4003R+free Wall Bracket",
+          "b_price": "120,000",
+          "c_shop": "jumia",
+          "d_catergory": "televisions",
+          "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1pEHn5OtHTM?Signature=lvdqr0M8bGyvV%2FpZFobdzGIGWOA%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "  Nokia - 3310 - Grey  ",
+          "b_price": "16,400",
+          "c_shop": "konga",
+          "d_catergory": "phone",
+          "e_img": "https://washinga.s3.amazonaws.com:443/konga/85543_15167833?Signature=xikcWNxCnG2%2BxF9pO0m%2BFRRIBu8%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "  Contact seller   Samsung - UHD 4K Flat LED TV - 70KU7000 - With Free Wall Bracket - 70 Inch  ",
+          "b_price": "1,450,000",
+          "c_shop": "konga",
+          "d_catergory": "televisions",
+          "e_img": "https://washinga.s3.amazonaws.com:443/konga/UHD-4K-Flat-LE?Signature=KIO%2BEjYUP0IxJtE0ayTNssudEsM%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
+        {
+          "a_name": "Apple Apple IPhone 7 4.7 Inch 4G LTE 12MP Camera 4K Video Recording Smartphone",
+          "b_price": "273,500",
+          "c_shop": "jumia",
+          "d_catergory": "phone",
+          "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1oDNBzlDBKg?Signature=EotzAjOOKQXjXsIQRF9VD2dW2L4%3D&Expires=1521113800&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+        },
             
             
-        ] 
+  ] 
 
 
 document.getElementById("json").innerHTML = JSON.stringify(data, undefined, 2);
 
 var data = [
             {
-                "a_name": "USPS XINIU Women Shoulder Bag Candy colored Crossbody",
-                "b_price": "US $3.58 - 3.98",
-                "c_shop": "aliexpress",
-                "d_catergory": "women-bags",
-                "e_img": "/media/USPS-XINIU"
-            },
-            {
-                "a_name": "Yogodlns 2018 New Cute Cartoon Apple Shape Shoulder Bag for",
-                "b_price": "US $11.75",
-                "c_shop": "aliexpress",
-                "d_catergory": "women-bags",
-                "e_img": "/media/2017-New-H"
-            },
-            {
-                "a_name": "XIU LUO American Footballer Customize Men Thicken Zipper",
-                "b_price": "US $30.00",
-                "c_shop": "aliexpress",
-                "d_catergory": "headphones",
-                "e_img": "/media/High-Quali_bgwkk2Y"
-            },
-            {
-                "a_name": "2018 Autumn Fashion brand hooded men streetwear pullover Men Cotton hoodies hipster Hip Hop Men tracksuits fashion Sweatshirt",
-                "b_price": "US $10.89 - 12.08",
-                "c_shop": "aliexpress",
-                "d_catergory": "headphones",
-                "e_img": "/media/2018-Autum"
-            },
-            {
-                "a_name": "EINAUDI Men/Women Marilyn Monroe Autumn 3d Print Skull Man",
-                "b_price": "US $16.13 - 16.86",
-                "c_shop": "aliexpress",
-                "d_catergory": "headphones",
-                "e_img": "/media/2017-New-F_KjiJEjP"
-            },
-            {
-                "a_name": "HENGSHENG Women Messenger Bag Leather Plush Ball Solid",
-                "b_price": "US $9.90 - 19.56",
-                "c_shop": "aliexpress",
-                "d_catergory": "women-bags",
-                "e_img": "/media/Fashion-Wo_wlZEdWY"
-            },
-            {
-                "a_name": "Yogodlns 2018 Messenger Bags Mini Bag With Deer Shell Shape",
-                "b_price": "US $5.94",
-                "c_shop": "aliexpress",
-                "d_catergory": "women-bags",
-                "e_img": "/media/HOT-SALE-2_B1hsplp"
-            },
-            {
-                "a_name": "Leagoo KIICAA POWER 3G Smartphone MTK6580A Quad Core 1.3GHz 2GB RAM 16GB ROM-GOLDEN",
-                "b_price": "21,699",
+                "a_name": "Lenovo Ideapad 320-14IKBA  Intel Core I5-7200U (4GB DDR4, 1TB HDD) 14.0-Inch FHD Windows 10 Home Laptop - Onynx Black",
+                "b_price": "225,990",
                 "c_shop": "jumia",
-                "d_catergory": "phone",
-                "e_img": "/media/jumia/1GZoEcDCvdv"
+                "d_catergory": "laptops",
+                "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1Al4i0zZonV?Signature=vryDV0AOmvoh7gkrNU0o1ivvJ24%3D&Expires=1521113962&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
             },
             {
-                "a_name": "Aelfric Eden Male Sweatshirt Men Skateboard Tracksuit",
-                "b_price": "US $18.58",
-                "c_shop": "aliexpress",
-                "d_catergory": "hoodies",
-                "e_img": "/media/Aelfric-Ed_Th8rOAR"
-            },
-            {
-                "a_name": "Samsung Galaxy Note 8 6.3-Inch QHD (6GB,64GB ROM) Android 7.1 Nougat, 12MP + 8MP SIM 4G Smartphone ",
-                "b_price": "272,000",
+                "a_name": "Lenovo Ideapad 320-14IKBA  Intel Core I5-7200U (4GB DDR4, 1TB HDD) 14.0-Inch FHD Windows 10 Home Laptop - Onynx Black",
+                "b_price": "225,990",
                 "c_shop": "jumia",
-                "d_catergory": "phone",
-                "e_img": "/media/jumia/1uwoLVq6f7m"
+                "d_catergory": "laptops",
+                "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1y9fF9VuOfj?Signature=OLkq9Y9fBbO8UOohjJcw%2BxNIDvM%3D&Expires=1521113962&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
             },
+            {
+                "a_name": "Lenovo Ideapad 320-14IKBA  Intel Core I5-7200U (4GB DDR4, 1TB HDD) 14.0-Inch FHD Windows 10 Home Laptop - Onynx Black",
+                "b_price": "225,990",
+                "c_shop": "jumia",
+                "d_catergory": "laptops",
+                "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1GZMgylEnjQ?Signature=Lpch7oPP0IxvQuJeBrDs14bSj1k%3D&Expires=1521113962&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+            },
+            {
+                "a_name": "Lenovo G50-80 Grade A Laptop - 15.6\", Intel Core I3-5005U, 12GB RAM, 1TB+32GB,MOUSE,Win10 Wiith Full Ms Office 365 Package -Silver",
+                "b_price": "198,999",
+                "c_shop": "jumia",
+                "d_catergory": "laptops",
+                "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1vMm34RBigL?Signature=AO8LRemALOJtBnVPa4WzVA%2BHQpQ%3D&Expires=1521113962&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+            },
+            {
+                "a_name": "Lenovo G50-80 Grade A Laptop - 15.6\", Intel Core I3-5005U, 12GB RAM, 1TB+32GB,MOUSE,Win10 Wiith Full Ms Office 365 Package -Silver",
+                "b_price": "198,999",
+                "c_shop": "jumia",
+                "d_catergory": "laptops",
+                "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1wqXlPWjjEP?Signature=lPpylbgx2I7DpWOHZrX9N1fCSPI%3D&Expires=1521113962&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+            },
+            {
+                "a_name": "Lenovo G50-80 Grade A Laptop - 15.6\", Intel Core I3-5005U, 12GB RAM, 1TB+32GB,MOUSE,Win10 Wiith Full Ms Office 365 Package -Silver",
+                "b_price": "198,999",
+                "c_shop": "jumia",
+                "d_catergory": "laptops",
+                "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1mmP3T8ioud?Signature=%2FAZmhPGOb7dKx8zSB%2Bjt6mSQWk8%3D&Expires=1521113962&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+            },
+            {
+                "a_name": "HP 15 PC - Intel Celeron - 500GB HDD - 4GB RAM+32GB Flash Drive,Mouse,Fashion Sport Watch - Windows 10 Home- Black Colour",
+                "b_price": "110,000",
+                "c_shop": "jumia",
+                "d_catergory": "laptops",
+                "e_img": "https://washinga.s3.amazonaws.com:443/jumia/19YWNvqF96y?Signature=7DA4QpWLZ2mjfcwpXQ9S6d%2Brcec%3D&Expires=1521113962&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+            },
+            {
+                "a_name": "HP 15 PC - Intel Celeron - 500GB HDD - 4GB RAM+32GB Flash Drive,Mouse,Fashion Sport Watch - Windows 10 Home- Black Colour",
+                "b_price": "110,000",
+                "c_shop": "jumia",
+                "d_catergory": "laptops",
+                "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1t6YyISmQDT?Signature=6j6Yn62o0n3H%2B%2FmODG1EVanrbgA%3D&Expires=1521113962&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+            },
+            {
+                "a_name": "HP 15 PC - Intel Celeron - 500GB HDD - 4GB RAM+32GB Flash Drive,Mouse,Fashion Sport Watch - Windows 10 Home- Black Colour",
+                "b_price": "110,000",
+                "c_shop": "jumia",
+                "d_catergory": "laptops",
+                "e_img": "https://washinga.s3.amazonaws.com:443/jumia/1Cc9CrFBqdo?Signature=DbmA2HzCZAzZRclHZ1phs1YKUGU%3D&Expires=1521113962&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+            }
             
             
-        ]
+          ]
 
 
 document.getElementById("json-1").innerHTML = JSON.stringify(data, undefined, 2);
 
 var data = [
-            {
-                "a_name": "USPS XINIU Women Shoulder Bag Candy colored Crossbody",
-                "b_price": "US $3.58 - 3.98",
-                "c_shop": "aliexpress",
-                "d_catergory": "women-bags",
-                "e_img": "/media/USPS-XINIU"
-            },
-            {
-                "a_name": "Yogodlns 2018 New Cute Cartoon Apple Shape Shoulder Bag for",
-                "b_price": "US $11.75",
-                "c_shop": "aliexpress",
-                "d_catergory": "women-bags",
-                "e_img": "/media/2017-New-H"
-            },
-            {
-                "a_name": "XIU LUO American Footballer Customize Men Thicken Zipper",
-                "b_price": "US $30.00",
-                "c_shop": "aliexpress",
-                "d_catergory": "headphones",
-                "e_img": "/media/High-Quali_bgwkk2Y"
-            },
-            {
-                "a_name": "2018 Autumn Fashion brand hooded men streetwear pullover Men Cotton hoodies hipster Hip Hop Men tracksuits fashion Sweatshirt",
-                "b_price": "US $10.89 - 12.08",
-                "c_shop": "aliexpress",
-                "d_catergory": "headphones",
-                "e_img": "/media/2018-Autum"
-            },
-            {
-                "a_name": "EINAUDI Men/Women Marilyn Monroe Autumn 3d Print Skull Man",
-                "b_price": "US $16.13 - 16.86",
-                "c_shop": "aliexpress",
-                "d_catergory": "headphones",
-                "e_img": "/media/2017-New-F_KjiJEjP"
-            },
-            {
-                "a_name": "HENGSHENG Women Messenger Bag Leather Plush Ball Solid",
-                "b_price": "US $9.90 - 19.56",
-                "c_shop": "aliexpress",
-                "d_catergory": "women-bags",
-                "e_img": "/media/Fashion-Wo_wlZEdWY"
-            },
-            {
-                "a_name": "Yogodlns 2018 Messenger Bags Mini Bag With Deer Shell Shape",
-                "b_price": "US $5.94",
-                "c_shop": "aliexpress",
-                "d_catergory": "women-bags",
-                "e_img": "/media/HOT-SALE-2_B1hsplp"
-            },
-            {
-                "a_name": "Leagoo KIICAA POWER 3G Smartphone MTK6580A Quad Core 1.3GHz 2GB RAM 16GB ROM-GOLDEN",
-                "b_price": "21,699",
-                "c_shop": "jumia",
-                "d_catergory": "phone",
-                "e_img": "/media/jumia/1GZoEcDCvdv"
-            },
-            {
-                "a_name": "Aelfric Eden Male Sweatshirt Men Skateboard Tracksuit",
-                "b_price": "US $18.58",
-                "c_shop": "aliexpress",
-                "d_catergory": "hoodies",
-                "e_img": "/media/Aelfric-Ed_Th8rOAR"
-            },
-            {
-                "a_name": "Samsung Galaxy Note 8 6.3-Inch QHD (6GB,64GB ROM) Android 7.1 Nougat, 12MP + 8MP SIM 4G Smartphone ",
-                "b_price": "272,000",
-                "c_shop": "jumia",
-                "d_catergory": "phone",
-                "e_img": "/media/jumia/1uwoLVq6f7m"
-            },
-            
-            
+              {
+                  "a_name": "  Polystar - 43\" LED FHD Smart TV - PV-GLHD4315DVT  ",
+                  "b_price": "115,000",
+                  "c_shop": "konga",
+                  "d_catergory": "televisions",
+                  "e_img": "https://washinga.s3.amazonaws.com:443/konga/43-LED-FHD-Sma?Signature=XzPfoujqD9ZnIXypG3DcF7qe8Ys%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+              },
+              {
+                  "a_name": "  Sharp - LC-32LE265M 32\" HD Multi-System LED TV  ",
+                  "b_price": "57,700",
+                  "c_shop": "konga",
+                  "d_catergory": "televisions",
+                  "e_img": "https://washinga.s3.amazonaws.com:443/konga/LC-32LE265M-32?Signature=FYNVFwW2K4eDBht4%2B9jeOGOsuXs%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+              },
+              {
+                  "a_name": "  Men's Formal Classic Shirt - Off White + Free Cufflinks  ",
+                  "b_price": "16,000",
+                  "c_shop": "konga",
+                  "d_catergory": "shirts",
+                  "e_img": "https://washinga.s3.amazonaws.com:443/konga/Men-s-Formal-C?Signature=w1yY9%2BbJJDM3zj3Lq95om%2F02eQM%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+              },
+              {
+                  "a_name": "  Men's Grand-Slam Office Fitted Shirt - Pink  ",
+                  "b_price": "16,000",
+                  "c_shop": "konga",
+                  "d_catergory": "shirts",
+                  "e_img": "https://washinga.s3.amazonaws.com:443/konga/Men-s-Grand-Sl?Signature=x0bdOt2wsnXfzsUv6JoGs%2F14apQ%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+              },
+              {
+                  "a_name": "  Carlos Daniel - Rachit Print Pattern Casual Short Sleeve Shirt - Sky Blue  ",
+                  "b_price": "2,940",
+                  "c_shop": "konga",
+                  "d_catergory": "shirts",
+                  "e_img": "https://washinga.s3.amazonaws.com:443/konga/Rachit-Print-P?Signature=eEJffEhiwcc%2BcA9AMhIPrsLFv50%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+              },
+              {
+                  "a_name": "  Crux - Black Flambo Shirt  ",
+                  "b_price": "5,995",
+                  "c_shop": "konga",
+                  "d_catergory": "shirts",
+                  "e_img": "https://washinga.s3.amazonaws.com:443/konga/Black-Flambo-S?Signature=LEqpsaet6JSq085nR6VkHSXi0j4%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+              },
+              {
+                  "a_name": "  Mixed Hue Batik Fashion Wear  ",
+                  "b_price": "5,700",
+                  "c_shop": "konga",
+                  "d_catergory": "shirts",
+                  "e_img": "https://washinga.s3.amazonaws.com:443/konga/Mixed-Hue-Bati?Signature=FC%2F1yqS3PVjd9Mc7HvIRPCx49l4%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+              },
+              {
+                  "a_name": "  Sisi Bee - Casual Adire  Shirt - Green  ",
+                  "b_price": "5,700",
+                  "c_shop": "konga",
+                  "d_catergory": "shirts",
+                  "e_img": "https://washinga.s3.amazonaws.com:443/konga/Casual-Adire-S?Signature=CVvncdE%2Fd2wpX%2BNJfUv2KjSMU2g%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+              },
+              {
+                  "a_name": "  Levi Gardin - Men's Formal Shirt - Blue  ",
+                  "b_price": "3,800",
+                  "c_shop": "konga",
+                  "d_catergory": "shirts",
+                  "e_img": "https://washinga.s3.amazonaws.com:443/konga/Men-s-Formal-S?Signature=NLGye6LvmeK%2Bh7dPPlXGu%2BYHors%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+              },
+              {
+                  "a_name": "  Levi Gardin - Men Formal Shirts - White  ",
+                  "b_price": "3,800",
+                  "c_shop": "konga",
+                  "d_catergory": "shirts",
+                  "e_img": "https://washinga.s3.amazonaws.com:443/konga/Men-Formal-Shi?Signature=V3iJqGOWDQO%2FoerwwdzQbAOvBbs%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+              },
+              {
+                  "a_name": "  Levi Gardin - Men's Formal Shirt - Black  ",
+                  "b_price": "4,000",
+                  "c_shop": "konga",
+                  "d_catergory": "shirts",
+                  "e_img": "https://washinga.s3.amazonaws.com:443/konga/Men-s-Formal-S?Signature=NLGye6LvmeK%2Bh7dPPlXGu%2BYHors%3D&Expires=1521114141&AWSAccessKeyId=AKIAIWXNDDJYMFURQR5A"
+              },
+             
         ]
 
 
 document.getElementById("json-3").innerHTML = JSON.stringify(data, undefined, 2);
   </script>
 {% endblock %}
+<nav id="navbar-example2" class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" href="#fat">@fat</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#mdo">@mdo</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#one">one</a>
+        <a class="dropdown-item" href="#two">two</a>
+        <div role="separator" class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#three">three</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+<div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
+  <h4 id="fat">@fat</h4>
+  <p>...</p>
+  <h4 id="mdo">@mdo</h4>
+  <p>...</p>
+  <h4 id="one">one</h4>
+  <p>...</p>
+  <h4 id="two">two</h4>
+  <p>...</p>
+  <h4 id="three">three</h4>
+  <p>...</p>
+</div>

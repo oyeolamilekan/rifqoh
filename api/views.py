@@ -9,11 +9,17 @@ from findit.models import Products
 # Create your views here.
 
 def home_page(request):
-  products_list = Products.objects.order_by('?')[:100]
-  product_names = [{'e_img': product_list.image.url, 'c_shop': product_list.shop, 'd_catergory': product_list.genre,
-                      'b_price': product_list.price, 'a_name': product_list.name, } for product_list in products_list]
-  product = json.dumps(product_names, sort_keys=True, indent=2)
-  return render(request,'api/home_page.html',{'products':product})
+    products_list = Products.objects.order_by('?')[:100]
+    product_names = [{'e_img': product_list.image.url, 'c_shop': product_list.shop, 'd_catergory': product_list.genre,
+                        'b_price': product_list.price, 'a_name': product_list.name, } for product_list in products_list]
+    product = json.dumps(product_names, sort_keys=True, indent=2)
+    return render(request,'api/home_page.html',{'products':product})
+
+# The Getting started page
+def getting_started(request):
+    return render(request,'api/getting_started.html',{})
+
+
 
 ########### API Query views ###########
 def rest_product_list(request):
