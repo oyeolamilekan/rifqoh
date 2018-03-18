@@ -9,11 +9,11 @@ from .aliexpress import alii
 def black_rock():
 
     # Activates konga crawler
-    konga_crawler()
+    #konga_crawler()
 
     # Jumia jumia crawler
     jumia_crawler()
-    
+
     # Does the yudala magic
     yudala()
 
