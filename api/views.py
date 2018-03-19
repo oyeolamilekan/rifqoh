@@ -29,7 +29,6 @@ def shop_tuts(request):
 
 
 
-
 ########### API Query views ###########
 def rest_product_list(request):
     products_list = Products.objects.order_by('?')[:100]

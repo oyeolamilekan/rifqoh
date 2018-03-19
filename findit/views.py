@@ -15,6 +15,7 @@ from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.shortcuts import render
 import time
 from urllib.parse import quote_plus
+from .test_crawler import test_cralwer
 # from .an_utils import correction
 
 # Intial Stops words for the users
@@ -688,6 +689,9 @@ def despiration(request):
 def all_on_it(request):
     return HttpResponse('all done bosees')
 
+def test_engine_starter(request):
+    test_cralwer()
+    return HttpResponse('post woel')
 
 def engine_starter(request):
     black_rock()
