@@ -3,14 +3,15 @@
 {% block p_api_cat %}active-n{% endblock %}
 {% block get_start %}active{% endblock %}
 {% block specd %}
-
         <!-- End navbar -->
 
         <!-- Begin second coloumn -->
-        <div class="col-md-9 ml-sm-auto col-lg-10" style="position: relative;">
+        <div class="col-md-9 ml-sm-auto col-lg-10 content-in" style="position: relative;">
+
             <div>
             <!-- Start code display row -->
             <div class="p-3 my-3 rounded box-shadow">
+              {% include 'api/special_button.html' %}
                 <!-- Start content -->
                 <div class="content">
                     <h3 id="verse1">Get Product</h3>

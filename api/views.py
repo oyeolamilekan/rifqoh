@@ -23,6 +23,11 @@ def getting_started(request):
 def catergory_tuts(request):
   return render(request,'api/get_product_cat.html',{})
 
+# Get products from shop
+def shop_tuts(request):
+  return render(request,'api/get_product_shop.html',{})
+
+
 
 
 ########### API Query views ###########

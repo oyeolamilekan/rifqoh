@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="{% static 'quickfinda.png' %}"/>
     <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <title>Quickfinda Api</title>
 
@@ -55,10 +56,13 @@
     a.hover-board:hover{
       background-color: #eee;
     }
+    a.sign-x {
+      background-color: #eee;
+    }
 </style>
     <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img src="{% static 'quickfinda.png' %}" style="width:30px; position:relative; top:-3px;"> </a>
+        <a class="navbar-brand" href="{% url 'api:home' %}"><img src="{% static 'quickfinda.png' %}" style="width:30px; position:relative; top:-3px;"> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
   </button>
@@ -97,7 +101,7 @@
         </nav>
         <br>
         <br>
-    
+
     {% block content %}
     {% endblock %}
 
@@ -106,4 +110,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(".slide-bar").click(function(event){
+        event.preventDefault();
+        $('.sidebar').removeClass('d-none');
+        $('.content-in').addClass('d-none');
+    })
+    $('.slide-bar-2').click(function(event){
+        event.preventDefault();
+        $('.sidebar').addClass('d-none');
+        $('.content-in').removeClass('d-none');
+
+    })
+    </script>
 </html>

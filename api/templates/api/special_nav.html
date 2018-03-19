@@ -18,7 +18,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link hover-board {% block shops %}{% endblock %}" href="#">
+                <a class="nav-link hover-board {% block p_api_shops %}{% endblock %}" href="{% url 'api:shop_tuts' %}">
                   <span data-feather="users"></span>
                   <span class="text-small">Get products by shop</span>
                 </a>
@@ -56,6 +56,14 @@
                   Year-end sale
                 </a>
               </li>
+              
+              <div class="d-md-none fixed-bottom">
+                <li class="nav-item text-center">
+                <a class="btn btn-danger btn-block nav-link text-white slide-bar-2" href="#" style="border-radius: 0px !important;">
+                 <h4> <i class="fa fa-times"></i></h4>
+                </a>
+              </li>
+              </div>
             </ul>
           </div>
         </nav>

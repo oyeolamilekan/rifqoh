@@ -88,9 +88,10 @@ def jumia_crawler():
             namelst = namelst.decode('ascii', 'ignore')
             htl = Request(images, headers=hdr)
             httl = urlopen(htl).read()
-            print(namelst, product_price)
-            if Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='jumia').exists():
-                product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '),shop="jumia").count()
+            namelist = namelst.replace("\n", ' ').replace('\t',' ')
+            #print(namelst, product_price)
+            if Products.objects.filter(name__iexact=namelist, shop='jumia').exists():
+                product_count = Products.objects.filter(name__iexact=namelst,shop="jumia").count()
                 if product_count >= 2:
                     product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '),shop="jumia")[1]
                     product_count.delete()
