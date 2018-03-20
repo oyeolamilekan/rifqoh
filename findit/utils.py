@@ -9,16 +9,16 @@ from .aliexpress import alii
 def black_rock():
 
     # Activates konga crawler
-    #konga_crawler()
+    konga_crawler()
 
     # Jumia jumia crawler
     jumia_crawler()
 
     # Does the yudala magic
-    #yudala()
+    yudala()
 
     # Activates aliexpress crawler
-    #alii()
+    alii()
 
     t = threading.Timer(172800.0, black_rock)
     t.start()

@@ -155,7 +155,7 @@ def real_index(request):
     # 	orginal_sentence = ' '.join(orginal_sentence)
     # 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
     com = ''
-    page_request_var = 'pages'
+    page_request_var = 'page'
     # if page_request_var and query:
     #     com = 'Nothing'
     # if user_c_code == 'US':
