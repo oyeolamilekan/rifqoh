@@ -1,21 +1,21 @@
-from .forms import feedBackForm
-#from .models import Products, Analytics, UserTheme, Tips
-from .utils import black_rock, nairaconv
-from .search_instance import experimental_search,search_bite
-from accounts.models import *
-from adengine.models import Ads
-from analytics.an_utils import get_client_ip, get_location, get_header_info
-#from analytics.models import PageViews, UserTime, UserNumber
-from analytics.signals import object_viewed
-from analytics.utils import whichPage, user_count, user_converter, get_location
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.db.models import Q
-# Create your views here.
-from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
-from django.shortcuts import render
-import time
-from urllib.parse import quote_plus
-from .test_crawler import test_cralwer
+# from .forms import feedBackForm
+# #from .models import Products, Analytics, UserTheme, Tips
+# from .utils import black_rock, nairaconv
+# from .search_instance import experimental_search,search_bite
+# # from accounts.models import *
+# # from adengine.models import Ads
+# from analytics.an_utils import get_client_ip, get_location, get_header_info
+# #from analytics.models import PageViews, UserTime, UserNumber
+# # from analytics.signals import object_viewed
+# # from analytics.utils import whichPage, user_count, user_converter, get_location
+# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+# from django.db.models import Q
+# # Create your views here.
+# from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
+# from django.shortcuts import render
+# import time
+# from urllib.parse import quote_plus
+# from .test_crawler import test_cralwer
 # from .an_utils import correction
 
 # Intial Stops words for the users
