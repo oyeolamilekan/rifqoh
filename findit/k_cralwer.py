@@ -30,14 +30,9 @@ def konga_crawler():
             e_price = e_price.decode('ascii', 'ignore')
             namelst = bytes(str(product_name.text), 'UTF-8')
             namelst = namelst.decode('ascii', 'ignore')
-            if Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga').exists():
-                product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga").count()
-
-                if product_count >= 2:
-                    product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga")[1]
-                    product_count.delete()
-
-                produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga')
+            namelst = namelst.replace("\n", ' ').replace('\t',' ')
+            if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='konga').exists():
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='konga')
                 # Checks the price
                 if produc.price != e_price:
                     produc.old_price = produc.price
@@ -82,14 +77,9 @@ def konga_crawler():
             e_price = e_price.decode('ascii', 'ignore')
             namelst = bytes(str(product_name.text), 'UTF-8')
             namelst = namelst.decode('ascii', 'ignore')
-            if Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga').exists():
-                product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga").count()
-
-                if product_count >= 2:
-                    product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga")[1]
-                    product_count.delete()
-
-                produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga')
+            namelst = namelst.replace("\n", ' ').replace('\t',' ')
+            if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='konga').exists():
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='konga')
                 # Checks the price
                 if produc.price != e_price:
                     produc.old_price = produc.price
@@ -133,14 +123,10 @@ def konga_crawler():
             e_price = e_price.decode('ascii', 'ignore')
             namelst = bytes(str(product_name.text), 'UTF-8')
             namelst = namelst.decode('ascii', 'ignore')
-            if Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga').exists():
-                product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga").count()
-
-                if product_count >= 2:
-                    product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga")[1]
-                    product_count.delete()
-
-                produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga')
+            namelst = namelst.replace("\n", ' ').replace('\t',' ')
+            if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='konga').exists():
+                
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='konga')
                 # Checks the price
                 if produc.price != e_price:
                     produc.old_price = produc.price
@@ -185,14 +171,10 @@ def konga_crawler():
             e_price = e_price.decode('ascii', 'ignore')
             namelst = bytes(str(product_name.text), 'UTF-8')
             namelst = namelst.decode('ascii', 'ignore')
-            if Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga').exists():
-                product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga").count()
+            namelst = namelst.replace("\n", ' ').replace('\t',' ')
+            if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='konga').exists():
 
-                if product_count >= 2:
-                    product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga")[1]
-                    product_count.delete()
-
-                produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga')
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='konga')
                 # Checks the price
                 if produc.price != e_price:
                     produc.old_price = produc.price
@@ -234,13 +216,9 @@ def konga_crawler():
             e_price = e_price.decode('ascii', 'ignore')
             namelst = bytes(str(product_name.text), 'UTF-8')
             namelst = namelst.decode('ascii', 'ignore')
-            if Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga').exists():
-                product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga").count()
-
-                if product_count >= 2:
-                    product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga")[1]
-                    product_count.delete()
-                produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga')
+            namelst = namelst.replace("\n", ' ').replace('\t',' ')
+            if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='konga').exists():
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='konga')
                 # Checks the price
                 if produc.price != e_price:
                     produc.old_price = produc.price
@@ -282,13 +260,9 @@ def konga_crawler():
         e_price = e_price.decode('ascii', 'ignore')
         namelst = bytes(str(product_name.text), 'UTF-8')
         namelst = namelst.decode('ascii', 'ignore')
-        if Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga').exists():
-            product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga").count()
-
-            if product_count >= 2:
-                product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga")[1]
-                product_count.delete()
-            produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga')
+        namelst = namelst.replace("\n", ' ').replace('\t',' ')
+        if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='konga').exists():
+            produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='konga')
             # Checks the price
             if produc.price != e_price:
                 produc.old_price = produc.price
@@ -331,16 +305,10 @@ def konga_crawler():
             e_price = e_price.decode('ascii', 'ignore')
             namelst = bytes(str(product_name.text), 'UTF-8')
             namelst = namelst.decode('ascii', 'ignore')
-            print(namelst, e_price)
-            if Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga',
+            namelst = namelst.replace("\n", ' ').replace('\t',' ')
+            if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='konga',
                                        genre='men-watches').exists():
-                product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga").count()
-
-                if product_count >= 2:
-                    product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga")[1]
-                    product_count.delete()
-
-                produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga', genre='men-watches')
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='konga', genre='men-watches')
                 # Checks the price
                 if produc.price != e_price:
                     produc.old_price = produc.price
@@ -359,7 +327,7 @@ def konga_crawler():
                     if not block:
                         break
                     lf.write(block)
-                product = Products(name=namelst.replace("\n", ' ').replace('\t',' '), price=e_price, source_url=product_link, shop='konga',
+                product = Products(name=namelst, price=e_price, source_url=product_link, shop='konga',
                                    genre='men-watches')
                 product.image.save(file_name[:20], files.File(lf))
 
@@ -383,16 +351,10 @@ def konga_crawler():
             e_price = e_price.decode('ascii', 'ignore')
             namelst = bytes(str(product_name.text), 'UTF-8')
             namelst = namelst.decode('ascii', 'ignore')
-            print(namelst, e_price)
-            if Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga',
+            namelst = namelst.replace("\n", ' ').replace('\t',' ')
+            if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='konga',
                                        genre='women-watches').exists():
-                product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga").count()
-
-                if product_count >= 2:
-                    product_count = Products.objects.filter(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop="konga")[1]
-                    product_count.delete()
-
-                produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='konga',
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='konga',
                                               genre='women-watches')
                 # Checks the price
                 if produc.price != e_price:
@@ -412,6 +374,6 @@ def konga_crawler():
                     if not block:
                         break
                     lf.write(block)
-                product = Products(name=namelst.replace("\n", ' ').replace('\t',' '), price=e_price, source_url=product_link, shop='konga',
+                product = Products(name=namelst, price=e_price, source_url=product_link, shop='konga',
                                    genre='women-watches')
                 product.image.save(file_name[:20], files.File(lf))

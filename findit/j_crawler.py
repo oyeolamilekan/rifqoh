@@ -33,10 +33,10 @@ def jumia_crawler():
             htl = Request(images, headers=hdr)
             httl = urlopen(htl).read()
             namelst =  namelst.replace("\n", ' ').replace('\t',' ')
-            if Products.objects.filter(name__iexact=namelst, shop='jumia').exists():
+            if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='jumia').exists():
                 #product_count = Products.objects.filter(name__iexact = namelst,shop="jumia").count()
 
-                produc = Products.objects.get(name__iexact=namelst, shop='jumia')
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
                     produc.old_price = produc.price
@@ -85,8 +85,8 @@ def jumia_crawler():
             httl = urlopen(htl).read()
             namelist = namelst.replace("\n", ' ').replace('\t',' ')
             #print(namelst, product_price)
-            if Products.objects.filter(name__iexact=namelist, shop='jumia').exists():
-                produc = Products.objects.get(name__iexact=namelst, shop='jumia')
+            if Products.objects.filter(name__iexact=namelist,source_url=product_link, shop='jumia').exists():
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
                     produc.old_price = produc.price
@@ -133,8 +133,8 @@ def jumia_crawler():
             namelst = namelst.decode('ascii', 'ignore')
             htl = Request(images, headers=hdr)
             httl = urlopen(htl).read()
-            if Products.objects.filter(name__iexact=namelst, shop='jumia').exists():
-                produc = Products.objects.get(name__iexact=namelst, shop='jumia')
+            if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='jumia').exists():
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
                     produc.old_price = produc.price
@@ -182,9 +182,8 @@ def jumia_crawler():
             htl = Request(images, headers=hdr)
             httl = urlopen(htl).read()
             namelst = namelst.replace("\n", ' ').replace('\t',' ')
-            if Products.objects.filter(name__iexact=namelst, shop='jumia').exists():
-                product_count = Products.objects.filter(name__iexact=namelst,shop="jumia")
-                produc = Products.objects.get(name__iexact=namelst, shop='jumia')
+            if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='jumia').exists():
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
                     produc.old_price = produc.price
@@ -233,9 +232,8 @@ def jumia_crawler():
             httl = urlopen(htl).read()
             # print(namelst, product_price)
             namelst = namelst.replace("\n", ' ').replace('\t',' ')
-            if Products.objects.filter(name__iexact=namelst, shop='jumia').exists():
-                product_count = Products.objects.filter(name__iexact=namelst,shop="jumia").count()
-                produc = Products.objects.get(name__iexact=namelst, shop='jumia')
+            if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='jumia').exists():
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
                     produc.old_price = produc.price
@@ -284,9 +282,9 @@ def jumia_crawler():
             htl = Request(images, headers=hdr)
             httl = urlopen(htl).read()
             namelst = namelst.replace("\n", ' ').replace('\t',' ')
-            if Products.objects.filter(name__iexact=namelst, shop='jumia').exists():
-                product_count = Products.objects.filter(name__iexact=namelst,shop="jumia").count()
-                produc = Products.objects.get(name__iexact=namelst, shop='jumia')
+            if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='jumia').exists():
+                
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia')
                 # Checks the price
                 if produc.price != product_price:
                     produc.old_price = produc.price
@@ -333,12 +331,9 @@ def jumia_crawler():
         htl = Request(images, headers=hdr)
         httl = urlopen(htl).read()
         print(namelst, product_price)
-        if Products.objects.filter(name__iexact=namelst, shop='jumia').exists():
-            product_count = Products.objects.filter(name__iexact=namelst,shop="jumia").count()
-            if product_count >= 2:
-                product_count = Products.objects.filter(name__iexact=namelst,shop="jumia")[1]
-                product_count.delete()
-            produc = Products.objects.get(name__iexact=namelst, shop='jumia')
+        if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='jumia').exists():
+            
+            produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia')
             # Checks the price
             if produc.price != product_price:
                 produc.old_price = produc.price
@@ -388,13 +383,9 @@ def jumia_crawler():
             httl = urlopen(htl).read()
             namelst = namelst.replace("\n", ' ').replace('\t',' ')
             print(namelst, product_price)
-            if Products.objects.filter(name__iexact=namelst, shop='jumia',
+            if Products.objects.filter(name__iexact=namelst, source_url=product_link,shop='jumia',
                                        genre='men-watches').exists():
-                product_count = Products.objects.filter(name__iexact=namelst,shop="jumia").count()
-                if product_count >= 2:
-                    product_count = Products.objects.filter(name__iexact = namelst,shop="jumia")[1]
-                    product_count.delete()
-                produc = Products.objects.get(name__iexact=namelst.replace("\n", ' ').replace('\t',' '), shop='jumia', genre='men-watches')
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia', genre='men-watches')
                 # Checks the price
                 if produc.price != product_price:
                     produc.old_price = produc.price
@@ -443,12 +434,11 @@ def jumia_crawler():
             httl = urlopen(htl).read()
             namelst = namelst.replace("\n", ' ').replace('\t',' ')
             print(namelst, product_price)
-            if Products.objects.filter(name__iexact=namelst, shop='jumia',
+            if Products.objects.filter(name__iexact=namelst, source_url=product_link,shop='jumia',
                                        genre='women-watches').exists():
 
-                produc = Products.objects.get(name__iexact=namelst, shop='jumia',
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia',
                                               genre='women-watches')
-                product_count = Products.objects.filter(name__iexact=namelst,shop="jumia").count()
                 # Checks the price
                 if produc.price != product_price:
                     produc.old_price = produc.price

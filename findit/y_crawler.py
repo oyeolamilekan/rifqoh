@@ -35,15 +35,9 @@ def yudala():
             namelst = bytes(str(product_named), 'UTF-8')
             namelst = namelst.decode('ascii', 'ignore')[:299]
             request = requests.get(images, stream=True)
-            print(product_named)
-            if Products.objects.filter(name__iexact=namelst, shop='yudala').exists():
-                product_count = Products.objects.filter(name__iexact=namelst, shop="yudala").count()
-
-                if product_count >= 2:
-                    product_count = Products.objects.filter(name__iexact=namelst, shop="yudala")[1]
-                    product_count.delete()
-
-                produc = Products.objects.get(name__iexact=namelst, shop='yudala')
+            namelst =  namelst.replace("\n", ' ').replace('\t',' ')
+            if Products.objects.filter(name__iexact=namelst,source_url=product_link.attrs['href'], shop='yudala').exists():
+                produc = Products.objects.get(name__iexact=namelst,source_url=product_link.attrs['href'], shop='yudala')
                 # Checks the price
                 if produc.price != product_price:
                     produc.old_price = produc.price
@@ -84,14 +78,9 @@ def yudala():
         namelst = bytes(str(product_named), 'UTF-8')
         namelst = namelst.decode('ascii', 'ignore')[:299]
         request = requests.get(images, stream=True)
-        if Products.objects.filter(name__iexact=namelst, shop='yudala').exists():
-            product_count = Products.objects.filter(name__iexact=namelst, shop="yudala").count()
-
-            if product_count >= 2:
-                product_count = Products.objects.filter(name__iexact=namelst, shop="yudala")[1]
-                product_count.delete()
-
-            produc = Products.objects.get(name__iexact=namelst, shop='yudala')
+        namelst =  namelst.replace("\n", ' ').replace('\t',' ')
+        if Products.objects.filter(name__iexact=namelst,source_url=product_link.attrs['href'], shop='yudala').exists():
+            produc = Products.objects.get(name__iexact=namelst,source_url=product_link.attrs['href'], shop='yudala')
             # Checks the price
             if produc.price != product_price:
                 produc.old_price = produc.price
