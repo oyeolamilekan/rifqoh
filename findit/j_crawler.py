@@ -211,7 +211,7 @@ def jumia_crawler():
                                    genre='televisions', shop='jumia')
                 product.image.save(file_name[:20], lf)
 
-    for urls in range(1, 25):
+    for urls in range(1, 10):
         html = Request('https://www.jumia.com.ng/mens-shirts/page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
@@ -260,9 +260,8 @@ def jumia_crawler():
                 product = Products(name=namelst, price=product_price, source_url=product_link,
                                    genre='shirts', shop='jumia')
                 product.image.save(file_name[:20], lf)
-                print('helloo')
 
-    for urls in range(1, 25):
+    for urls in range(1, 10):
         html = Request('https://www.jumia.com.ng/womens-dresses/page=%s' % urls, headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
