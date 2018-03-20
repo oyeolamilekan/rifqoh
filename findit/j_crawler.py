@@ -33,7 +33,6 @@ def jumia_crawler():
             htl = Request(images, headers=hdr)
             httl = urlopen(htl).read()
             namelst =  namelst.replace("\n", ' ').replace('\t',' ')
-            print(namelst, product_price)
             if Products.objects.filter(name__iexact=namelst, shop='jumia').exists():
                 #product_count = Products.objects.filter(name__iexact = namelst,shop="jumia").count()
 
@@ -61,7 +60,7 @@ def jumia_crawler():
                         break
                     lf.write(block)
                 lf = ContentFile(httl)
-                product = Products(name=namelst.replace("\n", ' ').replace('\t',' '), price=product_price, source_url=product_link, shop='jumia',
+                product = Products(name=namelst, price=product_price, source_url=product_link, shop='jumia',
                                    genre='televisions')
     #             product.image.save(file_name[:20], lf) 'https://www.jumia.com.ng/catalog/?q=cubot'
 
@@ -111,7 +110,7 @@ def jumia_crawler():
                         break
                     lf.write(block)
                 lf = ContentFile(httl)
-                product = Products(name=namelst.replace("\n", ' ').replace('\t',' '), price=product_price, source_url=product_link, shop='jumia',
+                product = Products(name=namelst, price=product_price, source_url=product_link, shop='jumia',
                                    genre='phone')
                 product.image.save(file_name[:20], lf)
 
@@ -159,7 +158,7 @@ def jumia_crawler():
                         break
                     lf.write(block)
                 lf = ContentFile(httl)
-                product = Products(name=namelst.replace("\n", ' ').replace('\t',' '), price=product_price, source_url=product_link,
+                product = Products(name=namelst, price=product_price, source_url=product_link,
                                    shop='jumia', genre='laptops')
                 product.image.save(file_name[:20], lf)
 
