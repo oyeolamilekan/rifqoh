@@ -20,12 +20,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^you_are_stupid/', admin.site.urls),
-    #url(r'^api/', include('api.urls', namespace='api')),
-    #url(r'^shop/',include('shop.urls',namespace='shop')),
-    #url(r'^double/',include('analytics.urls',namespace='analytics')),
-    #url(r'^',include('findit.urls',namespace='findit')),
-    #url(r'^accounts/',include('accounts.urls')),
-    #url(r'^adengine/',include('adengine.urls',namespace='adengine'))
+    url(r'^api/', include('api.urls', namespace='api')),
+    url(r'^shop/',include('shop.urls',namespace='shop')),
+    url(r'^double/',include('analytics.urls',namespace='analytics')),
+    url(r'^',include('findit.urls',namespace='findit')),
+    url(r'^accounts/',include('accounts.urls')),
+    url(r'^adengine/',include('adengine.urls',namespace='adengine'))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
