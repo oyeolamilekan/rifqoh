@@ -3,7 +3,7 @@ import json
 from django.shortcuts import render
 from django.http import HttpResponse
 
-# from findit.models import Products
+from findit.models import Products
 
 
 # Create your views here.
