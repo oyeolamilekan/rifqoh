@@ -112,7 +112,7 @@ if 'RDS_HOSTNAME' in os.environ:
     }
     AWS_ACCESS_KEY_ID = 'AKIAIWXNDDJYMFURQR5A'
     AWS_SECRET_ACCESS_KEY = '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'
-    AWS_STORAGE_BUCKET_NAME = 'washinga'
+    AWS_STORAGE_BUCKET_NAME = 'oye-statements'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     # SECURE_SSL_REDIRECT = True
