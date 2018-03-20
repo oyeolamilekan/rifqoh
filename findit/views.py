@@ -2,6 +2,12 @@ from .forms import feedBackForm
 from .models import Products, Analytics, UserTheme, Tips
 from .utils import black_rock, nairaconv
 from .search_instance import experimental_search,search_bite
+from accounts.models import *
+from adengine.models import Ads
+from analytics.an_utils import get_client_ip, get_location, get_header_info
+from analytics.models import PageViews, UserTime, UserNumber
+from analytics.signals import object_viewed
+from analytics.utils import whichPage, user_count, user_converter, get_location
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 # Create your views here.
@@ -31,6 +37,7 @@ def batch_convertor(request):
 def home_page(request):
     share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
     url = request.build_absolute_uri()
+    whichPage(request, 'home_page', url)
     user = get_client_ip(request)
     user_theme = ''
     if UserTheme.objects.filter(user=user).exists():
@@ -122,9 +129,11 @@ def real_index(request):
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
     #user_c_name, user_c_code = get_location(request=request)
+    user_count(request)
     share_string = 'Quickfinda - Online Shop & Price Comparison in Nigeria'
     t1 = time.time()
     url = request.build_absolute_uri()
+    whichPage(request, 'discoverB', url)
     confirmed = None
     query = request.GET.get('q')
     # print(query,'hgf')
@@ -190,6 +199,9 @@ def shirts(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
+    user_count(request)
+    url = request.build_absolute_uri()
+    whichPage(request, 'shirtsP', url)
     t1 = time.time()
     share_string = 'Shirts - Online Shop & Price Comparison in Nigeria'
     confirmed = None
@@ -234,7 +246,9 @@ def index(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    
+    user_count(request)
+    url = request.build_absolute_uri()
+    whichPage(request, 'phoneP', url)
     share_string = 'Compare Mobile Phones - Latest Mobile Comparison by Price'
     t1 = time.time()
     confirmed = None
