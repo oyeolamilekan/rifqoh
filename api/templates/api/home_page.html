@@ -1,20 +1,35 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<style type="text/css">
+  .pint-size {
+    max-width: 7rem;
+  }
+  .left-p {
+    margin-left: 10px;
+  }
+</style>
 
 <div>
   
     <!--  -->
 
     <main role="main">
-      <div style="margin-top: 4%;" align="center">
+      <div style="" align="center" class="tinker">
       <div class="my-5 p-3">
         <h2>Access products from different E-commerce stores.</h2>
       </div>
       <div class="descr-text my-5">
         <h3 style="font-weight: 200;">Get products info from 5 E-commerce sites with our products API</h3>
+        <div align="center" class="my-5 p-3">
+          <img src="{% static 'Alixpress.png' %}" alt="aliexpress.com" class="pint-size left-p">
+          <img src="{% static 'jumia.png' %}" alt="jumia.com" class="pint-size left-p">
+          <img src="{% static 'yudala.png' %}" alt="aliexpress.com" class="pint-size left-p">
+          <img src="{% static 'konga-logo.png' %}" alt="jumia.com" class="pint-size left-p">
+
+        </div>
         <div class="my-5">
-          <a href="#" class="btn btn-lg btn-outline-danger">Let's have fun</a>
+          <a href="#" class="btn btn-lg btn-outline-danger my-5">Let's have fun</a>
         </div>
       </div>
     </div>

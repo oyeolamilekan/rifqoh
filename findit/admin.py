@@ -3,7 +3,7 @@ from .models import *
 # Register your models here.
 @admin.register(Products)
 class ProductAdmin(admin.ModelAdmin):
-	search_fields = ('name',)
+	search_fields = ('name','shop')
 
 admin.site.register(Feedback)
 admin.site.register(Analytics)

@@ -386,7 +386,7 @@ def konga_crawler():
         from_email = settings.EMAIL_HOST_USER
         message = 'The following exception occured %s' % e        
         recipient_list = ['johnsonoye34@gmail.com']
-        html_message = '<p>Bros there\'s something went wrong : %s </p>'%(e)
+        html_message = '<p>Bros there\'s something went wrong : %s konga Crawler</p>'%(e)
         sent_mail = send_mail(
                         subject, 
                         message, 
