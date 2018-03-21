@@ -38,8 +38,8 @@ def yudala():
                 namelst = namelst.decode('ascii', 'ignore')[:299]
                 request = requests.get(images, stream=True)
                 namelst =  namelst.replace("\n", ' ').replace('\t',' ')
-                if Products.objects.filter(name__iexact=namelst,source_url=product_link.attrs['href'], shop='yudala').exists():
-                    produc = Products.objects.get(name__iexact=namelst,source_url=product_link.attrs['href'], shop='yudala')
+                if Products.objects.filter(source_url=product_link.attrs['href'], shop='yudala').exists():
+                    produc = Products.objects.get(source_url=product_link.attrs['href'], shop='yudala')
                     # Checks the price
                     if produc.price != product_price:
                         produc.old_price = produc.price
@@ -81,8 +81,8 @@ def yudala():
             namelst = namelst.decode('ascii', 'ignore')[:299]
             request = requests.get(images, stream=True)
             namelst =  namelst.replace("\n", ' ').replace('\t',' ')
-            if Products.objects.filter(name__iexact=namelst,source_url=product_link.attrs['href'], shop='yudala').exists():
-                produc = Products.objects.get(name__iexact=namelst,source_url=product_link.attrs['href'], shop='yudala')
+            if Products.objects.filter(source_url=product_link.attrs['href'], shop='yudala').exists():
+                produc = Products.objects.get(source_url=product_link.attrs['href'], shop='yudala')
                 # Checks the price
                 if produc.price != product_price:
                     produc.old_price = produc.price
@@ -110,7 +110,7 @@ def yudala():
         from_email = settings.EMAIL_HOST_USER
         message = 'The following exception occured %s' % e        
         recipient_list = ['johnsonoye34@gmail.com']
-        html_message = '<p>Bros there\'s something went wrong : %s </p>'%(e)
+        html_message = '<p>Bros there\'s something went wrong : %s from konga Crawler</p>'%(e)
         sent_mail = send_mail(
                         subject, 
                         message, 
