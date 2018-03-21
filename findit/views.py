@@ -544,7 +544,7 @@ def women_index(request):
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='women-dresses')
     page_request_var = 'page'
-    paginator = Paginator(all_products, 40)
+    paginator = Paginator(all_products, 10)
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)

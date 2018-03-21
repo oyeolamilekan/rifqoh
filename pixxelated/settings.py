@@ -42,7 +42,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'johnsonoye34@gmail.com'
 EMAIL_HOST_PASSWORD = 'oyeolamilekan'
 EMAIL_PORT = 587
-MAIL_USE_TLS = True
+EMAIL_USE_TLS = True
 
 
 
@@ -118,7 +118,7 @@ if 'RDS_HOSTNAME' in os.environ:
     # SECURE_SSL_REDIRECT = True
     # SESSION_COOKIE_SECURE = True
     # CSRF_COOKIE_SECURE = True
-    DEBUG = True
+    DEBUG = False
 
 else:
     DATABASES = {
