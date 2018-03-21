@@ -687,7 +687,7 @@ def despiration(request):
 
 
 def all_on_it(request):
-    jumia = Products.objects.all().filter(shop='jumia')
+    jumia = Products.objects.all().filter(shop='konga')
     jumia.delete()
     return HttpResponse('all done bosees')
 
