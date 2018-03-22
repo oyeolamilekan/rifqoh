@@ -371,7 +371,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaN/' + images.split('/')[-1]
+                    file_name = 'kongaNp/' + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
