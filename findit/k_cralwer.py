@@ -36,9 +36,11 @@ def konga_crawler():
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
                     if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc = Products.objects.filter(source_url=product_link)[0]
                         produc.delete()
                     produc = Products.objects.get(source_url=product_link, shop='konga')
+                    produc.source_url = product_link
+                    produc.save()
                     # Checks the price
 
                     if produc.price != e_price:
@@ -52,7 +54,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'konga/' + images.split('/')[-1]
+                    file_name = 'kongaoye/' + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -87,9 +89,11 @@ def konga_crawler():
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
                     if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc = Products.objects.filter(source_url=product_link)[0]
                         produc.delete()
                     produc = Products.objects.get(source_url=product_link, shop='konga')
+                    produc.source_url = product_link
+                    produc.save()
                     # Checks the price
                     if produc.price != e_price:
                         produc.old_price = produc.price
@@ -102,7 +106,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaNp/' + images.split('/')[-1]
+                    file_name = 'kongaoye/' + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -136,10 +140,12 @@ def konga_crawler():
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
                     if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc = Products.objects.filter(source_url=product_link)[0]
                         produc.delete()
                     
                     produc = Products.objects.get(source_url=product_link, shop='konga')
+                    produc.source_url = product_link
+                    produc.save()
                     # Checks the price
                     if produc.price != e_price:
                         produc.old_price = produc.price
@@ -152,7 +158,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaNp/' + images.split('/')[-1]
+                    file_name = 'kongaoye/' + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -163,7 +169,7 @@ def konga_crawler():
                                        genre='televisions', shop='konga')
                     product.image.save(file_name[:20], files.File(lf))
 
-        for urls in range(1, 60):
+        for urls in range(1, 50):
             
             html = Request('https://www.konga.com/mobile-phones?page=%s' % urls, headers=hdr)
             htmll = urlopen(html).read()
@@ -187,10 +193,12 @@ def konga_crawler():
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
                     if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc = Products.objects.filter(source_url=product_link)[0]
                         produc.delete()
 
                     produc = Products.objects.get(source_url=product_link, shop='konga')
+                    produc.source_url = product_link
+                    produc.save()
                     # Checks the price
                     if produc.price != e_price:
                         produc.old_price = produc.price
@@ -203,7 +211,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaNp/' + images.split('/')[-1]
+                    file_name = 'kongaoye/' + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -235,9 +243,11 @@ def konga_crawler():
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
                     if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc = Products.objects.filter(source_url=product_link)[0]
                         produc.delete()
                     produc = Products.objects.get(source_url=product_link, shop='konga')
+                    produc.source_url = product_link
+                    produc.save()
                     # Checks the price
                     if produc.price != e_price:
                         produc.old_price = produc.price
@@ -250,7 +260,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaNp/' + images.split('/')[-1]
+                    file_name = 'kongaoye/' + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -282,9 +292,11 @@ def konga_crawler():
             namelst = namelst.replace("\n", '').replace('\t','')
             if Products.objects.filter(source_url=product_link, shop='konga').exists():
                 if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[1]
-                        produc.delete()
+                    produc = Products.objects.filter(source_url=product_link)[0]
+                    produc.delete()
                 produc = Products.objects.get(source_url=product_link, shop='konga')
+                produc.source_url = product_link
+                produc.save()
                 # Checks the price
                 if produc.price != e_price:
                     produc.old_price = produc.price
@@ -297,7 +309,7 @@ def konga_crawler():
             else:
                 if request.status_code != requests.codes.ok:
                     continue
-                file_name = 'kongaNp/' + images.split('/')[-1]
+                file_name = 'kongaoye/' + images.split('/')[-1]
                 lf = tempfile.NamedTemporaryFile()
                 for block in request.iter_content(1024 * 8):
                     if not block:
@@ -331,10 +343,12 @@ def konga_crawler():
                 if Products.objects.filter(source_url=product_link, shop='konga',
                                            genre='men-watches').exists():
                     if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc = Products.objects.filter(source_url=product_link)[0]
                         produc.delete()
 
-                    produc = Products.objects.get(source_url=product_link, shop='konga', genre='men-watches')
+                    produc = Products.objects.get(source_url=product_link, shop='konga')
+                    produc.source_url = product_link
+                    produc.save()
                     # Checks the price
                     if produc.price != e_price:
                         produc.old_price = produc.price
@@ -347,7 +361,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaNp/' + images.split('/')[-1]
+                    file_name = 'kongaoye/' + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -381,10 +395,11 @@ def konga_crawler():
                 if Products.objects.filter(source_url=product_link, shop='konga',
                                            genre='women-watches').exists():
                     if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc = Products.objects.filter(source_url=product_link)[0]
                         produc.delete()
-                    produc = Products.objects.get(source_url=product_link, shop='konga',
-                                                  genre='women-watches')
+                    produc = Products.objects.get(source_url=product_link, shop='konga')
+                    produc.source_url = product_link
+                    produc.save()
                     # Checks the price
                     if produc.price != e_price:
                         produc.old_price = produc.price
@@ -397,7 +412,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaNp/' + images.split('/')[-1]
+                    file_name = 'kongaoye/' + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:

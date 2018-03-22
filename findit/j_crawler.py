@@ -38,7 +38,13 @@ def jumia_crawler():
                 if Products.objects.filter(source_url=product_link, shop='jumia').exists():
                     #product_count = Products.objects.filter(name__iexact = namelst,shop="jumia").count()
 
+                    if Products.objects.filter(source_url=product_link).count() == 2:
+                        produc = Produts.objects.filter(source_url=product_link)[0]
+                        produc.delete()
+
                     produc = Products.objects.get(source_url=product_link, shop='jumia')
+                    produc.source_url = product_link
+                    produc.save()
                     # Checks the price
                     if produc.price != product_price:
                         produc.old_price = produc.price
@@ -89,8 +95,14 @@ def jumia_crawler():
                 #print(namelst, product_price)
                 if product_link:
                     if Products.objects.filter(source_url=product_link, shop='jumia').exists():
+                        if Products.objects.filter(source_url=product_link).count() == 2:
+                            produc = Products.objects.filter(source_url=product_link)[0]
+                            produc.delete()
                         produc = Products.objects.get(source_url=product_link, shop='jumia')
                         # Checks the price
+                        produc.source_url = product_link
+                        produc.save()
+
                         if produc.price != product_price:
                             produc.old_price = produc.price
                             produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
@@ -137,10 +149,18 @@ def jumia_crawler():
                 namelst = namelst.decode('ascii', 'ignore')
                 htl = Request(images, headers=hdr)
                 httl = urlopen(htl).read()
+
                 if product_link:
                     if Products.objects.filter(source_url=product_link, shop='jumia').exists():
+
+                        # Checks the price
+                        if Products.objects.filter(source_url=product_link).count() == 2:
+                            produc = Products.objects.filter(source_url=product_link)[0]
+                            produc.delete()
                         produc = Products.objects.get(source_url=product_link, shop='jumia')
                         # Checks the price
+                        produc.source_url = product_link
+                        produc.save()
                         if produc.price != product_price:
                             produc.old_price = produc.price
                             produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
@@ -190,8 +210,15 @@ def jumia_crawler():
                 namelst = namelst.replace("\n", ' ').replace('\t',' ')
                 if product_link:
                     if Products.objects.filter(source_url=product_link, shop='jumia').exists():
+                        # produc = Products.objects.get(source_url=product_link, shop='jumia')
+                        # Checks the price
+                        if Products.objects.filter(source_url=product_link).count() == 2:
+                            produc = Products.objects.filter(source_url=product_link)[0]
+                            produc.delete()
                         produc = Products.objects.get(source_url=product_link, shop='jumia')
                         # Checks the price
+                        produc.source_url = product_link
+                        produc.save()
                         if produc.price != product_price:
                             produc.old_price = produc.price
                             produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
@@ -242,8 +269,16 @@ def jumia_crawler():
                 namelst = namelst.replace("\n", ' ').replace('\t',' ')
                 if product_link:
                     if Products.objects.filter(source_url=product_link, shop='jumia').exists():
+                        if Products.objects.filter(source_url=product_link).count() == 2:
+                            produc = Products.objects.filter(source_url=product_link)[0]
+                            produc.delete()
                         produc = Products.objects.get(source_url=product_link, shop='jumia')
                         # Checks the price
+                        produc.source_url = product_link
+                        produc.save()
+                        produc = Products.objects.get(source_url=product_link, shop='jumia')
+                        # Checks the price
+                        
                         if produc.price != product_price:
                             produc.old_price = produc.price
                             produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
@@ -293,7 +328,14 @@ def jumia_crawler():
                 namelst = namelst.replace("\n", ' ').replace('\t',' ')
                 if product_link:
                     if Products.objects.filter(source_url=product_link, shop='jumia').exists():
-                        
+                        if Products.objects.filter(source_url=product_link).count() == 2:
+                            produc = Products.objects.filter(source_url=product_link)[0]
+                            produc.delete()
+                        produc = Products.objects.get(source_url=product_link, shop='jumia')
+                        # Checks the price
+                        produc.source_url = product_link
+                        produc.save()
+
                         produc = Products.objects.get(source_url=product_link, shop='jumia')
                         # Checks the price
                         if produc.price != product_price:
@@ -343,8 +385,12 @@ def jumia_crawler():
             httl = urlopen(htl).read()
             if product_link:
                 if Products.objects.filter(source_url=product_link, shop='jumia').exists():
-                    
+                    if Products.objects.filter(source_url=product_link).count() == 2:
+                        produc = Products.objects.filter(source_url=product_link)[0]
+                        produc.delete()
                     produc = Products.objects.get(source_url=product_link, shop='jumia')
+                    produc.source_url = product_link
+                    produc.save()
                     # Checks the price
                     if produc.price != product_price:
                         produc.old_price = produc.price
@@ -397,6 +443,13 @@ def jumia_crawler():
                 if product_link:
                     if Products.objects.filter(source_url=product_link,shop='jumia',
                                                genre='men-watches').exists():
+                        if Products.objects.filter(source_url=product_link).count() == 2:
+                            produc = Products.objects.filter(source_url=product_link)[0]
+                            produc.delete()
+                        produc = Products.objects.get(source_url=product_link, shop='jumia')
+                        produc.source_url = product_link
+                        produc.save()
+
                         produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia', genre='men-watches')
                         # Checks the price
                         if produc.price != product_price:
@@ -449,6 +502,12 @@ def jumia_crawler():
                 if product_link:
                     if Products.objects.filter(source_url=product_link,shop='jumia',
                                                genre='women-watches').exists():
+                        if Products.objects.filter(source_url=product_link).count() == 2:
+                            produc = Products.objects.filter(source_url=product_link)[0]
+                            produc.delete()
+                        produc = Products.objects.get(source_url=product_link, shop='jumia')
+                        produc.source_url = product_link
+                        produc.save()
 
                         produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia',
                                                       genre='women-watches')
