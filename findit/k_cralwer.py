@@ -35,8 +35,12 @@ def konga_crawler():
                 namelst = namelst.decode('ascii', 'ignore')
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
+                    if Products.objects.filter(source_url=product_link).count() == 2:
+                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc.delete()
                     produc = Products.objects.get(source_url=product_link, shop='konga')
                     # Checks the price
+
                     if produc.price != e_price:
                         produc.old_price = produc.price
                         produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
@@ -82,6 +86,9 @@ def konga_crawler():
                 namelst = namelst.decode('ascii', 'ignore')
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
+                    if Products.objects.filter(source_url=product_link).count() == 2:
+                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc.delete()
                     produc = Products.objects.get(source_url=product_link, shop='konga')
                     # Checks the price
                     if produc.price != e_price:
@@ -95,7 +102,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'konga/' + images.split('/')[-1]
+                    file_name = 'kongaNp/' + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -128,6 +135,9 @@ def konga_crawler():
                 namelst = namelst.decode('ascii', 'ignore')
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
+                    if Products.objects.filter(source_url=product_link).count() == 2:
+                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc.delete()
                     
                     produc = Products.objects.get(source_url=product_link, shop='konga')
                     # Checks the price
@@ -142,7 +152,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'konga/' + images.split('/')[-1]
+                    file_name = 'kongaNp/' + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -176,6 +186,9 @@ def konga_crawler():
                 namelst = namelst.decode('ascii', 'ignore')
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
+                    if Products.objects.filter(source_url=product_link).count() == 2:
+                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc.delete()
 
                     produc = Products.objects.get(source_url=product_link, shop='konga')
                     # Checks the price
@@ -190,7 +203,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'konga/' + images.split('/')[-1]
+                    file_name = 'kongaNp/' + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -221,6 +234,9 @@ def konga_crawler():
                 namelst = namelst.decode('ascii', 'ignore')
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
+                    if Products.objects.filter(source_url=product_link).count() == 2:
+                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc.delete()
                     produc = Products.objects.get(source_url=product_link, shop='konga')
                     # Checks the price
                     if produc.price != e_price:
@@ -234,7 +250,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'konga/' + images.split('/')[-1]
+                    file_name = 'kongaNp/' + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -265,6 +281,9 @@ def konga_crawler():
             namelst = namelst.decode('ascii', 'ignore')
             namelst = namelst.replace("\n", '').replace('\t','')
             if Products.objects.filter(source_url=product_link, shop='konga').exists():
+                if Products.objects.filter(source_url=product_link).count() == 2:
+                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc.delete()
                 produc = Products.objects.get(source_url=product_link, shop='konga')
                 # Checks the price
                 if produc.price != e_price:
@@ -278,7 +297,7 @@ def konga_crawler():
             else:
                 if request.status_code != requests.codes.ok:
                     continue
-                file_name = 'konga/' + images.split('/')[-1]
+                file_name = 'kongaNp/' + images.split('/')[-1]
                 lf = tempfile.NamedTemporaryFile()
                 for block in request.iter_content(1024 * 8):
                     if not block:
@@ -311,6 +330,10 @@ def konga_crawler():
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga',
                                            genre='men-watches').exists():
+                    if Products.objects.filter(source_url=product_link).count() == 2:
+                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc.delete()
+
                     produc = Products.objects.get(source_url=product_link, shop='konga', genre='men-watches')
                     # Checks the price
                     if produc.price != e_price:
@@ -324,7 +347,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'konga/' + images.split('/')[-1]
+                    file_name = 'kongaNp/' + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -357,6 +380,9 @@ def konga_crawler():
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga',
                                            genre='women-watches').exists():
+                    if Products.objects.filter(source_url=product_link).count() == 2:
+                        produc = Products.objects.filter(source_url=product_link)[1]
+                        produc.delete()
                     produc = Products.objects.get(source_url=product_link, shop='konga',
                                                   genre='women-watches')
                     # Checks the price

@@ -21,7 +21,8 @@ def jumia_crawler():
             namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for news in namelist:
                 product_link = news.find('a', {'class': 'link'})
-                product_link = product_link.attrs['href']
+                if product_link:
+                    product_link = product_link.attrs['href']
                 image = news.find('img', {'class': 'image'})
                 images = image.attrs['data-src']
                 product_named = news.find('h2', {'class': 'title'})
@@ -72,7 +73,8 @@ def jumia_crawler():
             namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for news in namelist:
                 product_link = news.find('a', {'class': 'link'})
-                product_link = product_link.attrs['href']
+                if product_link:
+                    product_link = product_link.attrs['href']
                 image = news.find('img', {'class': 'image'})
                 images = image.attrs['data-src']
                 product_named = news.find('h2', {'class': 'title'})
@@ -122,7 +124,8 @@ def jumia_crawler():
             namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for news in namelist:
                 product_link = news.find('a', {'class': 'link'})
-                product_link = product_link.attrs['href']
+                if product_link:
+                    product_link = product_link.attrs['href']
                 image = news.find('img', {'class': 'image'})
                 images = image.attrs['data-src']
                 product_named = news.find('h2', {'class': 'title'})
@@ -171,7 +174,8 @@ def jumia_crawler():
             namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for news in namelist:
                 product_link = news.find('a', {'class': 'link'})
-                product_link = product_link.attrs['href']
+                if product_link:
+                    product_link = product_link.attrs['href']
                 image = news.find('img', {'class': 'image'})
                 images = image.attrs['data-src']
                 product_named = news.find('h2', {'class': 'title'})
@@ -221,7 +225,8 @@ def jumia_crawler():
             namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for news in namelist:
                 product_link = news.find('a', {'class': 'link'})
-                product_link = product_link.attrs['href']
+                if product_link:
+                    product_link = product_link.attrs['href']
                 image = news.find('img', {'class': 'image'})
                 images = image.attrs['data-src']
                 product_named = news.find('h2', {'class': 'title'})
@@ -272,7 +277,8 @@ def jumia_crawler():
             namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for news in namelist:
                 product_link = news.find('a', {'class': 'link'})
-                product_link = product_link.attrs['href']
+                if product_link:
+                    product_link = product_link.attrs['href']
                 image = news.find('img', {'class': 'image'})
                 images = image.attrs['data-src']
                 product_named = news.find('h2', {'class': 'title'})
@@ -322,7 +328,8 @@ def jumia_crawler():
         namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
         for news in namelist:
             product_link = news.find('a', {'class': 'link'})
-            product_link = product_link.attrs['href']
+            if product_link:
+                product_link = product_link.attrs['href']
             image = news.find('img', {'class': 'image'})
             images = image.attrs['data-src']
             product_named = news.find('h2', {'class': 'title'})
@@ -373,7 +380,8 @@ def jumia_crawler():
             namelist = bsObj.findAll('div', {'class': '-gallery'})
             for news in namelist:
                 product_link = news.find('a', {'class': 'link'})
-                product_link = product_link.attrs['href']
+                if product_link:
+                    product_link = product_link.attrs['href']
                 image = news.find('img', {'class': 'image'})
                 images = image.attrs['data-src']
                 product_named = news.find('h2', {'class': 'title'})
@@ -424,7 +432,8 @@ def jumia_crawler():
             namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for news in namelist:
                 product_link = news.find('a', {'class': 'link'})
-                product_link = product_link.attrs['href']
+                if product_link:
+                    product_link = product_link.attrs['href']
                 image = news.find('img', {'class': 'image'})
                 images = image.attrs['data-src']
                 product_named = news.find('h2', {'class': 'title'})
