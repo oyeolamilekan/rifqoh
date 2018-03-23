@@ -338,7 +338,6 @@ def jumia_crawler():
 			lf = ContentFile(httl)
 			product = Products(name=namelst,price=product_price,source_url=product_link,shop='jumia')
 			product.image.save(file_name,lf)
-	https://www.jumia.com.ng/womens-watches/
 	for urls in range(1,25):
 		hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 		       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
