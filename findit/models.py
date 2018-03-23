@@ -34,7 +34,7 @@ class UserTheme(models.Model):
 
 # Products downloaded by the crawler
 class Products(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='who_did_it')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='who_did_it',on_delete=True)
     name = models.CharField(max_length=300)
     price = models.CharField(max_length=300)
     converted_price = models.CharField(max_length=300, blank=True, null=True)
@@ -67,7 +67,7 @@ class Products(models.Model):
 
 # Calculates how many clicks for Trending page
 class Analytics(models.Model):
-    product = models.OneToOneField(Products)
+    product = models.OneToOneField(Products,on_delete=True)
     number_of_clicks = models.IntegerField(default=0)
     createdate = models.DateTimeField(auto_now_add=True)
 

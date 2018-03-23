@@ -139,7 +139,7 @@ def real_index(request):
     # print(query,'hgf')
     all_products = Products.objects.order_by('?')
 
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         user_picks = Sub.objects.filter(user=request.user)
         user_pick_list = []
         for user_p in user_picks:

@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
 from . import views
-
+app_name = 'analytics'
 urlpatterns = [
     url(r'^$', views.HomeView, name='HomeView'),
     url(r'^prod_clicks/$', views.prod_clicks, name='prod_clicks'),

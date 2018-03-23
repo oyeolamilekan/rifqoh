@@ -13,19 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url,include
+from django.urls import path,include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^you_are_stupid/', admin.site.urls),
-    url(r'^',include('findit.urls',namespace='findit')),
-    url(r'^api/', include('api.urls', namespace='api')),
-    url(r'^shop/',include('shop.urls',namespace='shop')),
-    url(r'^double/',include('analytics.urls',namespace='analytics')),
-    url(r'^accounts/',include('accounts.urls')),
-    url(r'^adengine/',include('adengine.urls',namespace='adengine'))
+    path('you_are_stupid/', admin.site.urls),
+    path('',include('findit.urls',namespace='findit')),
+    path('api/', include('api.urls', namespace='api')),
+    path('shop/',include('shop.urls',namespace='shop')),
+    path('double/',include('analytics.urls',namespace='analytics')),
+    path('accounts/',include('accounts.urls')),
+    path('adengine/',include('adengine.urls',namespace='adengine'))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

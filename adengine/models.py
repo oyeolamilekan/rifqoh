@@ -5,7 +5,7 @@ timers = (('True','True'),('False','False'))
 ad_tpye = (('Banner','Banner'),('Products','Products'))
 
 class AdsBuy(models.Model):
-	ad_owner = models.ForeignKey(settings.AUTH_USER_MODEL,blank=True,null=True)
+	ad_owner = models.ForeignKey(settings.AUTH_USER_MODEL,blank=True,null=True,on_delete=True)
 	ad_type = models.CharField(max_length=200,choices=ad_tpye,default='Banner')
 	as_ad_credit = models.BooleanField(default=False)
 
@@ -13,7 +13,7 @@ class AdsBuy(models.Model):
 		return str(self.as_ad_credit)
 
 class Ads(models.Model):
-	ad_owner = models.ForeignKey(settings.AUTH_USER_MODEL,blank=True,null=True)
+	ad_owner = models.ForeignKey(settings.AUTH_USER_MODEL,blank=True,null=True,on_delete=True)
 	title = models.CharField(max_length=200,blank=True,null=True)
 	price = models.CharField(max_length=200,blank=True,null=True)
 	banner = models.ImageField(upload_to="ad_cutomers",blank=True,null=True)
@@ -33,7 +33,7 @@ class Ads(models.Model):
 		verbose_name = 'Ads'
 
 class Click(models.Model):
-	ads = models.ForeignKey(Ads)
+	ads = models.ForeignKey(Ads,on_delete=True)
 	click_cal = models.CharField(max_length=20,blank=True,null=True)
 	date_added = models.DateTimeField(auto_now_add=True,null=True)
 
@@ -44,7 +44,7 @@ class Click(models.Model):
 		verbose_name = 'Clicks'
 
 class View(models.Model):
-	ads = models.ForeignKey(Ads)
+	ads = models.ForeignKey(Ads,on_delete=True)
 	views_cal = models.CharField(max_length=20,blank=True,null=True)
 	date_added = models.DateTimeField(auto_now_add=True,null=True)
 

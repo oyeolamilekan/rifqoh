@@ -35,8 +35,9 @@ def konga_crawler():
                 namelst = namelst.decode('ascii', 'ignore')
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
-                    if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[0]
+                    
+                    if len(Products.objects.filter(source_url=product_link,shop='konga')) == 2:
+                        produc = Products.objects.filter(source_url=product_link,shop='konga')[0]
                         produc.delete()
                     produc = Products.objects.get(source_url=product_link, shop='konga')
                     produc.source_url = product_link
@@ -88,8 +89,8 @@ def konga_crawler():
                 namelst = namelst.decode('ascii', 'ignore')
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
-                    if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[0]
+                    if len(Products.objects.filter(source_url=product_link,shop='konga')) == 2:
+                        produc = Products.objects.filter(source_url=product_link,shop='konga')[0]
                         produc.delete()
                     produc = Products.objects.get(source_url=product_link, shop='konga')
                     produc.source_url = product_link
@@ -139,8 +140,8 @@ def konga_crawler():
                 namelst = namelst.decode('ascii', 'ignore')
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
-                    if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[0]
+                    if len(Products.objects.filter(source_url=product_link,shop='konga')) == 2:
+                        produc = Products.objects.filter(source_url=product_link,shop='konga')[0]
                         produc.delete()
                     
                     produc = Products.objects.get(source_url=product_link, shop='konga')
@@ -192,8 +193,8 @@ def konga_crawler():
                 namelst = namelst.decode('ascii', 'ignore')
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
-                    if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[0]
+                    if len(Products.objects.filter(source_url=product_link,shop='konga')) == 2:
+                        produc = Products.objects.filter(source_url=product_link,shop='konga')[0]
                         produc.delete()
 
                     produc = Products.objects.get(source_url=product_link, shop='konga')
@@ -242,8 +243,8 @@ def konga_crawler():
                 namelst = namelst.decode('ascii', 'ignore')
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
-                    if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[0]
+                    if len(Products.objects.filter(source_url=product_link,shop='konga')) == 2:
+                        produc = Products.objects.filter(source_url=product_link,shop='konga')[0]
                         produc.delete()
                     produc = Products.objects.get(source_url=product_link, shop='konga')
                     produc.source_url = product_link
@@ -291,8 +292,8 @@ def konga_crawler():
             namelst = namelst.decode('ascii', 'ignore')
             namelst = namelst.replace("\n", '').replace('\t','')
             if Products.objects.filter(source_url=product_link, shop='konga').exists():
-                if Products.objects.filter(source_url=product_link).count() == 2:
-                    produc = Products.objects.filter(source_url=product_link)[0]
+                if len(Products.objects.filter(source_url=product_link,shop='konga')) == 2:
+                    produc = Products.objects.filter(source_url=product_link,shop='konga')[0]
                     produc.delete()
                 produc = Products.objects.get(source_url=product_link, shop='konga')
                 produc.source_url = product_link
@@ -342,8 +343,8 @@ def konga_crawler():
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga',
                                            genre='men-watches').exists():
-                    if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[0]
+                    if Products.objects.filter(source_url=product_link,shop='konga').count() == 2:
+                        produc = Products.objects.filter(source_url=product_link,shop='konga')[0]
                         produc.delete()
 
                     produc = Products.objects.get(source_url=product_link, shop='konga')
@@ -394,8 +395,8 @@ def konga_crawler():
                 namelst = namelst.replace("\n", '').replace('\t','')
                 if Products.objects.filter(source_url=product_link, shop='konga',
                                            genre='women-watches').exists():
-                    if Products.objects.filter(source_url=product_link).count() == 2:
-                        produc = Products.objects.filter(source_url=product_link)[0]
+                    if len(Products.objects.filter(source_url=product_link,shop='konga')) == 2:
+                        produc = Products.objects.filter(source_url=product_link,shop='konga')[0]
                         produc.delete()
                     produc = Products.objects.get(source_url=product_link, shop='konga')
                     produc.source_url = product_link
@@ -427,7 +428,7 @@ def konga_crawler():
         from_email = settings.EMAIL_HOST_USER
         message = 'The following exception occured %s' % e        
         recipient_list = ['johnsonoye34@gmail.com']
-        html_message = '<p>Bros there\'s something went wrong : %s konga Crawler : %s</p>'%(e,namelst)
+        html_message = '<p>Bros there\'s something went wrong : %s konga Crawler : %s </p>'%(e,namelst)
         sent_mail = send_mail(
                         subject, 
                         message, 

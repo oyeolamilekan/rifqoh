@@ -10,7 +10,7 @@ class Profile(models.Model):
 		('Male','Male'),
 		('female','female')
 	)
-	user = models.OneToOneField(settings.AUTH_USER_MODEL)
+	user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=True)
 	date_of_birth = models.DateField(blank=True,null=True)
 	photo = models.ImageField(upload_to="users/%Y/%m/%d",blank=True,null=True)
 	gender = models.CharField(max_length=200,choices=GENDER,default='None')
@@ -40,7 +40,7 @@ class Profile(models.Model):
 			return self.user.username
 
 class Sub(models.Model):
-	user = models.ForeignKey(settings.AUTH_USER_MODEL)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=True)
 	picks = models.CharField(max_length=600)
 
 	def __str__(self):

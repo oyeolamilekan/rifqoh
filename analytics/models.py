@@ -82,9 +82,9 @@ class QueryList(models.Model):
 
 # Handles the objects seen by the user
 class ObjectViewed(models.Model):
-    user = models.ForeignKey(User, blank=True, null=True)
+    user = models.ForeignKey(User, blank=True, null=True,on_delete=True)
     ip_address = models.CharField(max_length=300, blank=True, null=True)
-    content_type = models.ForeignKey(ContentType)
+    content_type = models.ForeignKey(ContentType,on_delete=True)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -130,7 +130,7 @@ class UserTime(models.Model):
 
 # Handles each user session on the site
 class UserSession(models.Model):
-    user = models.ForeignKey(User, blank=True, null=True)
+    user = models.ForeignKey(User, blank=True, null=True,on_delete=True)
     ip_address = models.CharField(max_length=200, blank=True, null=True)
     session_key = models.CharField(max_length=100, blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)

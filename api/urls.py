@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
 from . import views
-
+app_name = 'api'
 urlpatterns = [
     url(r'^$',views.home_page, name='home'),
     url(r'^getting_started/$',views.getting_started, name='getting_started'),

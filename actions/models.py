@@ -7,9 +7,9 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 
 
 class Subscription(models.Model):
-	user = models.ForeignKey(settings.AUTH_USER_MODEL)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=True)
 	verb = models.CharField(max_length=255)
-	target_ct = models.ForeignKey(ContentType,blank=True,null=True,related_name='target_object')
+	target_ct = models.ForeignKey(ContentType,blank=True,null=True,related_name='target_object',on_delete=True)
 	target_id = models.PositiveIntegerField(null=True,blank=True,db_index=True)
 	target = GenericForeignKey('target_ct','target_id')
 	created = models.DateTimeField(auto_now_add=True,db_index=True)
