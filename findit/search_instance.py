@@ -4,7 +4,7 @@ from django.db.models import Q
 
 from analytics.utils import add_query
 from analytics.utils import whichPage
-# from .models import Products
+from .models import Products
 
 global all_product_cart
 
