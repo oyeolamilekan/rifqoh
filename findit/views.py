@@ -1,7 +1,7 @@
 from .forms import feedBackForm
 from .models import Products, Analytics, UserTheme, Tips
 from .utils import black_rock, nairaconv
-from .search_instance import experimental_search,search_bite
+# from .search_instance import experimental_search,search_bite
 from accounts.models import *
 from adengine.models import Ads
 from analytics.an_utils import get_client_ip, get_location, get_header_info
