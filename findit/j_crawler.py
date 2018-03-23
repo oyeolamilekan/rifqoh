@@ -450,7 +450,7 @@ def jumia_crawler():
                             produc.source_url = product_link
                             produc.save()
 
-                            produc = Products.objects.get(name__iexact=namelst, shop='jumia', genre='men-watches')
+                            #produc = Products.objects.get(name__iexact=product_link, shop='jumia', genre='men-watches')
                             # Checks the price
                             if produc.price != product_price:
                                 produc.old_price = produc.price
@@ -509,8 +509,7 @@ def jumia_crawler():
                             produc.source_url = product_link
                             produc.save()
 
-                            produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia',
-                                                          genre='women-watches')
+                            #produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia',genre='women-watches')
                             # Checks the price
                             if produc.price != product_price:
                                 produc.old_price = produc.price

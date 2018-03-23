@@ -11,7 +11,7 @@ from .models import Products
 
 # https://www.konga.com/playstation-4
 def konga_crawler():
-    file_storage = 'konga_pls_work/'
+    file_storage = 'konga_must_work/'
     try:
         hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0'}
         for urls in range(1, 30):
@@ -22,7 +22,8 @@ def konga_crawler():
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
-                images = product.img.attrs['src']
+                images = product.find('img', {'class': 'catalog-product-image'})
+                images = images.attrs['src']
                 request = requests.get(images, stream=True)
                 if product.find('div', {'class': 'special-price'}) != None:
                     # If it does exist it find the price
@@ -76,7 +77,8 @@ def konga_crawler():
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
-                images = product.img.attrs['src']
+                images = product.find('img', {'class': 'catalog-product-image'})
+                images = images.attrs['src']
                 request = requests.get(images, stream=True)
                 if product.find('div', {'class': 'special-price'}) != None:
                     # If it does exist it find the price
@@ -127,7 +129,8 @@ def konga_crawler():
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
-                images = product.img.attrs['src']
+                images = product.find('img', {'class': 'catalog-product-image'})
+                images = images.attrs['src']
                 request = requests.get(images, stream=True)
                 if product.find('div', {'class': 'special-price'}) != None:
                     # If it does exist it find the price
@@ -180,7 +183,8 @@ def konga_crawler():
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
-                images = product.img.attrs['src']
+                images = product.find('img', {'class': 'catalog-product-image'})
+                images = images.attrs['src']
                 request = requests.get(images, stream=True)
                 if product.find('div', {'class': 'special-price'}) != None:
                     # If it does exist it find the price
@@ -230,7 +234,8 @@ def konga_crawler():
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
-                images = product.img.attrs['src']
+                images = product.find('img', {'class': 'catalog-product-image'})
+                images = images.attrs['src']
                 request = requests.get(images, stream=True)
                 if product.find('div', {'class': 'special-price'}) != None:
                     # If it does exist it find the price
@@ -279,7 +284,8 @@ def konga_crawler():
         for product in product_list:
             product_name = product.find('div', {'class': 'product-name'})
             product_link = 'https://www.konga.com' + product.a.attrs['href']
-            images = product.img.attrs['src']
+            images = product.find('img', {'class': 'catalog-product-image'})
+            images = images.attrs['src']
             request = requests.get(images, stream=True)
             if product.find('div', {'class': 'special-price'}) != None:
                 # If it does exist it find the price
@@ -329,7 +335,8 @@ def konga_crawler():
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
-                images = product.img.attrs['src']
+                images = product.find('img', {'class': 'catalog-product-image'})
+                images = images.attrs['src']
                 request = requests.get(images, stream=True)
                 if product.find('div', {'class': 'special-price'}) != None:
                     # If it does exist it find the price
@@ -381,7 +388,8 @@ def konga_crawler():
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
-                images = product.img.attrs['src']
+                images = product.find('img', {'class': 'catalog-product-image'})
+                images = images.attrs['src']
                 request = requests.get(images, stream=True)
                 if product.find('div', {'class': 'special-price'}) != None:
                     # If it does exist it find the price
@@ -429,7 +437,7 @@ def konga_crawler():
         from_email = settings.EMAIL_HOST_USER
         message = 'The following exception occured %s' % e        
         recipient_list = ['johnsonoye34@gmail.com']
-        html_message = '<p>Bros there\'s something went wrong : %s konga Crawler : %s </p>'%(e,namelst)
+        html_message = '<p>Bros there\'s something went wrong : %s konga Crawler : %s - %s</p>'%(e, urls,product_link)
         sent_mail = send_mail(
                         subject, 
                         message, 
