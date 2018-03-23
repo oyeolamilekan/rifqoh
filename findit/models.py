@@ -52,7 +52,8 @@ class Products(models.Model):
     old_price_digit_2 = models.IntegerField(default=0)
     sub_genre = models.CharField(max_length=200, blank=True, null=True, default='')
     genre = models.CharField(max_length=200, blank=True, null=True, default='')
-    subcriptions = models.ManyToManyField(settings.AUTH_USER_MODEL)
+    subcriptions = models.ManyToManyField(settings.AUTH_USER_MODEL,blank=True,)
+    lppo = models.CharField(max_length=200, blank=True, null=True)
 
     # Returns the name of the product
     def __str__(self):
@@ -67,7 +68,7 @@ class Products(models.Model):
 
 # Calculates how many clicks for Trending page
 class Analytics(models.Model):
-    product = models.OneToOneField(Products,on_delete=True)
+    product = models.OneToOneField(Products,on_delete=models.CASCADE)
     number_of_clicks = models.IntegerField(default=0)
     createdate = models.DateTimeField(auto_now_add=True)
 

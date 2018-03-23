@@ -11,6 +11,7 @@ from .models import Products
 
 # https://www.konga.com/playstation-4
 def konga_crawler():
+    file_storage = 'konga_pls_work/'
     try:
         hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0'}
         for urls in range(1, 30):
@@ -55,7 +56,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaoye/' + images.split('/')[-1]
+                    file_name = file_storage + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -107,7 +108,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaoye/' + images.split('/')[-1]
+                    file_name = file_storage + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -159,7 +160,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaoye/' + images.split('/')[-1]
+                    file_name = file_storage + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -212,7 +213,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaoye/' + images.split('/')[-1]
+                    file_name = file_storage + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -261,7 +262,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaoye/' + images.split('/')[-1]
+                    file_name = file_storage + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -310,7 +311,7 @@ def konga_crawler():
             else:
                 if request.status_code != requests.codes.ok:
                     continue
-                file_name = 'kongaoye/' + images.split('/')[-1]
+                file_name = file_storage + images.split('/')[-1]
                 lf = tempfile.NamedTemporaryFile()
                 for block in request.iter_content(1024 * 8):
                     if not block:
@@ -362,7 +363,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaoye/' + images.split('/')[-1]
+                    file_name = file_storage + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
@@ -413,7 +414,7 @@ def konga_crawler():
                 else:
                     if request.status_code != requests.codes.ok:
                         continue
-                    file_name = 'kongaoye/' + images.split('/')[-1]
+                    file_name = file_storage + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
