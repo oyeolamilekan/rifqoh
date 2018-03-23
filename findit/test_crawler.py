@@ -10,57 +10,63 @@ from django.conf import settings
 from .models import Products
 
 def test_cralwer():
+
     try:
         hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0'}
-        for urls in range(1, 10):
-            html = Request('https://www.jumia.com.ng/womens-dresses/page=%s' % urls, headers=hdr)
+        for urls in range(1, 3):
+            html = Request('https://www.konga.com/playstation-4?page=%s' % urls, headers=hdr)
             htmll = urlopen(html).read()
             bsObj = BeautifulSoup(htmll, 'html.parser')
-            namelist = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
-            for news in namelist:
-                product_link = news.find('a', {'class': 'link'})
-                product_link = product_link.attrs['href']
-                image = news.find('img', {'class': 'image'})
-                images = image.attrs['data-src']
-                product_named = news.find('h2', {'class': 'title'})
-                product_price = news.find('span', {'class', 'price'}).find_all('span')
-                product_price = product_price[1]
-                product_price = bytes(str(product_price.text), 'UTF-8')
-                product_price = product_price.decode('ascii', 'ignore')
-                namelst = bytes(str(product_named.text), 'UTF-8')
+            product_list = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
+            print(product_list)
+            for product in product_list:
+                product_name = product.find('div', {'class': 'product-name'})
+                product_link = 'https://www.konga.com' + product.a.attrs['href']
+                images = product.find('img', {'class': 'catalog-product-image'})
+                images = images.attrs['src']
+                request = requests.get(images, stream=True)
+                if product.find('div', {'class': 'special-price'}) != None:
+                    # If it does exist it find the price
+                    price = product.find('div', {'class': 'special-price'})
+                else:
+                    # If does not exist it finds the original price
+                    price = product.find('div', {'class': 'original-price'})
+                e_price = bytes(str(price.text), 'UTF-8')
+                e_price = e_price.decode('ascii', 'ignore')
+                namelst = bytes(str(product_name.text), 'UTF-8')
                 namelst = namelst.decode('ascii', 'ignore')
-                htl = Request(images, headers=hdr)
-                httl = urlopen(htl).read()
-                namelst = namelst.replace("\n", ' ').replace('\t',' ')
-                if Products.objects.filter(name__iexact=namelst,source_url=product_link, shop='jumia').exists():
+                namelst = namelst.replace("\n", '').replace('\t','')
+                if Products.objects.filter(source_url=product_link, shop='konga').exists():
                     
-                    produc = Products.objects.get(name__iexact=namelst,source_url=product_link, shop='jumia')
+                    if len(Products.objects.filter(source_url=product_link,shop='konga')) == 2:
+                        produc = Products.objects.filter(source_url=product_link,shop='konga')[0]
+                        produc.delete()
+                    produc = Products.objects.get(source_url=product_link, shop='konga')
+                    produc.source_url = product_link
+                    produc.save()
                     # Checks the price
-                    if produc.price != product_price:
+
+                    if produc.price != e_price:
                         produc.old_price = produc.price
                         produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                         # Updates the price
-                        produc.price = product_price
+                        produc.price = e_price
                         # Saves the price
 
                         produc.save()
                 else:
-                    request = requests.get(images, stream=True)
                     if request.status_code != requests.codes.ok:
                         continue
-                    randd_ne = get_random_string(length=10)
-                    file_name = images.split('/')[-1]
-                    point_finder = file_name.find('.')
-                    file_name = 'jumia/' + file_name[:point_finder] + randd_ne
+                    file_name = file_storage + images.split('/')[-1]
                     lf = tempfile.NamedTemporaryFile()
                     for block in request.iter_content(1024 * 8):
                         if not block:
                             break
                         lf.write(block)
-                    lf = ContentFile(httl)
-                    product = Products(name=namelst, price=product_price, source_url=product_link,
-                                       genre='women-dresses', shop='jumia')
-                    product.image.save(file_name[:20], lf)
+                    print(namelst, e_price)
+                    product = Products(name=namelst, price=e_price, source_url=product_link,
+                                       genre='televisions', shop='konga')
+                    product.image.save(file_name[:20], files.File(lf))
     except Exception as e:
         subject = 'Crawler Error'
         from_email = settings.EMAIL_HOST_USER

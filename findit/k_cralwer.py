@@ -1,6 +1,6 @@
 import tempfile
 from urllib.request import urlopen, Request
-
+import re
 import requests
 from bs4 import BeautifulSoup
 from django.core import files
@@ -18,7 +18,7 @@ def konga_crawler():
             html = Request('https://www.konga.com/playstation-4?page=%s' % urls, headers=hdr)
             htmll = urlopen(html).read()
             bsObj = BeautifulSoup(htmll, 'html.parser')
-            product_list = bsObj.findAll('div', {'class': 'product-block'})
+            product_list = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
@@ -73,7 +73,7 @@ def konga_crawler():
             html = Request('https://www.konga.com/mens-shirts?page=%s' % urls, headers=hdr)
             htmll = urlopen(html).read()
             bsObj = BeautifulSoup(htmll, 'html.parser')
-            product_list = bsObj.findAll('div', {'class': 'product-block'})
+            product_list = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
@@ -91,6 +91,8 @@ def konga_crawler():
                 namelst = bytes(str(product_name.text), 'UTF-8')
                 namelst = namelst.decode('ascii', 'ignore')
                 namelst = namelst.replace("\n", '').replace('\t','')
+                htl = Request(images, headers=hdr)
+                httl = urlopen(htl).read()
                 if Products.objects.filter(source_url=product_link, shop='konga').exists():
                     if len(Products.objects.filter(source_url=product_link,shop='konga')) == 2:
                         produc = Products.objects.filter(source_url=product_link,shop='konga')[0]
@@ -125,7 +127,7 @@ def konga_crawler():
             html = Request('https://www.konga.com/televisions?page=%s' % urls, headers=hdr)
             htmll = urlopen(html).read()
             bsObj = BeautifulSoup(htmll, 'html.parser')
-            product_list = bsObj.findAll('div', {'class': 'product-block'})
+            product_list = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
@@ -179,7 +181,7 @@ def konga_crawler():
             html = Request('https://www.konga.com/mobile-phones?page=%s' % urls, headers=hdr)
             htmll = urlopen(html).read()
             bsObj = BeautifulSoup(htmll, 'html.parser')
-            product_list = bsObj.findAll('div', {'class': 'product-block'})
+            product_list = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
@@ -230,7 +232,7 @@ def konga_crawler():
             html = Request('https://www.konga.com/laptops-5230?page=%s' % urls, headers=hdr)
             htmll = urlopen(html).read()
             bsObj = BeautifulSoup(htmll, 'html.parser')
-            product_list = bsObj.findAll('div', {'class': 'product-block'})
+            product_list = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
@@ -280,7 +282,7 @@ def konga_crawler():
         html = Request('https://www.konga.com/catalogsearch/result/?category_id=5294&aggregated_brand=Apple', headers=hdr)
         htmll = urlopen(html).read()
         bsObj = BeautifulSoup(htmll, 'html.parser')
-        product_list = bsObj.findAll('div', {'class': 'product-block'})
+        product_list = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
         for product in product_list:
             product_name = product.find('div', {'class': 'product-name'})
             product_link = 'https://www.konga.com' + product.a.attrs['href']
@@ -331,7 +333,7 @@ def konga_crawler():
             html = Request('https://www.konga.com/mens-watches?page=%s' % urls, headers=hdr)
             htmll = urlopen(html).read()
             bsObj = BeautifulSoup(htmll, 'html.parser')
-            product_list = bsObj.findAll('div', {'class': 'product-block'})
+            product_list = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
@@ -384,7 +386,7 @@ def konga_crawler():
             html = Request('https://www.konga.com/womens-watches?page=%s' % urls, headers=hdr)
             htmll = urlopen(html).read()
             bsObj = BeautifulSoup(htmll, 'html.parser')
-            product_list = bsObj.findAll('div', {'class': 'product-block'})
+            product_list = bsObj.findAll('div', {'data-sku': re.compile(r".*")})
             for product in product_list:
                 product_name = product.find('div', {'class': 'product-name'})
                 product_link = 'https://www.konga.com' + product.a.attrs['href']
