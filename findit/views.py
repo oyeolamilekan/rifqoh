@@ -687,7 +687,7 @@ def despiration(request):
 
 
 def all_on_it(request):
-    konga = Products.objects.filter(shop='konga')
+    konga = Products.objects.all()
     konga.delete()
     return HttpResponse('all done bosees')
 
