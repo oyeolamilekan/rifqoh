@@ -11,7 +11,7 @@ from .models import Products
 
 # https://www.konga.com/playstation-4
 def konga_crawler():
-    file_storage = 'konga_must_work/'
+    file_storage = 'konga_must_ho/'
     try:
         hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0'}
         for urls in range(1, 30):
