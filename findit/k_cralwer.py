@@ -373,15 +373,15 @@ def konga_crawler():
 					product.image.save(file_name[:20],files.File(lf))
 
 	except Exception as e:
-        subject = 'Crawler Error'
-        from_email = settings.EMAIL_HOST_USER
-        message = 'The following exception occured %s' % e        
-        recipient_list = ['johnsonoye34@gmail.com']
-        html_message = '<p>Bros there\'s something went wrong : %s konga crawler%s</p>'%(e,namelst)
-        sent_mail = send_mail(
-                        subject, 
-                        message, 
-                        from_email, 
-                        recipient_list,  
-                        html_message=html_message)
+		subject = 'Crawler Error'
+		from_email = settings.EMAIL_HOST_USER
+		message = 'The following exception occured %s' % e        
+		recipient_list = ['johnsonoye34@gmail.com']
+		html_message = '<p>Bros there\'s something went wrong : %s konga crawler%s</p>'%(e,namelst)
+		sent_mail = send_mail(
+		                subject, 
+		                message, 
+		                from_email, 
+		                recipient_list,  
+		                html_message=html_message)
 
