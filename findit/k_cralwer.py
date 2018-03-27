@@ -12,6 +12,7 @@ from django.core.mail import send_mail
 
 def konga_crawler():
 	try:
+		folder = 'konga/'
 		for urls in range(1,60):
 			hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 			       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -53,7 +54,7 @@ def konga_crawler():
 				else:
 					if request.status_code != requests.codes.ok:
 						continue
-					file_name = images.split('/')[-1]
+					file_name = folder + images.split('/')[-1]
 					lf = tempfile.NamedTemporaryFile()
 					for block in request.iter_content(1024*8):
 						if not block:
@@ -104,7 +105,7 @@ def konga_crawler():
 				else:
 					if request.status_code != requests.codes.ok:
 						continue
-					file_name = images.split('/')[-1]
+					file_name = folder + images.split('/')[-1]
 					lf = tempfile.NamedTemporaryFile()
 					for block in request.iter_content(1024*8):
 						if not block:
@@ -158,7 +159,7 @@ def konga_crawler():
 				else:
 					if request.status_code != requests.codes.ok:
 						continue
-					file_name = images.split('/')[-1]
+					file_name = folder + images.split('/')[-1]
 					lf = tempfile.NamedTemporaryFile()
 					for block in request.iter_content(1024*8):
 						if not block:
@@ -210,7 +211,7 @@ def konga_crawler():
 				else:
 					if request.status_code != requests.codes.ok:
 						continue
-					file_name = images.split('/')[-1]
+					file_name = folder + images.split('/')[-1]
 					lf = tempfile.NamedTemporaryFile()
 					for block in request.iter_content(1024*8):
 						if not block:
@@ -259,7 +260,7 @@ def konga_crawler():
 			else:
 				if request.status_code != requests.codes.ok:
 					continue
-				file_name = images.split('/')[-1]
+				file_name = folder + images.split('/')[-1]
 				lf = tempfile.NamedTemporaryFile()
 				for block in request.iter_content(1024*8):
 					if not block:
@@ -312,7 +313,7 @@ def konga_crawler():
 				else:
 					if request.status_code != requests.codes.ok:
 						continue
-					file_name = images.split('/')[-1]
+					file_name = folder + images.split('/')[-1]
 					lf = tempfile.NamedTemporaryFile()
 					for block in request.iter_content(1024*8):
 						if not block:
@@ -364,7 +365,7 @@ def konga_crawler():
 				else:
 					if request.status_code != requests.codes.ok:
 						continue
-					file_name = images.split('/')[-1]
+					file_name = folder + images.split('/')[-1]
 					lf = tempfile.NamedTemporaryFile()
 					for block in request.iter_content(1024*8):
 						if not block:

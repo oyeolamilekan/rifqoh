@@ -12,6 +12,7 @@ from django.conf import settings
 
 def jumia_crawler():
 	try:
+		folder = 'jumia/'
 		for urls in range(1,25):
 			hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 			       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -54,7 +55,7 @@ def jumia_crawler():
 					if request.status_code != requests.codes.ok:
 						continue
 					randd_ne = get_random_string(length=10)
-					file_name = images.split('/')[-1]
+					file_name = folder + images.split('/')[-1]
 					point_finder = file_name.find('.')
 					file_name = file_name[:point_finder] + randd_ne
 					lf = tempfile.NamedTemporaryFile()
@@ -108,7 +109,7 @@ def jumia_crawler():
 					if request.status_code != requests.codes.ok:
 						continue
 					randd_ne = get_random_string(length=10)
-					file_name = images.split('/')[-1]
+					file_name = folder +images.split('/')[-1]
 					point_finder = file_name.find('.')
 					file_name = file_name[:point_finder] + randd_ne
 					lf = tempfile.NamedTemporaryFile()
@@ -163,7 +164,7 @@ def jumia_crawler():
 					if request.status_code != requests.codes.ok:
 						continue
 					randd_ne = get_random_string(length=10)
-					file_name = images.split('/')[-1]
+					file_name = folder + images.split('/')[-1]
 					point_finder = file_name.find('.')
 					file_name = file_name[:point_finder] + randd_ne
 					lf = tempfile.NamedTemporaryFile()
@@ -218,7 +219,7 @@ def jumia_crawler():
 					if request.status_code != requests.codes.ok:
 						continue
 					randd_ne = get_random_string(length=10)
-					file_name = images.split('/')[-1]
+					file_name = folder + images.split('/')[-1]
 					point_finder = file_name.find('.')
 					file_name = file_name[:point_finder] + randd_ne
 					lf = tempfile.NamedTemporaryFile()
@@ -274,7 +275,7 @@ def jumia_crawler():
 					if request.status_code != requests.codes.ok:
 						continue
 					randd_ne = get_random_string(length=10)
-					file_name = images.split('/')[-1]
+					file_name = folder + images.split('/')[-1]
 					point_finder = file_name.find('.')
 					file_name = file_name[:point_finder] + randd_ne
 					lf = tempfile.NamedTemporaryFile()
@@ -328,7 +329,7 @@ def jumia_crawler():
 				if request.status_code != requests.codes.ok:
 					continue
 				randd_ne = get_random_string(length=10)
-				file_name = images.split('/')[-1]
+				file_name = folder + images.split('/')[-1]
 				point_finder = file_name.find('.')
 				file_name = file_name[:point_finder] + randd_ne
 				lf = tempfile.NamedTemporaryFile()
@@ -382,7 +383,7 @@ def jumia_crawler():
 					if request.status_code != requests.codes.ok:
 						continue
 					randd_ne = get_random_string(length=10)
-					file_name = images.split('/')[-1]
+					file_name = folder + images.split('/')[-1]
 					point_finder = file_name.find('.')
 					file_name = file_name[:point_finder] + randd_ne
 					lf = tempfile.NamedTemporaryFile()
@@ -437,7 +438,7 @@ def jumia_crawler():
 					if request.status_code != requests.codes.ok:
 						continue
 					randd_ne = get_random_string(length=10)
-					file_name = images.split('/')[-1]
+					file_name = folder + images.split('/')[-1]
 					point_finder = file_name.find('.')
 					file_name = file_name[:point_finder] + randd_ne
 					lf = tempfile.NamedTemporaryFile()

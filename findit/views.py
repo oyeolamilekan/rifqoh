@@ -688,9 +688,7 @@ def despiration(request):
 
 
 def all_on_it(request):
-    konga = Products.objects.all()
-    konga.delete()
-    return HttpResponse('all done bosees')
+    return HttpResponse('i will find you and kill you')
 
 def test_engine_starter(request):
     test_cralwer()

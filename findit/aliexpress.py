@@ -11,6 +11,7 @@ from .models import Products
 # https://www.aliexpress.com/category/100003084/hoodies-sweatshirts/2.html?site=glo&g=y&needQuery=n&tag=
 
 def alii():
+    folder = 'aliexpress/'
     hdr = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -61,7 +62,7 @@ def alii():
                 randd_ne = get_random_string(length=10)
                 file_name = image.split('/')[-1]
                 point_finder = file_name.find('.')
-                file_name = file_name[:point_finder] + randd_ne
+                file_name = folder + file_name[:point_finder] + randd_ne
                 lf = tempfile.NamedTemporaryFile()
                 for block in request.iter_content(1024 * 8):
                     if not block:
@@ -115,7 +116,7 @@ def alii():
                 randd_ne = get_random_string(length=10)
                 file_name = image.split('/')[-1]
                 point_finder = file_name.find('.')
-                file_name = file_name[:point_finder] + randd_ne
+                file_name = folder + file_name[:point_finder] + randd_ne
                 lf = tempfile.NamedTemporaryFile()
                 for block in request.iter_content(1024 * 8):
                     if not block:
@@ -170,7 +171,7 @@ def alii():
                 randd_ne = get_random_string(length=10)
                 file_name = image.split('/')[-1]
                 point_finder = file_name.find('.')
-                file_name = file_name[:point_finder] + randd_ne
+                file_name = folder + file_name[:point_finder] + randd_ne
                 lf = tempfile.NamedTemporaryFile()
                 for block in request.iter_content(1024 * 8):
                     if not block:
