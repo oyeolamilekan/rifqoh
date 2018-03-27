@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save,pre_save
+from django.utils.text import slugify
 
 # Create your models here.
 CONDITIONS = (
@@ -50,6 +51,7 @@ class Products(models.Model):
     old_price_2 = models.CharField(max_length=200, blank=True, null=True)
     old_price_digit = models.IntegerField(default=0)
     old_price_digit_2 = models.IntegerField(default=0)
+    slug = models.SlugField(unique=True, blank=True, null=True)
     sub_genre = models.CharField(max_length=200, blank=True, null=True, default='')
     genre = models.CharField(max_length=200, blank=True, null=True, default='')
     subcriptions = models.ManyToManyField(settings.AUTH_USER_MODEL,blank=True,)
@@ -119,3 +121,16 @@ def create_products(sender, **kwargs):
 
 # Activates the function automatically.
 post_save.connect(create_products, sender=Products)
+
+
+
+# def create_slug(instance, new_slug=None):
+#     slug = slugify('%s-%s' % (instance.name,instance.id))
+#     return slug
+
+
+# def pre_save_post_receiver(sender, instance, *args, **kwargs):
+#     if not instance.slug:
+#         instance.slug = create_slug(instance)
+
+# pre_save.connect(pre_save_post_receiver, sender=Products)

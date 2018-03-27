@@ -1,7 +1,7 @@
 from .forms import feedBackForm
 from .models import Products, Analytics, UserTheme, Tips
 from .utils import black_rock, nairaconv
-from .search_instance import experimental_search,search_bite
+#from .search_instance import experimental_search,search_bite
 from accounts.models import *
 from adengine.models import Ads
 from analytics.an_utils import get_client_ip, get_location, get_header_info
@@ -16,6 +16,7 @@ from django.shortcuts import render
 import time
 from urllib.parse import quote_plus
 from .test_crawler import test_cralwer
+from django.utils.text import slugify
 # from .an_utils import correction
 
 # Intial Stops words for the users
@@ -879,8 +880,9 @@ def real_trend(request, word):
 
 
 def delunn(request):
-    # prod = Products.objects.filter(name__icontains='Apple', genre='women-dresses')
-    # prod.delete()
+    for product in Products.objects.all():
+        product.slug = slugify('%s-%s-%s'%(product.name,product.id,product.shop))
+        product.save()
     return HttpResponse('Sacrifices')
 
 def tips_loud(request):
