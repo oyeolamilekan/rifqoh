@@ -115,7 +115,7 @@ class Feedback(models.Model):
         return self.content
 
 def create_slug(instance, new_slug=None):
-    slug = slugify('%s-%s-%s' % (instance.name,instance.shop,get_random_string(length=4)))
+    slug = slugify('%s-%s-%s' % (instance.name[:10],instance.shop,get_random_string(length=4)))
     return slug
 
 
