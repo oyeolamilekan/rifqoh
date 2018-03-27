@@ -1,7 +1,9 @@
 from django.conf import settings
 from django.db import models
 from django.db.models.signals import post_save,pre_save
+from django.utils.crypto import get_random_string
 from django.utils.text import slugify
+
 
 # Create your models here.
 CONDITIONS = (
@@ -112,6 +114,17 @@ class Feedback(models.Model):
     def __str__(self):
         return self.content
 
+def create_slug(instance, new_slug=None):
+    slug = slugify('%s-%s-%s' % (instance.name,instance.shop,get_random_string(length=4)))
+    return slug
+
+
+def pre_save_post_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = create_slug(instance)
+
+pre_save.connect(pre_save_post_receiver, sender=Products)
+
 
 # Creates the analytics table automatically when a new product is being downloaded
 def create_products(sender, **kwargs):
@@ -122,15 +135,3 @@ def create_products(sender, **kwargs):
 # Activates the function automatically.
 post_save.connect(create_products, sender=Products)
 
-
-
-# def create_slug(instance, new_slug=None):
-#     slug = slugify('%s-%s' % (instance.name,instance.id))
-#     return slug
-
-
-# def pre_save_post_receiver(sender, instance, *args, **kwargs):
-#     if not instance.slug:
-#         instance.slug = create_slug(instance)
-
-# pre_save.connect(pre_save_post_receiver, sender=Products)
