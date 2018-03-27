@@ -1,7 +1,7 @@
 from .forms import feedBackForm
 from .models import Products, Analytics, UserTheme, Tips
 from .utils import black_rock, nairaconv
-#from .search_instance import experimental_search,search_bite
+from .search_instance import experimental_search,search_bite
 from accounts.models import *
 from adengine.models import Ads
 from analytics.an_utils import get_client_ip, get_location, get_header_info
@@ -656,9 +656,9 @@ def men_watch(request):
     return render(request, 'results_page.html', context)
 
 
-def number_of_clicks(request, id):
-    if Products.objects.filter(id=id).exists():
-        product = Products.objects.get(id=id)
+def number_of_clicks(request, words):
+    if Products.objects.filter(slug=words).exists():
+        product = Products.objects.get(slug=words)
         object_viewed.send(product.__class__, instance=product, request=request)
         product.num_of_clicks = product.num_of_clicks + 1
         product.save()

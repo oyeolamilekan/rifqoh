@@ -1,7 +1,7 @@
 {% for product in products %}
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 	<div class="animated fadeInUp">
-	<a href="{% url 'findit:analytics' product.id %}" target='_blank'>
+	<a href="{% url 'findit:analytics' product.slug %}" target='_blank'>
 		<div class="snpt {% if product.genre == 'shirts' %}happy{% elif product.genre == 'phone' %}hapy{% elif product.genre == 'laptops' %}hay{% elif product.genre == 'televisions' %}ha{% elif product.genre == 'women-dresses' %}h{% endif %}">
 
 			<img src="{{ product.image.url }}" style="width: 200px;" title="{{ product.name }}" alt="{{ product.name }}">
