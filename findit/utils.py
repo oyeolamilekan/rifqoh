@@ -14,11 +14,11 @@ def black_rock():
     # Jumia jumia crawler
     jumia_crawler()
 
-    # Does the yudala magic
-    yudala()
-
     # Activates aliexpress crawler
     alii()
+
+    # Does the yudala magic
+    yudala()
 
     t = threading.Timer(172800.0, black_rock)
     t.start()
