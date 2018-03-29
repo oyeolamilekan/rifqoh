@@ -60,7 +60,7 @@ def alii():
                     continue
                 randd_ne = get_random_string(length=10)
                 file_name = image.split('/')[-1]
-                point_finder = folder + file_name.find('.')
+                point_finder = file_name.find('.')
                 file_name = file_name[:point_finder] + randd_ne
                 lf = tempfile.NamedTemporaryFile()
                 for block in request.iter_content(1024 * 8):
@@ -70,7 +70,7 @@ def alii():
                 lf = ContentFile(httl)
                 product = Products(name=namelst, price=product_price, source_url=product_link, shop='aliexpress',
                                    genre='women-bags')
-                product.image.save(file_name[:10], lf)
+                product.image.save(folder + file_name[:10], lf)
 
     for i in range(1,5):
         # time.sleep(0.5)
@@ -114,7 +114,7 @@ def alii():
                     continue
                 randd_ne = get_random_string(length=10)
                 file_name = image.split('/')[-1]
-                point_finder = folder +file_name.find('.')
+                point_finder = file_name.find('.')
                 file_name = file_name[:point_finder] + randd_ne
                 lf = tempfile.NamedTemporaryFile()
                 for block in request.iter_content(1024 * 8):
@@ -124,7 +124,7 @@ def alii():
                 lf = ContentFile(httl)
                 product = Products(name=namelst, price=product_price, source_url=product_link, shop='aliexpress',
                                    genre='makeup')
-                product.image.save(file_name[:10], lf)
+                product.image.save(folder + file_name[:10], lf)
 
     for i in range(5):
         # time.sleep(0.2)
@@ -169,7 +169,7 @@ def alii():
                     continue
                 randd_ne = get_random_string(length=10)
                 file_name = image.split('/')[-1]
-                point_finder =  folder +file_name.find('.')
+                point_finder = file_name.find('.')
                 file_name = file_name[:point_finder] + randd_ne
                 lf = tempfile.NamedTemporaryFile()
                 for block in request.iter_content(1024 * 8):
@@ -179,7 +179,7 @@ def alii():
                 lf = ContentFile(httl)
                 product = Products(name=namelst, price=product_price, source_url=product_link, shop='aliexpress',
                                    genre='headphones')
-                product.image.save(file_name[:10], lf)
+                product.image.save(folder + file_name[:10], lf)
 
 
     # for i in range():
