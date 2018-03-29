@@ -682,7 +682,7 @@ def feedback(request):
 
 
 def despiration(request):
-    stuffs = Products.objects.filter(genre='headphones')
+    stuffs = Products.objects.filter(shop='aliexpress')
     stuffs.delete()
     return HttpResponse('All done boss')
 
