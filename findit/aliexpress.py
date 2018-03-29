@@ -20,7 +20,7 @@ def alii():
         'Accept-Language': 'en-US,en;q=0.8',
         'Connection': 'keep-alive'}
     #https://www.aliexpress.com/category/660103/makeup/3.html?spm=2114.11010108.111.17.52e8feb4E7KbwG
-    for i in range(5):
+    for i in range(1,5):
         time.sleep(0.5)
         html = Request(
             'https://www.aliexpress.com/category/200000764/shoulder-bags/{}.html'.format(
@@ -73,7 +73,7 @@ def alii():
                                    genre='women-bags')
                 product.image.save(file_name[:10], lf)
 
-    for i in range(5):
+    for i in range(1,5):
         # time.sleep(0.5)
         html = Request(
             'https://www.aliexpress.com/category/660103/makeup/{}.html'.format(
