@@ -60,8 +60,8 @@ def alii():
                     continue
                 randd_ne = get_random_string(length=10)
                 file_name = image.split('/')[-1]
-                point_finder = file_name.find('.')
-                file_name = folder + file_name[:point_finder] + randd_ne
+                point_finder = folder + file_name.find('.')
+                file_name = file_name[:point_finder] + randd_ne
                 lf = tempfile.NamedTemporaryFile()
                 for block in request.iter_content(1024 * 8):
                     if not block:
@@ -114,8 +114,8 @@ def alii():
                     continue
                 randd_ne = get_random_string(length=10)
                 file_name = image.split('/')[-1]
-                point_finder = file_name.find('.')
-                file_name = folder + file_name[:point_finder] + randd_ne
+                point_finder = folder +file_name.find('.')
+                file_name = file_name[:point_finder] + randd_ne
                 lf = tempfile.NamedTemporaryFile()
                 for block in request.iter_content(1024 * 8):
                     if not block:
@@ -169,8 +169,8 @@ def alii():
                     continue
                 randd_ne = get_random_string(length=10)
                 file_name = image.split('/')[-1]
-                point_finder = file_name.find('.')
-                file_name = folder + file_name[:point_finder] + randd_ne
+                point_finder =  folder +file_name.find('.')
+                file_name = file_name[:point_finder] + randd_ne
                 lf = tempfile.NamedTemporaryFile()
                 for block in request.iter_content(1024 * 8):
                     if not block:
