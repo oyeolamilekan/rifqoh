@@ -130,7 +130,9 @@ def jumia_crawler():
 			       'Accept-Encoding': 'none',
 			       'Accept-Language': 'en-US,en;q=0.8',
 			       'Connection': 'keep-alive'}
-			html = Request('https://www.jumia.com.ng/televisions/?page=%s'%urls,headers=hdr)
+			page_url = 'https://www.jumia.com.ng/televisions/?page=%s'%urls
+			llll
+			html = Request(page_url,headers=hdr)
 			htmll = urlopen(html).read()
 			bsObj = BeautifulSoup(htmll,'html.parser')
 			namelist = bsObj.findAll('div',{'class':'-gallery'})
@@ -186,7 +188,8 @@ def jumia_crawler():
 			       'Accept-Encoding': 'none',
 			       'Accept-Language': 'en-US,en;q=0.8',
 			       'Connection': 'keep-alive'}
-			html = Request('https://www.jumia.com.ng/mens-shirts/page=%s'%urls,headers=hdr)
+			page_url = 'https://www.jumia.com.ng/mens-shirts/page=%s'%urls
+			html = Request(page_url,headers=hdr)
 			htmll = urlopen(html).read()
 			bsObj = BeautifulSoup(htmll,'html.parser')
 			namelist = bsObj.findAll('div',{'class':'-gallery'})
@@ -241,7 +244,8 @@ def jumia_crawler():
 			       'Accept-Encoding': 'none',
 			       'Accept-Language': 'en-US,en;q=0.8',
 			       'Connection': 'keep-alive'}
-			html = Request('https://www.jumia.com.ng/womens-dresses/page=%s'%urls,headers=hdr)
+			page_url = 'https://www.jumia.com.ng/womens-dresses/page=%s'%urls
+			html = Request(page_url,headers=hdr)
 			htmll = urlopen(html).read()
 			bsObj = BeautifulSoup(htmll,'html.parser')
 			namelist = bsObj.findAll('div',{'class':'-gallery'})
@@ -297,7 +301,8 @@ def jumia_crawler():
 			       'Accept-Encoding': 'none',
 			       'Accept-Language': 'en-US,en;q=0.8',
 			       'Connection': 'keep-alive'}
-			html = Request('https://www.jumia.com.ng/mens-watches/?page=%s'%urls,headers=hdr)
+			page_url = 'https://www.jumia.com.ng/mens-watches/?page=%s'%urls
+			html = Request(page_url,headers=hdr)
 			htmll = urlopen(html).read()
 			bsObj = BeautifulSoup(htmll,'html.parser')
 			namelist = bsObj.findAll('div',{'class':'-gallery'})
@@ -353,7 +358,8 @@ def jumia_crawler():
 			       'Accept-Encoding': 'none',
 			       'Accept-Language': 'en-US,en;q=0.8',
 			       'Connection': 'keep-alive'}
-			html = Request('https://www.jumia.com.ng/womens-watches/?page=%s'%urls,headers=hdr)
+			page_url = 'https://www.jumia.com.ng/womens-watches/?page=%s'%urls
+			html = Request(page_url,headers=hdr)
 			htmll = urlopen(html).read()
 			bsObj = BeautifulSoup(htmll,'html.parser')
 			namelist = bsObj.findAll('div',{'class':'-gallery'})
@@ -406,7 +412,7 @@ def jumia_crawler():
 		from_email = settings.EMAIL_HOST_USER
 		message = 'The following exception occured %s' % e        
 		recipient_list = ['johnsonoye34@gmail.com']
-		html_message = '<p>Bros there\'s something went wrong : %s jumia crawler</p>'%(e)
+		html_message = '<p>Bros there\'s something went wrong : %s jumia crawler %s</p>'%(e, page_url)
 		sent_mail = send_mail(
 		                subject, 
 		                message, 
