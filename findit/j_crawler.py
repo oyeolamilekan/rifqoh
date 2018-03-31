@@ -65,7 +65,7 @@ def jumia_crawler():
 								break
 							lf.write(block)
 						lf = ContentFile(httl)
-						product = Products(name=namelst,price=product_price,source_url=product_link,shop='jumia')
+						product = Products(name=namelst,price=product_price,source_url=product_link,shop='jumia',genre='phone')
 						product.image.save(file_name[:20],lf)
 
 		for urls in range(1,25):

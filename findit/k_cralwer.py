@@ -165,7 +165,7 @@ def konga_crawler():
 						if not block:
 							break
 						lf.write(block)
-					product = Products(name=namelst,price=e_price,source_url=product_link,shop='konga')
+					product = Products(name=namelst,price=e_price,source_url=product_link,shop='konga',genre='phone')
 					product.image.save(file_name[:20],files.File(lf))
 			# https://www.konga.com/catalogsearch/result/?category_id=5294&aggregated_brand=Apple
 				#print(namelst,e_price,product_link)https://www.konga.com/ict-brookers

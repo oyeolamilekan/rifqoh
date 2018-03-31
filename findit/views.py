@@ -691,7 +691,12 @@ def all_on_it(request):
     return HttpResponse('i will find you and kill you')
 
 def test_engine_starter(request):
-    test_cralwer()
+    for i in Products.objects.filter(shop='jumia'):
+        i.genre = 'phone'
+        i.save()
+    for i in Products.objects.filter(shop='konga'):
+        i.genre = 'phone'
+        i.save()
     return HttpResponse('post woel')
 
 def engine_starter(request):
