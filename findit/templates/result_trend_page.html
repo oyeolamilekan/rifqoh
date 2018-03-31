@@ -140,44 +140,18 @@ img.baby_mama {
   color: #fff;
 }
 </style>
-<div class="panel uniquee panel-primary">
-  <div class="panel-body">
-    <a href="#" style="border:1px solid #eee; padding: 9px 10px; color: black; border-radius: 4px;">
-      <b><i class="fa fa-globe"></i> Categories</b>
-    </a>
-  </div>
+<div class="nav-scroller" style="margin-top: -29px;">
+    <nav class="nav-underline nav">
+      <a class="nav-link" href="{% url 'findit:real_trend' 'index' %}" style="padding: 1rem 2rem;">Discover</a>
+      <a class="nav-link" href="{% url 'findit:real_trend' 'phone' %}" style="padding: 1rem 1rem;">Phone</a>
+      <a class="nav-link" href="{% url 'findit:real_trend' 'laptops' %}" style="padding: 1rem 1rem;">Laptops</a>
+      <a class="nav-link" href="{% url 'findit:real_trend'  'televisions'%}" style="padding: 1rem 1rem;">Tvs</a>
+      <a class="nav-link" href="{% url 'findit:real_trend' 'shirts' %}" style="padding: 1rem 1rem;">Men shirts</a>
+      <a class="nav-link" href="{% url 'findit:real_trend' 'women-dresses' %}" style="padding: 1rem 1rem;">Women's Dresses</a>
+      <a class="nav-link" href="{% url 'findit:real_trend'  'men-watches'%}" style="padding: 1rem 1rem;">Men Watches</a>
+      <a class="nav-link" href="{% url 'findit:real_trend' 'women-watches' %}" style="padding: 1rem 1rem;">Women Watches</a>
+    </nav>
 </div>
-<div class="">
-  <div class="panel unique panel-default">
-    <div class="panel-body">
-      <ul class="tags">
-       <!-- <li><a href="{% url 'findit:real_index' %}" class="mklo la">Discover </a></li> -->
-       <li><a href="{% url 'findit:real_trend' 'index' %}" class="mklo lap">Phone </a></li>
-       <li><a href="{% url 'findit:real_trend' 'laptops' %}" class="mklo phon">Laptops </a></li>
-       <li><a href="{% url 'findit:real_trend'  'televisions'%}" class="mklo tv"> Tvs </a></li>
-       <li><a href="{% url 'findit:real_trend' 'shirts' %}" class="mklo shirts">Men shirts </a></li>
-       <li><a href="{% url 'findit:real_trend' 'women-dresses' %}" class="mklo women">Women's Dresses </a></li>
-       <li><a href="{% url 'findit:real_trend'  'men-watches'%}" class="mklo watch"> Men Watches </a></li>
-       <li><a href="{% url 'findit:real_trend' 'women-watches' %}" class="mklo watchw"> Women Watches </a></li>
-       <!-- <li><a href="{% url 'findit:wemen'  %}" class="mklo women"><i class="fa fa-female"></i> Women's Watches </a></li> -->
-       <!-- <li><a href="#" class="mklo"> Naij</a></li>
-       <li><a href="#" class="mklo"> Techcrunch</a></li>
-       <li><a href="#" class="mklo"> Sport.naij</a></li> -->
-      </ul>
-      <p></p>
-    </div>
-  </div>
-</div>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- rifqoh -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7326263559427654"
-     data-ad-slot="9097797458"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 {% if ad %}
 <div class="list-inline list-unstyled text-center">
     {% for ads in ad %}
