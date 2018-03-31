@@ -691,10 +691,6 @@ def all_on_it(request):
     return HttpResponse('i will find you and kill you')
 
 def test_engine_starter(request):
-    stupid_me = Products.objects.filter(shop='konga')
-    stupid_me.delete()
-    stupid_me_p = Products.objects.filter(shop='jumia')
-    stupid_me_p.delete()
     return HttpResponse('post woel')
 
 def engine_starter(request):
