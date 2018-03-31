@@ -131,7 +131,6 @@ def jumia_crawler():
 			       'Accept-Language': 'en-US,en;q=0.8',
 			       'Connection': 'keep-alive'}
 			page_url = 'https://www.jumia.com.ng/televisions/?page=%s'%urls
-			llll
 			html = Request(page_url,headers=hdr)
 			htmll = urlopen(html).read()
 			bsObj = BeautifulSoup(htmll,'html.parser')
