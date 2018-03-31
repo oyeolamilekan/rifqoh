@@ -147,56 +147,23 @@ img.baby_mama {
         margin-top: 1px;
         display: none;
     }
-}
+  }
 </style>
-<div class="panel uniquee panel-primary">
-  <div class="panel-body">
-    <a href="#" style="border:1px solid #eee; padding: 9px 10px; color: black; border-radius: 4px;">
-      <b><i class="fa fa-globe"></i> Categories</b>
-    </a>
-  </div>
-  <div class="panel uniquel panel-default">
-    <div class="panel-body">
-      <ul class="tags">
-       <li><a href="{% url 'findit:real_index' %}" class="mklo la">Discover </a></li>
-       <li><a href="{% url 'findit:index' %}" class="mklo lap">Phone </a></li>
-       <li><a href="{% url 'findit:laptops'  %}" class="mklo phon">Laptops </a></li>
-       <li><a href="{% url 'findit:tv_index'  %}" class="mklo tv"> Tvs </a></li>
-       <li><a href="{% url 'findit:shirts'  %}" class="mklo shirts">Men shirts </a></li>
-       <li><a href="{% url 'findit:wemen'  %}" class="mklo women">Women's Dresses </a></li>
-       <li><a href="{% url 'findit:men_watch'  %}" class="mklo watch"> Men Watches </a></li>
-       <li><a href="{% url 'findit:women_watch'  %}" class="mklo watchw"> Women Watches </a></li>
-       <li><a href="{% url 'findit:wemenbags'  %}" class="mklo women" style="background-color: #f20122; border-color: #f20122;">Women's Bags </a></li>
-       <li><a href="{% url 'findit:headphones'  %}" class="mklo watch" style="background-color: #e60195; border-color: #e60195;"> Headphones</a></li>
-       <li><a href="{% url 'findit:makeup'  %}" class="mklo watchw" style="background-color: #e1f201; border-color: #e1f201;"> Makeup </a></li>
-      </ul>
-      <p></p>
-    </div>
-  </div>
-</div>
-<div class="">
-  <div class="panel unique panel-default">
-    <div class="panel-body">
-      <ul class="tags">
-       <li><a href="{% url 'findit:real_index' %}" class="mklo la">Discover </a></li>
-       <li><a href="{% url 'findit:index' %}" class="mklo lap">Phone </a></li>
-       <li><a href="{% url 'findit:laptops'  %}" class="mklo phon">Laptops </a></li>
-       <li><a href="{% url 'findit:tv_index'  %}" class="mklo tv"> Tvs </a></li>
-       <li><a href="{% url 'findit:shirts'  %}" class="mklo shirts">Men shirts </a></li>
-       <li><a href="{% url 'findit:wemen'  %}" class="mklo women">Women's Dresses </a></li>
-       <li><a href="{% url 'findit:men_watch'  %}" class="mklo watch"> Men Watches </a></li>
-       <li><a href="{% url 'findit:women_watch'  %}" class="mklo watchw"> Women Watches </a></li>
-       <li><a href="{% url 'findit:wemenbags'  %}" class="mklo women" style="background-color: #f20122; border-color: #f20122;">Women's Bags </a></li>
-       <li><a href="{% url 'findit:headphones'  %}" class="mklo watch" style="background-color: #e60195; border-color: #e60195;"> Headphones</a></li>
-       <li><a href="{% url 'findit:makeup'  %}" class="mklo watchw" style="background-color: #e1f201; border-color: #e1f201;"> Makeup </a></li>
-       <!-- <li><a href="{% url 'findit:wemen'  %}" class="mklo women"><i class="fa fa-female"></i> Women's Watches </a></li> -->
-       <!-- <li><a href="#" class="mklo"> Naij</a></li>
-       <li><a href="#" class="mklo"> Techcrunch</a></li>
-       <li><a href="#" class="mklo"> Sport.naij</a></li> -->
-      </ul>
-      <p></p>
-    </div>
-  </div>
+<div class="nav-scroller" style="margin-top: -29px;">
+    <nav class="nav-underline nav">
+      <a class="nav-link" href="{% url 'findit:real_index' %}" style="padding: 1rem 1rem;">Discover</a>
+      <a class="nav-link" href="{% url 'findit:index' %}" style="padding: 1rem 1rem;">Phone</a>
+      <a class="nav-link" href="{% url 'findit:laptops'  %}" style="padding: 1rem 1rem;">Laptops</a>
+      <a class="nav-link" href="{% url 'findit:tv_index'  %}" style="padding: 1rem 1rem;">Tvs</a>
+      <a class="nav-link" href="{% url 'findit:shirts'  %}" style="padding: 1rem 1rem;">Men shirts</a>
+      <a class="nav-link" href="{% url 'findit:wemen'  %}" style="padding: 1rem 1rem;">Women's Dresses</a>
+      <a class="nav-link" href="{% url 'findit:men_watch'  %}" style="padding: 1rem 1rem;">Men Watches</a>
+      <a class="nav-link" href="{% url 'findit:women_watch'  %}" style="padding: 1rem 1rem;">Women Watches</a>
+      <a class="nav-link" href="{% url 'findit:men_watch'  %}" style="padding: 1rem 1rem;">Men Watches</a>
+      <a class="nav-link" href="{% url 'findit:wemenbags'  %}" style="padding: 1rem 1rem;">Women's Bags</a>
+      <a class="nav-link" href="{% url 'findit:headphones'  %}" style="padding: 1rem 1rem;">Headphones</a>
+      <a class="nav-link" href="{% url 'findit:makeup'  %}" style="padding: 1rem 1rem;">Makeup</a>
+    </nav>
 </div>
 {% if ad %}
 <div class="list-inline list-unstyled text-center">
