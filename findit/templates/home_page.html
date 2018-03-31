@@ -550,13 +550,6 @@ a.float:hover, a.floatt:hover,a.floattt:hover {
       // }
       {% block domready %}
       {% endblock %}
-       $('.uniquee').click(function(event){
-        event.preventDefault();
-        $('.unique').slideToggle(400, function(){
-            $(this).toggleClass('planet-expan').css('display','');
-        });
-
-    });
 
     // Auto suggest search input
     $('#search-input').keyup(function(){

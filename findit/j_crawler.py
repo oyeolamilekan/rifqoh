@@ -9,8 +9,16 @@ from django.core.files.base import ContentFile
 from django.utils.crypto import get_random_string
 from django.core.mail import send_mail
 from django.conf import settings
-
 def jumia_crawler():
+	jumia_phones()
+	jumia_laptops()
+	jumia_wemen_dresses()
+	jumia_tvs()
+	jumia_men_watches()
+	jumia_women_watches()
+	jumia_shirts()
+
+def jumia_phones():
 	try:
 		folder = 'jumia/'
 		for urls in range(1,25):
@@ -68,6 +76,20 @@ def jumia_crawler():
 						product = Products(name=namelst,price=product_price,source_url=product_link,shop='jumia',genre='phone')
 						product.image.save(file_name[:20],lf)
 
+	except Exception as e:
+			subject = 'Crawler Error'
+			from_email = settings.EMAIL_HOST_USER
+			message = 'The following exception occured %s' % e        
+			recipient_list = ['johnsonoye34@gmail.com']
+			html_message = '<p>Bros there\'s something went wrong : %s jumia crawler %s</p>'%(e, 'phones')
+			sent_mail = send_mail(
+			                subject, 
+			                message, 
+			                from_email, 
+			                recipient_list,  
+			                html_message=html_message)
+def jumia_laptops():
+	try:
 		for urls in range(1,25):
 			hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 			       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -123,6 +145,20 @@ def jumia_crawler():
 						product = Products(name=namelst,price=product_price,source_url=product_link,shop='jumia',genre='laptops')
 						product.image.save(file_name[:20],lf)
 
+	except Exception as e:
+		subject = 'Crawler Error'
+		from_email = settings.EMAIL_HOST_USER
+		message = 'The following exception occured %s' % e        
+		recipient_list = ['johnsonoye34@gmail.com']
+		html_message = '<p>Bros there\'s something went wrong : %s jumia crawler %s</p>'%(e, 'laptops')
+		sent_mail = send_mail(
+		                subject, 
+		                message, 
+		                from_email, 
+		                recipient_list,  
+		                html_message=html_message)
+def jumia_tvs():
+	try:
 		for urls in range(1,25):
 			hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 			       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -179,7 +215,22 @@ def jumia_crawler():
 						lf = ContentFile(httl)
 						product = Products(name=namelst,price=product_price,source_url=product_link,genre='televisions',shop='jumia')
 						product.image.save(file_name[:20],lf)
+
+	except Exception as e:
+		subject = 'Crawler Error'
+		from_email = settings.EMAIL_HOST_USER
+		message = 'The following exception occured %s' % e        
+		recipient_list = ['johnsonoye34@gmail.com']
+		html_message = '<p>Bros there\'s something went wrong : %s jumia crawler %s</p>'%(e, 'tv crawler')
+		sent_mail = send_mail(
+		                subject, 
+		                message, 
+		                from_email, 
+		                recipient_list,  
+		                html_message=html_message)
 					
+def jumia_shirts():
+	try:
 		for urls in range(1,25):
 			hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 			       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -236,6 +287,21 @@ def jumia_crawler():
 						product = Products(name=namelst,price=product_price,source_url=product_link,genre='shirts',shop='jumia')
 						product.image.save(file_name[:20],lf)
 
+	except Exception as e:
+		subject = 'Crawler Error'
+		from_email = settings.EMAIL_HOST_USER
+		message = 'The following exception occured %s' % e        
+		recipient_list = ['johnsonoye34@gmail.com']
+		html_message = '<p>Bros there\'s something went wrong : %s jumia crawler %s</p>'%(e, 'shirts')
+		sent_mail = send_mail(
+		                subject, 
+		                message, 
+		                from_email, 
+		                recipient_list,  
+		                html_message=html_message)
+
+def jumia_wemen_dresses():
+	try:
 		for urls in range(1,25):
 			hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 			       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -293,6 +359,20 @@ def jumia_crawler():
 						product = Products(name=namelst,price=product_price,source_url=product_link,genre='women-dresses',shop='jumia')
 						product.image.save(file_name[:20],lf)
 
+	except Exception as e:
+		subject = 'Crawler Error'
+		from_email = settings.EMAIL_HOST_USER
+		message = 'The following exception occured %s' % e        
+		recipient_list = ['johnsonoye34@gmail.com']
+		html_message = '<p>Bros there\'s something went wrong : %s jumia crawler %s</p>'%(e, 'womens-dresses')
+		sent_mail = send_mail(
+		                subject, 
+		                message, 
+		                from_email, 
+		                recipient_list,  
+		                html_message=html_message)
+def jumia_men_watches():
+	try:
 		for urls in range(1,25):
 			hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 			       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -350,6 +430,21 @@ def jumia_crawler():
 						product = Products(name=namelst,price=product_price,source_url=product_link,genre='men-watches',shop='jumia')
 						product.image.save(file_name[:20],lf)
 
+	except Exception as e:
+		subject = 'Crawler Error'
+		from_email = settings.EMAIL_HOST_USER
+		message = 'The following exception occured %s' % e        
+		recipient_list = ['johnsonoye34@gmail.com']
+		html_message = '<p>Bros there\'s something went wrong : %s jumia crawler %s</p>'%(e, 'men_watches')
+		sent_mail = send_mail(
+		                subject, 
+		                message, 
+		                from_email, 
+		                recipient_list,  
+		                html_message=html_message)
+
+def jumia_women_watches():
+	try:
 		for urls in range(1,25):
 			hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 			       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -406,12 +501,13 @@ def jumia_crawler():
 						lf = ContentFile(httl)
 						product = Products(name=namelst,price=product_price,source_url=product_link,genre='women-watches',shop='jumia')
 						product.image.save(file_name[:20],lf)
+
 	except Exception as e:
 		subject = 'Crawler Error'
 		from_email = settings.EMAIL_HOST_USER
 		message = 'The following exception occured %s' % e        
 		recipient_list = ['johnsonoye34@gmail.com']
-		html_message = '<p>Bros there\'s something went wrong : %s jumia crawler %s</p>'%(e, page_url)
+		html_message = '<p>Bros there\'s something went wrong : %s jumia crawler %s</p>'%(e, 'women-watches')
 		sent_mail = send_mail(
 		                subject, 
 		                message, 
