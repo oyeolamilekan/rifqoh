@@ -9,6 +9,7 @@ from django.core.files.base import ContentFile
 from django.utils.crypto import get_random_string
 from django.core.mail import send_mail
 from django.conf import settings
+folder = 'jumia/'
 def jumia_crawler():
 	jumia_phones()
 	jumia_laptops()
@@ -20,7 +21,6 @@ def jumia_crawler():
 
 def jumia_phones():
 	try:
-		folder = 'jumia/'
 		for urls in range(1,25):
 			hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
 			       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
