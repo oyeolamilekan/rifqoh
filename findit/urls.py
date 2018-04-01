@@ -3,7 +3,7 @@ from django.urls import path
 from . import views
 app_name = 'findit'
 urlpatterns = [
-    # url(r'^$', views.home_page, name='home_page'),
+    #path('', views.home_page, name='home_page'),
     #url(r'^steore/$',views.rest_store,name='paa'),
     path('', views.real_index, name='real_index'),
     path('test_engine_starter/', views.test_engine_starter, name='test_engine_starter'),
