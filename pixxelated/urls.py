@@ -17,16 +17,21 @@ from django.urls import path,include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from findit import views as myapp_views
+from django.conf.urls import handler404, handler500
 
 urlpatterns = [
     path('you_are_stupid/', admin.site.urls),
     path('',include('findit.urls',namespace='findit')),
-    
     path('shop/',include('shop.urls',namespace='shop')),
     path('double/',include('analytics.urls',namespace='analytics')),
     path('accounts/',include('accounts.urls')),
     path('adengine/',include('adengine.urls',namespace='adengine'))
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+
+handler500 = myapp_views.error_500
+handler404 = myapp_views.error_404

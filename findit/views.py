@@ -891,6 +891,12 @@ def tips_loud(request):
     else:
         return JsonResponse({'text': tips.body})
 
+def error_404(request):
+    return render(request,'error_500.html', {})
+ 
+def error_500(request):
+    return render(request,'error_500.html', {})
+
 # def stream(request):
 # 	all_products = Products.objects.order_by('?').filter(genre__in=[subb.lisert for subb in sub_listo])
 # 	product_counter = all_products.count()

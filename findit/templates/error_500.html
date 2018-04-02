@@ -1,0 +1,28 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+	<title>Error </title>
+</head>
+<body>
+	<h1 align="center">Something bad happened don't worry we redirect you back. <br> Click <a href="{{ request.get_host }}">here</a> if you are not being redirected.</h1>
+	<div id="seconds-counter"></div>
+</body>
+<script type="text/javascript">
+	var seconds = 5;
+	var el = document.getElementById('seconds-counter');
+
+	function incrementSeconds() {
+	    seconds -= 1;
+	    
+	    if (seconds =< 0) {
+	    	window.location.href = "{{ request.get_host }}";
+	    }
+	    else {
+	    	el.innerText = "You have been here for " + seconds + " seconds.";
+	    }
+	}
+
+	var cancel = setInterval(incrementSeconds, 1000);
+</script>
+</html>
