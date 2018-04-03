@@ -655,6 +655,47 @@ def men_watch(request):
     context['query_time'] = query_time
     return render(request, 'results_page.html', context)
 
+def gaming(request):
+    # ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+    # prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
+    # print(screen_width)
+    # ad = Ads.objects.order_by('?')[:1]
+    # seen_by(request,ad)
+    # landlord(request,ad)
+    # seen_by(request,prod_ad)
+    # landlord(request,prod_ad)
+    user_count(request)
+    url = request.build_absolute_uri()
+    whichPage(request, 'men_watchP', url)
+    share_string = 'Compare Beautiful Men Watches - Latest Beautiful Men Watches by Price & Shop'
+    t1 = time.time()
+    confirmed = None
+    all_products = Products.objects.filter(genre='gaming').order_by('?')
+    page_request_var = 'page'
+    paginator = Paginator(all_products, 40)
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        if request.is_ajax():
+            # If the request is AJAX and the page is out of range return an empty page
+            return HttpResponse('')
+    if request.is_ajax():
+        return render(request, 'results_ajax.html', {'products': queryset})
+    context = {'products': queryset,
+               'confirmed': confirmed,
+               'all_product': all_products,
+               'share_string': share_string,
+               'share_stringe':share_stringe,
+               'page': 'gaming'}
+    t2 = time.time()
+    query_time = t2 - t1
+    query_time = '{:.6f}'.format(query_time)
+    context['query_time'] = query_time
+    return render(request, 'results_page.html', context)
+
 
 def number_of_clicks(request, words):
     if Products.objects.filter(slug=words).exists():

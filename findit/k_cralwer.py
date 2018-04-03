@@ -19,7 +19,74 @@ def konga_crawler():
 	konga_womens_watches()
 	konga_phones()
 	konga_laptops()
+	konga_gaming()
 
+def konga_gaming():
+	try:
+		# https://www.konga.com/playstation-4
+		for urls in range(1,20):
+			hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+			       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+			       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+			       'Accept-Encoding': 'none',
+			       'Accept-Language': 'en-US,en;q=0.8',
+			       'Connection': 'keep-alive'}
+			html = Request('https://www.konga.com/playstation-4?page=%s'%urls,headers=hdr)
+			htmll = urlopen(html).read()
+			bsObj = BeautifulSoup(htmll,'html.parser')
+			product_list = bsObj.findAll('div',{'class':'product-block'})
+			for product in product_list:
+				product_name = product.find('div',{'class':'product-name'})
+				product_link = 'https://www.konga.com'+product.a.attrs['href']
+				images = product.img.attrs['src']
+				request = requests.get(images, stream=True)
+				if product.find('div',{'class':'special-price'}) != None:
+					# If it does exist it find the price
+					price = product.find('div',{'class':'special-price'})
+				else:
+					# If does not exist it finds the original price
+					price = product.find('div',{'class':'original-price'})
+				e_price = bytes(str(price.text),'UTF-8')
+				e_price = e_price.decode('ascii','ignore')
+				namelst = bytes(str(product_name.text), 'UTF-8')
+				namelst = namelst.decode('ascii','ignore')
+				if Products.objects.filter(name=namelst,shop='konga').exists():
+					
+					produc = Products.objects.get(name=namelst,shop='konga')
+					# Checks the price
+					if produc.price != e_price:
+						produc.old_price = produc.price
+						produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
+						# Updates the price
+						produc.price = e_price
+						# Saves the price
+						
+						produc.save()
+				else:
+					if request.status_code != requests.codes.ok:
+						continue
+					file_name = folder + images.split('/')[-1]
+					lf = tempfile.NamedTemporaryFile()
+					for block in request.iter_content(1024*8):
+						if not block:
+							break
+						lf.write(block)
+					print(namelst,e_price)
+					product = Products(name=namelst,price=e_price,source_url=product_link,genre='gaming',shop='konga')
+					product.image.save(file_name[:20],files.File(lf))
+
+	except Exception as e:
+		subject = 'Crawler Error'
+		from_email = settings.EMAIL_HOST_USER
+		message = 'The following exception occured %s' % e        
+		recipient_list = ['johnsonoye34@gmail.com']
+		html_message = '<p>Bros there\'s something went wrong : %s konga crawler %s </p>'%(e,'gaming')
+		sent_mail = send_mail(
+		                subject, 
+		                message, 
+		                from_email, 
+		                recipient_list,  
+		                html_message=html_message)
 def konga_shirts():
 	try:
 		for urls in range(1,60):
