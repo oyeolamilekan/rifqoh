@@ -719,9 +719,9 @@ def sugget(request):
 
 
 def deleteu(request):
-    products = Products.objects.filter(genre='')
+    products = Products.objects.filter(name__icontains='Playstation')
     for product in products:
-        product.genre = 'phone'
+        product.genre = 'gaming'
         product.save()
     return HttpResponse('all done')
 
