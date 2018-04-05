@@ -30,14 +30,14 @@ def get_header_info(request):
 
 # Checks if the request is robot and it is, it doesn't add it to the database.
 def is_bot(request):
-    botnames = ['Googlebot', 'Slurp', 'Twiceler', 'msnbot', 'KaloogaBot', 'YodaoBot', 'Baiduspider', 'googlebot',
+    botnames = ('Googlebot', 'Slurp', 'Twiceler', 'msnbot', 'KaloogaBot', 'YodaoBot', 'Baiduspider', 'googlebot',
                 'Speedy Spider', 'DotBot','robot','bots','Mediapartners-Google','robot','Python-urllib',
                 'python-requests','YandexBot','Twitterbot','Trident','LinkedInBot','muhstik','OpenLinkProfiler.org',
-                'bingbot','DuckDuckGo','Trident','libwww-perl','zgrab']
+                'bingbot','DuckDuckGo','Trident','libwww-perl','zgrab')
 
     user_agent = request.META.get('HTTP_USER_AGENT', None)
 
-    if botnames in user_agent:
+    if user_agent in botnames:
 
         return True
 
