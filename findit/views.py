@@ -96,8 +96,8 @@ def advanced_search(request):
     # share_string = quote_plus('compare price from different stores at quickfinda.com #popular')
     t1 = time.time()
     url = request.build_absolute_uri()
-    whichPage(request, 'advanced_search', url)
-    user_count(request)
+    #whichPage(request, 'advanced_search', url)
+    #user_count(request)
     try:
         brand_name = request.GET.get('brand', None)
         start_price = int(request.GET.get('start_price', None).replace(',', '').replace('\n', '').replace('.00', ''))
@@ -130,11 +130,11 @@ def real_index(request):
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
     #user_c_name, user_c_code = get_location(request=request)
-    user_count(request)
+    #user_count(request)
     share_string = 'Quickfinda - Online Shop & Price Comparison in Nigeria'
     t1 = time.time()
     url = request.build_absolute_uri()
-    whichPage(request, 'discoverB', url)
+    #whichPage(request, 'discoverB', url)
     confirmed = None
     query = request.GET.get('q')
     # print(query,'hgf')
@@ -200,9 +200,9 @@ def shirts(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    user_count(request)
+    #user_count(request)
     url = request.build_absolute_uri()
-    whichPage(request, 'shirtsP', url)
+    #whichPage(request, 'shirtsP', url)
     t1 = time.time()
     share_string = 'Shirts - Online Shop & Price Comparison in Nigeria'
     confirmed = None
@@ -247,9 +247,9 @@ def index(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    user_count(request)
+    #user_count(request)
     url = request.build_absolute_uri()
-    whichPage(request, 'phoneP', url)
+    #whichPage(request, 'phoneP', url)
     share_string = 'Compare Mobile Phones - Latest Mobile Comparison by Price'
     t1 = time.time()
     confirmed = None
@@ -295,9 +295,9 @@ def laptops(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    user_count(request)
+    #user_count(request)
     url = request.build_absolute_uri()
-    whichPage(request, 'laptopsP', url)
+    #whichPage(request, 'laptopsP', url)
     t1 = time.time()
     share_string = 'Compare Laptops - Latest Laptops by Price'
     orginal_sentence = []
@@ -346,8 +346,8 @@ def tv_index(request):
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
     url = request.build_absolute_uri()
-    user_count(request)
-    whichPage(request, 'tvP', url)
+    #user_count(request)
+    #whichPage(request, 'tvP', url)
     share_string = 'Compare TV - Latest TV by Price '
     t1 = time.time()
     confirmed = None
@@ -394,8 +394,8 @@ def makeup(request):
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
     url = request.build_absolute_uri()
-    user_count(request)
-    whichPage(request, 'tvP', url)
+    #user_count(request)
+    #whichPage(request, 'tvP', url)
     share_string = share_string = 'Compare Makeups - Latest Makeups by Price & Shop'
     t1 = time.time()
     confirmed = None
@@ -442,8 +442,8 @@ def headphones(request):
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
     url = request.build_absolute_uri()
-    user_count(request)
-    whichPage(request, 'tvP', url)
+    #user_count(request)
+    #whichPage(request, 'tvP', url)
     share_string = 'Compare Headphones - Latest Headphones by Price & Shop'
     t1 = time.time()
     confirmed = None
@@ -490,8 +490,8 @@ def wemenbags(request):
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
     url = request.build_absolute_uri()
-    user_count(request)
-    whichPage(request, 'tvP', url)
+    #user_count(request)
+    #whichPage(request, 'tvP', url)
     share_string = 'Compare Bags - Latest Bags by Price & Shop'
     t1 = time.time()
     confirmed = None
@@ -537,9 +537,9 @@ def women_index(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    user_count(request)
+    #user_count(request)
     url = request.build_absolute_uri()
-    whichPage(request, 'wemenP', url)
+    #whichPage(request, 'wemenP', url)
     share_string = 'Compare Beautiful Dresses - Latest Beautiful Dresses by Price & Shop'
     t1 = time.time()
     confirmed = None
@@ -580,10 +580,10 @@ def women_watch(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    user_count(request)
+    #user_count(request)
     url = request.build_absolute_uri()
     t1 = time.time()
-    whichPage(request, 'wemen_watchP', url)
+    #whichPage(request, 'wemen_watchP', url)
     share_string = 'Compare Beautiful Women Watches - Latest Beautiful Women Watches by Price & Shop'
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='women-watches')
@@ -623,9 +623,9 @@ def men_watch(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    user_count(request)
+    #user_count(request)
     url = request.build_absolute_uri()
-    whichPage(request, 'men_watchP', url)
+    #whichPage(request, 'men_watchP', url)
     share_string = 'Compare Beautiful Men Watches - Latest Beautiful Men Watches by Price & Shop'
     t1 = time.time()
     confirmed = None

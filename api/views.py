@@ -1,7 +1,7 @@
 import json
 
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render
 
 from findit.models import Products
 
@@ -21,11 +21,11 @@ def getting_started(request):
 
 # Get products by catergory tutorial
 def catergory_tuts(request):
-  return render(request,'api/get_product_cat.html',{})
+    return render(request,'api/get_product_cat.html',{})
 
 # Get products from shop
 def shop_tuts(request):
-  return render(request,'api/get_product_shop.html',{})
+    return render(request,'api/get_product_shop.html',{})
 
 
 
