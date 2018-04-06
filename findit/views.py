@@ -4,7 +4,7 @@ from .utils import black_rock, nairaconv
 from .search_instance import experimental_search,search_bite
 from accounts.models import *
 from adengine.models import Ads
-from analytics.an_utils import get_client_ip, get_location, get_header_info
+from analytics.an_utils import get_client_ip, get_location, get_header_info, is_bot
 from analytics.models import PageViews, UserTime, UserNumber
 from analytics.signals import object_viewed
 from analytics.utils import whichPage, user_count, user_converter, get_location
@@ -17,7 +17,8 @@ import time
 from urllib.parse import quote_plus
 from .test_crawler import test_cralwer
 from django.utils.text import slugify
-# from .an_utils import correction
+from django.conf import settings
+from django.core.mail import send_mail
 
 # Intial Stops words for the users
 global  share_stringe
@@ -121,74 +122,88 @@ def advanced_search(request):
 
 
 def real_index(request):
-    # ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
-    # prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
-    # print(screen_width)
-    # ad = Ads.objects.order_by('?')[:1]
-    # seen_by(request,ad)
-    # landlord(request,ad)
-    # seen_by(request,prod_ad)
-    # landlord(request,prod_ad)
-    #user_c_name, user_c_code = get_location(request=request)
-    #user_count(request)
-    share_string = 'Quickfinda - Online Shop & Price Comparison in Nigeria'
-    t1 = time.time()
-    url = request.build_absolute_uri()
-    #whichPage(request, 'discoverB', url)
-    confirmed = None
-    query = request.GET.get('q')
-    # print(query,'hgf')
-    all_products = Products.objects.order_by('?')
-
-    if request.user.is_authenticated:
-        user_picks = Sub.objects.filter(user=request.user)
-        user_pick_list = []
-        for user_p in user_picks:
-            user_pick_list.append(user_p.picks)
-        # print(user_pick_list)
-        all_products = Products.objects.filter(genre__in=user_pick_list)
-        all_products = all_products.order_by('?')
-    if query:
-        all_products = search_bite(request,query)
-
-    # if corrected_sentence != orginal_sentence:
-    # 	corrected_sentence = ' '.join(corrected_sentence)
-    # 	orginal_sentence = ' '.join(orginal_sentence)
-    # 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
-    com = ''
-    page_request_var = 'page'
-    # if page_request_var and query:
-    #     com = 'Nothing'
-    # if user_c_code == 'US':
-    #     all_products = all_products.filter(country_code='US').order_by('?')
-    paginator = Paginator(all_products, 40)
-    page = request.GET.get(page_request_var)
     try:
-        queryset = paginator.page(page)
-    except PageNotAnInteger:
-        queryset = paginator.page(1)
-    except EmptyPage:
+        # ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:2]
+        # prod_ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Products")[:1]
+        # print(screen_width)
+        # ad = Ads.objects.order_by('?')[:1]
+        # seen_by(request,ad)
+        # landlord(request,ad)
+        # seen_by(request,prod_ad)
+        # landlord(request,prod_ad)
+        user_c_name, user_c_code = get_location(request=request)
+        user_count(request)
+        share_string = 'Quickfinda - Online Shop & Price Comparison in Nigeria'
+        t1 = time.time()
+        url = request.build_absolute_uri()
+        #whichPage(request, 'discoverB', url)
+        confirmed = None
+        query = request.GET.get('q')
+        # print(query,'hgf')
+        all_products = Products.objects.order_by('?')
+
+        if request.user.is_authenticated:
+            user_picks = Sub.objects.filter(user=request.user)
+            user_pick_list = []
+            for user_p in user_picks:
+                user_pick_list.append(user_p.picks)
+            # print(user_pick_list)
+            all_products = Products.objects.filter(genre__in=user_pick_list)
+            all_products = all_products.order_by('?')
+        if query:
+            all_products = search_bite(request,query)
+
+        # if corrected_sentence != orginal_sentence:
+        # 	corrected_sentence = ' '.join(corrected_sentence)
+        # 	orginal_sentence = ' '.join(orginal_sentence)
+        # 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
+        com = ''
+        page_request_var = 'page'
+        # if page_request_var and query:
+        #     com = 'Nothing'
+        # if user_c_code == 'US':
+        #     all_products = all_products.filter(country_code='US').order_by('?')
+        paginator = Paginator(all_products, 40)
+        page = request.GET.get(page_request_var)
+        try:
+            queryset = paginator.page(page)
+        except PageNotAnInteger:
+            queryset = paginator.page(1)
+        except EmptyPage:
+            if request.is_ajax():
+                # If the request is AJAX and the page is out of range return an empty page
+                return HttpResponse('')
         if request.is_ajax():
-            # If the request is AJAX and the page is out of range return an empty page
-            return HttpResponse('')
-    if request.is_ajax():
-        return render(request, 'results_ajax.html', {'products': queryset})
-    context = {'products': queryset,
-               'query': query,
-               'confirmed': confirmed,
-               'all_product': all_products,
-               'share_string': share_string,
-               'share_stringe':share_stringe,
-               'trendin': 'home',
-               'com': com,
-               'page': 'index_page'
-               }
-    # print(all_products.count())
-    t2 = time.time()
-    query_time = t2 - t1
-    query_time = '{:.3f}'.format(query_time)
-    context['query_time'] = query_time
-    return render(request, 'results_page.html', context)
+            return render(request, 'results_ajax.html', {'products': queryset})
+        context = {'products': queryset,
+                   'query': query,
+                   'confirmed': confirmed,
+                   'all_product': all_products,
+                   'share_string': share_string,
+                   'share_stringe':share_stringe,
+                   'trendin': 'home',
+                   'com': com,
+                   'page': 'index_page'
+                   }
+        # print(all_products.count())
+        t2 = time.time()
+        query_time = t2 - t1
+        query_time = '{:.3f}'.format(query_time)
+        context['query_time'] = query_time
+        return render(request, 'results_page.html', context)
+
+    except Exception as e:
+        subject = 'Crawler Error'
+        from_email = settings.EMAIL_HOST_USER
+        message = 'The following exception occured %s' % e        
+        recipient_list = ['johnsonoye34@gmail.com']
+        html_message = '<p>Bros there\'s something went wrong : %s :- %s</p>'%('index page just crashed',e)
+        sent_mail = send_mail(
+                        subject, 
+                        message, 
+                        from_email, 
+                        recipient_list,  
+                        html_message=html_message)
 
 
 def shirts(request):
@@ -200,9 +215,9 @@ def shirts(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    #user_count(request)
+    user_count(request)
     url = request.build_absolute_uri()
-    #whichPage(request, 'shirtsP', url)
+    whichPage(request, 'shirtsP', url)
     t1 = time.time()
     share_string = 'Shirts - Online Shop & Price Comparison in Nigeria'
     confirmed = None
@@ -247,9 +262,9 @@ def index(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    #user_count(request)
+    user_count(request)
     url = request.build_absolute_uri()
-    #whichPage(request, 'phoneP', url)
+    whichPage(request, 'phoneP', url)
     share_string = 'Compare Mobile Phones - Latest Mobile Comparison by Price'
     t1 = time.time()
     confirmed = None
@@ -295,9 +310,9 @@ def laptops(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    #user_count(request)
+    user_count(request)
     url = request.build_absolute_uri()
-    #whichPage(request, 'laptopsP', url)
+    whichPage(request, 'laptopsP', url)
     t1 = time.time()
     share_string = 'Compare Laptops - Latest Laptops by Price'
     orginal_sentence = []
@@ -346,8 +361,8 @@ def tv_index(request):
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
     url = request.build_absolute_uri()
-    #user_count(request)
-    #whichPage(request, 'tvP', url)
+    user_count(request)
+    whichPage(request, 'tvP', url)
     share_string = 'Compare TV - Latest TV by Price '
     t1 = time.time()
     confirmed = None
@@ -394,8 +409,8 @@ def makeup(request):
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
     url = request.build_absolute_uri()
-    #user_count(request)
-    #whichPage(request, 'tvP', url)
+    user_count(request)
+    whichPage(request, 'tvP', url)
     share_string = share_string = 'Compare Makeups - Latest Makeups by Price & Shop'
     t1 = time.time()
     confirmed = None
@@ -442,8 +457,8 @@ def headphones(request):
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
     url = request.build_absolute_uri()
-    #user_count(request)
-    #whichPage(request, 'tvP', url)
+    user_count(request)
+    whichPage(request, 'tvP', url)
     share_string = 'Compare Headphones - Latest Headphones by Price & Shop'
     t1 = time.time()
     confirmed = None
@@ -490,8 +505,8 @@ def wemenbags(request):
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
     url = request.build_absolute_uri()
-    #user_count(request)
-    #whichPage(request, 'tvP', url)
+    user_count(request)
+    whichPage(request, 'tvP', url)
     share_string = 'Compare Bags - Latest Bags by Price & Shop'
     t1 = time.time()
     confirmed = None
@@ -537,9 +552,9 @@ def women_index(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    #user_count(request)
+    user_count(request)
     url = request.build_absolute_uri()
-    #whichPage(request, 'wemenP', url)
+    whichPage(request, 'wemenP', url)
     share_string = 'Compare Beautiful Dresses - Latest Beautiful Dresses by Price & Shop'
     t1 = time.time()
     confirmed = None
@@ -580,10 +595,10 @@ def women_watch(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    #user_count(request)
+    user_count(request)
     url = request.build_absolute_uri()
     t1 = time.time()
-    #whichPage(request, 'wemen_watchP', url)
+    whichPage(request, 'wemen_watchP', url)
     share_string = 'Compare Beautiful Women Watches - Latest Beautiful Women Watches by Price & Shop'
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='women-watches')
@@ -623,9 +638,9 @@ def men_watch(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    #user_count(request)
+    user_count(request)
     url = request.build_absolute_uri()
-    #whichPage(request, 'men_watchP', url)
+    whichPage(request, 'men_watchP', url)
     share_string = 'Compare Beautiful Men Watches - Latest Beautiful Men Watches by Price & Shop'
     t1 = time.time()
     confirmed = None
@@ -700,9 +715,10 @@ def gaming(request):
 def number_of_clicks(request, words):
     if Products.objects.filter(slug=words).exists():
         product = Products.objects.get(slug=words)
-        object_viewed.send(product.__class__, instance=product, request=request)
-        product.num_of_clicks = product.num_of_clicks + 1
-        product.save()
+        if is_bot(request):
+            object_viewed.send(product.__class__, instance=product, request=request)
+            product.num_of_clicks = product.num_of_clicks + 1
+            product.save()
         if product.shop == 'jumia':
             return HttpResponseRedirect(
                 'http://c.jumia.io/?a=35588&c=11&p=r&E=kkYNyk2M4sk%3d&ckmrdr=' + product.source_url + '&utm_source=cake&utm_medium=affiliation&utm_campaign=35588&utm_term=')

@@ -17,8 +17,6 @@ FORCE_SESSION_TO_ONE = getattr(settings, 'FORCE_SESSION_TO_ONE', False)
 FORCE_INACTIVE_USER_ENDSESSION = getattr(settings, 'FORCE_INACTIVE_USER_ENDSESSION', False)
 
 
-# Query list get
-
 # Handles the number of page views
 class PageViews(models.Model):
     title = models.CharField(max_length=200, blank=True, null=True)
