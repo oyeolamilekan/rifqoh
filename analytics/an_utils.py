@@ -36,12 +36,13 @@ def is_bot(request):
                 'bingbot','DuckDuckGo','Trident','libwww-perl','zgrab')
 
     user_agent = request.META.get('HTTP_USER_AGENT', None)
+    tested = None
+    for bot in botnames:
+        num = user_agent.find(bot)
 
-    if user_agent in botnames:
-
-        return True
-
-    else:
-
+        if num != -1:
+            tested = True
+            return True
+            break
+    if not tested:
         return False
-
