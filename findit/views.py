@@ -162,7 +162,7 @@ def real_index(request):
     #     com = 'Nothing'
     # if user_c_code == 'US':
     #     all_products = all_products.filter(country_code='US').order_by('?')
-    paginator = Paginator(all_products, 40)
+    paginator = Paginator(all_products, 20)
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
@@ -213,7 +213,7 @@ def shirts(request):
     # 	orginal_sentence = ' '.join(orginal_sentence)
     # 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
     page_request_var = 'page'
-    paginator = Paginator(all_products, 40)
+    paginator = Paginator(all_products, 20)
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
@@ -261,7 +261,7 @@ def index(request):
     # 	orginal_sentence = ' '.join(orginal_sentence)
     # 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
     page_request_var = 'page'
-    paginator = Paginator(all_products, 40)
+    paginator = Paginator(all_products, 20)
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
@@ -310,7 +310,7 @@ def laptops(request):
     # 	orginal_sentence = ' '.join(orginal_sentence)
     # 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
     page_request_var = 'page'
-    paginator = Paginator(all_products, 40)
+    paginator = Paginator(all_products, 20)
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
@@ -359,7 +359,7 @@ def tv_index(request):
     # 	orginal_sentence = ' '.join(orginal_sentence)
     # 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
     page_request_var = 'page'
-    paginator = Paginator(all_products, 40)
+    paginator = Paginator(all_products, 20)
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
@@ -407,7 +407,7 @@ def makeup(request):
     # 	orginal_sentence = ' '.join(orginal_sentence)
     # 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
     page_request_var = 'page'
-    paginator = Paginator(all_products, 40)
+    paginator = Paginator(all_products, 20)
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
@@ -455,7 +455,7 @@ def headphones(request):
     # 	orginal_sentence = ' '.join(orginal_sentence)
     # 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
     page_request_var = 'page'
-    paginator = Paginator(all_products, 40)
+    paginator = Paginator(all_products, 20)
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
@@ -503,7 +503,7 @@ def wemenbags(request):
     # 	orginal_sentence = ' '.join(orginal_sentence)
     # 	confirmed = 'Showing result of {0} instead of {1}'.format(corrected_sentence,orginal_sentence)
     page_request_var = 'page'
-    paginator = Paginator(all_products, 40)
+    paginator = Paginator(all_products, 20)
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
@@ -589,7 +589,7 @@ def women_watch(request):
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='women-watches')
     page_request_var = 'page'
-    paginator = Paginator(all_products, 40)
+    paginator = Paginator(all_products, 20)
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
@@ -632,7 +632,7 @@ def men_watch(request):
     confirmed = None
     all_products = Products.objects.order_by('?').filter(genre='men-watches')
     page_request_var = 'page'
-    paginator = Paginator(all_products, 40)
+    paginator = Paginator(all_products, 20)
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
@@ -673,7 +673,7 @@ def gaming(request):
     confirmed = None
     all_products = Products.objects.filter(genre='gaming').order_by('?')
     page_request_var = 'page'
-    paginator = Paginator(all_products, 40)
+    paginator = Paginator(all_products, 20)
     page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
