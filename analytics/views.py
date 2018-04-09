@@ -3,8 +3,9 @@ import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models.aggregates import Count
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
 
 from .models import PageViews, UserNumber, ObjectViewed
 from accounts.forms import LoginForm
@@ -18,28 +19,29 @@ def user_login(request):
             cd = form.cleaned_data
             user = authenticate(username=cd['username'], password=cd['password'])
             if user is not None:
-                if user.is_active:
+                if user.is_active and user.is_superuser:
                     login(request, user)
                     next_page = request.POST.get('next')
                     if next_page:
-                        return redirect(request.POST.get('next'))
+                        return JsonResponse({'redirect':'http://'+request.get_host()+next_page,'error':'false'})
                     else:
-                        return redirect('/portfolio/')
+                        return JsonResponse({'redirect':'http://'+request.get_host(),'error':'false'})
                 else:
                     return HttpResponse('Disabled account')
             else:
-                return HttpResponse('Invalid login')
+                return JsonResponse({'error':'true'})
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
 # Handles the home view to show the graphs
-@login_required()
+@login_required(login_url='/double/login/')
 def HomeView(request):
     return render(request, 'analytics/index.html', {})
 
 
 # Shows the number of products clicked by the on the graph
+@login_required(login_url='/double/login/')
 def prod_clicks(request):
     number_q = ObjectViewed.objects.order_by('-id')
     page_request_var = 'page'
@@ -60,6 +62,7 @@ def prod_clicks(request):
 
 
 # Show the numbers of users acquired on each day and displays on the graph
+@login_required(login_url='/double/login/')
 def user_acq(request):
     number_q = UserNumber.objects.order_by('-id')
     page_request_var = 'page'
@@ -81,7 +84,7 @@ def user_acq(request):
     context = {'queries': queryset}
     return render(request, 'analytics/number_c.html', context)
 
-
+@login_required(login_url='/double/login/')
 def pageView(request):
     data_set = []
     days = []
@@ -92,7 +95,7 @@ def pageView(request):
         days.append(datetime.datetime.strptime(str(page['timestamp']), '%Y-%m-%d').strftime('%a'))
     return JsonResponse({'data_set': data_set, 'days': days})
 
-
+@login_required(login_url='/double/login/')
 def usergrowth(request):
     data_sett = []
     dayses = []
@@ -103,7 +106,7 @@ def usergrowth(request):
         dayses.append(datetime.datetime.strptime(str(user['date_added']), '%Y-%m-%d').strftime('%a'))
     return JsonResponse({'data_s': data_sett, 'dayses': dayses})
 
-
+@login_required(login_url='/double/login/')
 def userClicks(request):
     data_sett = []
     dayses = []

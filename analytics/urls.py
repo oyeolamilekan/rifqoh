@@ -4,7 +4,7 @@ from . import views
 app_name = 'analytics'
 urlpatterns = [
     url(r'^$', views.HomeView, name='HomeView'),
-    url(r'^login/$', views.user_login, name='user_login'),
+    url(r'^login/$', views.user_login, name='login'),
     url(r'^prod_clicks/$', views.prod_clicks, name='prod_clicks'),
     url(r'^user_acq/$', views.user_acq, name='user_acq'),
     url(r'^pageview/$', views.pageView, name='pageView'),
