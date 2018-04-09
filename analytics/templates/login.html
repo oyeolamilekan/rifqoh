@@ -92,17 +92,21 @@
             type: "POST",
             url: "{% url 'analytics:login' %}",
             data:{username:username, password:password, csrfmiddlewaretoken:csrf_token,next:next_url},
+            
             beforeSend: function () {
               button.attr('disabled','disabled');
               loaderContainer.html('<div class="loader"></div>');
             },
+            
             success: function(data){
               if (data['error'] === 'true'){
                   $('.put-it').html("<div class='alert alert-danger alert-dismissible fade show' role='alert'> Invalid credentails. <button type='button' class='close' data-dismiss='alert' aria-label='Close'> <span aria-hidden='true'>&times;</span></button></div>");
               }
               else {
+                $('.put-it').html("<div class='alert alert-info alert-dismissible fade show' role='alert'> successful validation. <button type='button' class='close' data-dismiss='alert' aria-label='Close'> <span aria-hidden='true'>&times;</span></button></div>");
                 window.location.replace(data['redirect']);
               }
+              
               button.removeAttr('disabled');
               loaderContainer.html('');
             }
