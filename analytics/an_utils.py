@@ -35,14 +35,17 @@ def is_bot(request):
                 'python-requests','YandexBot','Twitterbot','Trident','LinkedInBot','muhstik','OpenLinkProfiler.org',
                 'bingbot','DuckDuckGo','Trident','libwww-perl','zgrab','SemrushBot','bot','Bot')
 
-    user_agent = request.META.get('HTTP_USER_AGENT', None)
+    user_agent = 'Mozilla/5.0 (compatible; MJ12bot/v1.4.8; http://mj12bot.com/)'
     tested = None
+    print(user_agent)
     for bot in botnames:
         num = user_agent.find(bot)
 
         if num != -1:
             tested = True
             return True
+            print(True)
             break
     if not tested:
+        print(False)
         return False

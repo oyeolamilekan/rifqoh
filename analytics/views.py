@@ -7,11 +7,34 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from .models import PageViews, UserNumber, ObjectViewed
+from accounts.forms import LoginForm
 
 
 # Create your views here.
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(username=cd['username'], password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    next_page = request.POST.get('next')
+                    if next_page:
+                        return redirect(request.POST.get('next'))
+                    else:
+                        return redirect('/portfolio/')
+                else:
+                    return HttpResponse('Disabled account')
+            else:
+                return HttpResponse('Invalid login')
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
 
 # Handles the home view to show the graphs
+@login_required()
 def HomeView(request):
     return render(request, 'analytics/index.html', {})
 

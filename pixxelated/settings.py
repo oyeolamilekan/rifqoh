@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'findit',
-    'bootstrap3',
+    'bootstrap4',
     'accounts',
     'actions',
     'shop',

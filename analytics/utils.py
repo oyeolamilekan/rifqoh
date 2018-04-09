@@ -23,6 +23,7 @@ def whichPage(request, curr_p, urll):
 
 def user_count(request):
     if not is_bot(request):
+        print('hi')
         if not UserNumber.objects.filter(user_ip=get_client_ip(request)).exists():
             user_c_name, user_c_code = get_location(request=request)
             user_count = UserNumber.objects.create(
