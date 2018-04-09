@@ -33,8 +33,8 @@
       align-items: center;
       -webkit-box-pack: center;
       justify-content: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
+      padding-top: 20px;
+      padding-bottom: 20px;
       background-color: #e5e7f1;
     }
     .form-signin {
@@ -52,7 +52,7 @@
         <div class="put-it">
         </div>
         <input type="hidden" name="next" value="{{ request.GET.next }}" />
-        {% bootstrap_form form show_label=False%}
+        {% bootstrap_form form show_label=False %}
         {% csrf_token %}
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>

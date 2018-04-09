@@ -23,9 +23,9 @@ def user_login(request):
                     login(request, user)
                     next_page = request.POST.get('next')
                     if next_page:
-                        return JsonResponse({'redirect':'http://'+request.get_host()+next_page,'error':'false'})
+                        return JsonResponse({'redirect':'http://'+request.get_host()+next_page})
                     else:
-                        return JsonResponse({'redirect':'http://'+request.get_host(),'error':'false'})
+                        return JsonResponse({'redirect':'http://'+request.get_host()})
                 else:
                     return HttpResponse('Disabled account')
             else:
