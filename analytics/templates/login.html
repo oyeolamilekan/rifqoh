@@ -44,6 +44,21 @@
       margin: 0 auto;
     }
     .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+    .loader {
+      padding: 7px;
+      border: 5px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 5px solid #3498db;
+      width: 20px;
+      height: 20px;
+      animation: spin 0.5s linear infinite;
+      margin-left: 60px;
+      margin-bottom: -25px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
   </style>
   <body class="container">
     <form class="form-signin bg-white box-shadow p-2 rounded" >
@@ -55,9 +70,11 @@
         {% bootstrap_form form show_label=False %}
         {% csrf_token %}
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit"><div class="loader-container"></div> Sign in</button>
       <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
+      
     </form>
+    
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -69,10 +86,16 @@
         let password = $('#id_password').val();
         let csrf_token = $( "input[name^='csrfmiddlewaretoken']" ).val();
         let next_url = $( "input[name^='next" ).val();
+        let button = $('button[type=submit]');
+        let loaderContainer = $('.loader-container');
         $.ajax({
             type: "POST",
             url: "{% url 'analytics:login' %}",
             data:{username:username, password:password, csrfmiddlewaretoken:csrf_token,next:next_url},
+            beforeSend: function () {
+              button.attr('disabled','disabled');
+              loaderContainer.html('<div class="loader"></div>');
+            },
             success: function(data){
               if (data['error'] === 'true'){
                   $('.put-it').html("<div class='alert alert-danger alert-dismissible fade show' role='alert'> Invalid credentails. <button type='button' class='close' data-dismiss='alert' aria-label='Close'> <span aria-hidden='true'>&times;</span></button></div>");
@@ -80,6 +103,8 @@
               else {
                 window.location.replace(data['redirect']);
               }
+              button.removeAttr('disabled');
+              loaderContainer.html('');
             }
         });
       });
