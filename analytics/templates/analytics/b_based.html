@@ -112,7 +112,7 @@
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
   </style>
   <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" style="height: 42px;">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" style="height: 42px;">
   <a class="navbar-bran" href="#"><img src="{% static 'strip1.png' %}" width="40" height="40"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -160,7 +160,7 @@
     <div class="container-fluid">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
+          <div class="sidebar-sticky" style="margin-top: 40px;">
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link {% block active %}{% endblock %}" href="{% url 'analytics:HomeView' %}">
@@ -174,30 +174,12 @@
                   Clicks
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link {% block products %}{% endblock %}" href="#">
-                  <span data-feather="shopping-cart"></span>
-                  Products
-                </a>
-              </li> -->
               <li class="nav-item">
                 <a class="nav-link {% block customers %}{% endblock %}" href="{% url 'analytics:user_acq' %}">
                   <span data-feather="users"></span>
                   Customers
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link {% block reports %}{% endblock %}" href="#">
-                  <span data-feather="bar-chart-2"></span>
-                  Reports
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {% block integrations %}{% endblock %}" href="#">
-                  <span data-feather="layers"></span>
-                  Integrations
-                </a>
-              </li> -->
             </ul>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -243,7 +225,7 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3" style="margin-top: 40px;">
             <h1 class="h2">{% block header %}{% endblock %}</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
