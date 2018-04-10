@@ -26,7 +26,7 @@ urlpatterns = [
     path('shop/',include('shop.urls',namespace='shop')),
     path('double/',include('analytics.urls',namespace='analytics')),
     path('accounts/',include('accounts.urls')),
-    path('adengine/',include('adengine.urls',namespace='adengine'))
+    path('ads/',include('adengine.urls',namespace='adengine'))
 ]
 
 if settings.DEBUG:

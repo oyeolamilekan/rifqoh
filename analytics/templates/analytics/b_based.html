@@ -12,6 +12,7 @@
 
     <!-- Bootstrap core CSS -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
@@ -111,7 +112,39 @@
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
   </style>
   <body>
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" style="margin: 0 !important; padding: 0;">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" style="height: 42px;">
+  <a class="navbar-bran" href="#"><img src="{% static 'strip1.png' %}" width="40" height="40"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav ">
+      <!-- <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+    </ul>
+   
+  </div>
+</nav>
+    <!-- <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" style="margin: 0 !important; padding: 0;">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#" style="width: 40px;margin: 0 !important; padding: 4px;"><img src="{% static 'strip.png' %}" style="width: 40px;margin-left: 15px !important; padding: 0;"></a>
       <form role="search" action=".">
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" name="q" role="search">
@@ -122,7 +155,7 @@
           <a class="nav-link" href="#">Sign out</a>
         </li>
       </ul>
-    </nav>
+    </nav> -->
 
     <div class="container-fluid">
       <div class="row">
@@ -198,6 +231,13 @@
                   Year-end sale
                 </a>
               </li>
+              <div class="d-md-none fixed-bottom">
+                <li class="nav-item text-center">
+                <a class="btn btn-danger btn-block nav-link text-white slide-bar-2" href="#" style="border-radius: 0px !important;">
+                 <h4> <i class="fa fa-times"></i></h4>
+                </a>
+              </li>
+              </div>
             </ul>
           </div>
         </nav>
@@ -216,10 +256,15 @@
               </button>
             </div>
           </div>
-
-          {% block content %}
-          {% endblock %}
-
+          <div class="d-md-none">
+            <a class="btn btn-secondary btn-sm slide-bar" href="#" role="button" style="float: left; margin-left: -29px; margin-top: -4px;"><h5><i class="fa fa-angle-right"></i></h5></a>
+            <br>
+            <br>
+          </div>
+          <div class="content-in">
+            {% block content %}
+            {% endblock %}
+          </div>
 
         </main>
       </div>
@@ -241,6 +286,17 @@
     <!-- Graphs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <script type="text/javascript">
+      $(".slide-bar").click(function(event){
+        event.preventDefault();
+        $('.sidebar').removeClass('d-none');
+        $('.content-in').addClass('d-none');
+      })
+      $('.slide-bar-2').click(function(event){
+        event.preventDefault();
+        $('.sidebar').addClass('d-none');
+        $('.content-in').removeClass('d-none');
+
+      })
       {% block heo %}
       {% endblock %}
     </script>
