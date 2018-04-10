@@ -112,31 +112,14 @@
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
   </style>
   <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" style="height: 42px;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <a class="navbar-bran" href="#"><img src="{% static 'strip1.png' %}" width="40" height="40"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border-color: transparent;">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-    <ul class="navbar-nav ">
-      <!-- <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li> -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
       </li>
@@ -144,23 +127,10 @@
    
   </div>
 </nav>
-    <!-- <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" style="margin: 0 !important; padding: 0;">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#" style="width: 40px;margin: 0 !important; padding: 4px;"><img src="{% static 'strip.png' %}" style="width: 40px;margin-left: 15px !important; padding: 0;"></a>
-      <form role="search" action=".">
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" name="q" role="search">
-      </form>
-      
-      <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sign out</a>
-        </li>
-      </ul>
-    </nav> -->
-
     <div class="container-fluid">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky" style="margin-top: 40px;">
+          <div class="sidebar-sticky" style="margin-top: 62px;">
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link {% block active %}{% endblock %}" href="{% url 'analytics:HomeView' %}">
@@ -225,7 +195,7 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3" style="margin-top: 40px;">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3" style="margin-top: 62px;">
             <h1 class="h2">{% block header %}{% endblock %}</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
