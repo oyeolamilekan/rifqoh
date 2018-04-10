@@ -33,7 +33,7 @@ def is_bot(request):
     botnames = ('Googlebot', 'Slurp', 'Twiceler', 'msnbot', 'KaloogaBot', 'YodaoBot', 'Baiduspider', 'googlebot',
                 'Speedy Spider', 'DotBot','robot','bots','Mediapartners-Google','robot','Python-urllib',
                 'python-requests','YandexBot','Twitterbot','Trident','LinkedInBot','muhstik','OpenLinkProfiler.org',
-                'bingbot','DuckDuckGo','Trident','libwww-perl','zgrab','SemrushBot','bot','Bot','Wget','Apache-HttpClient')
+                'bingbot','DuckDuckGo','Embedly','Trident','libwww-perl','zgrab','SemrushBot','bot','Bot','Wget','Apache-HttpClient')
 
     user_agent = request.META.get('HTTP_USER_AGENT',None)
     tested = None
