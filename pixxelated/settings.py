@@ -46,7 +46,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -172,3 +171,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
+SESSION_SAVE_EVERY_REQUEST = True
