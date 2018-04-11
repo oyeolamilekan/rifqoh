@@ -128,60 +128,60 @@ class UserTime(models.Model):
 
 
 # Handles each user session on the site
-class UserSession(models.Model):
-    user = models.ForeignKey(User, blank=True, null=True,on_delete=True)
-    ip_address = models.CharField(max_length=200, blank=True, null=True)
-    session_key = models.CharField(max_length=100, blank=True, null=True)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    active = models.BooleanField(default=True)
-    ended = models.BooleanField(default=False)
+# class UserSession(models.Model):
+#     user = models.ForeignKey(User, blank=True, null=True,on_delete=True)
+#     ip_address = models.CharField(max_length=200, blank=True, null=True)
+#     session_key = models.CharField(max_length=100, blank=True, null=True)
+#     timestamp = models.DateTimeField(auto_now_add=True)
+#     active = models.BooleanField(default=True)
+#     ended = models.BooleanField(default=False)
 
-    def end_session(self):
-        session_key = self.session_key
-        ended = self.ended
-        try:
-            Session.objects.get(pk=session_key).delete()
-            self.active = False
-            self.ended = True
-            self.save()
-        except:
-            pass
-        return self.ended
-
-
-def post_save_session_receiver(sender, instance, created, *args, **kwargs):
-    if created:
-        qs = UserSession.objects.filter(user=instance.user, ended=False, active=False).exclude(id=instance.id)
-        for i in qs:
-            i.end_session()
-
-    if not instance.active and not instance.ended:
-        instance.end_session()
+#     def end_session(self):
+#         session_key = self.session_key
+#         ended = self.ended
+#         try:
+#             Session.objects.get(pk=session_key).delete()
+#             self.active = False
+#             self.ended = True
+#             self.save()
+#         except:
+#             pass
+#         return self.ended
 
 
-if FORCE_SESSION_TO_ONE:
-    post_save.connect(post_save_session_receiver, sender=UserSession)
+# def post_save_session_receiver(sender, instance, created, *args, **kwargs):
+#     if created:
+#         qs = UserSession.objects.filter(user=instance.user, ended=False, active=False).exclude(id=instance.id)
+#         for i in qs:
+#             i.end_session()
+
+#     if not instance.active and not instance.ended:
+#         instance.end_session()
 
 
-def post_save_user_changed_receiver(sender, instance, created, *args, **kwargs):
-    if not created:
-        if instance.is_active == False:
-            qs = UserSession.objects.filter(user=instance.user, ended=False, active=False)
+# if FORCE_SESSION_TO_ONE:
+#     post_save.connect(post_save_session_receiver, sender=UserSession)
 
 
-if FORCE_INACTIVE_USER_ENDSESSION:
-    post_save.connect(post_save_user_changed_receiver, sender=User)
+# def post_save_user_changed_receiver(sender, instance, created, *args, **kwargs):
+#     if not created:
+#         if instance.is_active == False:
+#             qs = UserSession.objects.filter(user=instance.user, ended=False, active=False)
 
 
-def user_logged_in_reciever(sender, instance, request, *args, **kwargs):
-    user = instance
-    ip_address = get_client_ip(request)
-    session_key = request.session.session_key
-    UserSession.objects.create(
-        user=user,
-        ip_address=ip_address,
-        session_key=session_key
-    )
+# if FORCE_INACTIVE_USER_ENDSESSION:
+#     post_save.connect(post_save_user_changed_receiver, sender=User)
 
 
-user_logged_in.connect(user_logged_in_reciever)
+# def user_logged_in_reciever(sender, instance, request, *args, **kwargs):
+#     user = instance
+#     ip_address = get_client_ip(request)
+#     session_key = request.session.session_key
+#     UserSession.objects.create(
+#         user=user,
+#         ip_address=ip_address,
+#         session_key=session_key
+#     )
+
+
+# user_logged_in.connect(user_logged_in_reciever)

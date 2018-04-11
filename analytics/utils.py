@@ -23,15 +23,14 @@ def whichPage(request, curr_p, urll):
 
 def user_count(request):
     if not is_bot(request):
-        session_code = request.session.session_key
-        if not UserNumber.objects.filter(user_session=session_code).exists():
+        if not UserNumber.objects.filter(user_session=request.session.session_key).exists():
             user_c_name, user_c_code = get_location(request=request)
             user_count = UserNumber.objects.create(
                             user_ip=get_client_ip(request),
                             user_header=get_header_info(request),
                             user_country_name=user_c_name,
                             user_country_code=user_c_code,
-                            user_session=session_code)
+                            user_session=request.session.session_key)
             user_count.save()
 
 
