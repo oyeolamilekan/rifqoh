@@ -37,6 +37,7 @@ def user_login(request):
 # Handles the home view to show the graphs
 @login_required(login_url='/double/login/')
 def HomeView(request):
+    print(request.session.session_key)
     return render(request, 'analytics/index.html', {})
 
 
