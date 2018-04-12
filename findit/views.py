@@ -701,7 +701,7 @@ def gaming(request):
 def number_of_clicks(request, words):
     if Products.objects.filter(slug=words).exists():
         product = Products.objects.get(slug=words)
-        if is_bot(request):
+        if not is_bot(request):
             object_viewed.send(product.__class__, instance=product, request=request)
             product.num_of_clicks = product.num_of_clicks + 1
             product.save()
