@@ -13,10 +13,7 @@ from django.contrib.auth.decorators import login_required
 
 # Home page View
 def home_page(request):
-	# Modal Login form
-	form = LoginForm()
-	# Well i think it renders it
-	return render(request,'index.html',{'form':form})
+	return render(request,'index.html',{})
 
 @login_required
 def index(request):

@@ -114,9 +114,9 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <a class="navbar-bran" href="#"><img src="{% static 'strip1.png' %}" width="40" height="40"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border-color: transparent;">
+  <a class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border-color: transparent;">
     <span class="navbar-toggler-icon"></span>
-  </button>
+  </a>
 
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav">
@@ -145,14 +145,14 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {% block customers %}{% endblock %}" href="{% url 'analytics:user_acq' %}">
+                <a class="nav-link {% block customers %}{% endblock %}" href="#">
                   <span data-feather="users"></span>
                   Customers
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link {% block ads %}{% endblock %}" href="{% url 'analytics:user_acq' %}">
-                  <span data-feather="users"></span>
+                  <span data-feather="dollar-sign"></span>
                   Ads
                 </a>
               </li>
