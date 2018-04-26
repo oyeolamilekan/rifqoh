@@ -761,7 +761,10 @@ def sugget(request):
         pixeld['name'] = new_product[:25]
         pixeld['img'] = su.image.url
         pixeld['price'] = su.price
-    adder.append(pixeld)
+    if pixeld in adder:
+        adder.insert(0,pixeld)
+    else:
+        adder.append(pixeld)
     return JsonResponse({'query': adder})
 
 
