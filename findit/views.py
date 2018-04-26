@@ -130,8 +130,8 @@ def real_index(request):
     # landlord(request,ad)
     # seen_by(request,prod_ad)
     # landlord(request,prod_ad)
-    user_c_name, user_c_code = get_location(request=request)
-    #user_count(request)
+    #user_c_name, user_c_code = get_location(request=request)
+    # user_count(request)
     share_string = 'Quickfinda - Online Shop & Price Comparison in Nigeria'
     t1 = time.time()
     url = request.build_absolute_uri()
@@ -751,14 +751,18 @@ def twitter_bot(request):
 
 
 def sugget(request):
-    pixeld = []
+    pixeld = {}
+    adder = []
     sugget_input = request.GET.get('search', None)
     sucide = Products.objects.filter(name__icontains=sugget_input)[:10]
     for su in sucide:
         new_product = su.name.split()
         new_product = ' '.join(new_product)
-        pixeld.append(new_product[:25])
-    return JsonResponse({'query': pixeld})
+        pixeld['name'] = new_product[:25]
+        pixeld['img'] = su.image.url
+        pixeld['price'] = su.price
+    adder.append(pixeld)
+    return JsonResponse({'query': adder})
 
 
 def deleteu(request):

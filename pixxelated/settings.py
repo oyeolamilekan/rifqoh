@@ -93,11 +93,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pixxelated.wsgi.application'
 
-# AWS_ACCESS_KEY_ID = 'AKIAJVFD6CRNN3IQEGKA'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'ourquicknotes'
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-# Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 if 'RDS_HOSTNAME' in os.environ:
     DATABASES = {
@@ -171,4 +166,3 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
-SESSION_SAVE_EVERY_REQUEST = True

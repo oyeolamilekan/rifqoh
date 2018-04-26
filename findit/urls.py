@@ -3,9 +3,9 @@ from django.urls import path
 from . import views
 app_name = 'findit'
 urlpatterns = [
-    #path('', views.home_page, name='home_page'),
+    path('', views.home_page, name='home_page'),
     #url(r'^steore/$',views.rest_store,name='paa'),
-    path('', views.real_index, name='real_index'),
+    path('index/', views.real_index, name='real_index'),
     path('gaming/', views.gaming, name='games'),
     path('test_engine_starter/', views.test_engine_starter, name='test_engine_starter'),
     path('about/', views.about_home, name='about_home'),
