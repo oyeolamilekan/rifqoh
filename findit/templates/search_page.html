@@ -582,7 +582,7 @@ a.click-link:focus, a.click-link:hover {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    let data
+    let data;
     $.get('/suggest/', {search:$('#search-input').val()}, 
       function accept (datal){
        data = datal;
@@ -592,12 +592,12 @@ a.click-link:focus, a.click-link:hover {
       $('.logo-picks').hide();
       $('.sim').hide();
       $('.picture').show();
-      var filter = $(this).val()
+      var filter = $(this).val().toUpperCase()
         for (var i = 0; i < data.query.length; i++) {
             // $('datalist').append("<option value='"+data.query[i]+"'>")
              // a = li[i].getElementsByTagName("a")[0];
              console.log(data)
-            if (data.query[i].name.indexOf(filter) > -1) {
+            if (data.query[i].name.toUpperCase().indexOf(filter) > -1) {
               $('.auto-fill').prepend("<a href='#' class='click-link' val='"+ data.query[i].name + "'>" + "<div class='images' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 10px;'>"+'<img src="'+data.query[i].img +'" height="40"/>'+'</div>'+"<div class='mages' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 9px;'>"+data.query[i].name+'</br><span style="float: left;">'+data.query[i].price+'</span></div></a><hr><br>'); 
             }
                 
