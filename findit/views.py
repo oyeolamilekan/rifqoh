@@ -751,22 +751,8 @@ def twitter_bot(request):
 
 
 def sugget(request):
-    pixeld = {}
-    adder = []
-    sugget_input = request.GET.get('search', None)
-    sucide = Products.objects.filter(name__icontains=sugget_input)[:10]
-    for su in sucide:
-        new_product = su.name.split()
-        new_product = ' '.join(new_product)
-        pixeld['name'] = new_product[:25]
-        pixeld['img'] = su.image.url
-        pixeld['price'] = su.price
-        if pixeld in adder:
-            adder.remove(pixeld)
-            adder.insert(0,pixeld)
-        else:
-            adder.append(pixeld)
-    print(adder)
+    products_list = Products.objects.all()
+    adder = [{'name' : su.name.replace('\t','').replace('\n',''), 'img': su.image.url, 'price': su.price} for su in products_list]
     return JsonResponse({'query': adder})
 
 
