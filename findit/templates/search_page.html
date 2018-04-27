@@ -588,9 +588,10 @@ a.click-link:focus, a.click-link:hover {
 
       function accept (datal){
        data = datal;
-       console.log(data)
+       dataCol(data)
      });
     // console.log(data)
+  function dataCol(data){
     $('#search-input').keyup(function(){
       $('.drag-down').css('top','200px');
       $('.logo-picks').hide();
@@ -600,27 +601,12 @@ a.click-link:focus, a.click-link:hover {
         for (var i = 0; i < data.query.length; i++) {
             // $('datalist').append("<option value='"+data.query[i]+"'>")
              // a = li[i].getElementsByTagName("a")[0];
-             console.log(data)
             if (data.query[i].name.toUpperCase().indexOf(filter) > -1) {
               $('.auto-fill').prepend("<a href='#' class='click-link' val='"+ data.query[i].name + "'>" + "<div class='images' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 10px;'>"+'<img src="'+data.query[i].img +'" height="40"/>'+'</div>'+"<div class='mages' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 9px;'>"+data.query[i].name+'</br><span style="float: left;">'+data.query[i].price+'</span></div></a><hr><br>'); 
             }
-                
- 
-            // Show the list item if the phrase matches and increase the count by 1
-            // } else {
-            //     $('.auto-fill').prepend("<a href='#' class='click-link' val='"+ data.query[i].name + "'>" + "<div class='images' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 10px;'>"+'<img src="'+data.query[i].img +'" height="40"/>'+'</div>'+"<div class='mages' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 9px;'>"+data.query[i].name+'</br><span style="float: left;">'+data.query[i].price+'</span></div></a><hr><br>');  
-            // }
         };
     });
-
-    $('.auto-fill').on('click','.click-link' , function(event){
-      event.preventDefault();
-      const element = $(this);
-      let inReplacement = element.attr('val');
-      console.log(inReplacement)
-      $('.input-in').val(inReplacement);
-    });
-
-  });
+};
+});
 </script>
 </html>
