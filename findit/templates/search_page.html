@@ -596,6 +596,7 @@ a.click-link:focus, a.click-link:hover {
         for (var i = 0; i < data.query.length; i++) {
             // $('datalist').append("<option value='"+data.query[i]+"'>")
              // a = li[i].getElementsByTagName("a")[0];
+             console.log(data)
             if (data.query[i].name.indexOf(filter) > -1) {
               $('.auto-fill').prepend("<a href='#' class='click-link' val='"+ data.query[i].name + "'>" + "<div class='images' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 10px;'>"+'<img src="'+data.query[i].img +'" height="40"/>'+'</div>'+"<div class='mages' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 9px;'>"+data.query[i].name+'</br><span style="float: left;">'+data.query[i].price+'</span></div></a><hr><br>'); 
             }
