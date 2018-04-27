@@ -582,11 +582,15 @@ a.click-link:focus, a.click-link:hover {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    let data;
-    $.get('/suggest/', {search:$('#search-input').val()}, 
+    // let data = 'kkkk';
+    let data; 
+    $.get('/suggest/', {},
+
       function accept (datal){
        data = datal;
+       console.log(data)
      });
+    // console.log(data)
     $('#search-input').keyup(function(){
       $('.drag-down').css('top','200px');
       $('.logo-picks').hide();
