@@ -585,19 +585,15 @@ a.click-link:focus, a.click-link:hover {
     // let data = 'kkkk';
     let tryp = 0; 
     // console.log(data)
+    $.get( "/suggest/", function( data ) {
+      // data = datal;
+      dataCol(data);
+    });
     $('#search-input').keyup(function(){
       $('.drag-down').css('top','200px');
       $('.logo-picks').hide();
       $('.sim').hide();
       $('.picture').show();
-      if (tryp < 1){
-        tryp = tryp + 1;
-        $.get('/suggest/', {},
-          function accept (datal){
-           data = datal;
-           dataCol(data)
-        });
-      }
       function dataCol(data){
         var filter = $('#search-input').val().toUpperCase()
         for (var i = 0; i < data.query.length; i++) {
