@@ -582,18 +582,19 @@ a.click-link:focus, a.click-link:hover {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    // let data = 'kkkk';
-    $.get( "/suggest/", function( data ) {
-      // data = datal;
-      dataCol(data);
-    });
-    function dataCol(data){
+    // let data = 'kkkk'
+    
+    
       $('#search-input').keyup(function(){
       $('.drag-down').css('top','200px');
       $('.logo-picks').hide();
       $('.sim').hide();
       $('.picture').show();
-      
+      $.get( "/suggest/",{search:$('#search-input').val()}, function( data ) {
+        // data = datal;
+        dataCol(data);
+      });
+      function dataCol(data){
         var filter = $('#search-input').val().toUpperCase()
         for (var i = 0; i < data.query.length; i++) {
             // $('datalist').append("<option value='"+data.query[i]+"'>")
@@ -602,8 +603,8 @@ a.click-link:focus, a.click-link:hover {
               $('.auto-fill').prepend("<a href='#' class='click-link' val='"+ data.query[i].name + "'>" + "<div class='images' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 10px;'>"+'<img src="'+data.query[i].img +'" height="40"/>'+'</div>'+"<div class='mages' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 9px;'>"+data.query[i].name+'</br><span style="float: left;">'+data.query[i].price+'</span></div></a><hr><br>'); 
             }
       };
-    });
     };
+    });
     let tryp = 0; 
     // console.log(data)
     
