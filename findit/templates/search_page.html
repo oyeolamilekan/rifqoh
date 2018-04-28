@@ -20,8 +20,10 @@
   <meta name='keywords' content="price comparision engine, price comparision website, compare prices in nigeria, aliexpress price, jumia price, yudala price, price of phone, quickfinda comparision engine, konga price, latest prices, comparision site, price comparison nigeria, online shopping,jumia , konga, yudala, payporte, search engine pricecheck " charset="utf-8">
 
   <link rel="stylesheet" type="text/css" href="{% static 'styo.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+<script type="text/javascript">
   
-    <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -30,7 +32,36 @@
   ga('create', 'UA-101606756-1', 'auto');
   ga('send', 'pageview');
 
+  $(document).ready(function() {
+    // let data = 'kkkk';
+
+      let data;
+      function prob() {
+        $.get( "/suggest/", 
+          function( datal ) {
+          // data = datal;
+            data = datal;
+        });
+      }
+      $('#search-input').keyup(function(){
+      $('.drag-down').css('top','200px');
+      $('.logo-picks').hide();
+      $('.sim').hide();
+      $('.picture').show();
+      var filter = $('#search-input').val().toUpperCase()
+      for (var i = 0; i < data.query.length; i++) {
+          // $('datalist').append("<option value='"+data.query[i]+"'>")
+           // a = li[i].getElementsByTagName("a")[0];
+          if (data.query[i].name.toUpperCase().indexOf(filter) > -1) {
+            $('.auto-fill').prepend("<a href='#' class='click-link' val='"+ data.query[i].name + "'>" + "<div class='images' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 10px;'>"+'<img src="'+data.query[i].img +'" height="40"/>'+'</div>'+"<div class='mages' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 9px;'>"+data.query[i].name+'</br><span style="float: left;">'+data.query[i].price+'</span></div></a><hr><br>'); 
+          }
+  };
+});
+    window.onload = prob;
+    
+});
 </script>
+
 </head>
 <body>
 <script type="text/javascript">
@@ -578,36 +609,4 @@ a.click-link:focus, a.click-link:hover {
   </div>
 </div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    // let data = 'kkkk'
-    
-    
-      $('#search-input').keyup(function(){
-      $('.drag-down').css('top','200px');
-      $('.logo-picks').hide();
-      $('.sim').hide();
-      $('.picture').show();
-      $.get( "/suggest/",{search:$('#search-input').val()}, function( data ) {
-        // data = datal;
-        dataCol(data);
-      });
-      function dataCol(data){
-        var filter = $('#search-input').val().toUpperCase()
-        for (var i = 0; i < data.query.length; i++) {
-            // $('datalist').append("<option value='"+data.query[i]+"'>")
-             // a = li[i].getElementsByTagName("a")[0];
-            
-              $('.auto-fill').prepend("<a href='#' class='click-link' val='"+ data.query[i].name + "'>" + "<div class='images' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 10px;'>"+'<img src="'+data.query[i].img +'" height="40"/>'+'</div>'+"<div class='mages' style='display: table-cell; vertical-align: top; padding-right: 10px;margin-top: 9px;'>"+data.query[i].name+'</br><span style="float: left;">'+data.query[i].price+'</span></div></a><hr><br>'); 
-            
-      };
-    };
-    });
-    let tryp = 0; 
-    // console.log(data)
-    
-});
-</script>
 </html>

@@ -751,11 +751,9 @@ def twitter_bot(request):
 
 
 def sugget(request):
-    request_get = request.GET.get('search')
-    if request_get:
-        products_list = Products.objects.filter(Q(name__icontains=request_get))
-        adder = [{'name' : su.name.replace('\t','').replace('\n',''), 'img': su.image.url, 'price': su.price} for su in products_list]
-        return JsonResponse({'query': adder})
+    products_list = Products.objects.all()
+    adder = [{'name' : su.name.replace('\t','').replace('\n',''), 'img': su.image.url, 'price': su.price} for su in products_list]
+    return JsonResponse({'query': adder})
 
 
 def deleteu(request):
