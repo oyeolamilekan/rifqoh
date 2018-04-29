@@ -625,17 +625,14 @@ function autocomplete(inp, arr) {
       this.parentNode.appendChild(a);
       /*for each item in the array...*/
       // console.log(arr.query.length)
-
       for (i = 0; i < arr.query.length; i++) {
-        if (arr.query[i].name.toUpperCase().search(val.toUpperCase()) > -1) {
-        console.log(arr.query[i].name.toUpperCase().search(val.toUpperCase()) > -1, arr.query[i].name)}
         /*check if the item starts with the same letters as the text field value:*/
-        if (arr.query[i].name.toUpperCase().search(val.toUpperCase()) > -1) {
+        if (arr.query[i].name.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
           /*create a DIV element for each matching element:*/
           b = document.createElement("DIV");
           /*make the matching letters bold:*/
           b.innerHTML = "<strong>" + arr.query[i].name.substr(0, val.length) + "</strong>";
-          b.innerHTML += arr.query[i].name;
+          b.innerHTML += arr.query[i].name.substr(val.length);
           /*insert a input field that will hold the current array item's value:*/
           b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
           /*execute a function when someone clicks on the item value (DIV element):*/
