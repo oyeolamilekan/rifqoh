@@ -49,41 +49,7 @@
     //   $('.search').toggleClass('search-darkk');
     //   $('.btn-primary').toggleClass('btn-darkk');
     // });
-    const endpoint = '/suggest/';
 
-const cities = [];
-
-fetch(endpoint)
-  .then(blob => blob.json())
-  .then(data => cities.push(...data.query))
-
-function findMatches(wordToMatch, cities){
-  return cities.filter(place => {
-    // here we need to figure out if the cities or state macthec what in it
-    const regex = new RegExp(wordToMatch, 'gi');
-    return place.name.match(regex)
-  })
-}
-
-function displayMatches(){
-  const matchArray = findMatches(this.value, cities);
-  const html = matchArray.map(place => {
-    const regex = new RegExp(this.value, 'gi');
-    const cityName = place.name.replace(regex,`<b class="hl">${this.value}</b>`);
-    return `
-      <div>
-        ${cityName}
-      </div>
-    `
-  }).join('');
-  suggestions.innerHTML = html
-}
-
-const searchInput = document.querySelector('#search-input');
-const suggestions = document.querySelector('.autocomplete-items');
-
-searchInput.addEventListener('change', displayMatches);
-searchInput.addEventListener('keyup', displayMatches);
 </script>
 <style type="text/css">
 /*body{
@@ -759,10 +725,11 @@ fetch(endpoint)
   .then(blob => blob.json())
   .then(data => cities.push(...data.query))
 
-function findMatches(wordToMatch, cities){
+function findMatches(wordToMath, cities){
   return cities.filter(place => {
     // here we need to figure out if the cities or state macthec what in it
-    const regex = new RegExp(wordToMatch, 'gi');
+    wordToMatch = wordToMath
+    const regex = new RegExp(wordToMatch, 'i');
     return place.name.match(regex)
   })
 }

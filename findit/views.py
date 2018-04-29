@@ -22,6 +22,8 @@ from django.core.mail import send_mail
 
 # Intial Stops words for the users
 global  share_stringe
+global products_list
+products_list = Products.objects.all()
 share_stringe = quote_plus('Get the best prices from different stores o quickfinda.com.')
 def about_home(request):
     return render(request, 'about.html', {})
@@ -751,8 +753,7 @@ def twitter_bot(request):
 
 
 def sugget(request):
-    products_list = Products.objects.all()
-    adder = [{'name' : su.name.replace('\t','').replace('\n',''), 'img': su.image.url, 'price': su.price} for su in products_list]
+    adder = [{'name' : su.name.replace('\t','').replace('\n','')} for su in products_list]
     return JsonResponse({'query': adder})
 
 
