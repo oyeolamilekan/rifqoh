@@ -758,7 +758,8 @@ def sugget(request):
     if query:
         query = query.split()
         for q in query:
-            product_list = products_list.filter(Q(name__icontains=q)).distinct()
+            print(q)
+            product_list = products_list.filter(name__icontains=q)
         adder = [{'name' : su.name.replace('\t','').replace('\n','')} for su in product_list]
     else:
         adder=[]

@@ -611,17 +611,18 @@ a.click-link:focus, a.click-link:hover {
 
   ga('create', 'UA-101606756-1', 'auto');
   ga('send', 'pageview');
-  $auto_items = $('.autocomplete-items')
-  $searchInput = $('#search-input')
-  $searchInput.keyup(function(){
-      $.get('/suggest/', {search:$searchInput.val()}, 
-        function(data){
-        $auto_items.empty();
-        for (var i = 0; i < data.query.length; i++) {
-            $auto_items.prepend(`<div>${data.query[i].name}</div>`)
-        };
-      });
-    });
+  // $auto_items = $('.autocomplete-items')
+  // $searchInput = $('#search-input')
+  // $searchInput.keyup(function(){
+  //     $.get('/suggest/', {search:$searchInput.val()}, 
+  //       function(data){
+  //       $auto_items.empty();
+  //       console.log(data)
+  //       for (var i = 0; i < data.query.length; i++) {
+  //           $auto_items.prepend(`<div>${data.query[i].name}</div>`)
+  //       };
+  //     });
+  //   });
 </script>
 </body>
 </html>
