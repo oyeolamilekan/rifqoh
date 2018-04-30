@@ -753,7 +753,15 @@ def twitter_bot(request):
 
 
 def sugget(request):
-    adder = [{'name' : su.name.replace('\t','').replace('\n','')} for su in products_list]
+    query = request.GET.get('search',None)
+    # adder = []
+    if query:
+        query = query.split()
+        for q in query:
+            product_list = products_list.filter(Q(name__icontains=q)).distinct()
+        adder = [{'name' : su.name.replace('\t','').replace('\n','')} for su in product_list]
+    else:
+        adder=[]
     return JsonResponse({'query': adder})
 
 

@@ -31,7 +31,7 @@ def experimental_search(request, query):
 
 # Search Plugin
 def search_bite(request, query):
-    experimental_search(request, query)
+    #experimental_search(request, query)
     all_products = Products.objects.order_by('?')
     whichPage(request, 'search', request.build_absolute_uri())
     if 'iphone' in str(query.lower()) or 'ipad' in str(query.lower()):
