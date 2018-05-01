@@ -152,6 +152,7 @@ def real_index(request):
         all_products = Products.objects.filter(genre__in=user_pick_list)
         all_products = all_products.order_by('?')
     if query:
+        print('hi')
         all_products = search_bite(request,query)
 
     # if corrected_sentence != orginal_sentence:
@@ -758,7 +759,6 @@ def sugget(request):
     if query:
         query = query.split()
         for q in query:
-            print(q)
             product_list = products_list.filter(name__icontains=q)
         adder = [{'name' : su.name.replace('\t','').replace('\n','')} for su in product_list]
     else:

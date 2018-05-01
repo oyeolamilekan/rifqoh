@@ -47,6 +47,7 @@ def search_bite(request, query):
         if len(quey) >= 3:
             if 'plus' in quey and len(quey) <= 3:
                 q = ' '.join(quey)
+
                 all_products = all_products.filter(
                     Q(name__icontains=q) |
                     Q(name__iexact=q)
@@ -66,8 +67,6 @@ def search_bite(request, query):
                       request=request)
         else:
             # query = correction(query)
-
-            # print(query)
             query = query.strip()
             query = query.split()
             for stop_w in STOP_WORDS:
@@ -75,11 +74,11 @@ def search_bite(request, query):
                     query.remove(stop_w)
 
             query = ' '.join(query)
-            print(query)
             all_products = all_products.filter(
                 Q(name__icontains=query) |
                 Q(name__iexact=query)
             ).distinct()
+            print(query)
             if len(all_products) == 0:
                 add_query(query,
                           'search page',
@@ -88,6 +87,7 @@ def search_bite(request, query):
                           correct=query,
                           request=request)
             else:
+                print(query)
                 add_query(query,
                           'search page',
                           all_products[:10],
@@ -110,11 +110,11 @@ def search_bite(request, query):
                 Q(name__iexact=q)
             ).distinct()
 
-            query = ' '.join(query)
+            query = ''.join(query)
         made = ' '.join(new)
         if len(all_products) == 0:
-            add_query(query, 'search page', all_products[:10], nbool=False, correct=made, request=request)
+            add_query(made, 'search page', all_products[:10], nbool=False, correct=made, request=request)
         else:
-            add_query(query, 'search page', all_products[:10], nbool=True, correct=made, request=request)
+            add_query(made, 'search page', all_products[:10], nbool=True, correct=made, request=request)
 
     return all_products
