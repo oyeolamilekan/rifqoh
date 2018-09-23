@@ -30,7 +30,7 @@ def experimental_search(request, query):
 
 
 # Search Plugin
-def search_bite(request, query):
+def search_bite(query):
     #experimental_search(request, query)
     all_products = Products.objects.order_by('?')
     whichPage(request, 'search', request.build_absolute_uri())

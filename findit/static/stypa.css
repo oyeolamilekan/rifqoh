@@ -33,8 +33,7 @@ body{
 .navbar-default {
     background-color: white;
     border-radius: 0px;
-    border-bottom-color: #ddd;
-    border-bottom-width: 3px;
+    border-color: #fff;
 }
 a {
 	text-decoration: none;
@@ -130,7 +129,7 @@ a.button:hover{
 .cool-link{
     color: #F68B1E;
 }
-<style type="text/css">
+
 .button {
     min-width: 0;
     color: #fff;
@@ -201,51 +200,6 @@ body{
     font-weight: bold;
     border-radius: 4px;
 }
-.mklo{
-  padding: 4px;
-  border: 1px solid;
-  border-radius: 3px;
-}
-a.lap{
-  background-color: #5ce438;
-  border-color: #5ce438;
-  color: #fff;
-}
-.phon{
-  background-color:rgba(51, 122, 183, 0.86);
-  border-color:rgba(51, 122, 183, 0.86);
-  color: #fff;
-
-}
-.la{
-  background-color:rgba(144, 40, 142, 0.7);
-  border-color:rgba(144, 40, 142, 0.7);
-  color: #fff;
-
-}
-.tv{
-  background-color:rgba(234, 89, 82, 0.86);
-  border-color:rgba(234, 89, 82, 0.86);
-  color: #fff;
-}
-.shirts{
-  background-color:black;
-  border-color:black;
-  color: #fff; 
-}
-.women{
-  background-color:#ef9159;
-  border-color:#ef9159;
-  color: #fff;
-}
-.watch{
-  background-color:#ef9159;
-  border-color:#ef9159;
-  color: #fff;
-}
-a.mklo:hover{
-  color: #fff;
-}
 .flex-container{
     -moz-column-width: 235px;
     -webkit-column-width: 235px;
@@ -259,8 +213,6 @@ a.mklo:hover{
 .navbar-default {
     background-color: white;
     border-radius: 0px;
-    border-bottom-color: #ddd;
-    border-bottom-width: 3px;
 }
 .navbar-default .navbar-nav > li > a{
     color: #ccc;
@@ -309,4 +261,228 @@ a.mklo:hover{
         border-left: 0.45em solid black;
         padding-left: 0.5em;
     }
+}
+
+.glyphicon-search {
+    z-index: 99;
+    left: 1.7em;
+}
+.specialBar{
+    display: none;
+}
+@media screen and (max-width: 767px){
+    .specialBar{
+        display: block;
+    }
+    .xs{
+      display: none;
+    }
+}
+
+
+nav form#seah .input-group .form-control {
+    border-radius: 0.25em;
+    border: none;
+    width: 100%;
+    padding-left: 1.9em;
+    background-color: #F3F3F3;
+    box-shadow: none;
+}
+
+
+@media screen and (max-width: 425px){
+    a.loppp:first-child{
+      display: none;
+    }
+    .float {
+      bottom: 8px !important;
+      right: 15px !important;
+    }
+    .floatt {
+      bottom: 78px !important;
+      right: 15px !important;
+    }
+    .floattt {
+      bottom: 148px !important;
+      right: 15px !important;
+    }
+}
+body{
+  background: #e5e7fi !important;
+}
+img.baby_mama{
+    width: 100%;
+    max-width: 318px;
+    max-height: 106px;
+}
+.navbar-default {
+    background-color: white;
+    border-radius: 0px;  
+}
+.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 7px 10px;
+    margin-top: 11px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: #F3F3F3;
+    background-image: none;
+    border: 0px solid transparent;
+    border-radius: 4px;
+    color: black;
+}
+.label-container{
+  position:fixed;
+  bottom:48px;
+  right:105px;
+  display:table;
+  visibility: hidden;
+}
+
+.label-text{
+  color:#FFF;
+  background:rgba(51,51,51,0.5);
+  display:table-cell;
+  vertical-align:middle;
+  padding:10px;
+  border-radius:3px;
+}
+
+.label-arrow{
+  display:table-cell;
+  vertical-align:middle;
+  color:#333;
+  opacity:0.5;
+}
+
+.float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:black;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  box-shadow: 2px 2px 3px #999;
+}
+/**  **/
+.floatt{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:120px;
+  right:40px;
+  background-color:#2757e6;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  box-shadow: 2px 2px 3px #999;
+}
+
+.floattt{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:200px;
+  right:40px;
+  background-color:#39dabe;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+  font-size:24px;
+  margin-top:18px;
+}
+
+a.float:hover, a.floatt:hover,a.floattt:hover {
+  color: #fff;
+
+}
+.text-white {
+  background-color: white;
+}
+.love{
+  margin-top: -35px;
+  margin-bottom: 30px;
+}
+.indicator {
+  background-color: #eee !important;
+}
+.Discover{
+  background-color: #3677da;
+  color: #fff;
+}
+.Phones{
+  background-color: #da367a;
+  color: #fff;
+}
+.Laptops{
+  background-color: #8d5ee8;
+  color: #fff;
+}
+.Tv{
+  background-color: #daa036;
+  color: #fff;
+}
+.Shirts{
+  background-color: #da36a0;
+  color: #fff;
+}
+.WDresses{
+  background-color: #36daa5;
+  color: #fff;
+}
+.WWatches{
+  background-color: #de6865;
+  color: #fff;
+}
+.MWatches{
+  background-color: #8865de;
+  color: #fff;
+}
+.WBags{
+  background-color: #15c765;
+  color: #fff;
+}
+.HeadPhone{
+  background-color: #1596c7;
+  color: #fff;
+}
+.Cosmetics{
+  background-color: #1815c7;
+  color: #fff;
+}
+#id_url_locator, #id_email,#id_feelings,#id_content,#id_current_location  {
+    box-shadow: inset 0 0px 0px rgba(0,0,0,0);
+    border-style: none;
+    border: 0px;
+    background-color: #F3F3F3;
+    border-color: transparent;
+}
+.nav-scroller {
+  background-color: #fff;
+  position: relative;
+  height: 3.98rem;
+  z-index: 2;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  color: rgba(255, 255, 255, .75);
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
 }

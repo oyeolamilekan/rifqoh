@@ -8,8 +8,8 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect
 
 from accounts.forms import UserRegistrationForm
-from adengine.analytics import seen_by, landlord
-from adengine.models import Ads
+from adplace.analytics import seen_by, landlord
+from adplace.models import Ads
 from analytics.utils import whichPage
 from findit.models import *
 from .forms import ShopForm

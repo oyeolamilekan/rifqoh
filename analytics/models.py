@@ -16,6 +16,9 @@ User = settings.AUTH_USER_MODEL
 FORCE_SESSION_TO_ONE = getattr(settings, 'FORCE_SESSION_TO_ONE', False)
 FORCE_INACTIVE_USER_ENDSESSION = getattr(settings, 'FORCE_INACTIVE_USER_ENDSESSION', False)
 
+class ProductList(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset()
 
 # Handles the number of page views
 class PageViews(models.Model):

@@ -23,10 +23,11 @@ from django.conf.urls import handler404, handler500
 urlpatterns = [
     path('you_are_stupid/', admin.site.urls),
     path('',include('findit.urls',namespace='findit')),
+    path('api/',include('api.urls',namespace='api')),
     path('shop/',include('shop.urls',namespace='shop')),
     path('double/',include('analytics.urls',namespace='analytics')),
     path('accounts/',include('accounts.urls')),
-    path('ads/',include('adengine.urls',namespace='adengine'))
+    path('ads/',include('adplace.urls',namespace='adplace'))
 ]
 
 if settings.DEBUG:

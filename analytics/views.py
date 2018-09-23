@@ -27,8 +27,10 @@ def user_login(request):
                     else:
                         return JsonResponse({'redirect':'http://'+request.get_host()})
                 else:
+                    print('h')
                     return HttpResponse('Disabled account')
             else:
+                print('h')
                 return JsonResponse({'error':'true'})
     else:
         form = LoginForm()

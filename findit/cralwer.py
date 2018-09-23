@@ -6,7 +6,8 @@ from bs4 import BeautifulSoup
 from django.core import files
 
 from .models import Products
-
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
 def payporte_crawler():
     for url in range(1, 26):
@@ -47,7 +48,8 @@ def payporte_crawler():
 
             # Finds the product name
             namelst = bytes(str(product_named.text), 'UTF-8')
-            namelst = namelst.decode('ascii', 'ignore')
+            namelst = namelst.decode('ascii', 'ignore').replace('\n','')
+            namelst = str(namelst)
 
             # Does the image magic
             print(namelst)
@@ -58,6 +60,7 @@ def payporte_crawler():
                     # Updates the price
                     produc.price = e_price
                     # Saves the price
+                    produc.source_url = links
                     produc.old_price = e_price
                     produc.old_price_digit = int(e_price.replace(',', '').replace('\n', '').replace('.00', ''))
                     produc.save()
@@ -111,7 +114,8 @@ def payporte_crawler():
 
             # Finds the product name
             namelst = bytes(str(product_named.text), 'UTF-8')
-            namelst = namelst.decode('ascii', 'ignore')
+            namelst = namelst.decode('ascii', 'ignore').replace('\n','')
+            namelst = str(namelst)
 
             # Does the image magic
             print(namelst)
@@ -121,6 +125,7 @@ def payporte_crawler():
                 if produc.price != e_price:
                     # Updates the price
                     produc.price = e_price
+                    produc.source_url = links
                     # Saves the price
                     produc.old_price = e_price
                     produc.old_price_digit = int(e_price.replace(',', '').replace('\n', '').replace('.00', ''))
@@ -175,7 +180,8 @@ def payporte_crawler():
 
             # Finds the product name
             namelst = bytes(str(product_named.text), 'UTF-8')
-            namelst = namelst.decode('ascii', 'ignore')
+            namelst = namelst.decode('ascii', 'ignore').replace('\n','')
+            namelst = str(namelst)
 
             # Does the image magic
             print(namelst)
@@ -185,6 +191,7 @@ def payporte_crawler():
                 if produc.price != e_price:
                     # Updates the price
                     produc.price = e_price
+                    produc.source_url = links
                     # Saves the price
                     produc.old_price = e_price
                     produc.old_price_digit = int(e_price.replace(',', '').replace('\n', '').replace('.00', ''))
@@ -238,7 +245,8 @@ def payporte_crawler():
 
             # Finds the product name
             namelst = bytes(str(product_named.text), 'UTF-8')
-            namelst = namelst.decode('ascii', 'ignore')
+            namelst = namelst.decode('ascii', 'ignore').replace('\n','')
+            namelst = str(namelst)
 
             # Does the image magic
             if Products.objects.filter(name=namelst, shop='payporte').exists():
@@ -246,6 +254,7 @@ def payporte_crawler():
                 # Checks the price
                 if produc.price != e_price:
                     produc.old_price = produc.price
+                    produc.source_url = links
                     produc.old_price_digit = int(produc.price.replace(',', '').replace('\n', '').replace('.00', ''))
                     # Updates the price
                     produc.price = e_price

@@ -9,16 +9,19 @@ import threading
 import time
 from django.conf import settings
 from django.core.mail import send_mail
+import ssl
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 folder = 'konga/'
 
 def konga_crawler():
-	konga_shirts()
-	konga_televisions()
-	konga_men_watches()
-	konga_womens_watches()
-	konga_phones()
-	konga_laptops()
+	# konga_shirts()
+	# konga_televisions()
+	# konga_men_watches()
+	# konga_womens_watches()
+	# konga_phones()
+	# konga_laptops()
 	konga_gaming()
 
 def konga_gaming():
@@ -49,13 +52,15 @@ def konga_gaming():
 				e_price = bytes(str(price.text),'UTF-8')
 				e_price = e_price.decode('ascii','ignore')
 				namelst = bytes(str(product_name.text), 'UTF-8')
-				namelst = namelst.decode('ascii','ignore')
+				namelst = namelst.decode('ascii','ignore').replace('\n','')
+				namelst = str(namelst)
 				if Products.objects.filter(name=namelst,shop='konga').exists():
 					
 					produc = Products.objects.get(name=namelst,shop='konga')
 					# Checks the price
 					if produc.price != e_price:
 						produc.old_price = produc.price
+						produc.source_url = product_link
 						produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 						# Updates the price
 						produc.price = e_price
@@ -114,13 +119,15 @@ def konga_shirts():
 				e_price = bytes(str(price.text),'UTF-8')
 				e_price = e_price.decode('ascii','ignore')
 				namelst = bytes(str(product_name.text), 'UTF-8')
-				namelst = namelst.decode('ascii','ignore')
+				namelst = namelst.decode('ascii','ignore').replace('\n','')
+				namelst = str(namelst)
 				if Products.objects.filter(name=namelst,shop='konga').exists():
 					
 					produc = Products.objects.get(name=namelst,shop='konga')
 					# Checks the price
 					if produc.price != e_price:
 						produc.old_price = produc.price
+						produc.source_url = product_link
 						produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 						# Updates the price
 						produc.price = e_price
@@ -180,13 +187,15 @@ def konga_televisions():
 				e_price = bytes(str(price.text),'UTF-8')
 				e_price = e_price.decode('ascii','ignore')
 				namelst = bytes(str(product_name.text), 'UTF-8')
-				namelst = namelst.decode('ascii','ignore')
+				namelst = namelst.decode('ascii','ignore').replace('\n','')
+				namelst = str(namelst)
 				if Products.objects.filter(name=namelst,shop='konga').exists():
 					
 					produc = Products.objects.get(name=namelst,shop='konga')
 					# Checks the price
 					if produc.price != e_price:
 						produc.old_price = produc.price
+						produc.source_url = product_link
 						produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 						# Updates the price
 						produc.price = e_price
@@ -249,13 +258,15 @@ def konga_phones():
 				e_price = bytes(str(price.text),'UTF-8')
 				e_price = e_price.decode('ascii','ignore')
 				namelst = bytes(str(product_name.text), 'UTF-8')
-				namelst = namelst.decode('ascii','ignore')
+				namelst = namelst.decode('ascii','ignore').replace('\n','')
+				namelst = str(namelst)
 				if Products.objects.filter(name=namelst,shop='konga').exists():
 					
 					produc = Products.objects.get(name=namelst,shop='konga')
 					# Checks the price
 					if produc.price != e_price:
 						produc.old_price = produc.price
+						produc.source_url = product_link
 						produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 						# Updates the price
 						produc.price = e_price
@@ -302,7 +313,7 @@ def konga_laptops():
 			product_list = bsObj.findAll('div',{'class':'product-block'})
 			for product in product_list:
 				product_name = product.find('div',{'class':'product-name'})
-				product_link = 'https://www.konga.com'+product.a.attrs['href']
+				product_link = f'https://www.konga.com{product.a.attrs["href"]}'
 				images = product.img.attrs['src']
 				request = requests.get(images, stream=True)
 				if product.find('div',{'class':'special-price'}) != None:
@@ -314,13 +325,16 @@ def konga_laptops():
 				e_price = bytes(str(price.text),'UTF-8')
 				e_price = e_price.decode('ascii','ignore')
 				namelst = bytes(str(product_name.text), 'UTF-8')
-				namelst = namelst.decode('ascii','ignore')
+				namelst = namelst.decode('ascii','ignore').replace('\n','')
+				namelst = str(namelst)
+				print(namelst)
 				if Products.objects.filter(name=namelst,shop='konga').exists():
 					
 					produc = Products.objects.get(name=namelst,shop='konga')
 					# Checks the price
 					if produc.price != e_price:
 						produc.old_price = produc.price
+						produc.source_url = product_link
 						produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 						# Updates the price
 						produc.price = e_price
@@ -429,7 +443,8 @@ def konga_men_watches():
 				e_price = bytes(str(price.text),'UTF-8')
 				e_price = e_price.decode('ascii','ignore')
 				namelst = bytes(str(product_name.text), 'UTF-8')
-				namelst = namelst.decode('ascii','ignore')
+				namelst = namelst.decode('ascii','ignore').replace('\n','')
+				namelst = str(namelst)
 				print(namelst,e_price)
 				if Products.objects.filter(name=namelst,shop='konga',genre='men-watches').exists():
 					
@@ -437,6 +452,7 @@ def konga_men_watches():
 					# Checks the price
 					if produc.price != e_price:
 						produc.old_price = produc.price
+						produc.source_url = product_link
 						produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 						# Updates the price
 						produc.price = e_price
@@ -495,7 +511,8 @@ def konga_womens_watches():
 				e_price = bytes(str(price.text),'UTF-8')
 				e_price = e_price.decode('ascii','ignore')
 				namelst = bytes(str(product_name.text), 'UTF-8')
-				namelst = namelst.decode('ascii','ignore')
+				namelst = namelst.decode('ascii','ignore').replace('\n','')
+				namelst = str(namelst)
 				print(namelst,e_price)
 				if Products.objects.filter(name=namelst,shop='konga',genre='women-watches').exists():
 					
@@ -503,6 +520,7 @@ def konga_womens_watches():
 					# Checks the price
 					if produc.price != e_price:
 						produc.old_price = produc.price
+						produc.source_url = product_link
 						produc.old_price_digit = int(produc.price.replace(',','').replace('\n','').replace('.00',''))
 						# Updates the price
 						produc.price = e_price

@@ -1,17 +1,19 @@
-from django.conf.urls import url
-
-from . import views
+from django.urls import path, include
+from rest_framework import routers
+from .views import *
 app_name = 'api'
+
+router = routers.DefaultRouter()
+router.register('products', ProductView, 'products')
+router.register('phone', ProductViewPhone, 'phone')
+router.register('laptops', ProductViewLaptop, 'laptops')
+router.register('gaming', GameProductView, 'gaming')
+router.register('phone_t', ProductViewPhones, 'phone')
+router.register('laptops_t', ProductViewLaptops, 'laptops')
+router.register('gaming_t', ProductViewGaming, 'gaming')
 urlpatterns = [
-    url(r'^$',views.home_page, name='home'),
-    url(r'^getting_started/$',views.getting_started, name='getting_started'),
-    url(r'^product_by_cat/$',views.catergory_tuts, name='catergory_tuts'),
-    url(r'^product_by_shop/$',views.shop_tuts, name='shop_tuts'),
-    url(r'^product_list/$', views.rest_product_list, name='product_list'),
-    url(r'^store_product_list/(?P<slug>[\w-]+)/$',
-        views.rest_store_detail, name='rest_store_detail'),
-    url(r'^product_catergory/(?P<slug>[\w-]+)/$',
-        views.rest_product_catergory, name='rest_product_catergory'),
-    url(r'^store_product_catergory/(?P<slug>[\w-]+)/(?P<plug>[\w-]+)/$',
-        views.rest_store_product_catergory, name='rest_store_product_catergory'),
+    path('', include(router.urls)),
+    path('r_search/',search_query),
+    path('r_redirect/<slug>/',number_of_clicks),
+    path('q_shop/<slug:slug>/<slug:cat>/',ShopProduct)
 ]

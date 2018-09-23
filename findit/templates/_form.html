@@ -1,42 +1,208 @@
-{% load bootstrap4 %}
+{% load bootstrap3 %}
 {% load static %}
+<style>
+    .emotion_box{
+        text-align: center;
+    }
+    .emoji {
+        width: 5em;
+        margin: 8px -1px 0 8px;
+        text-align: center;
+        transition: all 0.3s;
+    }
+    .emoji-box {
+        text-align: center;
+        padding: 2rem;
+        border-radius: 50px;
+        margin-bottom: 25px;
+    }
+    img.emoji {
+        cursor: pointer;
+    }
+    img.emoji:hover {
+        transform: scale(1.4);
+        transform-origin: bottom;
+    }
+    .notFill {
+        border: 4px solid red;
+    }
+    @keyframes reaction_delay {
+        0% {
+            width: 48px;
+            height: 48px;
+            top: 60px;
+        }
+        48% {
+            width: 56px;
+            height: 56px;
+            top: 5px;
+        }    
+        100% {
+            width: 48px;
+            height: 48px;
+            top: 8px;
+        }
+    }
+    .display-inline {
+        padding-left: 0px;   
+    }
+    ul.display-inline > li{
+        display: inline;
+    }
+    .figh {
+        background: black;
+        color: #fff;
+        border-radius: 5px;
+        bottom: 97%;
+        font-size: 1.1em;
+        height: auto;
+        margin: 0;
+        opacity: 0;
+        padding: 0.2vw 0.6vw;
+        transform: translateX(-50%);
+        visibility: hidden;
+        white-space: nowrap;
+        width: auto;
+        position: absolute;
+        z-index: 99;
+        font-size: 13px;
+        margin-left: 4rem;
+    }
+    #lawn_mower:hover .figh {
+        opacity: 1;
+        visibility: visible;
+        transition:scale3d(1,1,1);
+    }
+    #lawn_mower {
+        display: inline-block;
+        text-align: center;
+    }
+</style>
+<div class="emotion_box">
+    
+    <div class="emoji-box" style="background-color: #0006ff80;">
+        <ul class="display-inline">
+            <li>
+                <div id='lawn_mower'>
+                    <div class="figh">
+                        <span>Like Your Service</span>
+                    </div>
+                    <img src="{% static 'emoji/1f603.png' %}" class="emoji" data-action='10'>
+                </div>
+            </li>
+            <li>
+                <div id='lawn_mower'>
+                    <div class="figh">
+                        <span>Great Service</span>
+                    </div>
+                    <img src="{% static 'emoji/1f606.png' %}" class="emoji" data-action='12'>
+                </div>
+            </li>
+            <li>
+                <div id='lawn_mower'>
+                    <div class="figh">
+                        <span>Love Your Service</span>
+                    </div>
+                    <img src="{% static 'emoji/1f618.png' %}" class="emoji" data-action='13'>
+                </div>
+            </li>
+            <li>
+                <div id='lawn_mower'>
+                    <div class="figh">
+                        <span>Need To Improve</span>
+                    </div>
+                    <img src="{% static 'emoji/1f620.png' %}" class="emoji" data-action='14'>
+                </div>
+            </li>
+            <li>
+                <div id='lawn_mower'>
+                    <div class="figh">
+                        <span>Hate Your Service</span>
+                    </div>
+                    <img src="{% static 'emoji/1f621.png' %}" class="emoji" data-action='16'>
+                </div>
+            </li>
+            <li>
+                <div id='lawn_mower'>
+                    <div class="figh">
+                        <span>What do you, do again ???</span>
+                    </div>
+                    <img src="{% static 'emoji/1f626.png' %}" class="emoji" data-action='15'>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 <form method="POST" action="/feedback/" id="wo">
         {% csrf_token %}
         {% bootstrap_form form %}
      <input type="submit" id='uploadSubmit' value="submit" class="btn btn-default btn-block"> {{ path}}
-   <div class="loa text-center" style="display: none;">
+    <div class="loa text-center" style="display: none;">
         <img src="{% static 'loading.gif' %}">
     </div>
 </form>
 <!--  -->
-<!-- <script type="text/javascript">
-$('#id_url_locator').val('' + '{{ url }}')
-$('#id_current_location').val('' + '{{ user_c_name }}')
+<script type="text/javascript">
+let reactionScore = null;
+const selector = $('.emoji-box');
+const interval = 30;
+const duration= 1200;
+const shake = 4;
+var vibrate = function(){
+    $(selector).stop(true,false)
+    .css({position: 'relative', 
+    left: Math.round(Math.random() * shake) - ((shake + 1) / 2) +'px', 
+    top: Math.round(Math.random() * shake) - ((shake + 1) / 2) +'px'});
+}
 
+var stopVibration = function() {
+    clearInterval(vibrateIndex);
+    $(selector).stop(true,false)
+    .css({position: 'static', left: '0px', top: '0px'});
+};
+
+$('.emotion_box').on('click','.emoji', function(event){
+    event.preventDefault();
+    reactionScore = $(this).data('action');
+})
 $('#wo').on('submit', function(e){
     e.preventDefault();
-    var fd = new FormData(document.querySelector("form#wo"));
-    $.ajax({
+    const user_url = '{{ url }}';
+    const user_c_name = '{{ user_c_name }}';
+    let csrf_token = $("input[name^='csrfmiddlewaretoken']").val();
+    let email = $('#id_email').val();
+    let content = $('#id_content').val();
+    if (reactionScore) {
+        $.ajax({
             url: '/feedback/',
             type: 'POST',
-            data: fd,
-            processData: false,  // tell jQuery not to process the data
-            contentType: false,   // tell jQuery not to set contentType
-        beforeSend: function () {
-            $('#id_content').val('');
-            $('#feelings').val('');
-            $('#wo').html('<img src="{% static 'img/loading.gif' %}">');
-        },
+            data: {email : email, 
+                    user_url: user_url, 
+                    user_c_name: user_c_name,
+                    csrfmiddlewaretoken:csrf_token,
+                    content:content,
+                    reactionScore:reactionScore},
+            beforeSend: function () {
+                $('#id_content').val('');
+                $('#feelings').val('');
+                $('#wo').html('<img src="{% static 'img/loading.gif' %}">');
+            },
 
-        error : function(){
-            $('.feedback-loop').html("<div class='text-center'><h1 class='danger'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></h1> An inernal server error occured</div>")
-        },
+            error : function(){
+                $('.feedback-loop').html("<div class='text-center'><h1 class='danger'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></h1> An inernal server error occured</div>")
+            },
 
-        success : function(){
-            $('.loa').hide();
-            $('.feedback-loop').html("<div class='text-center'><h1 class='success'><span class='glyphicon glyphicon-ok' aria-hidden='true'></span></h1> Thanks for the feed back, we promise to work on it</div>")
-        }
+            success : function(){
+                $('.loa').hide();
+                $('.feedback-loop').html("<div class='text-center'><h1 class='success'><span class='glyphicon glyphicon-ok' aria-hidden='true'></span></h1> Thanks for the feed back, we promise to work on it</div>")
+            }
 
-    });
+        });
+    } else {
+        vibrateIndex = setInterval(vibrate, interval);
+		setTimeout(stopVibration, duration);
+        selector.addClass('notFill');
+    }
+
 });
-</script> -->
+</script>

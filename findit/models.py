@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models.signals import post_save,pre_save
 from django.utils.crypto import get_random_string
 from django.utils.text import slugify
-
+from watson import search as watson
 
 # Create your models here.
 CONDITIONS = (
@@ -20,6 +20,12 @@ CONDITIONS = (
 
 # Theme by the user collects user data does
 # Magic with it
+
+
+class ProductList(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset()
+
 class UserTheme(models.Model):
     user = models.CharField(max_length=200, blank=True, null=True)
     theme = models.BooleanField(max_length=200, blank=False, default=True)
@@ -42,8 +48,9 @@ class Products(models.Model):
     price = models.CharField(max_length=300)
     converted_price = models.CharField(max_length=300, blank=True, null=True)
     real_price = models.IntegerField(default=0)
+    objects = ProductList()
     real_price_2 = models.IntegerField(default=0)
-    image = models.ImageField(blank=True, null=True, max_length=355)
+    image = models.ImageField(max_length=355)
     source_url = models.CharField(max_length=700)
     shop = models.CharField(max_length=300)
     country_code = models.CharField(max_length=200,blank=True,null=True)
@@ -103,7 +110,7 @@ class Tips(models.Model):
 
 # Feedbacks from the user
 class Feedback(models.Model):
-    feelings = models.IntegerField(choices=CONDITIONS, blank=True, null=True)
+    feelings = models.IntegerField(blank=True, null=True)
     current_location = models.CharField(max_length=200, null=True, blank=True)
     url_locator = models.CharField(blank=True, null=True, max_length=200)
     email = models.EmailField(max_length=200, default='')
@@ -135,3 +142,4 @@ def create_products(sender, **kwargs):
 # Activates the function automatically.
 post_save.connect(create_products, sender=Products)
 
+watson.register(Products)

@@ -1,9 +1,9 @@
 from .forms import feedBackForm
-from .models import Products, Analytics, UserTheme, Tips
+from .models import Products, Analytics, UserTheme, Tips, Feedback
 from .utils import black_rock, nairaconv
 from .search_instance import experimental_search,search_bite
 from accounts.models import *
-from adengine.models import Ads
+from adplace.models import Ads
 from analytics.an_utils import get_client_ip, get_location, get_header_info, is_bot
 from analytics.models import PageViews, UserTime, UserNumber
 from analytics.signals import object_viewed
@@ -19,6 +19,7 @@ from .test_crawler import test_cralwer
 from django.utils.text import slugify
 from django.conf import settings
 from django.core.mail import send_mail
+from watson import search as watson
 
 # Intial Stops words for the users
 global  share_stringe
@@ -43,7 +44,7 @@ def home_page(request):
     url = request.build_absolute_uri()
     whichPage(request, 'home_page', url)
     user = get_client_ip(request)
-    user_theme = ''
+    userTheme = ''
     if UserTheme.objects.filter(user=user).exists():
         user_theme = UserTheme.objects.get(user=user)
     user_count(request)
@@ -54,7 +55,7 @@ def home_page(request):
     # ad = Ads.objects.order_by('?').filter(expired='False',ad_type="Banner")[:1]
     # seen_by(request,ad)
     # landlord(request,ad)
-    context = {'share_string': share_string, 'url': url, 'user_theme': user_theme, 'page': 'front_page'}
+    context = {'share_string': share_string, 'url': url, 'page': 'front_page'}
     return render(request, 'search_page.html', context)
 
 # Internalise Products
@@ -65,21 +66,6 @@ def going_global(request):
         product.save()
     return HttpResponse("Bigest Fan")
 
-# Dark and light design
-def user_choice(request):
-    user = get_client_ip(request)
-    if UserTheme.objects.filter(user=user).exists():
-        user_theme = UserTheme.objects.get(user=user)
-        if user_theme.theme:
-            user_theme.theme = False
-            user_theme.save()
-        else:
-            user_theme.theme = True
-            user_theme.save()
-    else:
-        user_theme = UserTheme.objects.create(user=user, theme=True)
-        user_theme.save()
-    return HttpResponse('mi')
 
 
 def minus_club(request):
@@ -142,18 +128,9 @@ def real_index(request):
     query = request.GET.get('q')
     # print(query,'hgf')
     all_products = Products.objects.order_by('?')
-
-    if request.user.is_authenticated:
-        user_picks = Sub.objects.filter(user=request.user)
-        user_pick_list = []
-        for user_p in user_picks:
-            user_pick_list.append(user_p.picks)
-        # print(user_pick_list)
-        all_products = Products.objects.filter(genre__in=user_pick_list)
-        all_products = all_products.order_by('?')
     if query:
-        print('hi')
-        all_products = search_bite(request,query)
+        # all_products = search_bite(request,query)
+        all_products = watson.filter(Products, query)
 
     # if corrected_sentence != orginal_sentence:
     # 	corrected_sentence = ' '.join(corrected_sentence)
@@ -721,9 +698,15 @@ def feedback(request):
     if request.method != 'POST':
         form = feedBackForm()
     else:
-        form = feedBackForm(request.POST, request.FILES or None)
+        # csrfmiddlewaretoken
+        print(request.POST['csrfmiddlewaretoken'])
+        form = feedBackForm(request.POST)
         if form.is_valid():
-            form.save()
+            feedback = form.save(commit=False)
+            feedback.url_locator= request.POST['user_url']
+            feedback.current_location = request.POST['user_c_name']
+            feedback.feelings = int(request.POST['reactionScore'])
+            feedback.save()
     return HttpResponse('ok')
 
 
@@ -758,8 +741,9 @@ def sugget(request):
     # adder = []
     if query:
         query = query.split()
-        for q in query:
-            product_list = products_list.filter(name__icontains=q)
+        num = len(query)
+        for q in range(num):
+            product_list = products_list.filter(name__icontains=query[q])
         adder = [{'name' : su.name.replace('\t','').replace('\n','')} for su in product_list]
     else:
         adder=[]
@@ -798,15 +782,6 @@ def priceconvert(request):
         product.converted_price = price
         product.save()
 
-    return HttpResponse('hello world')
-
-
-def priceconvert(request):
-    products = Products.objects.filter(shop='aliexpress')
-    for product in products:
-        price = nairaconv(product.price)
-        product.converted_price = price.replace("'", '')
-        product.save()
     return HttpResponse('hello world')
 
 

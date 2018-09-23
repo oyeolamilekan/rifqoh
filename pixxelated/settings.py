@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 from django.urls import reverse_lazy
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -43,7 +44,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'johnsonoye34@gmail.com'
 EMAIL_HOST_PASSWORD = 'oyeolamilekan'
 EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = False
 
 
 INSTALLED_APPS = [
@@ -55,11 +56,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'findit',
     'bootstrap4',
+    'bootstrap3',
     'accounts',
     'actions',
     'shop',
-    'adengine',
+    'adplace',
     'analytics',
+    'watson',
+    'api',
+    'rest_framework',
+    'algoliasearch_django'
     
 ]
 
@@ -91,9 +97,18 @@ TEMPLATES = [
     },
 ]
 
+ALGOLIA = {
+    'APPLICATION_ID': 'QQYFIYG9RO',
+    'API_KEY': '553600f2061799f2783896b55f6becb0'
+}
+
 WSGI_APPLICATION = 'pixxelated.wsgi.application'
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_URL_REGEX = r'^/api.*'
+CORS_ORIGIN_WHITELIST =('*')
 
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+# Database settings for aws(production server)
 if 'RDS_HOSTNAME' in os.environ:
     DATABASES = {
         'default': {
@@ -166,3 +181,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
+
+WHOOSH_STORAGE_DIR = PROJECT_ROOT + '/whoosh'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100
+}

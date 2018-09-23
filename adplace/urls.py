@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+
 app_name = 'adengine'
 urlpatterns = [
 	path('',views.home_page,name='home_page'),
